@@ -20,8 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-include_once get_template_directory().'adz-funcs.php';
-
 wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
