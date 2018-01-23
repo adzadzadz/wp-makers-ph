@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+include_once get_template_directory().'adz-funcs.php';
+
 wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
@@ -183,9 +185,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 	<div class="qodef-cart-totals">
 
-		<?php //do_action( 'woocommerce_cart_collaterals' ); ?>
-		<?php do_action( 'woocommerce_cart_totals' ); ?>
-
+		<?php do_action( 'woocommerce_cart_collaterals' ); ?>
+		
 	</div>
 
 </div>
