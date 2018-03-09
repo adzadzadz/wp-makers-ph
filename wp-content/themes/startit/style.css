@@ -18,3 +18,6 @@ CSS changes can be made in files in the /css/ folder. This is a placeholder file
 .single-product .qodef-content {
 	margin-top: 0px !important;
 }
+.qodef-cart-totals .cross-sells {
+  display: none !important;
+}

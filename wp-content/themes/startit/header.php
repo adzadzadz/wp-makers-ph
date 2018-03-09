@@ -9,17 +9,7 @@
      */
     ?>
 	<?php do_action('qode_startit_header_meta'); ?>
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64863437-2"></script>
-	<script>
- 	 window.dataLayer = window.dataLayer || [];
- 	 function gtag(){dataLayer.push(arguments);}
- 	 gtag('js', new Date());
-	
- 	 gtag('config', 'UA-64863437-2');
-	</script>
-	
+		
 	<?php wp_head(); ?>
 </head>
 
