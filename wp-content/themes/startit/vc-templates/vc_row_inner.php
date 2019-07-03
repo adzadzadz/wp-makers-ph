@@ -105,5 +105,5 @@ $output .= $before_wrapper_close;
 $output .= '</div>';
 $output .= $after_output;
 
-print $output;
+startit_qode_module_part( $output );
 

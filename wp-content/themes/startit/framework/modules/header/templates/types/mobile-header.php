@@ -10,7 +10,7 @@
                         <div class="qodef-mobile-menu-opener">
                             <a href="javascript:void(0)">
                     <span class="qodef-mobile-opener-icon-holder">
-                        <?php print $menu_opener_icon; ?>
+                        <?php startit_qode_module_part($menu_opener_icon); ?>
                     </span>
                             </a>
                         </div>
@@ -18,7 +18,7 @@
                     <?php if($show_logo) : ?>
                         <div class="qodef-position-center">
                             <div class="qodef-position-center-inner">
-                                <?php qode_startit_get_mobile_logo(); ?>
+                                <?php startit_qode_get_mobile_logo(); ?>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -32,7 +32,7 @@
                 </div> <!-- close .qodef-vertical-align-containers -->
             </div>
         </div>
-        <?php qode_startit_get_mobile_nav(); ?>
+        <?php startit_qode_get_mobile_nav(); ?>
     </div>
 </header> <!-- close .qodef-mobile-header -->
 

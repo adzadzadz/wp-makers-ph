@@ -147,7 +147,7 @@ class Carousel implements Lib\ShortcodeInterface {
         if ($carousel !== '') {
 
             $html .= '<div class="qodef-carousel-holder ' . esc_attr($carousel_class) .' clearfix">';
-            $html .= '<div class="qodef-carousel" ' .  qode_startit_get_inline_attrs($carousel_data_attributes) . '>';
+            $html .= '<div class="qodef-carousel" ' . startit_qode_get_inline_attrs($carousel_data_attributes) . '>';
 
             $args = array(
                 'post_type' => 'carousels',

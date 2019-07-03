@@ -1,6 +1,6 @@
 <?php
-	$author_info_box = esc_attr(qode_startit_options()->getOptionValue('blog_author_info'));
-	$author_info_email = esc_attr(qode_startit_options()->getOptionValue('blog_author_info_email'));
+	$author_info_box = esc_attr(startit_qode_options()->getOptionValue('blog_author_info'));
+	$author_info_email = esc_attr(startit_qode_options()->getOptionValue('blog_author_info_email'));
 
 	$author_email = '';
 	if(is_email(get_the_author_meta('email')) && get_the_author_meta('email') != '') {
@@ -52,35 +52,35 @@
 					<div class ="qodef-author-social-holder clearfix">
 						<?php if($author_facebook_page != '') { ?>
 							<div class="qodef-author-social-inner">
-								<a href="<?php echo esc_attr($author_facebook_page)?>" target="blank">
+								<a href="<?php echo esc_url($author_facebook_page)?>" target="blank">
 									<span class="social_facebook"></span>
 								</a>
 							</div>
 						<?php } ?>
 						<?php if($author_twitter_page != '') { ?>
 							<div class="qodef-author-social-inner">
-								<a href="<?php echo esc_attr($author_twitter_page)?>" target="blank">
+								<a href="<?php echo esc_url($author_twitter_page)?>" target="blank">
 									<span class="social_twitter"></span>
 								</a>
 							</div>
 						<?php } ?>
 						<?php if($author_instagram_page != '') { ?>
 							<div class="qodef-author-social-inner">
-								<a href="<?php echo esc_attr($author_instagram_page)?>" target="blank">
+								<a href="<?php echo esc_url($author_instagram_page)?>" target="blank">
 									<span class="social_instagram"></span>
 								</a>
 							</div>
 						<?php } ?>
 						<?php if($author_dribbble_page != '') { ?>
 							<div class="qodef-author-social-inner">
-								<a href="<?php echo esc_attr($author_dribbble_page)?>" target="blank">
+								<a href="<?php echo esc_url($author_dribbble_page)?>" target="blank">
 									<span class="social_dribbble"></span>
 								</a>
 							</div>
 						<?php } ?>
 						<?php if($author_linkedin_page != '') { ?>
 							<div class="qodef-author-social-inner">
-								<a href="<?php echo esc_attr($author_linkedin_page)?>" target="blank">
+								<a href="<?php echo esc_url($author_linkedin_page)?>" target="blank">
 									<span class="social_linkedin"></span>
 								</a>
 							</div>

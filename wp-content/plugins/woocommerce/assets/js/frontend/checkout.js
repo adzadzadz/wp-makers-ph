@@ -24,6 +24,8 @@ jQuery( function( $ ) {
 
 			if ( $( document.body ).hasClass( 'woocommerce-order-pay' ) ) {
 				this.$order_review.on( 'click', 'input[name="payment_method"]', this.payment_method_selected );
+				this.$order_review.on( 'submit', this.submitOrder );
+				this.$order_review.attr( 'novalidate', 'novalidate' );
 			}
 
 			// Prevent HTML5 validation which can conflict.
@@ -77,21 +79,32 @@ jQuery( function( $ ) {
 				$payment_methods.eq(0).prop( 'checked', true );
 			}
 
+			// Get name of new selected method.
+			var checkedPaymentMethod = $payment_methods.filter( ':checked' ).eq(0).prop( 'id' );
+
+			if ( $payment_methods.length > 1 ) {
+				// Hide open descriptions.
+				$( 'div.payment_box:not(".' + checkedPaymentMethod + '")' ).filter( ':visible' ).slideUp( 0 );
+			}
+
 			// Trigger click event for selected method
 			$payment_methods.filter( ':checked' ).eq(0).trigger( 'click' );
 		},
 		get_payment_method: function() {
 			return wc_checkout_form.$checkout_form.find( 'input[name="payment_method"]:checked' ).val();
 		},
-		payment_method_selected: function() {
+		payment_method_selected: function( e ) {
+			e.stopPropagation();
+
 			if ( $( '.payment_methods input.input-radio' ).length > 1 ) {
-				var target_payment_box = $( 'div.payment_box.' + $( this ).attr( 'ID' ) );
+				var target_payment_box = $( 'div.payment_box.' + $( this ).attr( 'ID' ) ),
+					is_checked         = $( this ).is( ':checked' );
 
-				if ( $( this ).is( ':checked' ) && ! target_payment_box.is( ':visible' ) ) {
-					$( 'div.payment_box' ).filter( ':visible' ).slideUp( 250 );
+				if ( is_checked && ! target_payment_box.is( ':visible' ) ) {
+					$( 'div.payment_box' ).filter( ':visible' ).slideUp( 230 );
 
-					if ( $( this ).is( ':checked' ) ) {
-						$( 'div.payment_box.' + $( this ).attr( 'ID' ) ).slideDown( 250 );
+					if ( is_checked ) {
+						target_payment_box.slideDown( 230 );
 					}
 				}
 			} else {
@@ -122,7 +135,6 @@ jQuery( function( $ ) {
 			}
 		},
 		init_checkout: function() {
-			$( '#billing_country, #shipping_country, .country_to_state' ).change();
 			$( document.body ).trigger( 'update_checkout' );
 		},
 		maybe_input_changed: function( e ) {
@@ -247,10 +259,10 @@ jQuery( function( $ ) {
 
 			var country			 = $( '#billing_country' ).val(),
 				state			 = $( '#billing_state' ).val(),
-				postcode		 = $( 'input#billing_postcode' ).val(),
+				postcode		 = $( ':input#billing_postcode' ).val(),
 				city			 = $( '#billing_city' ).val(),
-				address			 = $( 'input#billing_address_1' ).val(),
-				address_2		 = $( 'input#billing_address_2' ).val(),
+				address			 = $( ':input#billing_address_1' ).val(),
+				address_2		 = $( ':input#billing_address_2' ).val(),
 				s_country		 = country,
 				s_state			 = state,
 				s_postcode		 = postcode,
@@ -271,10 +283,10 @@ jQuery( function( $ ) {
 			if ( $( '#ship-to-different-address' ).find( 'input' ).is( ':checked' ) ) {
 				s_country		 = $( '#shipping_country' ).val();
 				s_state			 = $( '#shipping_state' ).val();
-				s_postcode		 = $( 'input#shipping_postcode' ).val();
+				s_postcode		 = $( ':input#shipping_postcode' ).val();
 				s_city			 = $( '#shipping_city' ).val();
-				s_address		 = $( 'input#shipping_address_1' ).val();
-				s_address_2		 = $( 'input#shipping_address_2' ).val();
+				s_address		 = $( ':input#shipping_address_1' ).val();
+				s_address_2		 = $( ':input#shipping_address_2' ).val();
 			}
 
 			var data = {
@@ -321,7 +333,7 @@ jQuery( function( $ ) {
 				success:	function( data ) {
 
 					// Reload the page if requested
-					if ( true === data.reload ) {
+					if ( data && true === data.reload ) {
 						window.location.reload();
 						return;
 					}
@@ -333,7 +345,7 @@ jQuery( function( $ ) {
 
 					// Save payment details to a temporary object
 					var paymentDetails = {};
-					$( '.payment_box input' ).each( function() {
+					$( '.payment_box :input' ).each( function() {
 						var ID = $( this ).attr( 'id' );
 
 						if ( ID ) {
@@ -360,13 +372,13 @@ jQuery( function( $ ) {
 
 					// Fill in the payment details if possible without overwriting data if set.
 					if ( ! $.isEmptyObject( paymentDetails ) ) {
-						$( '.payment_box input' ).each( function() {
+						$( '.payment_box :input' ).each( function() {
 							var ID = $( this ).attr( 'id' );
 
 							if ( ID ) {
 								if ( $.inArray( $( this ).attr( 'type' ), [ 'checkbox', 'radio' ] ) !== -1 ) {
 									$( this ).prop( 'checked', paymentDetails[ ID ] ).change();
-								} else if ( 0 === $( this ).val().length ) {
+								} else if ( null !== $( this ).val() && 0 === $( this ).val().length ) {
 									$( this ).val( paymentDetails[ ID ] ).change();
 								}
 							}
@@ -374,7 +386,7 @@ jQuery( function( $ ) {
 					}
 
 					// Check for error
-					if ( 'failure' === data.result ) {
+					if ( data && 'failure' === data.result ) {
 
 						var $form = $( 'form.checkout' );
 
@@ -403,6 +415,22 @@ jQuery( function( $ ) {
 
 			});
 		},
+		blockOnSubmit: function( $form ) {
+			var form_data = $form.data();
+
+			if ( 1 !== form_data['blockUI.isBlocked'] ) {
+				$form.block({
+					message: null,
+					overlayCSS: {
+						background: '#fff',
+						opacity: 0.6
+					}
+				});
+			}
+		},
+		submitOrder: function() {
+			wc_checkout_form.blockOnSubmit( $( this ) );
+		},
 		submit: function() {
 			wc_checkout_form.reset_update_checkout_timer();
 			var $form = $( this );
@@ -416,17 +444,7 @@ jQuery( function( $ ) {
 
 				$form.addClass( 'processing' );
 
-				var form_data = $form.data();
-
-				if ( 1 !== form_data['blockUI.isBlocked'] ) {
-					$form.block({
-						message: null,
-						overlayCSS: {
-							background: '#fff',
-							opacity: 0.6
-						}
-					});
-				}
+				wc_checkout_form.blockOnSubmit( $form );
 
 				// ajaxSetup is global, but we use it to ensure JSON is valid once returned.
 				$.ajaxSetup( {
@@ -512,24 +530,12 @@ jQuery( function( $ ) {
 			$( document.body ).trigger( 'checkout_error' );
 		},
 		scroll_to_notices: function() {
-			var scrollElement           = $( '.woocommerce-NoticeGroup-updateOrderReview, .woocommerce-NoticeGroup-checkout' ),
-				isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
+			var scrollElement           = $( '.woocommerce-NoticeGroup-updateOrderReview, .woocommerce-NoticeGroup-checkout' );
 
 			if ( ! scrollElement.length ) {
 				scrollElement = $( '.form.checkout' );
 			}
-
-			if ( scrollElement.length ) {
-				if ( isSmoothScrollSupported ) {
-					scrollElement[0].scrollIntoView({
-						behavior: 'smooth'
-					});
-				} else {
-					$( 'html, body' ).animate( {
-						scrollTop: ( scrollElement.offset().top - 100 )
-					}, 1000 );
-				}
-			}
+			$.scroll_to_notices( scrollElement );
 		}
 	};
 
@@ -649,7 +655,18 @@ jQuery( function( $ ) {
 
 		toggle_terms: function() {
 			if ( $( '.woocommerce-terms-and-conditions' ).length ) {
-				$( '.woocommerce-terms-and-conditions' ).slideToggle();
+				$( '.woocommerce-terms-and-conditions' ).slideToggle( function() {
+					var link_toggle = $( '.woocommerce-terms-and-conditions-link' );
+
+					if ( $( '.woocommerce-terms-and-conditions' ).is( ':visible' ) ) {
+						link_toggle.addClass( 'woocommerce-terms-and-conditions-link--open' );
+						link_toggle.removeClass( 'woocommerce-terms-and-conditions-link--closed' );
+					} else {
+						link_toggle.removeClass( 'woocommerce-terms-and-conditions-link--open' );
+						link_toggle.addClass( 'woocommerce-terms-and-conditions-link--closed' );
+					}
+				} );
+
 				return false;
 			}
 		}

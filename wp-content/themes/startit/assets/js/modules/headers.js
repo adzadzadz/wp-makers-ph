@@ -159,7 +159,7 @@
 
         }
 
-        $('a.qodef-side-menu-button-opener, a.qodef-close-side-menu').click( function(e) {
+        $('a.qodef-side-menu-button-opener, a.qodef-close-side-menu').on('click', function(e) {
             e.preventDefault();
 
             if(!sideMenuButtonOpen.hasClass('opened')) {
@@ -168,7 +168,7 @@
                 qodef.body.addClass(cssClass);
 
                 if (slideFromRight) {
-                    $('.qodef-wrapper .qodef-cover').click(function() {
+                    $('.qodef-wrapper .qodef-cover').on('click',function() {
                         qodef.body.removeClass('qodef-right-side-menu-opened');
                         sideMenuButtonOpen.removeClass('opened');
                     });
@@ -210,7 +210,7 @@
             if (slideWithContent) {
 
                 e.stopPropagation();
-                wrapper.click(function() {
+                wrapper.on('click',function() {
                     e.preventDefault();
                     sideMenuButtonOpen.removeClass('opened');
                     qodef.body.removeClass('qodef-side-menu-open');
@@ -328,7 +328,7 @@
                         qodef.modules.common.qodefDisableScroll();
                     }
                     $(document).keyup(function(e){
-                        if (e.keyCode == 27 ) {
+                        if (e.keyCode === 27 ) {
                             popupMenuOpener.removeClass('opened');
                             qodef.body.removeClass('qodef-fullscreen-menu-opened');
                             qodef.body.removeClass('qodef-fullscreen-fade-in').addClass('qodef-fullscreen-fade-out');
@@ -377,11 +377,11 @@
             });
 
             //if link has no submenu and if it's not dead, than open that link
-            menuItemWithoutChild.click(function (e) {
+            menuItemWithoutChild.on('click',function (e) {
 
                 if(($(this).attr('href') !== "http://#") && ($(this).attr('href') !== "#")){
 
-                    if (e.which == 1) {
+                    if (e.which === 1) {
                         popupMenuOpener.removeClass('opened');
                         qodef.body.removeClass('qodef-fullscreen-menu-opened');
                         qodef.body.removeClass('qodef-fullscreen-fade-in').addClass('qodef-fullscreen-fade-out');
@@ -488,10 +488,6 @@
                 } else {
                     mobileHeader.addClass('mobile-header-appear');
                     mobileHeader.css('margin-bottom', stickyAppearAmount);
-
-                    //if(adminBar.length) {
-                    //    mobileHeader.find('.qodef-mobile-header-inner').css('top', adminBarHeight);
-                    //}
                 }
 
                 docYScroll1 = $(document).scrollTop();
@@ -574,7 +570,7 @@
                         }
                     } else {
                         if(!$(this).hasClass('left_position') && !$(this).hasClass('right_position')) {
-                            var left_position = dropdown.offset().left;
+                            var left_position = $(this).find('.second').offset().left;
 
                             dropDownSecondDiv.css('left', -left_position);
                             dropDownSecondDiv.css('width', qodef.windowWidth);
@@ -653,7 +649,7 @@
             }
         });
         $('.qodef-drop-down ul li.wide ul li a').on('click', function(e) {
-            if (e.which == 1){
+            if (e.which === 1){
                 var $this = $(this);
                 setTimeout(function() {
                     $this.mouseleave();
@@ -713,7 +709,7 @@
          */
         function qodefSearchWindowTop() {
 
-            searchOpener.click( function(e) {
+            searchOpener.on('click', function(e) {
                 e.preventDefault();
 
                 if($('.title').hasClass('has_parallax_background')){
@@ -721,7 +717,7 @@
                 }else {
                     var yPos = 0;
                 }
-                if ( searchForm.height() == "0") {
+                if ( searchForm.height() === 0) {
                     $('.qodef-search-slide-window-top input[type="text"]').focus();
                     //Push header bottom
                     qodef.body.addClass('qodef-search-open');
@@ -736,13 +732,13 @@
                 }
 
                 $(window).scroll(function() {
-                    if ( searchForm.height() != '0' && qodef.scroll > 50 ) {
+                    if ( searchForm.height() !== 0 && qodef.scroll > 50 ) {
                         qodef.body.removeClass('qodef-search-open');
                         $('.title.has_parallax_background').css('backgroundPosition', 'center '+(yPos)+'px');
                     }
                 });
 
-                searchClose.click(function(e){
+                searchClose.on('click',function(e){
                     e.preventDefault();
                     qodef.body.removeClass('qodef-search-open');
                     $('.title.has_parallax_background').animate({
@@ -758,7 +754,7 @@
          */
         function qodefSearchCoversHeader() {
 
-            searchOpener.click( function(e) {
+            searchOpener.on('click', function(e) {
                 e.preventDefault();
                 var searchFormHeight,
                     searchFormHolder = $('.qodef-search-cover .qodef-form-holder-outer'),
@@ -801,7 +797,7 @@
                 searchFormHolder.height(searchFormHeight);
                 searchForm.stop(true).fadeIn(600);
                 $('.qodef-search-cover input[type="text"]').focus();
-                $('.qodef-search-close, .content, footer').click(function(e){
+                $('.qodef-search-close, .content, footer').on('click',function(e){
                     e.preventDefault();
                     searchForm.stop(true).fadeOut(450);
                 });
@@ -820,7 +816,7 @@
             var searchHolder = $( '.qodef-fullscreen-search-holder'),
                 searchOverlay = $( '.qodef-fullscreen-search-overlay' );
 
-            searchOpener.click( function(e) {
+            searchOpener.on('click', function(e) {
                 e.preventDefault();
                 var samePosition = false;
                 if ( $(this).data('icon-close-same-position') === 'yes' ) {
@@ -853,7 +849,7 @@
                             qodef.modules.common.qodefDisableScroll();
                         }
                     }
-                    searchClose.click( function(e) {
+                    searchClose.on('click', function(e) {
                         e.preventDefault();
                         qodef.body.removeClass('qodef-fullscreen-search-opened');
                         searchHolder.removeClass('qodef-animate');
@@ -865,7 +861,7 @@
                     });
                     //Close on escape
                     $(document).keyup(function(e){
-                        if (e.keyCode == 27 ) { //KeyCode for ESC button is 27
+                        if (e.keyCode === 27 ) { //KeyCode for ESC button is 27
                             qodef.body.removeClass('qodef-fullscreen-search-opened');
                             searchHolder.removeClass('qodef-animate');
                             qodef.body.removeClass('qodef-search-fade-in');
@@ -918,7 +914,7 @@
                             qodef.modules.common.qodefDisableScroll();
                         }
                     }
-                    searchClose.click(function(e) {
+                    searchClose.on('click',function(e) {
                         e.preventDefault();
                         searchOverlay.removeClass('qodef-animate');
                         searchHolder.css({
@@ -938,7 +934,7 @@
                     });
                     //Close on escape
                     $(document).keyup(function(e){
-                        if (e.keyCode == 27 ) { //KeyCode for ESC button is 27
+                        if (e.keyCode === 27 ) { //KeyCode for ESC button is 27
                             searchOverlay.removeClass('qodef-animate');
                             searchHolder.css({
                                 'opacity' : 0,
@@ -984,25 +980,6 @@
         var verticalMenuObject = $('.qodef-vertical-menu-area');
 
         /**
-         * Resizes vertical area. Called whenever height of navigation area changes
-         * It first check if vertical area is scrollable, and if it is resizes scrollable area
-         */
-        //var resizeVerticalArea = function() {
-        //    if(verticalAreaScrollable()) {
-        //        verticalMenuObject.getNiceScroll().resize();
-        //    }
-        //};
-
-        /**
-         * Checks if vertical area is scrollable (if it has qodef-with-scroll class)
-         *
-         * @returns {bool}
-         */
-        //var verticalAreaScrollable = function() {
-        //    return verticalMenuObject.hasClass('.qodef-with-scroll');
-        //};
-
-        /**
          * Initialzes navigation functionality. It checks navigation type data attribute and calls proper functions
          */
         var initNavigation = function() {
@@ -1010,111 +987,10 @@
             var navigationType = typeof verticalNavObject.data('navigation-type') !== 'undefined' ? verticalNavObject.data('navigation-type') : '';
 
             switch(navigationType) {
-                //case 'dropdown-toggle':
-                //    dropdownHoverToggle();
-                //    break;
-                //case 'dropdown-toggle-click':
-                //    dropdownClickToggle();
-                //    break;
-                //case 'float':
-                //    dropdownFloat();
-                //    break;
-                //case 'slide-in':
-                //    dropdownSlideIn();
-                //    break;
                 default:
                     dropdownFloat();
                     break;
             }
-
-            /**
-             * Initializes hover toggle navigation type. It has separate functionalities for touch and no-touch devices
-             */
-            //function dropdownHoverToggle() {
-            //    var menuItems = verticalNavObject.find('ul li.menu-item-has-children');
-            //
-            //    menuItems.each(function() {
-            //        var elementToExpand = $(this).find(' > .second, > ul');
-            //        var numberOfChildItems = elementToExpand.find(' > .inner > ul > li, > li').length;
-            //
-            //        var animSpeed = numberOfChildItems * 40;
-            //        var animFunc = 'easeInOutSine';
-            //        var that = this;
-            //
-            //        //touch devices functionality
-            //        if(Modernizr.touch) {
-            //            var dropdownOpener = $(this).find('> a');
-            //
-            //            dropdownOpener.on('click tap', function(e) {
-            //                e.preventDefault();
-            //                e.stopPropagation();
-            //
-            //                if(elementToExpand.is(':visible')) {
-            //                    $(that).removeClass('open');
-            //                    elementToExpand.slideUp(animSpeed, animFunc, function() {
-            //                        resizeVerticalArea();
-            //                    });
-            //                } else {
-            //                    $(that).addClass('open');
-            //                    elementToExpand.slideDown(animSpeed, animFunc, function() {
-            //                        resizeVerticalArea();
-            //                    });
-            //                }
-            //            });
-            //        } else {
-            //            $(this).hover(function() {
-            //                $(that).addClass('open');
-            //                elementToExpand.slideDown(animSpeed, animFunc, function() {
-            //                    resizeVerticalArea();
-            //                });
-            //            }, function() {
-            //                setTimeout(function() {
-            //                    $(that).removeClass('open');
-            //                    elementToExpand.slideUp(animSpeed, animFunc, function() {
-            //                        resizeVerticalArea();
-            //                    });
-            //                }, 1000);
-            //            });
-            //        }
-            //    });
-            //}
-
-            /**
-             * Initializes click toggle navigation type. Works the same for touch and no-touch devices
-             */
-            //function dropdownClickToggle() {
-            //    var menuItems = verticalNavObject.find('ul li.menu-item-has-children');
-            //
-            //    menuItems.each(function() {
-            //        var elementToExpand = $(this).find(' > .second, > ul');
-            //        var menuItem = this;
-            //        var dropdownOpener = $(this).find('> a');
-            //        var slideUpSpeed = 'fast';
-            //        var slideDownSpeed = 'slow';
-            //
-            //        dropdownOpener.on('click tap', function(e) {
-            //            e.preventDefault();
-            //            e.stopPropagation();
-            //
-            //            if(elementToExpand.is(':visible')) {
-            //                $(menuItem).removeClass('open');
-            //                elementToExpand.slideUp(slideUpSpeed, function() {
-            //                    resizeVerticalArea();
-            //                });
-            //            } else {
-            //                if(!$(this).parents('li').hasClass('open')) {
-            //                    menuItems.removeClass('open');
-            //                    menuItems.find(' > .second, > ul').slideUp(slideUpSpeed);
-            //                }
-            //
-            //                $(menuItem).addClass('open');
-            //                elementToExpand.slideDown(slideDownSpeed, function() {
-            //                    resizeVerticalArea();
-            //                });
-            //            }
-            //        });
-            //    });
-            //}
 
             /**
              * Initializes floating navigation type (it comes from the side as a dropdown)
@@ -1165,139 +1041,8 @@
                 });
             }
 
-            /**
-             * Initializes slide in navigation type (dropdowns are coming on top of parent element and cover whole navigation area)
-             */
-            //function dropdownSlideIn() {
-            //    var menuItems = verticalNavObject.find('ul li.menu-item-has-children');
-            //    var menuItemsLinks = menuItems.find('> a');
-            //
-            //    menuItemsLinks.each(function() {
-            //        var elementToExpand = $(this).next('.second, ul');
-            //        appendToExpandableElement(elementToExpand, this);
-            //
-            //        if($(this).parent('li').is('.current-menu-ancestor', '.current_page_parent', '.current-menu-parent ')) {
-            //            elementToExpand.addClass('qodef-vertical-slide-open');
-            //        }
-            //
-            //        $(this).on('click tap', function(e) {
-            //            e.preventDefault();
-            //            e.stopPropagation();
-            //
-            //            menuItems.removeClass('open');
-            //
-            //            $(this).parent('li').addClass('open');
-            //            elementToExpand.addClass('qodef-vertical-slide-open');
-            //        });
-            //    });
-            //
-            //    var previousLevelItems = menuItems.find('li.qodef-previous-level > a');
-            //
-            //    previousLevelItems.on('click tap', function(e) {
-            //        e.preventDefault();
-            //        e.stopPropagation();
-            //
-            //        menuItems.removeClass('open');
-            //        $(this).parents('.qodef-vertical-slide-open').first().removeClass('qodef-vertical-slide-open');
-            //    });
-            //
-            //    /**
-            //     * Appends 'li' element as first element in dropdown, which will close current dropdown when clicked
-            //     * @param {jQuery object} elementToExpand current dropdown to append element to
-            //     * @param currentMenuItem
-            //     */
-            //    function appendToExpandableElement(elementToExpand, currentMenuItem) {
-            //        var itemUrl = $(currentMenuItem).attr('href');
-            //        var itemText = $(currentMenuItem).text();
-            //
-            //        var liItem = $('<li />', {class: 'qodef-previous-level'});
-            //
-            //        $('<a />', {
-            //            'href': itemUrl,
-            //            'html': '<i class="qodef-vertical-slide-arrow fa fa-angle-left"></i>' + itemText
-            //        }).appendTo(liItem);
-            //
-            //        if(elementToExpand.hasClass('second')) {
-            //            elementToExpand.find('> div > ul').prepend(liItem);
-            //        } else {
-            //            elementToExpand.prepend(liItem);
-            //        }
-            //    }
-            //}
         };
 
-        /**
-         * Initializes scrolling in vertical area. It checks if vertical area is scrollable before doing so
-         */
-        //var initVerticalAreaScroll = function() {
-        //    if(verticalAreaScrollable()) {
-        //        verticalMenuObject.niceScroll({
-        //            scrollspeed: 60,
-        //            mousescrollstep: 40,
-        //            cursorwidth: 0,
-        //            cursorborder: 0,
-        //            cursorborderradius: 0,
-        //            cursorcolor: "transparent",
-        //            autohidemode: false,
-        //            horizrailenabled: false
-        //        });
-        //    }
-        //};
-
-        //var initHiddenVerticalArea = function() {
-        //    var verticalLogo = $('.qodef-vertical-area-bottom-logo');
-        //    var verticalMenuOpener = verticalMenuObject.find('.qodef-vertical-menu-hidden-button');
-        //    var scrollPosition = 0;
-        //
-        //    verticalMenuOpener.on('click tap', function() {
-        //        if(isVerticalAreaOpen()) {
-        //            closeVerticalArea();
-        //        } else {
-        //            openVerticalArea();
-        //        }
-        //    });
-        //
-        //    //take click outside vertical left/right area and close it
-        //    $j(verticalMenuObject).outclick({
-        //        callback: function() {
-        //            closeVerticalArea();
-        //        }
-        //    });
-        //
-        //    $(window).scroll(function() {
-        //        if(Math.abs($(window).scrollTop() - scrollPosition) > 400){
-        //            closeVerticalArea();
-        //        }
-        //    });
-        //
-        //    /**
-        //     * Closes vertical menu area by removing 'active' class on that element
-        //     */
-        //    function closeVerticalArea() {
-        //        verticalMenuObject.removeClass('active');
-        //
-        //        if(verticalLogo.length) {
-        //            verticalLogo.removeClass('active');
-        //        }
-        //    }
-        //
-        //    /**
-        //     * Opens vertical menu area by adding 'active' class on that element
-        //     */
-        //    function openVerticalArea() {
-        //        verticalMenuObject.addClass('active');
-        //
-        //        if(verticalLogo.length) {
-        //            verticalLogo.addClass('active');
-        //        }
-        //
-        //        scrollPosition = $(window).scrollTop();
-        //    }
-        //
-        //    function isVerticalAreaOpen() {
-        //        return verticalMenuObject.hasClass('active');
-        //    }
-        //};
 
         return {
             /**
@@ -1306,11 +1051,6 @@
             init: function() {
                 if(verticalMenuObject.length) {
                     initNavigation();
-                    //initVerticalAreaScroll();
-                    //
-                    //if(qodef.body.hasClass('qodef-vertical-header-hidden')) {
-                    //    initHiddenVerticalArea();
-                    //}
                 }
             }
         };
@@ -1361,7 +1101,7 @@
             var margin = 0;
             var maxMargin = verticalMenuHeight - browserHeight;
 
-            $(verticalMenuArea).hover(
+            $(verticalMenuArea).on('hover',
                 function() {
                     qodef.modules.common.qodefDisableScroll();
                     if (window.addEventListener) {

@@ -1,8 +1,8 @@
-<?php if(qode_startit_options()->getOptionValue('portfolio_single_hide_pagination') !== 'yes') : ?>
+<?php if( startit_qode_options()->getOptionValue('portfolio_single_hide_pagination') !== 'yes') : ?>
 
     <?php
     $back_to_link = get_post_meta(get_the_ID(), 'portfolio_single_back_to_link', true);
-    $nav_same_category = qode_startit_options()->getOptionValue('portfolio_single_nav_same_category') == 'yes';
+    $nav_same_category = startit_qode_options()->getOptionValue('portfolio_single_nav_same_category') == 'yes';
     ?>
 
     <div class="qodef-portfolio-single-nav">

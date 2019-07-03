@@ -1,1 +1,1 @@
-<?php qode_startit_get_title();
+<?php startit_qode_get_title();

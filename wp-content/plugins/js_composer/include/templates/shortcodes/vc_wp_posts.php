@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $el_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Wp_Posts
+ * @var WPBakeryShortCode_Vc_Wp_Posts $this
  */
 $title = $number = $show_date = $el_class = $el_id = '';
 $output = '';
@@ -35,8 +35,6 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 	$output .= ob_get_clean();
 
 	$output .= '</div>';
-
+	// @codingStandardsIgnoreLine
 	echo $output;
-} else {
-	echo $this->debugComment( 'Widget ' . esc_attr( $type ) . 'Not found in : vc_wp_posts' );
 }

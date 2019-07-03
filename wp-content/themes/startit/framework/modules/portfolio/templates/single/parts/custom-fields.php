@@ -2,7 +2,7 @@
 $custom_fields = get_post_meta(get_the_ID(), 'qode_portfolios', true);
 
 if(is_array($custom_fields) && count($custom_fields)) :
-    usort($custom_fields, 'qode_startit_compare_portfolio_options');
+    usort($custom_fields, 'startit_qode_compare_portfolio_options' );
 
     foreach($custom_fields as $custom_field) : ?>
         <div class="qodef-portfolio-info-item qodef-portfolio-custom-field">

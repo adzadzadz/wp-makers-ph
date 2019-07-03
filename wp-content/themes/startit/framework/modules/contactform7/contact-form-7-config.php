@@ -1,10 +1,10 @@
 <?php
-if ( ! function_exists('qode_startit_contact_form_map') ) {
+if ( ! function_exists( 'startit_qode_contact_form_map' ) ) {
 	/**
 	 * Map Contact Form 7 shortcode
 	 * Hooks on vc_after_init action
 	 */
-	function qode_startit_contact_form_map()
+	function startit_qode_contact_form_map()
 	{
 
 		vc_add_param('contact-form-7', array(
@@ -20,6 +20,6 @@ if ( ! function_exists('qode_startit_contact_form_map') ) {
 		));
 
 	}
-	add_action('vc_after_init', 'qode_startit_contact_form_map');
+	add_action('vc_after_init', 'startit_qode_contact_form_map');
 }
 ?>

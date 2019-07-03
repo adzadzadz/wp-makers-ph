@@ -166,7 +166,7 @@
         if(message.length){
             message.each(function(){
                 var thisMessage = $(this);
-                thisMessage.find('.qodef-close').click(function(e){
+                thisMessage.find('.qodef-close').on('click',function(e){
                     e.preventDefault();
                     $(this).parent().parent().fadeOut(500);
                 });
@@ -207,10 +207,15 @@
             minute,
             timezone,
             monthLabel,
+            sinMonthLabel,
             dayLabel,
+            sinDayLabel,
             hourLabel,
+            sinHourLabel,
             minuteLabel,
-            secondLabel;
+            sinMinuteLabel,
+            secondLabel,
+            sinSecondLabel;
 
         if (countdowns.length) {
 
@@ -233,10 +238,15 @@
                 minute = countdown.data('minute');
                 timezone = countdown.data('timezone');
                 monthLabel = countdown.data('month-label');
+                sinMonthLabel = countdown.data('sin-month-label');
                 dayLabel = countdown.data('day-label');
+                sinDayLabel = countdown.data('sin-day-label');
                 hourLabel = countdown.data('hour-label');
+                sinHourLabel = countdown.data('sin-hour-label');
                 minuteLabel = countdown.data('minute-label');
+                sinMinuteLabel = countdown.data('sin-minute-label');
                 secondLabel = countdown.data('second-label');
+                sinSecondLabel = countdown.data('sin-second-label');
                 digitFontSize = countdown.data('digit-size');
                 labelFontSize = countdown.data('label-size');
                 digitColor = countdown.data('digit-color');
@@ -248,6 +258,7 @@
                 countdown.countdown({
                     until: new Date(year, month - 1, day, hour, minute, 44),
                     labels: ['Years', monthLabel, 'Weeks', dayLabel, hourLabel, minuteLabel, secondLabel],
+                    labels1: ['Years', sinMonthLabel, 'Weeks', sinDayLabel, sinHourLabel, sinMinuteLabel, sinSecondLabel],
                     format: 'ODHMS',
                     timezone: timezone,
                     padZeroes: true,
@@ -417,7 +428,7 @@
                 if(typeof thisTestimonial.data('layout') !== 'undefined') {
                     type = thisTestimonial.data('layout');
                 }
-                if(type == 'standard_carousel') {
+                if(type === 'standard_carousel') {
                     controlNav = true;
                 }
 
@@ -438,11 +449,11 @@
                     ],*/
                 });
 
-                previous.click(function() {
+                previous.on('click',function() {
                     thisTestimonial.trigger('owl.next');
                 });
 
-                next.click(function() {
+                next.on('click',function() {
                    thisTestimonial.trigger('owl.prev');
                 });
 
@@ -472,8 +483,8 @@
                 var controlNav = true;
                 var directionNav = false;
                 var animationSpeed = 600;
-                if(typeof thisFullwidthSlider.data('animation-speed') !== 'undefined' && thisFullwidthSlider.data('animation-speed') !== false) {
-                    animationSpeed = thisFullwidthSlider.data('animation-speed');
+                if(typeof thisFullwidthSlider.data('interval') !== 'undefined' && thisFullwidthSlider.data('interval') !== false) {
+                    interval = thisFullwidthSlider.data('interval');
                 }
 
                 //var iconClasses = getIconClassesForNavigation(directionNavArrowsTestimonials); TODO
@@ -492,14 +503,6 @@
                      '<span class="qodef-next-icon"><i class="fa fa-angle-right"></i></span>'
                      ],*/
                 });
-
-                /*previous.click(function() {
-                    thisTestimonial.trigger('owl.next');
-                });
-
-                next.click(function() {
-                    thisTestimonial.trigger('owl.prev');
-                });*/
 
             });
 
@@ -522,7 +525,7 @@
                 var carouselHolder = $(this);
                 carousel = carouselHolder.find('.qodef-carousel');
                 numberOfItems = carousel.data('items');
-                navigation = (carousel.data('navigation') == 'yes') ? true : false;
+                navigation = (carousel.data('navigation') === 'yes') ? true : false;
 
                 //Responsive breakpoints
                 var items = [
@@ -953,6 +956,10 @@
      */
     function qodefInitializeGoogleMap(customMapStyle, color, saturation, lightness, wheel, zoom, holderId, height, pin,  map, geocoder, data){
 
+        if(typeof google !== 'object') {
+            return;
+        }
+
         var mapStyles = [
             {
                 stylers: [
@@ -1092,7 +1099,7 @@
 
 					toggleAccordionTitle.each(function(){
 						var thisTitle = $(this);
-						thisTitle.hover(function(){
+						thisTitle.on('hover',function(){
 							thisTitle.toggleClass("ui-state-hover");
 						});
 
@@ -1114,9 +1121,9 @@
             galleries.each(function () {
                 var gallery = $(this).children('.qodef-image-gallery-slider'),
                     autoplay = gallery.data('autoplay'),
-                    animation = (gallery.data('animation') == 'slide') ? false : gallery.data('animation'),
-                    navigation = (gallery.data('navigation') == 'yes'),
-                    pagination = (gallery.data('pagination') == 'yes');
+                    animation = (gallery.data('animation') === 'slide') ? false : gallery.data('animation'),
+                    navigation = (gallery.data('navigation') === 'yes'),
+                    pagination = (gallery.data('pagination') === 'yes');
 
                 gallery.owlCarousel({
                     singleItem: true,
@@ -1176,7 +1183,7 @@
 
             recalculateValues(priceElement, units, price, sliderTextLabel, progressBar, xPos, parentWidth, unitName);
 
-            pricingButtonHolder.find('.qodef-btn').click(function() {
+            pricingButtonHolder.find('.qodef-btn').on('click',function() {
                 if(!$(this).parent().hasClass('active')) {
                     activeFilter.removeClass('active');
                     $(this).parent().addClass('active');
@@ -1203,14 +1210,14 @@
                     xPos = offset.left - parentXPos;
                     units = Math.floor(xPos / iterator);
                     if(xPos >= 0 && xPos <= parentWidth) {
-                        if (direction == 'right') {
+                        if (direction === 'right') {
                             if (units > breakpointValue) {
                                 breakpointValue = breakpointValue + unitsBreakpoints;
                                 breakPointsIterator ++;
                                 price = price - reduceRate;
                             }
                         }
-                        else if (direction == 'left') {
+                        else if (direction === 'left') {
                             if (units <= breakpointValue - unitsBreakpoints) {
                                 breakpointValue = breakpointValue - unitsBreakpoints;
                                 breakPointsIterator --;
@@ -1226,7 +1233,7 @@
 
         function recalculateValues(priceElement, units, price, sliderTextLabel, progressBar, xPos, parentWidth, unitName) {
             priceElement.text(((Math.round(units * price * 100)) / 100));
-            if(units == 1) {
+            if(units === 1) {
                 sliderTextLabel.text(units + " " + unitName);
             } else {
                 sliderTextLabel.text(units + " " + unitName + "s");
@@ -1356,6 +1363,12 @@
                 loadMoreButton.on('click', function (e) {  
                     var loadMoreDatta = qodefGetPortfolioAjaxData(thisPortList);
                     nextPage = loadMoreDatta.nextPage;
+
+                    var nonceHolder = thisPortList.find('input[name*="qodef_ptf_load_more_nonce_"]');
+
+                    loadMoreDatta.ptf_load_more_id = nonceHolder.attr('name').substring(nonceHolder.attr('name').length - 4, nonceHolder.attr('name').length);
+                    loadMoreDatta.ptf_load_more_nonce = nonceHolder.val();
+
                     e.preventDefault();
                     e.stopPropagation(); 
                     if(nextPage <= maxNumPages){
@@ -1486,7 +1499,9 @@
             selectedProjectes: container.selectedProjectes,
             showLoadMore: container.showLoadMore,
             titleTag: container.titleTag,
-            nextPage: container.nextPage
+            nextPage: container.nextPage,
+            ptf_load_more_id: container.ptf_load_more_id,
+            ptf_load_more_nonce: container.ptf_load_more_nonce
         };
         return returnValue;
     }
@@ -1531,18 +1546,6 @@
                 height: qodefP.container.height()
             };
         };
-
-        /*
-        qodefP.check_resize = function() {
-            console.log('Checked resize');
-            var width = qodefP.container.width();
-            var height = qodefP.container.height();
-            if (width != qodefP.size.width || height != qodefP.size.height) {
-                qodefP.record_size();
-                qodefP.init_particles();
-            }
-        };
-        */
 
         qodefP.init_particles = function() {
             particlesJS(
@@ -2069,10 +2072,10 @@
          * @param totalItemCount, total number of slide items
          */
         var setPrevNextNumbers = function(slider, currentItem, totalItemCount) {
-            if(currentItem == 1){
+            if(currentItem === 1){
                 slider.find('.left.carousel-control .prev').html(totalItemCount);
                 slider.find('.right.carousel-control .next').html(currentItem + 1);
-            }else if(currentItem == totalItemCount){
+            }else if(currentItem === totalItemCount){
                 slider.find('.left.carousel-control .prev').html(currentItem - 1);
                 slider.find('.right.carousel-control .next').html(1);
             }else{
@@ -2089,10 +2092,10 @@
          */
 
         var setPrevNextThumbnail = function(slider, currentItem, totalItemCount) {
-            if(currentItem == 1){
+            if(parseInt(currentItem) === 1){
                 slider.find('.left.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(totalItemCount)).fadeIn('slow');
                 slider.find('.right.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(currentItem+1)).fadeIn('slow');
-            }else if(currentItem == totalItemCount){
+            }else if(parseInt(currentItem) === parseInt(totalItemCount)){
                 slider.find('.left.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(currentItem-1)).fadeIn('slow');
                 slider.find('.right.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(1)).fadeIn('slow');
             }else{
@@ -2253,7 +2256,7 @@
                         var slideAnimationTimeout = $this.data('slide_animation_timeout');
                         var totalItemCount = $this.find('.item').length;
                         if($this.data('qodef_responsive_breakpoints')){
-                            if($this.data('qodef_responsive_breakpoints') == 'set2'){
+                            if($this.data('qodef_responsive_breakpoints') === 'set2'){
                                 responsiveBreakpointSet = [1600,1300,1000,768,567,320];
                             }
                         }

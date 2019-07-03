@@ -39,8 +39,8 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 
 	$output .= '</div>';
 
-	echo $output;
+	startit_qode_get_module_part($output);
 } else {
-	echo $this->debugComment( 'Widget ' . esc_attr( $type ) . 'Not found in : vc_wp_search' );
+	startit_qode_get_module_part($this->debugComment( 'Widget ' . esc_attr( $type ) . 'Not found in : vc_wp_search' ));
 }
 // TODO: make more informative if wp is in debug mode

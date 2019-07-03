@@ -1,10 +1,10 @@
 <?php
 
-if ( ! function_exists('qode_startit_sidebar_options_map') ) {
+if ( ! function_exists( 'startit_qode_sidebar_options_map' ) ) {
 
-	function qode_startit_sidebar_options_map() {
+	function startit_qode_sidebar_options_map() {
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug'  => '_sidebar_page',
 				'title' => 'Sidebar',
@@ -12,7 +12,7 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 			)
 		);
 
-		$panel_widgets = qode_startit_add_admin_panel(
+		$panel_widgets = startit_qode_add_admin_panel(
 			array(
 				'page'  => '_sidebar_page',
 				'name'  => 'panel_widgets',
@@ -23,7 +23,7 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 		/**
 		 * Navigation style
 		 */
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'color',
 			'name'			=> 'sidebar_background_color',
 			'default_value'	=> '',
@@ -32,18 +32,18 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 			'parent'		=> $panel_widgets
 		));
 
-		$group_sidebar_padding = qode_startit_add_admin_group(array(
+		$group_sidebar_padding = startit_qode_add_admin_group(array(
 			'name'		=> 'group_sidebar_padding',
 			'title'		=> 'Padding',
 			'parent'	=> $panel_widgets
 		));
 
-		$row_sidebar_padding = qode_startit_add_admin_row(array(
+		$row_sidebar_padding = startit_qode_add_admin_row(array(
 			'name'		=> 'row_sidebar_padding',
 			'parent'	=> $group_sidebar_padding
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'textsimple',
 			'name'			=> 'sidebar_padding_top',
 			'default_value'	=> '',
@@ -54,7 +54,7 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 			'parent'		=> $row_sidebar_padding
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'textsimple',
 			'name'			=> 'sidebar_padding_right',
 			'default_value'	=> '',
@@ -65,7 +65,7 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 			'parent'		=> $row_sidebar_padding
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'textsimple',
 			'name'			=> 'sidebar_padding_bottom',
 			'default_value'	=> '',
@@ -76,7 +76,7 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 			'parent'		=> $row_sidebar_padding
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'textsimple',
 			'name'			=> 'sidebar_padding_left',
 			'default_value'	=> '',
@@ -87,7 +87,7 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 			'parent'		=> $row_sidebar_padding
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'select',
 			'name'			=> 'sidebar_alignment',
 			'default_value'	=> '',
@@ -103,6 +103,6 @@ if ( ! function_exists('qode_startit_sidebar_options_map') ) {
 
 	}
 
-	add_action( 'qode_startit_options_map', 'qode_startit_sidebar_options_map', 10);
+	add_action( 'qode_startit_options_map', 'startit_qode_sidebar_options_map', 10);
 
 }

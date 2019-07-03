@@ -3,39 +3,39 @@
  * Woocommerce helper functions
  */
 
-if(!function_exists('qode_startit_woocommerce_assets')) {
+if(!function_exists( 'startit_qode_woocommerce_assets' )) {
     /**
      * Function that includes all necessary scripts for WooCommerce if installed
      */
-    function qode_startit_woocommerce_assets() {
+    function startit_qode_woocommerce_assets() {
         //is woocommerce installed?
-        if(qode_startit_is_woocommerce_installed()) {
-            if(qode_startit_load_woo_assets()) {
+        if(startit_qode_is_woocommerce_installed()) {
+            if(startit_qode_load_woo_assets()) {
 
                 //include theme's woocommerce styles
-                wp_enqueue_style('qode_startit_woocommerce', QODE_ASSETS_ROOT.'/css/woocommerce.min.css');
+                wp_enqueue_style('startit-qode-woocommerce', QODE_ASSETS_ROOT.'/css/woocommerce.min.css');
 
                 //is responsive option turned on?
-                if(qode_startit_options()->getOptionValue('responsiveness') == 'yes') {
+                if( startit_qode_options()->getOptionValue('responsiveness') == 'yes') {
                     //include theme's woocommerce responsive styles
-                    wp_enqueue_style('qode_startit_woocommerce_responsive', QODE_ASSETS_ROOT.'/css/woocommerce-responsive.min.css');
+                    wp_enqueue_style('startit-qode-woocommerce-responsive', QODE_ASSETS_ROOT.'/css/woocommerce-responsive.min.css');
                 }
             }
         }
     }
 
-    add_action('wp_enqueue_scripts', 'qode_startit_woocommerce_assets');
+    add_action('wp_enqueue_scripts', 'startit_qode_woocommerce_assets');
 }
 
-if (!function_exists('qode_startit_woocommerce_body_class')) {
+if (!function_exists( 'startit_qode_woocommerce_body_class' )) {
 	/**
 	 * Function that adds class on body for Woocommerce
 	 *
 	 * @param $classes
 	 * @return array
 	 */
-	function qode_startit_woocommerce_body_class( $classes ) {
-		if(qode_startit_is_woocommerce_page()) {
+	function startit_qode_woocommerce_body_class( $classes ) {
+		if(startit_qode_is_woocommerce_page()) {
 			$classes[] = 'qodef-woocommerce-page';
 			if (is_singular('product')) {
 				$classes[] = 'qodef-woocommerce-single-page';
@@ -44,11 +44,11 @@ if (!function_exists('qode_startit_woocommerce_body_class')) {
 		return $classes;
 	}
 
-	add_filter('body_class', 'qode_startit_woocommerce_body_class');
+	add_filter('body_class', 'startit_qode_woocommerce_body_class');
 
 }
 
-if(!function_exists('qode_startit_woocommerce_columns_class')) {
+if(!function_exists( 'startit_qode_woocommerce_columns_class' )) {
 	/**
 	 * Function that adds number of columns class to header tag
 	 *
@@ -56,11 +56,11 @@ if(!function_exists('qode_startit_woocommerce_columns_class')) {
 	 *
 	 * @return array array of classes with added bottom header appearance class
 	 */
-	function qode_startit_woocommerce_columns_class($classes) {
+	function startit_qode_woocommerce_columns_class($classes) {
 
 		if(in_array('woocommerce', $classes)) {
 
-			$products_list_number = qode_startit_options()->getOptionValue('qodef_woo_product_list_columns');
+			$products_list_number = startit_qode_options()->getOptionValue('qodef_woo_product_list_columns');
 			$classes[] = $products_list_number;
 
 		}
@@ -68,17 +68,17 @@ if(!function_exists('qode_startit_woocommerce_columns_class')) {
 		return $classes;
 	}
 
-	add_filter('body_class', 'qode_startit_woocommerce_columns_class');
+	add_filter('body_class', 'startit_qode_woocommerce_columns_class');
 }
 
-if(!function_exists('qode_startit_is_woocommerce_page')) {
+if(!function_exists( 'startit_qode_is_woocommerce_page' )) {
 	/**
 	 * Function that checks if current page is woocommerce shop, product or product taxonomy
 	 * @return bool
 	 *
 	 * @see is_woocommerce()
 	 */
-	function qode_startit_is_woocommerce_page() {
+	function startit_qode_is_woocommerce_page() {
 		if (function_exists('is_woocommerce') && is_woocommerce()) {
 			return is_woocommerce();
 		} elseif (function_exists('is_cart') && is_cart()) {
@@ -91,64 +91,68 @@ if(!function_exists('qode_startit_is_woocommerce_page')) {
 	}
 }
 
-if(!function_exists('qode_startit_is_woocommerce_shop')) {
+if(!function_exists( 'startit_qode_is_woocommerce_shop' )) {
 	/**
 	 * Function that checks if current page is shop or product page
 	 * @return bool
 	 *
 	 * @see is_shop()
 	 */
-	function qode_startit_is_woocommerce_shop() {
+	function startit_qode_is_woocommerce_shop() {
 		return function_exists('is_shop') && (is_shop() || is_product());
 	}
 }
 
-if(!function_exists('qode_startit_get_woo_shop_page_id')) {
+if(!function_exists( 'startit_qode_get_woo_shop_page_id' )) {
 	/**
 	 * Function that returns shop page id that is set in WooCommerce settings page
 	 * @return int id of shop page
 	 */
-	function qode_startit_get_woo_shop_page_id() {
-		if(qode_startit_is_woocommerce_installed()) {
-			return get_option('woocommerce_shop_page_id');
+	function startit_qode_get_woo_shop_page_id() {
+		if ( startit_qode_is_plugin_installed( 'woocommerce' ) ) {
+			//get shop page id from options table
+			$shop_id = get_option( 'woocommerce_shop_page_id' );
+			$page_id = ! empty( $shop_id ) ? $shop_id : '-1';
+
+			return $page_id;
 		}
 	}
 }
 
-if(!function_exists('qode_startit_is_product_category')) {
-	function qode_startit_is_product_category() {
+if(!function_exists( 'startit_qode_is_product_category' )) {
+	function startit_qode_is_product_category() {
 		return function_exists('is_product_category') && is_product_category();
 	}
 }
 
-if(!function_exists('qode_startit_is_product_tag')) {
-	function qode_startit_is_product_tag() {
+if(!function_exists( 'startit_qode_is_product_tag' )) {
+	function startit_qode_is_product_tag() {
 		return function_exists('is_product_tag') && is_product_tag();
 	}
 }
 
-if(!function_exists('qode_startit_load_woo_assets')) {
+if(!function_exists( 'startit_qode_load_woo_assets' )) {
 	/**
 	 * Function that checks whether WooCommerce assets needs to be loaded.
 	 *
-	 * @see qode_startit_is_woocommerce_page()
-	 * @see qode_startit_has_woocommerce_shortcode()
-	 * @see qode_startit_has_woocommerce_widgets()
 	 * @return bool
+	 * @see startit_qode_has_woocommerce_shortcode()
+	 * @see startit_qode_has_woocommerce_widgets()
+	 * @see startit_qode_is_woocommerce_page()
 	 */
 
-	function qode_startit_load_woo_assets() {
-		return qode_startit_is_woocommerce_installed() && (qode_startit_is_woocommerce_page() ||
-			qode_startit_has_woocommerce_shortcode() || qode_startit_has_woocommerce_widgets());
+	function startit_qode_load_woo_assets() {
+		return startit_qode_is_woocommerce_installed() && ( startit_qode_is_woocommerce_page() ||
+		                                                    startit_qode_has_woocommerce_shortcode() || startit_qode_has_woocommerce_widgets());
 	}
 }
 
-if(!function_exists('qode_startit_has_woocommerce_shortcode')) {
+if(!function_exists( 'startit_qode_has_woocommerce_shortcode' )) {
 	/**
 	 * Function that checks if current page has at least one of WooCommerce shortcodes added
 	 * @return bool
 	 */
-	function qode_startit_has_woocommerce_shortcode() {
+	function startit_qode_has_woocommerce_shortcode() {
 		$woocommerce_shortcodes = array(
 			'woocommerce_order_tracking',
 			'add_to_cart',
@@ -170,7 +174,7 @@ if(!function_exists('qode_startit_has_woocommerce_shortcode')) {
 		);
 
 		foreach($woocommerce_shortcodes as $woocommerce_shortcode) {
-			$has_shortcode = qode_startit_has_shortcode($woocommerce_shortcode);
+			$has_shortcode = startit_qode_has_shortcode($woocommerce_shortcode);
 
 			if($has_shortcode) {
 				return true;
@@ -181,12 +185,12 @@ if(!function_exists('qode_startit_has_woocommerce_shortcode')) {
 	}
 }
 
-if(!function_exists('qode_startit_has_woocommerce_widgets')) {
+if(!function_exists( 'startit_qode_has_woocommerce_widgets' )) {
 	/**
 	 * Function that checks if current page has at least one of WooCommerce shortcodes added
 	 * @return bool
 	 */
-	function qode_startit_has_woocommerce_widgets() {
+	function startit_qode_has_woocommerce_widgets() {
 		$widgets_array = array(
 			'qodef_woocommerce_dropdown_cart',
 			'woocommerce_widget_cart',
@@ -214,17 +218,17 @@ if(!function_exists('qode_startit_has_woocommerce_widgets')) {
 	}
 }
 
-if(!function_exists('qode_startit_get_woocommerce_pages')) {
+if(!function_exists( 'startit_qode_get_woocommerce_pages' )) {
 	/**
 	 * Function that returns all url woocommerce pages
 	 * @return array array of WooCommerce pages
 	 *
 	 * @version 0.1
 	 */
-	function qode_startit_get_woocommerce_pages() {
+	function startit_qode_get_woocommerce_pages() {
 		$woo_pages_array = array();
 
-		if(qode_startit_is_woocommerce_installed()) {
+		if(startit_qode_is_woocommerce_installed()) {
 			if(get_option('woocommerce_shop_page_id') != '') {
 				$woo_pages_array[] = get_permalink(get_option('woocommerce_shop_page_id'));
 			}
@@ -268,16 +272,16 @@ if(!function_exists('qode_startit_get_woocommerce_pages')) {
 
 }
 
-if(!function_exists('qode_startit_woocommerce_share')) {
+if(!function_exists( 'startit_qode_woocommerce_share' )) {
 	/**
 	 * Function that social share for product page
 	 * Return array array of WooCommerce pages
 	 */
-	function qode_startit_woocommerce_share()
+	function startit_qode_woocommerce_share()
 	{
-		if (qode_startit_is_woocommerce_installed()) {
-			if (qode_startit_options()->getOptionValue('enable_social_share') == 'yes'
-				&& qode_startit_options()->getOptionValue('enable_social_share_on_product') == 'yes') :
+		if (startit_qode_is_woocommerce_installed()) {
+			if ( startit_qode_options()->getOptionValue('enable_social_share') == 'yes'
+			     && startit_qode_options()->getOptionValue('enable_social_share_on_product') == 'yes') :
 				echo qode_startit_get_social_share_html();
 			endif;
 		}

@@ -1,8 +1,8 @@
 <?php
-$filter = esc_attr(qode_startit_options()->getOptionValue('masonry_filter'));
+$filter = esc_attr(startit_qode_options()->getOptionValue('masonry_filter'));
 
 if($filter == 'yes'){
-	$page_category = get_post_meta(qode_startit_get_page_id(), "qodef_blog_category_meta", true);
+	$page_category = get_post_meta(startit_qode_get_page_id(), "qodef_blog_category_meta", true);
 	if(is_category()){
 		$page_category = get_query_var( 'cat' );
 	}

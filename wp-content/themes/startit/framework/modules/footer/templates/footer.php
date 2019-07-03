@@ -3,20 +3,20 @@
  * Footer template part
  */
 
-qode_startit_get_content_bottom_area(); ?>
+startit_qode_get_content_bottom_area(); ?>
 </div> <!-- close div.content_inner -->
 </div>  <!-- close div.content -->
 
-<footer <?php qode_startit_class_attribute($footer_classes); ?>>
+<footer <?php startit_qode_class_attribute($footer_classes); ?>>
 	<div class="qodef-footer-inner clearfix">
 
 		<?php
 
 		if($display_footer_top) {
-			qode_startit_get_footer_top();
+			startit_qode_get_footer_top();
 		}
 		if($display_footer_bottom) {
-			qode_startit_get_footer_bottom();
+			startit_qode_get_footer_bottom();
 		}
 		?>
 

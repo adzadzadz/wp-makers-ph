@@ -10,7 +10,7 @@
 
 	<div class="qodef-full-width">
 		<div class="qodef-full-width-inner clearfix">
-			<?php qode_startit_get_blog('masonry-full-width'); ?>
+			<?php startit_qode_get_blog('masonry-full-width'); ?>
 		</div>
 	</div>
 <?php get_footer(); ?>

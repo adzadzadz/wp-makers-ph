@@ -1,70 +1,64 @@
 <?php
 
-if(!function_exists('qode_startit_register_required_plugins')) {
+if(!function_exists( 'startit_qode_register_required_plugins' )) {
     /**
      * Registers Visual Composer, Layer Slider, Revolution Slider, Select Core, Select Twitter Feed  as required plugins. Hooks to tgmpa_register hook
      */
-    function qode_startit_register_required_plugins() {
+    function startit_qode_register_required_plugins() {
         $plugins = array(
             array(
-                'name'               => 'WPBakery Page Builder',
-                'slug'               => 'js_composer',
-                'source'             => get_template_directory().'/includes/plugins/js_composer.zip',
-                'required'           => true,
-                'version'            => '5.4.5',
-                'force_activation'   => false,
-                'force_deactivation' => false,
-                'external_url'       => ''
+	            'name'               => esc_html__( 'WPBakery Visual Composer', 'startit' ),
+	            'slug'               => 'js_composer',
+	            'source'             => get_template_directory() . '/includes/plugins/js_composer.zip',
+	            'version'            => '6.0.1',
+	            'required'           => true,
+	            'force_activation'   => false,
+	            'force_deactivation' => false
             ),
             array(
-                'name'               => 'LayerSlider WP',
-                'slug'               => 'LayerSlider',
-                'source'             => get_template_directory().'/includes/plugins/layersliderwp-6.6.5.installable.zip',
-                'version'            => '6.6.5',
-                'required'           => true,
-                'force_activation'   => false,
-                'force_deactivation' => false,
-                'external_url'       => ''
+	            'name'                  => esc_html__('LayerSlider WP', 'startit'),
+	            'slug'                  => 'LayerSlider',
+	            'source'                => get_template_directory() . '/includes/plugins/LayerSlider.zip',
+	            'required'              => true,
+	            'version'               => '6.8.4',
+	            'force_activation'      => false,
+	            'force_deactivation'    => false,
+	            'external_url'          => ''
             ),
             array(
-                'name'               => 'Revolution Slider',
-                'slug'               => 'revslider',
-                'source'             => get_template_directory().'/includes/plugins/revslider.zip',
-                'version'            => '5.4.6.4',
-                'required'           => true,
-                'force_activation'   => false,
-                'force_deactivation' => false,
-                'external_url'       => ''
+	            'name'               => esc_html__( 'Revolution Slider', 'startit' ),
+	            'slug'               => 'revslider',
+	            'source'             => get_template_directory() . '/includes/plugins/revslider.zip',
+	            'version'            => '5.4.8.3',
+	            'required'           => true,
+	            'force_activation'   => false,
+	            'force_deactivation' => false
             ),
             array(
-                'name'               => 'Select Core',
-                'slug'               => 'select-core',
-                'source'             => get_template_directory().'/includes/plugins/select-core.zip',
-                'required'           => true,
-                'version'            => '1.3.1',
-                'force_activation'   => false,
-                'force_deactivation' => false,
-                'external_url'       => ''
+	            'name'               => esc_html__( 'Select Core', 'startit' ),
+				'slug'               => 'select-core',
+				'source'             => get_template_directory() . '/includes/plugins/select-core.zip',
+				'version'            => '2.0.3',
+				'required'           => true,
+				'force_activation'   => false,
+				'force_deactivation' => false
             ),
             array(
-                'name'               => 'Select Twitter Feed',
+                'name'               =>  esc_html__( 'Select Twitter Feed','startit'),
                 'slug'               => 'select-twitter-feed',
                 'source'             => get_template_directory().'/includes/plugins/select-twitter-feed.zip',
                 'required'           => true,
-                'version'            => '1.0',
+                'version'            => '2.0.0',
                 'force_activation'   => false,
                 'force_deactivation' => false,
                 'external_url'       => ''
             ),
-            array(
-                'name'                  => esc_html__('Envato Market', 'startit'),
-                'slug'                  => 'envato-market', // The plugin slug (typically the folder name).
-                'source'                => get_template_directory() . '/includes/plugins/envato-market.zip', // The plugin source.
-                'required'              => true,
-                'force_activation'      => false,
-                'force_deactivation'    => false,
-                'external_url'          => ''
-            ),
+	        array(
+		        'name'     => esc_html__( 'Envato Market', 'startit' ),
+		        'slug'     => 'envato-market',
+		        'source'   => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip',
+		        'required' => false
+	        ),
             array(
                 'name'                  => esc_html__('WooCommerce', 'startit'),
                 'slug'                  => 'woocommerce',
@@ -113,5 +107,5 @@ if(!function_exists('qode_startit_register_required_plugins')) {
         tgmpa($plugins, $config);
     }
 
-    add_action('tgmpa_register', 'qode_startit_register_required_plugins');
+    add_action('tgmpa_register', 'startit_qode_register_required_plugins');
 }

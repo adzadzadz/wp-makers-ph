@@ -6,7 +6,7 @@
 					<span class="fa fa-quote-right quote_mark"></span>
 				</div>
 				<div class="qodef-post-info">
-					<?php qode_startit_post_info(array('date' => 'yes', 'author' => 'no', 'category' => 'no', 'comments' => 'no', 'share' => 'no', 'like' => 'no')) ?>
+					<?php startit_qode_post_info(array( 'date' => 'yes', 'author' => 'no', 'category' => 'no', 'comments' => 'no', 'share' => 'no', 'like' => 'no')) ?>
 				</div>
 				<div class="qodef-post-title">
 					<h5>

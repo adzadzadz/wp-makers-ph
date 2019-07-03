@@ -375,9 +375,9 @@ class Slider implements Lib\ShortcodeInterface {
 
             /* set slider preloader - start */
             if($qode_startit_options['smooth_page_transitions'] == "yes" && $qode_startit_options['smooth_pt_spinner_type'] != "") {
-                $ajax_loader = '<div class="qodef-st-loader"><div class="qodef-st-loader1">' . qode_startit_loading_spinners(true) . '</div></div>';
+                $ajax_loader = '<div class="qodef-st-loader"><div class="qodef-st-loader1">' . startit_qode_loading_spinners(true) . '</div></div>';
             }else{
-                $ajax_loader = '<div class="qodef-st-loader"><div class="qodef-st-loader1">'. qode_startit_loading_spinner_pulse() .'</div></div>';
+                $ajax_loader = '<div class="qodef-st-loader"><div class="qodef-st-loader1">' . startit_qode_loading_spinner_pulse() . '</div></div>';
             }
 
             /* set slider preloader - end */
@@ -386,8 +386,8 @@ class Slider implements Lib\ShortcodeInterface {
             $slider_arrows_padding = "padding-top: " . esc_attr($this->qode_startit_get_slider_navigation_padding()) . "px;";
             /* set padding for slider arrows - end */
 
-            $html .= '<div id="qodef-' . esc_attr($slider) . '" ' . $anchor_data . '  ' . $responsiveness_data . ' ' . $responsive_coefficients_graphic_data . ' ' . $responsive_coefficients_title_data . ' ' . $responsive_coefficients_subtitle_data . ' ' . $responsive_coefficients_text_data . ' ' . $responsive_coefficients_button_data . ' class="carousel slide ' . esc_attr($animation_type_class . ' ' . $full_screen_class . ' ' . $responsive_height_class . ' ' . $height_class . ' ' . $auto_start_class . ' ' . $header_effect_class . ' ' . $navigation_effect_class . ' ' . $slider_numbers_class .  ' ' . $slider_thumbs_class) . ' " ' . $slide_animation_timeout . ' ' . $data_height . ' ' . $data_parallax_effect . ' '.qode_startit_get_inline_style($slide_holder_height).'><div class="qodef-slider-preloader">'.$ajax_loader.'</div>';
-            $html .= '<div class="carousel-inner ' . esc_attr($slider_css_position_class) . '" '.qode_startit_get_inline_style($carouselinner_height).' '.$data_parallax_transform.'>';
+            $html .= '<div id="qodef-' . esc_attr($slider) . '" ' . $anchor_data . '  ' . $responsiveness_data . ' ' . $responsive_coefficients_graphic_data . ' ' . $responsive_coefficients_title_data . ' ' . $responsive_coefficients_subtitle_data . ' ' . $responsive_coefficients_text_data . ' ' . $responsive_coefficients_button_data . ' class="carousel slide ' . esc_attr($animation_type_class . ' ' . $full_screen_class . ' ' . $responsive_height_class . ' ' . $height_class . ' ' . $auto_start_class . ' ' . $header_effect_class . ' ' . $navigation_effect_class . ' ' . $slider_numbers_class .  ' ' . $slider_thumbs_class) . ' " ' . $slide_animation_timeout . ' ' . $data_height . ' ' . $data_parallax_effect . ' ' . startit_qode_get_inline_style($slide_holder_height) . '><div class="qodef-slider-preloader">' . $ajax_loader . '</div>';
+            $html .= '<div class="carousel-inner ' . esc_attr($slider_css_position_class) . '" ' . startit_qode_get_inline_style($carouselinner_height) . ' ' . $data_parallax_transform . '>';
 
             global $wp_query;
             query_posts($args);
@@ -405,7 +405,7 @@ class Slider implements Lib\ShortcodeInterface {
                     $image_overlay_pattern = esc_url(get_post_meta(get_the_ID(), "qodef_slide_overlay_image", true));
                     /* get slider thumbnail/graphic - start */
                     $thumbnail = esc_url(get_post_meta(get_the_ID(), "qodef_slide_thumbnail", true));
-                    $thumbnail_attributes = qode_startit_get_attachment_meta_from_url($thumbnail, array('width','height'));
+                    $thumbnail_attributes = startit_qode_get_attachment_meta_from_url($thumbnail, array('width','height'));
                     $thumbnail_attributes_width = '';
                     $thumbnail_attributes_height = '';
                     if($thumbnail_attributes == true){
@@ -604,7 +604,7 @@ class Slider implements Lib\ShortcodeInterface {
                     /* render video or image for slide item - start */
                     if ($slide_type == 'video') {
 
-                        $html .= '<div class="qodef-video"><div class="qodef-mobile-video-image" '.qode_startit_get_inline_style('background-image: url(' . esc_url($video_image) . ')').'></div><div class="qodef-video-overlay';
+                        $html .= '<div class="qodef-video"><div class="qodef-mobile-video-image" ' . startit_qode_get_inline_style( 'background-image: url(' . esc_url($video_image) . ')') . '></div><div class="qodef-video-overlay';
                         if ($video_overlay == "yes") {
                             $html .= ' active';
                         }
@@ -637,13 +637,13 @@ class Slider implements Lib\ShortcodeInterface {
 									</video>
 							</div></div>';
                     } else {
-                        $html .= '<div class="qodef-image" '.qode_startit_get_inline_style('background-image:url(' . esc_url($image) . ')').'>';
+                        $html .= '<div class="qodef-image" ' . startit_qode_get_inline_style( 'background-image:url(' . esc_url($image) . ')') . '>';
                         if ($slider_thumbs == 'no') {
                             $html .= '<img src="' . esc_url($image) . '" alt="' . esc_attr($title) . '">';
                         }
 
                         if ($image_overlay_pattern !== "") {
-                            $html .= '<div class="qodef-image-pattern" '.qode_startit_get_inline_style('background: url(' . esc_url($image_overlay_pattern) . ') repeat 0 0').'></div>';
+                            $html .= '<div class="qodef-image-pattern" ' . startit_qode_get_inline_style( 'background: url(' . esc_url($image_overlay_pattern) . ') repeat 0 0') . '></div>';
                         }
                         $html .= '</div>';
                     }
@@ -711,7 +711,7 @@ class Slider implements Lib\ShortcodeInterface {
                             } else {
                                 $slide_subtitle_bg_transparency = 1;
                             }
-                            $slide_subtitle_style_array[] = 'background-color: ' . esc_attr(qode_startit_rgba_color($slide_subtitle_bg_color, $slide_subtitle_bg_transparency)) . '';
+                            $slide_subtitle_style_array[] = 'background-color: ' . esc_attr(startit_qode_rgba_color($slide_subtitle_bg_color, $slide_subtitle_bg_transparency)) . '';
                         }
                         if (($meta_temp = get_post_meta(get_the_ID(), 'qodef_slide_subtitle_padding_top', true)) != '') {
                             $slide_subtitle_span_style_array[] = 'padding-top: ' . esc_attr($meta_temp) . 'px';
@@ -727,7 +727,7 @@ class Slider implements Lib\ShortcodeInterface {
                         }
 
                         $html_text .= '<div class="qodef-el">';
-                        $html_text .= '<h3 class="qodef-slide-subtitle" '.qode_startit_get_inline_style($slide_subtitle_style_array). '><span '.qode_startit_get_inline_style($slide_subtitle_span_style_array). '>' . wp_kses_post(get_post_meta(get_the_ID(), 'qodef_slide_subtitle', true)) . '</span></h3>';
+                        $html_text .= '<h3 class="qodef-slide-subtitle" ' . startit_qode_get_inline_style($slide_subtitle_style_array) . '><span ' . startit_qode_get_inline_style($slide_subtitle_span_style_array) . '>' . wp_kses_post(get_post_meta(get_the_ID(), 'qodef_slide_subtitle', true)) . '</span></h3>';
                         $html_text .= '</div>';
                     }
                     /* prepare slide subtitle - end */
@@ -774,7 +774,7 @@ class Slider implements Lib\ShortcodeInterface {
                             } else {
                                 $slide_title_bg_transparency = 1;
                             }
-                            $slide_title_span_style_array[] = 'background-color: ' . esc_attr(qode_startit_rgba_color($slide_title_bg_color, $slide_title_bg_transparency)) . '';
+                            $slide_title_span_style_array[] = 'background-color: ' . esc_attr(startit_qode_rgba_color($slide_title_bg_color, $slide_title_bg_transparency)) . '';
                         }
                         if (($meta_temp = get_post_meta(get_the_ID(), 'qodef_slide_title_padding_top', true)) != '') {
                             $slide_title_span_style_array[] = 'padding-top: ' . esc_attr($meta_temp) . 'px';
@@ -790,12 +790,12 @@ class Slider implements Lib\ShortcodeInterface {
                         }
 
                         $html_text .= '<div class="qodef-el">';
-                        $html_text .= '<h2 class="qodef-slide-title" '.qode_startit_get_inline_style($slide_title_style_array).'>';
+                        $html_text .= '<h2 class="qodef-slide-title" ' . startit_qode_get_inline_style($slide_title_style_array) . '>';
 
                         if(get_post_meta(get_the_ID(), "qodef_slide_title_link", true) != '') {
-                            $html_text .= '<a '.qode_startit_get_inline_style($slide_title__link_style_array).' href="'.esc_url(get_post_meta(get_the_ID(), "qodef_slide_title_link", true)).'" target="'.esc_attr(get_post_meta(get_the_ID(), "qodef_slide_title_target", true)).'">';
+                            $html_text .= '<a ' . startit_qode_get_inline_style($slide_title__link_style_array) . ' href="' . esc_url(get_post_meta(get_the_ID(), "qodef_slide_title_link", true)) . '" target="' . esc_attr(get_post_meta(get_the_ID(), "qodef_slide_title_target", true)) . '">';
                         }
-                        $html_text .= '<span '.qode_startit_get_inline_style($slide_title_span_style_array).'>'.wp_kses_post($title).'</span>';
+                        $html_text .= '<span ' . startit_qode_get_inline_style($slide_title_span_style_array) . '>' . wp_kses_post($title) . '</span>';
                         if(get_post_meta(get_the_ID(), "qodef_slide_title_link", true) != '') {
                             $html_text .= '</a>';
                         }
@@ -841,7 +841,7 @@ class Slider implements Lib\ShortcodeInterface {
                             } else {
                                 $slide_text_bg_transparency = 1;
                             }
-                            $slide_text_span_style_array[] = 'background-color: ' . esc_attr(qode_startit_rgba_color($slide_text_bg_color, $slide_text_bg_transparency)) . '';
+                            $slide_text_span_style_array[] = 'background-color: ' . esc_attr(startit_qode_rgba_color($slide_text_bg_color, $slide_text_bg_transparency)) . '';
                         }
                         if (get_post_meta(get_the_ID(), 'qodef_slide_text_padding_top', true) != '') {
                             $slide_text_span_style_array[] = 'padding-top: ' . esc_attr(get_post_meta(get_the_ID(), 'qodef_slide_text_padding_top', true)) . 'px';
@@ -857,7 +857,7 @@ class Slider implements Lib\ShortcodeInterface {
                         }
 
                         $html_text .= '<div class="qodef-el">';
-                        $html_text .= '<h3 class="qodef-slide-text" '.qode_startit_get_inline_style($slide_text_style_array).'><span '.qode_startit_get_inline_style($slide_text_span_style_array).'>'.wp_kses_post(get_post_meta(get_the_ID(), "qodef_slide_text", true)).'</span></h3>';
+                        $html_text .= '<h3 class="qodef-slide-text" ' . startit_qode_get_inline_style($slide_text_style_array) . '><span ' . startit_qode_get_inline_style($slide_text_span_style_array) . '>' . wp_kses_post(get_post_meta(get_the_ID(), "qodef_slide_text", true)) . '</span></h3>';
                         $html_text .= '</div>';
                     }
                     /* prepare slide text - end */
@@ -886,7 +886,7 @@ class Slider implements Lib\ShortcodeInterface {
                             $slide_button_target = get_post_meta(get_the_ID(), "qodef_slide_button_target", true);
                         }
 
-                        $html_text .= '<a class="qodef-btn-hover-animation qodef-btn qodef-btn-medium qodef-btn-solid" href="' . esc_url(get_post_meta(get_the_ID(), "qodef_slide_button_link", true)) . '" target="' . esc_attr($slide_button_target) . '"><span class="qodef-animation-overlay"></span><span class="qodef-btn-text">' . esc_html(get_post_meta(get_the_ID(), "qodef_slide_button_label", true)) . '</span></a>';
+                        $html_text .= '<a class="qodef-btn-hover-animation qodef-btn qodef-btn-medium qodef-btn-solid" href="' . esc_url(get_post_meta(get_the_ID(), "qodef_slide_button_link", true)) . '" target="' . esc_attr($slide_button_target) . '"><div class="qodef-animation-overlay-holder"><span class="qodef-animation-overlay"></span></div><span class="qodef-btn-text">' . esc_html(get_post_meta(get_the_ID(), "qodef_slide_button_label", true)) . '</span></a>';
                     }
 
                     if ($is_second_button_shown) {
@@ -895,7 +895,7 @@ class Slider implements Lib\ShortcodeInterface {
                             $slide_button_target2 = get_post_meta(get_the_ID(), "qodef_slide_button_target2", true);
                         }
 
-                        $html_text .= '<a class="qodef-btn-hover-animation qodef-btn qodef-btn-medium qodef-btn-default" href="' . esc_url(get_post_meta(get_the_ID(), "qodef_slide_button_link2", true)) . '" target="' . esc_attr($slide_button_target2) . '"><span class="qodef-animation-overlay"></span><span class="qodef-btn-text">' . esc_html(get_post_meta(get_the_ID(), "qodef_slide_button_label2", true)) . '</span></a>';
+                        $html_text .= '<a class="qodef-btn-hover-animation qodef-btn qodef-btn-medium qodef-btn-default" href="' . esc_url(get_post_meta(get_the_ID(), "qodef_slide_button_link2", true)) . '" target="' . esc_attr($slide_button_target2) . '"><div class="qodef-animation-overlay-holder"><span class="qodef-animation-overlay"></span></div><span class="qodef-btn-text">' . esc_html(get_post_meta(get_the_ID(), "qodef_slide_button_label2", true)) . '</span></a>';
                     }
 
                     if ($is_any_button_shown) {
@@ -909,9 +909,9 @@ class Slider implements Lib\ShortcodeInterface {
                     $html .= '<div class="qodef-slider-content-outer">';
 
                     if ($separate_text_graphic != 'yes') {
-                        $html .= '<div class="qodef-slider-content ' . esc_attr($content_alignment) .'" '.qode_startit_get_inline_style($content_width . $content_xaxis . $content_yaxis_start).' '.$slide_data_start.' '.$slide_data_end.'>';
+                        $html .= '<div class="qodef-slider-content ' . esc_attr($content_alignment) .'" ' . startit_qode_get_inline_style( $content_width . $content_xaxis . $content_yaxis_start) . ' ' . $slide_data_start . ' ' . $slide_data_end . '>';
 							if(get_post_meta(get_the_ID(), "qodef_slide_content_vertical_middle", true) == "yes"){
-								$html .= '<div class="qodef-slider-content-inner ' . esc_attr($content_animation . ' ' . $content_animation_direction) .'" '.qode_startit_get_inline_style($vertical_content_width . $vertical_content_xaxis).'>';
+								$html .= '<div class="qodef-slider-content-inner ' . esc_attr($content_animation . ' ' . $content_animation_direction) .'" ' . startit_qode_get_inline_style( $vertical_content_width . $vertical_content_xaxis) . '>';
 							}
 							$html .= $html_thumb;
 							$html .= $html_text;
@@ -920,18 +920,18 @@ class Slider implements Lib\ShortcodeInterface {
 							}
                         $html .= '</div>';
                     } else {
-                        $html .= '<div class="qodef-slider-content qodef-graphic-content ' . esc_attr($graphic_alignment) . '" '.qode_startit_get_inline_style($graphic_width . $graphic_xaxis . $graphic_yaxis_start).' '. $graphic_data_start .' '.$graphic_data_end.'>';
+                        $html .= '<div class="qodef-slider-content qodef-graphic-content ' . esc_attr($graphic_alignment) . '" ' . startit_qode_get_inline_style( $graphic_width . $graphic_xaxis . $graphic_yaxis_start) . ' ' . $graphic_data_start . ' ' . $graphic_data_end . '>';
 							if(get_post_meta(get_the_ID(), "qodef_slide_content_vertical_middle", true) == "yes"){
-								$html .= '<div class="qodef-slider-content-inner" '.qode_startit_get_inline_style($vertical_content_width . $vertical_content_xaxis).'>';
+								$html .= '<div class="qodef-slider-content-inner" ' . startit_qode_get_inline_style( $vertical_content_width . $vertical_content_xaxis) . '>';
 							}
 							$html .= $html_thumb;
 							if(get_post_meta(get_the_ID(), "qodef_slide_content_vertical_middle", true) == "yes"){
 								$html .= '</div>';
 							}
                         $html .= '</div>';
-                        $html .= '<div class="qodef-slider-content ' . esc_attr($content_alignment) . '" '.qode_startit_get_inline_style($content_width . $content_xaxis . $content_yaxis_start).' '.$slide_data_start.' '.$slide_data_end.'>';
+                        $html .= '<div class="qodef-slider-content ' . esc_attr($content_alignment) . '" ' . startit_qode_get_inline_style( $content_width . $content_xaxis . $content_yaxis_start) . ' ' . $slide_data_start . ' ' . $slide_data_end . '>';
 							if(get_post_meta(get_the_ID(), "qodef_slide_content_vertical_middle", true) == "yes"){
-								$html .= '<div class="qodef-slider-content-inner" '.qode_startit_get_inline_style($vertical_content_width . $vertical_content_xaxis).'>';
+								$html .= '<div class="qodef-slider-content-inner" ' . startit_qode_get_inline_style( $vertical_content_width . $vertical_content_xaxis) . '>';
 							}
 							$html .= $html_text;
 							if(get_post_meta(get_the_ID(), "qodef_slide_content_vertical_middle", true) == "yes"){

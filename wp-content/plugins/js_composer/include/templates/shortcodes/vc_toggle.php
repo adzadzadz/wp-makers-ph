@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $css
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Toggle
+ * @var WPBakeryShortCode_Vc_Toggle $this
  */
 $title = $el_class = $style = $color = $size = $open = $css_animation = $css = $el_id = '';
 $output = '';
@@ -39,7 +39,8 @@ $elementClass = array(
 	'size' => ( $size ) ? 'vc_toggle_size_' . $size : '',
 	'open' => ( 'true' === $open ) ? 'vc_toggle_active' : '',
 	'extra' => $this->getExtraClass( $el_class ),
-	'css_animation' => $this->getCSSAnimation( $css_animation ), // TODO: remove getCssAnimation as function in helpers
+	'css_animation' => $this->getCSSAnimation( $css_animation ),
+	// TODO: remove getCssAnimation as function in helpers
 );
 
 $class_to_filter = trim( implode( ' ', $elementClass ) );
@@ -48,9 +49,19 @@ $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter
 
 ?>
 <div <?php echo isset( $el_id ) && ! empty( $el_id ) ? 'id="' . esc_attr( $el_id ) . '"' : ''; ?> class="<?php echo esc_attr( $css_class ); ?>">
-	<div class="vc_toggle_title"><?php echo apply_filters( 'wpb_toggle_heading', $this->getHeading( $atts ), array(
+	<div class="vc_toggle_title">
+		<?php
+		// @codingStandardsIgnoreLine
+		echo apply_filters( 'wpb_toggle_heading', $this->getHeading( $atts ), array(
 			'title' => $title,
 			'open' => $open,
-		) ); ?><i class="vc_toggle_icon"></i></div>
-	<div class="vc_toggle_content"><?php echo wpb_js_remove_wpautop( apply_filters( 'the_content', $content ), true ); ?></div>
+		) );
+		?>
+		<i class="vc_toggle_icon"></i></div>
+	<div class="vc_toggle_content">
+		<?php
+		// @codingStandardsIgnoreLine
+		echo wpb_js_remove_wpautop( apply_filters( 'the_content', $content ), true );
+		?>
+	</div>
 </div>

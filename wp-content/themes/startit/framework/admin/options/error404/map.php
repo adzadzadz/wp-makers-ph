@@ -1,22 +1,22 @@
 <?php
 
-if ( ! function_exists('qode_startit_error_404_options_map') ) {
+if ( ! function_exists( 'startit_qode_error_404_options_map' ) ) {
 
-	function qode_startit_error_404_options_map() {
+	function startit_qode_error_404_options_map() {
 
-		qode_startit_add_admin_page(array(
+		startit_qode_add_admin_page(array(
 			'slug' => '__404_error_page',
 			'title' => '404 Error Page',
 			'icon' => 'fa fa-exclamation-triangle'
 		));
 
-		$panel_404_options = qode_startit_add_admin_panel(array(
+		$panel_404_options = startit_qode_add_admin_panel(array(
 			'page' => '__404_error_page',
 			'name'	=> 'panel_404_options',
 			'title'	=> '404 Page Option'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent' => $panel_404_options,
 			'type' => 'text',
 			'name' => '404_title',
@@ -25,7 +25,7 @@ if ( ! function_exists('qode_startit_error_404_options_map') ) {
 			'description' => 'Enter title for 404 page'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent' => $panel_404_options,
 			'type' => 'text',
 			'name' => '404_text',
@@ -34,7 +34,7 @@ if ( ! function_exists('qode_startit_error_404_options_map') ) {
 			'description' => 'Enter text for 404 page'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent' => $panel_404_options,
 			'type' => 'text',
 			'name' => '404_back_to_home',
@@ -45,6 +45,6 @@ if ( ! function_exists('qode_startit_error_404_options_map') ) {
 
 	}
 
-	add_action( 'qode_startit_options_map', 'qode_startit_error_404_options_map', 17);
+	add_action( 'qode_startit_options_map', 'startit_qode_error_404_options_map', 17);
 
 }

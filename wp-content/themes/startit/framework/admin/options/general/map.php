@@ -1,12 +1,12 @@
 <?php
 
-if ( ! function_exists('qode_startit_general_options_map') ) {
+if ( ! function_exists( 'startit_qode_general_options_map' ) ) {
     /**
      * General options page
      */
-    function qode_startit_general_options_map() {
+    function startit_qode_general_options_map() {
 
-        qode_startit_add_admin_page(
+        startit_qode_add_admin_page(
             array(
                 'slug'  => '',
                 'title' => 'General',
@@ -14,7 +14,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $panel_design_style = qode_startit_add_admin_panel(
+        $panel_design_style = startit_qode_add_admin_panel(
             array(
                 'page'  => '',
                 'name'  => 'panel_design_style',
@@ -22,7 +22,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'google_fonts',
                 'type'          => 'font',
@@ -33,7 +33,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'additional_google_fonts',
                 'type'          => 'yesno',
@@ -49,7 +49,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $additional_google_fonts_container = qode_startit_add_admin_container(
+        $additional_google_fonts_container = startit_qode_add_admin_container(
             array(
                 'parent'            => $panel_design_style,
                 'name'              => 'additional_google_fonts_container',
@@ -58,7 +58,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'additional_google_font1',
                 'type'          => 'font',
@@ -69,7 +69,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'additional_google_font2',
                 'type'          => 'font',
@@ -80,7 +80,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'additional_google_font3',
                 'type'          => 'font',
@@ -91,7 +91,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'additional_google_font4',
                 'type'          => 'font',
@@ -102,7 +102,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'additional_google_font5',
                 'type'          => 'font',
@@ -113,7 +113,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'first_color',
                 'type'          => 'color',
@@ -123,7 +123,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'page_background_color',
                 'type'          => 'color',
@@ -133,7 +133,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'selection_color',
                 'type'          => 'color',
@@ -143,7 +143,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'boxed',
                 'type'          => 'yesno',
@@ -159,7 +159,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $boxed_container = qode_startit_add_admin_container(
+        $boxed_container = startit_qode_add_admin_container(
             array(
                 'parent'            => $panel_design_style,
                 'name'              => 'boxed_container',
@@ -168,7 +168,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'page_background_color_in_box',
                 'type'          => 'color',
@@ -178,7 +178,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'boxed_background_image',
                 'type'          => 'image',
@@ -188,7 +188,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'boxed_pattern_background_image',
                 'type'          => 'image',
@@ -198,7 +198,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'boxed_background_image_attachment',
                 'type'          => 'select',
@@ -213,7 +213,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'initial_content_width',
                 'type'          => 'select',
@@ -231,7 +231,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'preload_pattern_image',
                 'type'          => 'image',
@@ -241,7 +241,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name' => 'element_appear_amount',
                 'type' => 'text',
@@ -255,7 +255,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $panel_settings = qode_startit_add_admin_panel(
+        $panel_settings = startit_qode_add_admin_panel(
             array(
                 'page'  => '',
                 'name'  => 'panel_settings',
@@ -263,7 +263,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'smooth_scroll',
                 'type'          => 'yesno',
@@ -274,7 +274,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'smooth_page_transitions',
                 'type'          => 'yesno',
@@ -286,7 +286,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
         );
 
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'elements_animation_on_touch',
                 'type'          => 'yesno',
@@ -297,7 +297,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'show_back_button',
                 'type'          => 'yesno',
@@ -308,7 +308,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'responsiveness',
                 'type'          => 'yesno',
@@ -319,7 +319,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $panel_custom_code = qode_startit_add_admin_panel(
+        $panel_custom_code = startit_qode_add_admin_panel(
             array(
                 'page'  => '',
                 'name'  => 'panel_custom_code',
@@ -327,7 +327,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'custom_css',
                 'type'          => 'textarea',
@@ -337,7 +337,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'custom_js',
                 'type'          => 'textarea',
@@ -347,7 +347,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $panel_seo = qode_startit_add_admin_panel(
+        $panel_seo = startit_qode_add_admin_panel(
             array(
                 'page'  => '',
                 'name'  => 'panel_seo',
@@ -355,7 +355,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'disable_seo',
                 'type'          => 'yesno',
@@ -371,7 +371,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $disable_seo_container = qode_startit_add_admin_container(
+        $disable_seo_container = startit_qode_add_admin_container(
             array(
                 'parent'            => $panel_seo,
                 'name'              => 'disable_seo_container',
@@ -380,7 +380,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'qodef_meta_keywords',
                 'type'          => 'textarea',
@@ -390,7 +390,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'          => 'qodef_meta_description',
                 'type'          => 'textarea',
@@ -400,7 +400,7 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        $panel_google_api = qode_startit_add_admin_panel(
+        $panel_google_api = startit_qode_add_admin_panel(
             array(
                 'page'  => '',
                 'name'  => 'panel_google_api',
@@ -408,18 +408,18 @@ if ( ! function_exists('qode_startit_general_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(
+        startit_qode_add_admin_field(
             array(
                 'name'        => 'google_maps_api_key',
                 'type'        => 'text',
                 'label'       => 'Google Maps Api Key',
-                'description' => 'Insert your Google Maps API key here. For instructions on how to create a Google Maps API key, please refer to our to our documentation. Temporarily you can use "AIzaSyBDT_477Lfo6qKZhdMWW58rpeVvnU2QBoU"',
+                'description' => 'Insert your Google Maps API key here. For instructions on how to create a Google Maps API key, please refer to our to our documentation.',
                 'parent'      => $panel_google_api
             )
         );
 
     }
 
-    add_action( 'qode_startit_options_map', 'qode_startit_general_options_map', 1);
+    add_action( 'qode_startit_options_map', 'startit_qode_general_options_map', 1);
 
 }

@@ -1,3 +1,81 @@
+3.0.5
+- Added WooCommerce 3.6.3 compatibility
+- Updated Select Core Plugin to 2.0.3
+- Fixed global options for elements
+
+3.0.4
+- Updated Visual Composer to version 6.0.1
+- Fixed Select Portfolio Images (multiply images)
+
+3.0.3
+- Updated Select Core Plugin to 2.0.2
+- Updated Visual Composer to version 6.0
+- Updated Layer Slider to 6.8.4
+- Improved theme functionality
+
+3.0.2
+- Updated Nonce on ajax functions
+- Fixed button animation for Firefox
+- Fixed admin js to use strict operating context
+- Fixed style dynamic loading
+- Fixed smooth scroll
+
+3.0.1
+- Fixed Like functionality bug
+- Updated Select Core to version 2.0.1
+
+3.0 Major Updates
+- Added WooCommerce 3.6.1 compatibility
+- Updated Select Core to version 2.0.0
+- Updated Visual Composer to version 5.7
+- Updated Layer Slider to 6.8.3
+- Improved theme templates, modules and functions
+- Improved theme security
+- Improved theme performance (Added logic to create static css, js files instead of php (style_dynamic.php, style_dynamic_responsive.php and default_dynamic.php))
+- Improved options image pop-up editor for dashboard panel
+- Improved comments list
+- Escaped all variables, text domains etc.
+- Renamed all functions, hooks, templates with unique name
+- Removed unnecessary functions, variables etc.
+- Fixed theme text domain
+- Fixed bugs
+
+2.7
+- Added WordPress 5 compatibility
+- Added WooCommerce 3.5.3 compatibility
+- Added comment approval box for GDPR compliance
+- Updated Visual Composer to 5.6
+- Updated Revolution Slider to 5.4.8.1
+- Updated Envato Market to 2.0.1
+- Updated Select Core to 1.3.2	
+- Updated Select Twitter Feed to 1.0.1
+- Fixed http/https link
+- Fixed Google API bug
+- Fixed Clients shortcode alt text bug
+- Fixed wide menu on variable product page bug
+- Fixed portfolio filtering by Count
+- Fixed Fullwidth Slider speed interval
+- Fixed Twitter API connection
+- Improved Blog: Gallery page template
+- Improved Countdown shortcode
+- Improved button animation for Edge
+- Improved pagination
+- Improved 404 page
+
+2.6
+- Added WooCommerce 3.4.3 compatibility
+- Updated Visual Composer to 5.5.2
+- Updated Revolution Slider to 5.4.8
+- Updated Layer Slider to version 6.7.6
+
+2.5
+- Added compatibility with PHP 7.2 
+- Added Woocommerce 3.3.3 compatibility
+- Updated Visual Composer to 5.4.7
+- Updated Revolution Slider to 5.4.7.2
+- Updated Layer Slider to version 6.7.1
+- Updated Envato Market to 2.0.0
+
 2.4.1
 - Updated WPBakery Page Builder to 5.4.5
 - Updated Layer Slider to version 6.6.5
@@ -8,7 +86,6 @@
 - Added WooCommerce 3.2.5 compatibility
 - Added Envato Market plugin as required
 - Added recommended plugins (WooCommerce and Contact Form 7)
-- Updated Select Core plugin to version 1.3.1
 - Updated Visual Composer to 5.4.4
 - Updated Layer Slider to version 6.6.4
 - Updated Revolution slider to version 5.4.6.3.1

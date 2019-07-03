@@ -10,9 +10,7 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 
 		Jetpack::init();
 
-		// In WP 4.2 WP_List_Table will be sanitizing which values are __set()
-		global $wp_version;
-		if ( version_compare( $wp_version, '4.2-z', '>=' ) && $this->compat_fields && is_array( $this->compat_fields ) ) {
+		if ( $this->compat_fields && is_array( $this->compat_fields ) ) {
 			array_push( $this->compat_fields, 'all_items' );
 		}
 
@@ -91,7 +89,8 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 			<# var i = 0;
 			if ( data.items.length ) {
 			_.each( data.items, function( item, key, list ) {
-				if ( item === undefined ) return; #>
+				if ( item === undefined ) return;
+				if ( 'manage' == item.module && item.activated ) return; #>
 				<tr class="jetpack-module <# if ( ++i % 2 ) { #> alternate<# } #><# if ( item.activated ) { #> active<# } #><# if ( ! item.available ) { #> unavailable<# } #>" id="{{{ item.module }}}">
 					<th scope="row" class="check-column">
 						<# if ( 'videopress' !== item.module ) { #>
@@ -146,9 +145,6 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 				continue;
 			}
 			$key           = sanitize_title( $title );
-			if ( 'centralized-management' === $key && Jetpack::is_module_active( 'manage' ) ) {
-				continue;
-			}
 			$display_title = esc_html( wptexturize( $title ) );
 			$url           = esc_url( add_query_arg( 'module_tag', urlencode( $title ) ) );
 			$current       = '';
@@ -172,17 +168,6 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 
 	function filter_displayed_table_items( $modules ) {
 		return array_filter( $modules, array( $this, 'is_module_displayed' ) );
-	}
-
-	static function is_module_available( $module ) {
-		if ( ! is_array( $module ) || empty( $module ) )
-			return false;
-
-		if ( Jetpack::is_development_mode() ) {
-			return ! ( $module['requires_connection'] );
-		} else {
-			return Jetpack::is_active();
-		}
 	}
 
 	static function is_module_displayed( $module ) {
@@ -231,8 +216,9 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 		if ( ! empty( $item['activated'] )  )
 			$row_class .= ' active';
 
-		if ( ! $this->is_module_available( $item ) )
+		if ( ! Jetpack_Admin::is_module_available( $item ) ) {
 			$row_class .= ' unavailable';
+		}
 
 		echo '<tr class="jetpack-module' . esc_attr( $row_class ) . '" id="' . esc_attr( $item['module'] ) . '">';
 		$this->single_row_columns( $item );
@@ -244,7 +230,7 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 	}
 
 	function column_cb( $item ) {
-		if ( ! $this->is_module_available( $item ) )
+		if ( ! Jetpack_Admin::is_module_available( $item ) )
 			return '';
 
 		return sprintf( '<input type="checkbox" name="modules[]" value="%s" />', $item['module'] );
@@ -273,7 +259,7 @@ class Jetpack_Modules_List_Table extends WP_List_Table {
 			$actions['configure'] = $item['configurable'];
 		}
 
-		if ( empty( $item['activated'] ) && $this->is_module_available( $item ) ) {
+		if ( empty( $item['activated'] ) && Jetpack_Admin::is_module_available( $item ) ) {
 			$url = wp_nonce_url(
 				Jetpack::admin_url( array(
 					'page'   => 'jetpack',

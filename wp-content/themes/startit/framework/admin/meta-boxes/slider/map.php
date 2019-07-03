@@ -2,7 +2,7 @@
 
 //Slider
 
-$slider_meta_box = qode_startit_add_meta_box(
+$slider_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Background Type',
@@ -10,7 +10,7 @@ $slider_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'          => 'qodef_slide_background_type',
             'type'          => 'imagevideo',
@@ -29,7 +29,7 @@ $slider_meta_box = qode_startit_add_meta_box(
 
 //Slide Image
 
-$slider_meta_box = qode_startit_add_meta_box(
+$slider_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Background Image',
@@ -39,7 +39,7 @@ $slider_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_image',
             'type'        => 'image',
@@ -49,7 +49,7 @@ $slider_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_overlay_image',
             'type'        => 'image',
@@ -62,7 +62,7 @@ $slider_meta_box = qode_startit_add_meta_box(
 
 //Slide Video
 
-$video_meta_box = qode_startit_add_meta_box(
+$video_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Background Video',
@@ -72,7 +72,7 @@ $video_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_video_webm',
             'type'        => 'text',
@@ -82,7 +82,7 @@ $video_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_video_mp4',
             'type'        => 'text',
@@ -92,7 +92,7 @@ $video_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_video_ogv',
             'type'        => 'text',
@@ -102,7 +102,7 @@ $video_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_video_image',
             'type'        => 'image',
@@ -112,7 +112,7 @@ $video_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_slide_video_overlay',
             'type' => 'yesempty',
@@ -128,14 +128,14 @@ $video_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $slide_video_overlay_container = qode_startit_add_admin_container(array(
+    $slide_video_overlay_container = startit_qode_add_admin_container(array(
         'name' => 'qodef_slide_video_overlay_container',
         'parent' => $video_meta_box,
         'hidden_property' => 'qodef_slide_video_overlay',
         'hidden_values' => array('','no')
     ));
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name'        => 'qodef_slide_video_overlay_image',
                 'type'        => 'image',
@@ -148,7 +148,7 @@ $video_meta_box = qode_startit_add_meta_box(
 
 //Slide General
 
-$general_meta_box = qode_startit_add_meta_box(
+$general_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide General',
@@ -156,7 +156,7 @@ $general_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_admin_section_title(
+    startit_qode_add_admin_section_title(
         array(
             'parent' => $general_meta_box,
             'name' => 'qodef_text_content_title',
@@ -164,7 +164,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_slide_hide_title',
             'type' => 'yesno',
@@ -180,26 +180,26 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $slide_hide_title_container = qode_startit_add_admin_container(array(
+    $slide_hide_title_container = startit_qode_add_admin_container(array(
         'name' => 'qodef_slide_hide_title_container',
         'parent' => $general_meta_box,
         'hidden_property' => 'qodef_slide_hide_title',
         'hidden_value' => 'yes'
     ));
 
-        $group_title_link = qode_startit_add_admin_group(array(
+        $group_title_link = startit_qode_add_admin_group(array(
             'title' => 'Title Link',
             'name' => 'group_title_link',
             'description' => 'Define styles for title',
             'parent' => $slide_hide_title_container
         ));
 
-            $row1 = qode_startit_add_admin_row(array(
+            $row1 = startit_qode_add_admin_row(array(
                 'name' => 'row1',
                 'parent' => $group_title_link
             ));
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_title_link',
                         'type'        => 'textsimple',
@@ -208,7 +208,7 @@ $general_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'parent' => $row1,
                         'type' => 'selectsimple',
@@ -222,7 +222,7 @@ $general_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_subtitle',
             'type'        => 'text',
@@ -232,7 +232,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_text',
             'type'        => 'text',
@@ -242,7 +242,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_button_label',
             'type'        => 'text',
@@ -252,18 +252,18 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $group_button1 = qode_startit_add_admin_group(array(
+    $group_button1 = startit_qode_add_admin_group(array(
         'title' => 'Button 1 Link',
         'name' => 'group_button1',
         'parent' => $general_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $group_button1
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_button_link',
                     'type'        => 'textsimple',
@@ -272,7 +272,7 @@ $general_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'parent' => $row1,
                     'type' => 'selectsimple',
@@ -286,7 +286,7 @@ $general_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_button_label2',
             'type'        => 'text',
@@ -296,18 +296,18 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $group_button2 = qode_startit_add_admin_group(array(
+    $group_button2 = startit_qode_add_admin_group(array(
         'title' => 'Button 2 Link',
         'name' => 'group_button2',
         'parent' => $general_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $group_button2
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_button_link2',
                     'type'        => 'textsimple',
@@ -316,7 +316,7 @@ $general_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'parent' => $row1,
                     'type' => 'selectsimple',
@@ -330,7 +330,7 @@ $general_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_text_content_top_margin',
             'type'        => 'text',
@@ -344,7 +344,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_text_content_bottom_margin',
             'type'        => 'text',
@@ -358,7 +358,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_admin_section_title(
+    startit_qode_add_admin_section_title(
         array(
             'parent' => $general_meta_box,
             'name' => 'qodef_graphic_title',
@@ -366,7 +366,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_thumbnail',
             'type'        => 'image',
@@ -376,7 +376,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_thumbnail_link',
             'type'        => 'text',
@@ -386,7 +386,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_graphic_top_padding',
             'type'        => 'text',
@@ -400,7 +400,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_slide_graphic_bottom_padding',
             'type'        => 'text',
@@ -414,7 +414,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_admin_section_title(
+    startit_qode_add_admin_section_title(
         array(
             'parent' => $general_meta_box,
             'name' => 'qodef_general_styling_title',
@@ -422,7 +422,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $general_meta_box,
             'type' => 'selectblank',
@@ -439,7 +439,7 @@ $general_meta_box = qode_startit_add_meta_box(
 
 //Slide Behaviour
 
-$behaviours_meta_box = qode_startit_add_meta_box(
+$behaviours_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Behaviours',
@@ -447,7 +447,7 @@ $behaviours_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_admin_section_title(
+    startit_qode_add_admin_section_title(
         array(
             'parent' => $behaviours_meta_box,
             'name' => 'qodef_image_animation_title',
@@ -455,7 +455,7 @@ $behaviours_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_enable_image_animation',
             'type' => 'yesno',
@@ -471,14 +471,14 @@ $behaviours_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $enable_image_animation_container = qode_startit_add_admin_container(array(
+    $enable_image_animation_container = startit_qode_add_admin_container(array(
         'name' => 'qodef_enable_image_animation_container',
         'parent' => $behaviours_meta_box,
         'hidden_property' => 'qodef_enable_image_animation',
         'hidden_value' => 'no'
     ));
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'parent' => $enable_image_animation_container,
                 'type' => 'select',
@@ -495,7 +495,7 @@ $behaviours_meta_box = qode_startit_add_meta_box(
             )
         );
 
-    qode_startit_add_admin_section_title(
+    startit_qode_add_admin_section_title(
         array(
             'parent' => $behaviours_meta_box,
             'name' => 'qodef_content_animation_title',
@@ -503,7 +503,7 @@ $behaviours_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $behaviours_meta_box,
             'type' => 'select',
@@ -526,7 +526,7 @@ $behaviours_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $behaviours_meta_box,
             'type' => 'select',
@@ -554,14 +554,14 @@ $behaviours_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $slide_content_animation_container = qode_startit_add_admin_container(array(
+    $slide_content_animation_container = startit_qode_add_admin_container(array(
         'name' => 'qodef_slide_content_animation_container',
         'parent' => $behaviours_meta_box,
         'hidden_property' => 'qodef_slide_content_animation',
         'hidden_value' => 'without_animation'
     ));
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'parent' => $slide_content_animation_container,
                 'type' => 'select',
@@ -580,7 +580,7 @@ $behaviours_meta_box = qode_startit_add_meta_box(
 
 //Slide Content Positioning
 
-$content_positioning_meta_box = qode_startit_add_meta_box(
+$content_positioning_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Content Positioning',
@@ -588,7 +588,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $content_positioning_meta_box,
             'type' => 'selectblank',
@@ -604,7 +604,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $content_positioning_meta_box,
             'type' => 'selectblank',
@@ -629,7 +629,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_slide_content_vertical_middle',
             'type' => 'yesno',
@@ -644,14 +644,14 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $slide_content_vertical_middle_yes_container = qode_startit_add_admin_container(array(
+    $slide_content_vertical_middle_yes_container = startit_qode_add_admin_container(array(
         'name' => 'qodef_slide_content_vertical_middle_yes_container',
         'parent' => $content_positioning_meta_box,
         'hidden_property' => 'qodef_slide_content_vertical_middle',
         'hidden_value' => 'no'
     ));
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'parent' => $slide_content_vertical_middle_yes_container,
                 'type' => 'selectblank',
@@ -665,7 +665,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_slide_vertical_content_full_width',
                 'type' => 'yesno',
@@ -676,7 +676,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name'        => 'qodef_slide_vertical_content_width',
                 'type'        => 'text',
@@ -690,18 +690,18 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        $group_space_around_content = qode_startit_add_admin_group(array(
+        $group_space_around_content = startit_qode_add_admin_group(array(
             'title' => 'Space Around Content in Slide',
             'name' => 'group_space_around_content',
             'parent' => $slide_content_vertical_middle_yes_container
         ));
 
-            $row1 = qode_startit_add_admin_row(array(
+            $row1 = startit_qode_add_admin_row(array(
                 'name' => 'row1',
                 'parent' => $group_space_around_content
             ));
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_vertical_content_left',
                         'type'        => 'textsimple',
@@ -714,7 +714,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_vertical_content_right',
                         'type'        => 'textsimple',
@@ -727,14 +727,14 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-    $slide_content_vertical_middle_no_container = qode_startit_add_admin_container(array(
+    $slide_content_vertical_middle_no_container = startit_qode_add_admin_container(array(
         'name' => 'qodef_slide_content_vertical_middle_no_container',
         'parent' => $content_positioning_meta_box,
         'hidden_property' => 'qodef_slide_content_vertical_middle',
         'hidden_value' => 'yes'
     ));
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_slide_content_full_width',
                 'type' => 'yesno',
@@ -750,14 +750,14 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        $slide_content_width_container = qode_startit_add_admin_container(array(
+        $slide_content_width_container = startit_qode_add_admin_container(array(
             'name' => 'qodef_slide_content_width_container',
             'parent' => $slide_content_vertical_middle_no_container,
             'hidden_property' => 'qodef_slide_content_full_width',
             'hidden_value' => 'yes'
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_content_width',
                     'type'        => 'text',
@@ -771,18 +771,18 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-        $group_space_around_content = qode_startit_add_admin_group(array(
+        $group_space_around_content = startit_qode_add_admin_group(array(
             'title' => 'Space Around Content in Slide',
             'name' => 'group_space_around_content',
             'parent' => $slide_content_vertical_middle_no_container
         ));
 
-            $row1 = qode_startit_add_admin_row(array(
+            $row1 = startit_qode_add_admin_row(array(
                 'name' => 'row1',
                 'parent' => $group_space_around_content
             ));
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_content_top',
                         'type'        => 'textsimple',
@@ -795,7 +795,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_content_left',
                         'type'        => 'textsimple',
@@ -808,7 +808,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_content_bottom',
                         'type'        => 'textsimple',
@@ -821,7 +821,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_content_right',
                         'type'        => 'textsimple',
@@ -834,19 +834,19 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                     )
                 );
 
-            $row2 = qode_startit_add_admin_row(array(
+            $row2 = startit_qode_add_admin_row(array(
                 'name' => 'row2',
                 'parent' => $group_space_around_content
             ));
 
-                $content_vertical_positioning_group_container = qode_startit_add_admin_container_no_style(array(
+                $content_vertical_positioning_group_container = startit_qode_add_admin_container_no_style(array(
                     'name' => 'qodef_content_vertical_positioning_group_container',
                     'parent' => $row2,
                     'hidden_property' => 'qodef_slide_separate_text_graphic',
                     'hidden_value' => 'no'
                 ));
 
-                    qode_startit_add_meta_box_field(
+                    startit_qode_create_meta_box_field(
                         array(
                             'name'        => 'qodef_slide_text_width',
                             'type'        => 'textsimple',
@@ -859,14 +859,14 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                         )
                     );
 
-        $slide_graphic_positioning_container = qode_startit_add_admin_container(array(
+        $slide_graphic_positioning_container = startit_qode_add_admin_container(array(
             'name' => 'qodef_slide_graphic_positioning_container',
             'parent' => $slide_content_vertical_middle_no_container,
             'hidden_property' => 'qodef_slide_separate_text_graphic',
             'hidden_value' => 'no'
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'parent' => $slide_graphic_positioning_container,
                     'type' => 'selectblank',
@@ -881,19 +881,19 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            $group_graphic_positioning = qode_startit_add_admin_group(array(
+            $group_graphic_positioning = startit_qode_add_admin_group(array(
                 'title' => 'Graphic Positioning',
                 'description' => 'Positioning for slide graphic',
                 'name' => 'group_graphic_positioning',
                 'parent' => $slide_graphic_positioning_container
             ));
 
-                $row1 = qode_startit_add_admin_row(array(
+                $row1 = startit_qode_add_admin_row(array(
                     'name' => 'row1',
                     'parent' => $group_graphic_positioning
                 ));
 
-                    qode_startit_add_meta_box_field(
+                    startit_qode_create_meta_box_field(
                         array(
                             'name'        => 'qodef_slide_graphic_top',
                             'type'        => 'textsimple',
@@ -906,7 +906,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                         )
                     );
 
-                    qode_startit_add_meta_box_field(
+                    startit_qode_create_meta_box_field(
                         array(
                             'name'        => 'qodef_slide_graphic_left',
                             'type'        => 'textsimple',
@@ -919,7 +919,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                         )
                     );
 
-                    qode_startit_add_meta_box_field(
+                    startit_qode_create_meta_box_field(
                         array(
                             'name'        => 'qodef_slide_graphic_bottom',
                             'type'        => 'textsimple',
@@ -932,7 +932,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                         )
                     );
 
-                    qode_startit_add_meta_box_field(
+                    startit_qode_create_meta_box_field(
                         array(
                             'name'        => 'qodef_slide_graphic_right',
                             'type'        => 'textsimple',
@@ -945,12 +945,12 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                         )
                     );
 
-            $row2 = qode_startit_add_admin_row(array(
+            $row2 = startit_qode_add_admin_row(array(
                 'name' => 'row2',
                 'parent' => $group_graphic_positioning
             ));
 
-                qode_startit_add_meta_box_field(
+                startit_qode_create_meta_box_field(
                     array(
                         'name'        => 'qodef_slide_graphic_width',
                         'type'        => 'textsimple',
@@ -964,7 +964,7 @@ $content_positioning_meta_box = qode_startit_add_meta_box(
                 );
 //Slide Title Styles
 
-$title_style_meta_box = qode_startit_add_meta_box(
+$title_style_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Title Style',
@@ -974,19 +974,19 @@ $title_style_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    $title_text_group = qode_startit_add_admin_group(array(
+    $title_text_group = startit_qode_add_admin_group(array(
         'title' => 'Title Text Style',
         'description' => 'Define styles for title text',
         'name' => 'qodef_title_text_group',
         'parent' => $title_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $title_text_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_color',
                     'type'        => 'colorsimple',
@@ -995,7 +995,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_font_size',
                     'type'        => 'textsimple',
@@ -1004,7 +1004,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_line_height',
                     'type'        => 'textsimple',
@@ -1013,7 +1013,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_letter_spacing',
                     'type'        => 'textsimple',
@@ -1022,12 +1022,12 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-        $row2 = qode_startit_add_admin_row(array(
+        $row2 = startit_qode_add_admin_row(array(
             'name' => 'row2',
             'parent' => $title_text_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_font_family',
                     'type'        => 'fontsimple',
@@ -1036,49 +1036,49 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_font_style',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Font Style',
                     'parent'      => $row2,
-                    'options'     => $qode_startit_options_fontstyle
+                    'options'     => startit_qode_options_font_style()
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_font_weight',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Font Weight',
                     'parent'      => $row2,
-                    'options'     => $qode_startit_options_fontweight
+                    'options'     => startit_qode_options_font_weight()
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_text_transform',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Text Transform',
                     'parent'      => $row2,
-                    'options'       => $qode_startit_options_texttransform
+                    'options'       => startit_qode_options_text_transform()
                 )
             );
 
-    $title_background_group = qode_startit_add_admin_group(array(
+    $title_background_group = startit_qode_add_admin_group(array(
         'title' => 'Background',
         'description' => 'Define background for title',
         'name' => 'qodef_title_background_group',
         'parent' => $title_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $title_background_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_background_color',
                     'type'        => 'colorsimple',
@@ -1087,7 +1087,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_bg_color_transparency',
                     'type'        => 'textsimple',
@@ -1096,19 +1096,19 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    $title_margin_group = qode_startit_add_admin_group(array(
+    $title_margin_group = startit_qode_add_admin_group(array(
         'title' => 'Margin Bottom (px)',
         'description' => 'Enter value for title bottom margin (default value is 20)',
         'name' => 'qodef_title_margin_group',
         'parent' => $title_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $title_margin_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_margin_bottom',
                     'type'        => 'textsimple',
@@ -1117,19 +1117,19 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    $title_padding_group = qode_startit_add_admin_group(array(
+    $title_padding_group = startit_qode_add_admin_group(array(
         'title' => 'Padding',
         'description' => 'Define padding for title',
         'name' => 'qodef_title_padding_group',
         'parent' => $title_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $title_padding_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_padding_top',
                     'type'        => 'textsimple',
@@ -1138,7 +1138,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_padding_right',
                     'type'        => 'textsimple',
@@ -1147,7 +1147,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_padding_bottom',
                     'type'        => 'textsimple',
@@ -1156,7 +1156,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_title_padding_left',
                     'type'        => 'textsimple',
@@ -1167,7 +1167,7 @@ $title_style_meta_box = qode_startit_add_meta_box(
 
 //Slide Subtitle Styles
 
-$subtitle_style_meta_box = qode_startit_add_meta_box(
+$subtitle_style_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Subtitle Style',
@@ -1175,19 +1175,19 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    $subtitle_text_group = qode_startit_add_admin_group(array(
+    $subtitle_text_group = startit_qode_add_admin_group(array(
         'title' => 'Subtitle Text Style',
         'description' => 'Define styles for subtitle text',
         'name' => 'qodef_subtitle_text_group',
         'parent' => $subtitle_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $subtitle_text_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_color',
                     'type'        => 'colorsimple',
@@ -1196,7 +1196,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_font_size',
                     'type'        => 'textsimple',
@@ -1205,7 +1205,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_line_height',
                     'type'        => 'textsimple',
@@ -1214,7 +1214,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_letter_spacing',
                     'type'        => 'textsimple',
@@ -1223,12 +1223,12 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-        $row2 = qode_startit_add_admin_row(array(
+        $row2 = startit_qode_add_admin_row(array(
             'name' => 'row2',
             'parent' => $subtitle_text_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_font_family',
                     'type'        => 'fontsimple',
@@ -1237,49 +1237,49 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_font_style',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Font Style',
                     'parent'      => $row2,
-                    'options'     => $qode_startit_options_fontstyle
+                    'options'     => startit_qode_options_font_style()
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_font_weight',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Font Weight',
                     'parent'      => $row2,
-                    'options'     => $qode_startit_options_fontweight
+                    'options'     => startit_qode_options_font_weight()
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_text_transform',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Text Transform',
                     'parent'      => $row2,
-                    'options'       => $qode_startit_options_texttransform
+                    'options'       => startit_qode_options_text_transform()
                 )
             );
 
-    $subtitle_background_group = qode_startit_add_admin_group(array(
+    $subtitle_background_group = startit_qode_add_admin_group(array(
         'title' => 'Background',
         'description' => 'Define background for subtitle',
         'name' => 'qodef_subtitle_background_group',
         'parent' => $subtitle_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $subtitle_background_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_background_color',
                     'type'        => 'colorsimple',
@@ -1288,7 +1288,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_bg_color_transparency',
                     'type'        => 'textsimple',
@@ -1297,19 +1297,19 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    $subtitle_margin_group = qode_startit_add_admin_group(array(
+    $subtitle_margin_group = startit_qode_add_admin_group(array(
         'title' => 'Margin Bottom (px)',
         'description' => 'Enter value for subtitle bottom margin (default value is 22)',
         'name' => 'qodef_subtitle_margin_group',
         'parent' => $subtitle_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $subtitle_margin_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_margin_bottom',
                     'type'        => 'textsimple',
@@ -1318,19 +1318,19 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    $subtitle_padding_group = qode_startit_add_admin_group(array(
+    $subtitle_padding_group = startit_qode_add_admin_group(array(
         'title' => 'Padding',
         'description' => 'Define padding for subtitle',
         'name' => 'qodef_subtitle_padding_group',
         'parent' => $subtitle_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $subtitle_padding_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_padding_top',
                     'type'        => 'textsimple',
@@ -1339,7 +1339,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_padding_right',
                     'type'        => 'textsimple',
@@ -1348,7 +1348,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_padding_bottom',
                     'type'        => 'textsimple',
@@ -1357,7 +1357,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_subtitle_padding_left',
                     'type'        => 'textsimple',
@@ -1368,7 +1368,7 @@ $subtitle_style_meta_box = qode_startit_add_meta_box(
 
 //Slide Text Styles
 
-$text_style_meta_box = qode_startit_add_meta_box(
+$text_style_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('slides'),
         'title' => 'Slide Text Style',
@@ -1376,19 +1376,19 @@ $text_style_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    $text_text_group = qode_startit_add_admin_group(array(
+    $text_text_group = startit_qode_add_admin_group(array(
         'title' => 'Text Style',
         'description' => 'Define styles for text',
         'name' => 'qodef_text_text_group',
         'parent' => $text_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $text_text_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_color',
                     'type'        => 'colorsimple',
@@ -1397,7 +1397,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_font_size',
                     'type'        => 'textsimple',
@@ -1406,7 +1406,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_line_height',
                     'type'        => 'textsimple',
@@ -1415,7 +1415,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_letter_spacing',
                     'type'        => 'textsimple',
@@ -1424,12 +1424,12 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-        $row2 = qode_startit_add_admin_row(array(
+        $row2 = startit_qode_add_admin_row(array(
             'name' => 'row2',
             'parent' => $text_text_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_font_family',
                     'type'        => 'fontsimple',
@@ -1438,49 +1438,49 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_font_style',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Font Style',
                     'parent'      => $row2,
-                    'options'     => $qode_startit_options_fontstyle
+                    'options'     => startit_qode_options_font_style()
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_font_weight',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Font Weight',
                     'parent'      => $row2,
-                    'options'     => $qode_startit_options_fontweight
+                    'options'     => startit_qode_options_font_weight()
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_text_transform',
                     'type'        => 'selectblanksimple',
                     'label'       => 'Text Transform',
                     'parent'      => $row2,
-                    'options'       => $qode_startit_options_texttransform
+                    'options'       => startit_qode_options_text_transform()
                 )
             );
 
-    $text_background_group = qode_startit_add_admin_group(array(
+    $text_background_group = startit_qode_add_admin_group(array(
         'title' => 'Background',
         'description' => 'Define background for text',
         'name' => 'qodef_text_without_separator_background_group',
         'parent' => $text_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $text_background_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_background_color',
                     'type'        => 'colorsimple',
@@ -1489,7 +1489,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_bg_color_transparency',
                     'type'        => 'textsimple',
@@ -1498,19 +1498,19 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-    $text_padding_group = qode_startit_add_admin_group(array(
+    $text_padding_group = startit_qode_add_admin_group(array(
         'title' => 'Padding',
         'description' => 'Define padding for text',
         'name' => 'qodef_text_padding_group',
         'parent' => $text_style_meta_box
     ));
 
-        $row1 = qode_startit_add_admin_row(array(
+        $row1 = startit_qode_add_admin_row(array(
             'name' => 'row1',
             'parent' => $text_padding_group
         ));
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_padding_top',
                     'type'        => 'textsimple',
@@ -1519,7 +1519,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_padding_right',
                     'type'        => 'textsimple',
@@ -1528,7 +1528,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_padding_bottom',
                     'type'        => 'textsimple',
@@ -1537,7 +1537,7 @@ $text_style_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name'        => 'qodef_slide_text_padding_left',
                     'type'        => 'textsimple',

@@ -1,4 +1,5 @@
 (function() {
+    "use strict";
 	tinymce.PluginManager.add('qode_shortcodes', function( ed, url ) {
 		ed.addButton( 'qode_shortcodes', {
 			title : window.qodeSCLabel,
@@ -253,6 +254,7 @@
 								}
 							],
 							onsubmit: function( e ) {
+                                var icon_pack_prefix
 								switch(e.data.icon_pack) {
 									case "font_awesome":
 										icon_pack_prefix = "fa_icon"
@@ -548,6 +550,7 @@
 								}
 							],
 							onsubmit: function( e ) {
+							    var icon_pack_prefix;
 								switch(e.data.icon_pack) {
 									case "font_awesome":
 										icon_pack_prefix = "fa_icon"
@@ -704,7 +707,8 @@
 									label: 'Margin(in format: 0px 0px 1px 0px)'
 								}
 							],
-							onsubmit: function( e ) {								
+							onsubmit: function( e ) {
+                                var icon_pack_prefix;
 								switch(e.data.icon_pack) {
 									case "font_awesome":
 										icon_pack_prefix = "fa_icon"

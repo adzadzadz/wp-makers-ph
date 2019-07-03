@@ -1,7 +1,9 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Admin\Bulk Editor
- * @since      1.5.0
+ * @since   1.5.0
  */
 
 /**
@@ -10,7 +12,7 @@
 class WPSEO_Bulk_Title_Editor_List_Table extends WPSEO_Bulk_List_Table {
 
 	/**
-	 * Current type for this class will be title
+	 * Current type for this class will be title.
 	 *
 	 * @var string
 	 */
@@ -18,7 +20,7 @@ class WPSEO_Bulk_Title_Editor_List_Table extends WPSEO_Bulk_List_Table {
 
 
 	/**
-	 * Settings with are used in __construct
+	 * Settings with are used in __construct.
 	 *
 	 * @var array
 	 */
@@ -36,7 +38,7 @@ class WPSEO_Bulk_Title_Editor_List_Table extends WPSEO_Bulk_List_Table {
 	protected $target_db_field = 'title';
 
 	/**
-	 * The columns shown on the table
+	 * The columns shown on the table.
 	 *
 	 * @return array
 	 */
@@ -53,7 +55,7 @@ class WPSEO_Bulk_Title_Editor_List_Table extends WPSEO_Bulk_List_Table {
 	}
 
 	/**
-	 * Parse the title columns
+	 * Parse the title columns.
 	 *
 	 * @param string $column_name Column name.
 	 * @param object $record      Data object.

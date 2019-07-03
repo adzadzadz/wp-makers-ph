@@ -1,6 +1,6 @@
 <?php
 
-$title_meta_box = qode_startit_add_meta_box(
+$title_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('page', 'portfolio-item', 'post'),
         'title' => 'Title',
@@ -8,7 +8,7 @@ $title_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_show_title_area_meta',
             'type' => 'select',
@@ -37,7 +37,7 @@ $title_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    $show_title_area_meta_container = qode_startit_add_admin_container(
+    $show_title_area_meta_container = startit_qode_add_admin_container(
         array(
             'parent' => $title_meta_box,
             'name' => 'qodef_show_title_area_meta_container',
@@ -46,7 +46,7 @@ $title_meta_box = qode_startit_add_meta_box(
         )
     );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_type_meta',
                 'type' => 'select',
@@ -75,7 +75,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        $title_area_type_meta_container = qode_startit_add_admin_container(
+        $title_area_type_meta_container = startit_qode_add_admin_container(
             array(
                 'parent' => $show_title_area_meta_container,
                 'name' => 'qodef_title_area_type_meta_container',
@@ -85,7 +85,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name' => 'qodef_title_area_enable_breadcrumbs_meta',
                     'type' => 'select',
@@ -101,7 +101,7 @@ $title_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_animation_meta',
                 'type' => 'select',
@@ -118,7 +118,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_vertial_alignment_meta',
                 'type' => 'select',
@@ -134,7 +134,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_content_alignment_meta',
                 'type' => 'select',
@@ -151,7 +151,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_text_color_meta',
                 'type' => 'color',
@@ -161,7 +161,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_breadcrumb_color_meta',
                 'type' => 'color',
@@ -171,7 +171,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_background_color_meta',
                 'type' => 'color',
@@ -181,7 +181,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_hide_background_image_meta',
                 'type' => 'yesno',
@@ -197,7 +197,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        $hide_background_image_meta_container = qode_startit_add_admin_container(
+        $hide_background_image_meta_container = startit_qode_add_admin_container(
             array(
                 'parent' => $show_title_area_meta_container,
                 'name' => 'qodef_hide_background_image_meta_container',
@@ -206,7 +206,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_background_image_meta',
                 'type' => 'image',
@@ -216,7 +216,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_title_area_background_image_responsive_meta',
                 'type' => 'select',
@@ -245,7 +245,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-        $title_area_background_image_responsive_meta_container = qode_startit_add_admin_container(
+        $title_area_background_image_responsive_meta_container = startit_qode_add_admin_container(
             array(
                 'parent' => $hide_background_image_meta_container,
                 'name' => 'qodef_title_area_background_image_responsive_meta_container',
@@ -254,7 +254,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         );
 
-            qode_startit_add_meta_box_field(
+            startit_qode_create_meta_box_field(
                 array(
                     'name' => 'qodef_title_area_background_image_parallax_meta',
                     'type' => 'select',
@@ -271,7 +271,7 @@ $title_meta_box = qode_startit_add_meta_box(
                 )
             );
 
-        qode_startit_add_meta_box_field(array(
+        startit_qode_create_meta_box_field(array(
             'name' => 'qodef_title_area_height_meta',
             'type' => 'text',
             'label' => 'Height',
@@ -283,7 +283,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         ));
 
-        qode_startit_add_meta_box_field(array(
+        startit_qode_create_meta_box_field(array(
             'name' => 'qodef_title_area_subtitle_meta',
             'type' => 'text',
             'default_value' => '',
@@ -295,7 +295,7 @@ $title_meta_box = qode_startit_add_meta_box(
             )
         ));
 
-        qode_startit_add_meta_box_field(
+        startit_qode_create_meta_box_field(
             array(
                 'name' => 'qodef_subtitle_color_meta',
                 'type' => 'color',

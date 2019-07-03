@@ -372,6 +372,12 @@ h4, h4 a {
 }
 
 /* line 322, scss/_global.scss */
+h1, h2, h3, h4, h5, h6 {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* line 327, scss/_global.scss */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-family: inherit;
   font-size: inherit;
@@ -382,7 +388,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-transform: inherit;
 }
 
-/* line 332, scss/_global.scss */
+/* line 337, scss/_global.scss */
 h1 a:hover,
 h2 a:hover,
 h3 a:hover,
@@ -392,7 +398,7 @@ h6 a:hover {
   color: #b2dd4c;
 }
 
-/* line 341, scss/_global.scss */
+/* line 346, scss/_global.scss */
 a,
 p a {
   color: #b2dd4c;
@@ -405,19 +411,19 @@ p a {
   transition: color 0.15s ease-out;
 }
 
-/* line 353, scss/_global.scss */
+/* line 358, scss/_global.scss */
 input[type='submit'],
 .woocommerce input[type='button'],
 .woocommerce-page input[type='button'] {
   -webkit-appearance: none;
 }
 
-/* line 359, scss/_global.scss */
+/* line 364, scss/_global.scss */
 ul, ol {
   list-style-position: inside;
 }
 
-/* line 363, scss/_global.scss */
+/* line 368, scss/_global.scss */
 pre {
   background-color: #fff;
   padding: 15px;
@@ -427,19 +433,19 @@ pre {
   margin: 15px 0;
 }
 
-/* line 372, scss/_global.scss */
+/* line 377, scss/_global.scss */
 dt {
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-/* line 378, scss/_global.scss */
+/* line 383, scss/_global.scss */
 dd {
   margin-bottom: 15px;
 }
 
-/* line 386, scss/_global.scss */
+/* line 391, scss/_global.scss */
 sub, sup {
   font-size: 75%;
   height: 0;
@@ -448,38 +454,38 @@ sub, sup {
   vertical-align: baseline;
 }
 
-/* line 394, scss/_global.scss */
+/* line 399, scss/_global.scss */
 sub {
   top: 0.5ex;
 }
 
-/* line 398, scss/_global.scss */
+/* line 403, scss/_global.scss */
 sup {
   bottom: 0.5ex;
 }
 
-/* line 402, scss/_global.scss */
+/* line 407, scss/_global.scss */
 .wp-caption-text {
   margin: 0;
   font-style: italic;
 }
 
-/* line 407, scss/_global.scss */
+/* line 412, scss/_global.scss */
 table {
   width: 100%;
 }
 
-/* line 411, scss/_global.scss */
+/* line 416, scss/_global.scss */
 table thead tr, table tbody tr {
   border: 1px solid #e6e6e6;
 }
 
-/* line 415, scss/_global.scss */
+/* line 420, scss/_global.scss */
 table tbody th {
   border-right: 1px solid #e6e6e6;
 }
 
-/* line 419, scss/_global.scss */
+/* line 424, scss/_global.scss */
 blockquote:not(.qodef-blockquote-shortcode) {
   padding: 0;
   border: none;
@@ -489,27 +495,27 @@ blockquote:not(.qodef-blockquote-shortcode) {
   margin: 20px 0;
 }
 
-/* line 428, scss/_global.scss */
+/* line 433, scss/_global.scss */
 blockquote cite {
   font-style: normal;
   font-weight: 500;
 }
 
 /* Webkit */
-/* line 434, scss/_global.scss */
+/* line 439, scss/_global.scss */
 ::selection {
   background: #b2dd4c;
   color: #fff;
 }
 
 /* Gecko/Mozilla */
-/* line 439, scss/_global.scss */
+/* line 444, scss/_global.scss */
 ::-moz-selection {
   background: #b2dd4c;
   color: #fff;
 }
 
-/* line 444, scss/_global.scss */
+/* line 449, scss/_global.scss */
 .wp-caption,
 .wp-caption-text,
 .sticky,
@@ -518,45 +524,45 @@ blockquote cite {
   opacity: 1;
 }
 
-/* line 452, scss/_global.scss */
+/* line 457, scss/_global.scss */
 .alignleft {
   float: left;
   margin: 0 20px 20px 0;
 }
 
-/* line 457, scss/_global.scss */
+/* line 462, scss/_global.scss */
 .alignright {
   float: right;
   margin: 0 0 20px 20px;
 }
 
-/* line 462, scss/_global.scss */
+/* line 467, scss/_global.scss */
 .aligncenter {
   display: block;
   margin: 10px auto;
 }
 
-/* line 467, scss/_global.scss */
+/* line 472, scss/_global.scss */
 .text-align-right {
   text-align: right;
 }
 
-/* line 471, scss/_global.scss */
+/* line 476, scss/_global.scss */
 .text-align-left {
   text-align: left;
 }
 
-/* line 475, scss/_global.scss */
+/* line 480, scss/_global.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 479, scss/_global.scss */
+/* line 484, scss/_global.scss */
 .meta {
   display: none;
 }
 
-/* line 483, scss/_global.scss */
+/* line 488, scss/_global.scss */
 .qodef-wrapper {
   background-color: #fff;
   position: relative;
@@ -565,13 +571,13 @@ blockquote cite {
   transition: left 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1);
   left: 0px;
 }
-/* line 490, scss/_global.scss */
+/* line 495, scss/_global.scss */
 .qodef-wrapper .qodef-wrapper-inner {
   width: 100%;
   overflow: hidden;
 }
 
-/* line 496, scss/_global.scss */
+/* line 501, scss/_global.scss */
 .qodef-content {
   margin-top: 0;
   position: relative;
@@ -579,12 +585,12 @@ blockquote cite {
   background-color: #fff;
   /*this is needed because of the uncovering footer*/
 }
-/* line 502, scss/_global.scss */
+/* line 507, scss/_global.scss */
 .qodef-content ul ul,
 .qodef-content ol ol {
   padding: 0 0 0 15px;
 }
-/* line 507, scss/_global.scss */
+/* line 512, scss/_global.scss */
 .qodef-content ol ul,
 .qodef-content ul ol,
 .qodef-content ul ul,
@@ -592,40 +598,40 @@ blockquote cite {
   margin: 0;
 }
 
-/* line 520, scss/_global.scss */
+/* line 525, scss/_global.scss */
 .qodef-boxed {
   overflow: hidden !important;
   /* this is because content jumping while using accordion and display:inline-block on 'body.qodef-boxed .qodef-wrapper'   */
 }
-/* line 524, scss/_global.scss */
+/* line 529, scss/_global.scss */
 .qodef-boxed .qodef-wrapper {
   display: inline-block;
   vertical-align: middle;
   width: 100%;
 }
-/* line 529, scss/_global.scss */
+/* line 534, scss/_global.scss */
 .qodef-boxed .qodef-wrapper .qodef-wrapper-inner {
   width: 1150px;
   overflow: visible;
   margin: auto;
 }
-/* line 536, scss/_global.scss */
+/* line 541, scss/_global.scss */
 .qodef-boxed .qodef-content {
   overflow: hidden;
 }
-/* line 540, scss/_global.scss */
+/* line 545, scss/_global.scss */
 .qodef-boxed .qodef-footer-inner {
   width: 1150px;
   margin: auto;
 }
-/* line 546, scss/_global.scss */
+/* line 551, scss/_global.scss */
 .qodef-boxed .qodef-page-header .qodef-sticky-header,
 .qodef-boxed .qodef-page-header .qodef-fixed-wrapper.fixed {
   width: 1150px;
   left: auto;
 }
 
-/* line 555, scss/_global.scss */
+/* line 560, scss/_global.scss */
 .qodef-container {
   background-color: #fff;
   position: relative;
@@ -633,37 +639,37 @@ blockquote cite {
   width: 100%;
   z-index: 100;
 }
-/* line 562, scss/_global.scss */
+/* line 567, scss/_global.scss */
 .qodef-container:before {
   content: " ";
   display: table;
 }
-/* line 567, scss/_global.scss */
+/* line 572, scss/_global.scss */
 .qodef-container:after {
   content: " ";
   display: table;
   clear: both;
 }
 
-/* line 574, scss/_global.scss */
+/* line 579, scss/_global.scss */
 .qodef-container-inner {
   width: 1100px;
   margin: 0px auto;
 }
 
-/* line 579, scss/_global.scss */
+/* line 584, scss/_global.scss */
 .qodef-full-width {
   position: relative;
   z-index: 100;
 }
 
-/* line 584, scss/_global.scss */
+/* line 589, scss/_global.scss */
 .qodef-content .qodef-container .qodef-container-inner {
   padding-top: 44px;
 }
 
 @media only screen and (min-width: 1400px) {
-  /* line 591, scss/_global.scss */
+  /* line 596, scss/_global.scss */
   .qodef-grid-1300 .qodef-grid,
   .qodef-grid-1300 .qodef-container-inner,
   .qodef-grid-1300 .qodef-grid-section .qodef-section-inner,
@@ -673,12 +679,12 @@ blockquote cite {
     width: 1300px;
   }
 
-  /* line 604, scss/_global.scss */
+  /* line 609, scss/_global.scss */
   .qodef-grid-1300.qodef-boxed .qodef-footer-inner,
   .qodef-grid-1300.qodef-boxed .qodef-wrapper-inner {
     width: 1350px;
   }
-  /* line 609, scss/_global.scss */
+  /* line 614, scss/_global.scss */
   .qodef-grid-1300.qodef-boxed .qodef-page-header .qodef-sticky-header,
   .qodef-grid-1300.qodef-boxed .qodef-page-header .qodef-fixed-wrapper.fixed {
     width: 1350px;
@@ -686,7 +692,7 @@ blockquote cite {
   }
 }
 @media only screen and (min-width: 1300px) {
-  /* line 620, scss/_global.scss */
+  /* line 625, scss/_global.scss */
   .qodef-grid-1200 .qodef-grid,
   .qodef-grid-1200 .qodef-container-inner,
   .qodef-grid-1200 .qodef-grid-section .qodef-section-inner,
@@ -696,12 +702,12 @@ blockquote cite {
     width: 1200px;
   }
 
-  /* line 632, scss/_global.scss */
+  /* line 637, scss/_global.scss */
   .qodef-grid-1200.qodef-boxed .qodef-footer-inner,
   .qodef-grid-1200.qodef-boxed .qodef-wrapper-inner {
     width: 1250px;
   }
-  /* line 637, scss/_global.scss */
+  /* line 642, scss/_global.scss */
   .qodef-grid-1200.qodef-boxed .qodef-page-header .qodef-sticky-header,
   .qodef-grid-1200.qodef-boxed .qodef-page-header .qodef-fixed-wrapper.fixed {
     width: 1250px;
@@ -709,7 +715,7 @@ blockquote cite {
   }
 }
 @media only screen and (min-width: 1200px) {
-  /* line 648, scss/_global.scss */
+  /* line 653, scss/_global.scss */
   .qodef-grid-1000 .qodef-grid,
   .qodef-grid-1000 .qodef-container-inner,
   .qodef-grid-1000 .qodef-grid-section .qodef-section-inner,
@@ -719,12 +725,12 @@ blockquote cite {
     width: 1000px;
   }
 
-  /* line 660, scss/_global.scss */
+  /* line 665, scss/_global.scss */
   .qodef-grid-1000.qodef-boxed .qodef-footer-inner,
   .qodef-grid-1000.qodef-boxed .qodef-wrapper-inner {
     width: 1050px;
   }
-  /* line 665, scss/_global.scss */
+  /* line 670, scss/_global.scss */
   .qodef-grid-1000.qodef-boxed .qodef-page-header .qodef-sticky-header,
   .qodef-grid-1000.qodef-boxed .qodef-page-header .qodef-fixed-wrapper.fixed {
     width: 1050px;
@@ -732,7 +738,7 @@ blockquote cite {
   }
 }
 @media only screen and (min-width: 1000px) {
-  /* line 676, scss/_global.scss */
+  /* line 681, scss/_global.scss */
   .qodef-grid-800 .qodef-grid,
   .qodef-grid-800 .qodef-container-inner,
   .qodef-grid-800 .qodef-grid-section .qodef-section-inner,
@@ -742,12 +748,12 @@ blockquote cite {
     width: 800px;
   }
 
-  /* line 688, scss/_global.scss */
+  /* line 693, scss/_global.scss */
   .qodef-grid-800.qodef-boxed .qodef-footer-inner,
   .qodef-grid-800.qodef-boxed .qodef-wrapper-inner {
     width: 850px;
   }
-  /* line 693, scss/_global.scss */
+  /* line 698, scss/_global.scss */
   .qodef-grid-800.qodef-boxed .qodef-page-header .qodef-sticky-header,
   .qodef-grid-800.qodef-boxed .qodef-page-header .qodef-fixed-wrapper.fixed {
     width: 850px;
@@ -759,186 +765,186 @@ blockquote cite {
 /* 4. Grid system styles - start
  * Here are defined styles for grid system that is used outside Visual Composer
    ========================================================================== */
-/* line 708, scss/_global.scss */
+/* line 713, scss/_global.scss */
 .qodef-two-columns-66-33 {
   width: 100%;
 }
-/* line 711, scss/_global.scss */
+/* line 716, scss/_global.scss */
 .qodef-two-columns-66-33 .qodef-column1 {
   width: 66.66%;
   float: left;
 }
-/* line 715, scss/_global.scss */
+/* line 720, scss/_global.scss */
 .qodef-two-columns-66-33 .qodef-column1 .qodef-column-inner {
   padding: 0 20px 0 0;
 }
-/* line 720, scss/_global.scss */
+/* line 725, scss/_global.scss */
 .qodef-two-columns-66-33 .qodef-column2 {
   width: 33.33%;
   float: left;
 }
-/* line 724, scss/_global.scss */
+/* line 729, scss/_global.scss */
 .qodef-two-columns-66-33 .qodef-column2 .qodef-column-inner {
   padding: 0 0 0 20px;
 }
 
-/* line 731, scss/_global.scss */
+/* line 736, scss/_global.scss */
 .qodef-two-columns-33-66 {
   width: 100%;
 }
-/* line 734, scss/_global.scss */
+/* line 739, scss/_global.scss */
 .qodef-two-columns-33-66 .qodef-column1 {
   width: 33.33%;
   float: left;
 }
-/* line 738, scss/_global.scss */
+/* line 743, scss/_global.scss */
 .qodef-two-columns-33-66 .qodef-column1 .qodef-column-inner {
   padding: 0 20px 0 0;
 }
-/* line 743, scss/_global.scss */
+/* line 748, scss/_global.scss */
 .qodef-two-columns-33-66 .qodef-column2 {
   width: 66.66%;
   float: left;
 }
-/* line 747, scss/_global.scss */
+/* line 752, scss/_global.scss */
 .qodef-two-columns-33-66 .qodef-column2 .qodef-column-inner {
   padding: 0 0 0 20px;
 }
 
-/* line 754, scss/_global.scss */
+/* line 759, scss/_global.scss */
 .qodef-two-columns-75-25 {
   width: 100%;
 }
-/* line 757, scss/_global.scss */
+/* line 762, scss/_global.scss */
 .qodef-two-columns-75-25 .qodef-column1 {
   width: 75%;
   float: left;
 }
-/* line 761, scss/_global.scss */
+/* line 766, scss/_global.scss */
 .qodef-two-columns-75-25 .qodef-column1 .qodef-column-inner {
   padding: 0 20px 0 0;
 }
-/* line 766, scss/_global.scss */
+/* line 771, scss/_global.scss */
 .qodef-two-columns-75-25 .qodef-column2 {
   width: 25%;
   float: left;
 }
-/* line 770, scss/_global.scss */
+/* line 775, scss/_global.scss */
 .qodef-two-columns-75-25 .qodef-column2 .qodef-column-inner {
   padding: 0 0 0 20px;
 }
 
-/* line 776, scss/_global.scss */
+/* line 781, scss/_global.scss */
 .qodef-two-columns-25-75 {
   width: 100%;
 }
-/* line 779, scss/_global.scss */
+/* line 784, scss/_global.scss */
 .qodef-two-columns-25-75 .qodef-column1 {
   width: 25%;
   float: left;
 }
-/* line 783, scss/_global.scss */
+/* line 788, scss/_global.scss */
 .qodef-two-columns-25-75 .qodef-column1 .qodef-column-inner {
   padding: 0 20px 0 0;
 }
-/* line 788, scss/_global.scss */
+/* line 793, scss/_global.scss */
 .qodef-two-columns-25-75 .qodef-column2 {
   width: 75%;
   float: left;
 }
-/* line 792, scss/_global.scss */
+/* line 797, scss/_global.scss */
 .qodef-two-columns-25-75 .qodef-column2 .qodef-column-inner {
   padding: 0 0 0 20px;
 }
 
-/* line 798, scss/_global.scss */
+/* line 803, scss/_global.scss */
 .qodef-two-columns-50-50 {
   width: 100%;
 }
-/* line 801, scss/_global.scss */
+/* line 806, scss/_global.scss */
 .qodef-two-columns-50-50 > .qodef-two-columns-50-50-inner {
   margin: 0 -15px;
 }
-/* line 805, scss/_global.scss */
+/* line 810, scss/_global.scss */
 .qodef-two-columns-50-50 .qodef-column {
   width: 50%;
   float: left;
 }
-/* line 809, scss/_global.scss */
+/* line 814, scss/_global.scss */
 .qodef-two-columns-50-50 .qodef-column .qodef-column-inner {
   padding: 0 15px;
 }
 
-/* line 815, scss/_global.scss */
+/* line 820, scss/_global.scss */
 .qodef-three-columns {
   width: 100%;
 }
-/* line 818, scss/_global.scss */
+/* line 823, scss/_global.scss */
 .qodef-three-columns > .qodef-three-columns-inner {
   margin: 0 -15px;
 }
-/* line 822, scss/_global.scss */
+/* line 827, scss/_global.scss */
 .qodef-three-columns .qodef-column {
   width: 33.33%;
   float: left;
 }
-/* line 826, scss/_global.scss */
+/* line 831, scss/_global.scss */
 .qodef-three-columns .qodef-column .qodef-column-inner {
   padding: 0 15px;
 }
 
-/* line 832, scss/_global.scss */
+/* line 837, scss/_global.scss */
 .qodef-four-columns {
   width: 100%;
 }
-/* line 835, scss/_global.scss */
+/* line 840, scss/_global.scss */
 .qodef-four-columns > .qodef-four-columns-inner {
   margin: 0 -15px;
 }
-/* line 839, scss/_global.scss */
+/* line 844, scss/_global.scss */
 .qodef-four-columns .qodef-column {
   width: 25%;
   float: left;
 }
-/* line 843, scss/_global.scss */
+/* line 848, scss/_global.scss */
 .qodef-four-columns .qodef-column .qodef-column-inner {
   padding: 0 15px;
 }
 
-/* line 849, scss/_global.scss */
+/* line 854, scss/_global.scss */
 .qodef-five-columns {
   width: 100%;
 }
-/* line 852, scss/_global.scss */
+/* line 857, scss/_global.scss */
 .qodef-five-columns > .qodef-five-columns-inner {
   margin: 0 -15px;
 }
-/* line 856, scss/_global.scss */
+/* line 861, scss/_global.scss */
 .qodef-five-columns .qodef-column {
   width: 20%;
   float: left;
 }
-/* line 860, scss/_global.scss */
+/* line 865, scss/_global.scss */
 .qodef-five-columns .qodef-column .qodef-column-inner {
   padding: 0 15px;
 }
 
-/* line 867, scss/_global.scss */
+/* line 872, scss/_global.scss */
 body.woocommerce.woocommerce-page .qodef-two-columns-66-33.woocommerce_with_sidebar .qodef-column1 .qodef-column-inner,
 body.woocommerce.woocommerce-page .qodef-two-columns-75-25.woocommerce_with_sidebar .qodef-column1 .qodef-column-inner {
   padding-left: 40px;
 }
-/* line 872, scss/_global.scss */
+/* line 877, scss/_global.scss */
 body.woocommerce.woocommerce-page .qodef-two-columns-33-66.woocommerce_with_sidebar .qodef-column2 .qodef-column-inner,
 body.woocommerce.woocommerce-page .qodef-two-columns-25-75.woocommerce_with_sidebar .qodef-column2 .qodef-column-inner {
   padding-right: 40px;
 }
-/* line 878, scss/_global.scss */
+/* line 883, scss/_global.scss */
 body.woocommerce.woocommerce-page .full_width .qodef-two-columns-66-33.woocommerce_with_sidebar .qodef-column1 .qodef-column-inner,
 body.woocommerce.woocommerce-page .full_width .qodef-two-columns-75-25.woocommerce_with_sidebar .qodef-column1 .qodef-column-inner {
   padding-left: 0;
 }
-/* line 883, scss/_global.scss */
+/* line 888, scss/_global.scss */
 body.woocommerce.woocommerce-page .full_width .qodef-two-columns-33-66.woocommerce_with_sidebar .qodef-column2 .qodef-column-inner,
 body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommerce_with_sidebar .qodef-column2 .qodef-column-inner {
   padding-right: 0;
@@ -960,7 +966,7 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
     background-position: 100% 0;
   }
 }
-/* line 895, scss/_global.scss */
+/* line 900, scss/_global.scss */
 .qodef-preload-background {
   background-repeat: repeat !important;
   background-color: transparent !important;
@@ -982,13 +988,13 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   /* this prevents the animation from restarting! */
 }
 
-/* line 903, scss/_global.scss */
+/* line 908, scss/_global.scss */
 .qodef-grid {
   width: 1100px;
   margin: 0 auto;
 }
 
-/* line 908, scss/_global.scss */
+/* line 913, scss/_global.scss */
 .qodef-vertical-align-containers {
   position: relative;
   height: 100%;
@@ -996,62 +1002,62 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   padding: 0 30px;
   box-sizing: border-box;
 }
-/* line 917, scss/_global.scss */
+/* line 922, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-25-50-25 .qodef-position-left,
 .qodef-vertical-align-containers.qodef-25-50-25 .qodef-position-right {
   width: 25%;
 }
-/* line 922, scss/_global.scss */
+/* line 927, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-25-50-25 .qodef-position-center {
   width: 50%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-/* line 929, scss/_global.scss */
+/* line 934, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-25-50-25 .qodef-position-left-inner,
 .qodef-vertical-align-containers.qodef-25-50-25 .qodef-position-center-inner,
 .qodef-vertical-align-containers.qodef-25-50-25 .qodef-position-right-inner {
   width: 98%;
 }
-/* line 939, scss/_global.scss */
+/* line 944, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-left,
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-center,
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-right {
   width: 33.33%;
 }
-/* line 945, scss/_global.scss */
+/* line 950, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-center {
   width: 50%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-/* line 952, scss/_global.scss */
+/* line 957, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-left-inner,
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-center-inner,
 .qodef-vertical-align-containers.qodef-33-33-33 .qodef-position-right-inner {
   width: 98%;
 }
-/* line 962, scss/_global.scss */
+/* line 967, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-50-50 .qodef-position-left,
 .qodef-vertical-align-containers.qodef-50-50 .qodef-position-right {
   width: 50%;
 }
-/* line 967, scss/_global.scss */
+/* line 972, scss/_global.scss */
 .qodef-vertical-align-containers.qodef-50-50 .qodef-position-left-inner,
 .qodef-vertical-align-containers.qodef-50-50 .qodef-position-center-inner,
 .qodef-vertical-align-containers.qodef-50-50 .qodef-position-right-inner {
   width: 98%;
 }
-/* line 975, scss/_global.scss */
+/* line 980, scss/_global.scss */
 .qodef-vertical-align-containers .qodef-position-left {
   position: relative;
   float: left;
   z-index: 2;
   height: 100%;
 }
-/* line 981, scss/_global.scss */
+/* line 986, scss/_global.scss */
 .qodef-vertical-align-containers .qodef-position-center {
   height: 100%;
   width: 100%;
@@ -1060,7 +1066,7 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   text-align: center;
   z-index: 1;
 }
-/* line 990, scss/_global.scss */
+/* line 995, scss/_global.scss */
 .qodef-vertical-align-containers .qodef-position-right {
   position: relative;
   float: right;
@@ -1068,18 +1074,18 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   height: 100%;
   text-align: right;
 }
-/* line 998, scss/_global.scss */
+/* line 1003, scss/_global.scss */
 .qodef-vertical-align-containers .qodef-position-left-inner,
 .qodef-vertical-align-containers .qodef-position-center-inner,
 .qodef-vertical-align-containers .qodef-position-right-inner {
   vertical-align: middle;
   display: inline-block;
 }
-/* line 1004, scss/_global.scss */
+/* line 1009, scss/_global.scss */
 .qodef-vertical-align-containers .qodef-position-right.qodef-has-widget .qodef-position-right-inner {
   height: 100%;
 }
-/* line 1008, scss/_global.scss */
+/* line 1013, scss/_global.scss */
 .qodef-vertical-align-containers .qodef-position-left:before,
 .qodef-vertical-align-containers .qodef-position-center:before,
 .qodef-vertical-align-containers .qodef-position-right:before {
@@ -1095,12 +1101,12 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
    ========================================================================== */
 /* 5. Row styles - start
    ========================================================================== */
-/* line 1028, scss/_global.scss */
+/* line 1033, scss/_global.scss */
 .qodef-section {
   position: relative;
 }
 
-/* line 1033, scss/_global.scss */
+/* line 1038, scss/_global.scss */
 .qodef-grid-section .qodef-section-inner {
   width: 1100px;
   margin: 0 auto;
@@ -1108,23 +1114,23 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   z-index: 20;
 }
 
-/* line 1039, scss/_global.scss */
+/* line 1044, scss/_global.scss */
 .qodef-section-inner-margin {
   margin-left: -15px;
   margin-right: -15px;
 }
 
-/* line 1044, scss/_global.scss */
+/* line 1049, scss/_global.scss */
 .qodef-content-aligment-left {
   text-align: left;
 }
 
-/* line 1048, scss/_global.scss */
+/* line 1053, scss/_global.scss */
 .qodef-content-aligment-center {
   text-align: center;
 }
 
-/* line 1052, scss/_global.scss */
+/* line 1057, scss/_global.scss */
 .qodef-content-aligment-right {
   text-align: right;
 }
@@ -1132,21 +1138,21 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
 /* ==========================================================================
    Angled shape styles
    ========================================================================== */
-/* line 1061, scss/_global.scss */
+/* line 1066, scss/_global.scss */
 .qodef_angled_shape {
   position: absolute;
   z-index: 20;
   display: block;
 }
-/* line 1066, scss/_global.scss */
+/* line 1071, scss/_global.scss */
 .qodef_angled_shape.qodef_svg_top {
   top: -179px;
 }
-/* line 1070, scss/_global.scss */
+/* line 1075, scss/_global.scss */
 .qodef_angled_shape.qodef_svg_bottom {
   bottom: -179px;
 }
-/* line 1074, scss/_global.scss */
+/* line 1079, scss/_global.scss */
 .qodef_angled_shape polygon {
   fill: #fff;
 }
@@ -1156,7 +1162,7 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
    ========================================================================== */
 /* 5.1. Parallax section styles - start
    ========================================================================== */
-/* line 1088, scss/_global.scss */
+/* line 1093, scss/_global.scss */
 .qodef-parallax-section-holder {
   position: static;
   padding: 0px;
@@ -1166,19 +1172,19 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   background-attachment: fixed;
   overflow: hidden;
 }
-/* line 1097, scss/_global.scss */
+/* line 1102, scss/_global.scss */
 .qodef-parallax-section-holder.qodef-vertical-middle-align {
   display: table;
   width: 100%;
 }
-/* line 1102, scss/_global.scss */
+/* line 1107, scss/_global.scss */
 .qodef-parallax-section-holder .qodef-parallax-content-outer {
   display: table-cell;
   height: 100%;
   vertical-align: middle;
   padding: 100% 0;
 }
-/* line 1109, scss/_global.scss */
+/* line 1114, scss/_global.scss */
 .touch .qodef-parallax-section-holder.qodef-parallax-section-holder-touch-disabled {
   height: auto !important;
   min-height: 300px;
@@ -1187,7 +1193,7 @@ body.woocommerce.woocommerce-page .full_width .qodef-two-columns-25-75.woocommer
   background-size: cover;
 }
 
-/* line 1120, scss/_global.scss */
+/* line 1125, scss/_global.scss */
 section.parallax_section_holder.vertical_middle_align .parallax_content_outer {
   display: table-cell;
   height: 100%;
@@ -1199,7 +1205,7 @@ section.parallax_section_holder.vertical_middle_align .parallax_content_outer {
    ========================================================================== */
 /* 5.2. Video section styles - start
    ========================================================================== */
-/* line 1136, scss/_global.scss */
+/* line 1141, scss/_global.scss */
 .qodef-section .qodef-mobile-video-image {
   background-position: center center;
   background-repeat: no-repeat;
@@ -1212,7 +1218,7 @@ section.parallax_section_holder.vertical_middle_align .parallax_content_outer {
   width: 100%;
   z-index: 10;
 }
-/* line 1149, scss/_global.scss */
+/* line 1154, scss/_global.scss */
 .qodef-section .qodef-video-overlay {
   height: 100%;
   left: 0;
@@ -1222,14 +1228,14 @@ section.parallax_section_holder.vertical_middle_align .parallax_content_outer {
   width: 100%;
   z-index: 11;
 }
-/* line 1158, scss/_global.scss */
+/* line 1163, scss/_global.scss */
 .qodef-section .qodef-video-overlay.qodef-video-overlay-active {
   background-image: url("img/pixel-video.png");
   background-position: 0px 0px;
   background-repeat: repeat;
   opacity: 1;
 }
-/* line 1166, scss/_global.scss */
+/* line 1171, scss/_global.scss */
 .qodef-section .qodef-video-wrap {
   top: 0px;
   left: 0px;
@@ -1238,34 +1244,34 @@ section.parallax_section_holder.vertical_middle_align .parallax_content_outer {
   width: 100%;
   z-index: 10;
 }
-/* line 1175, scss/_global.scss */
+/* line 1180, scss/_global.scss */
 .qodef-section .qodef-video-wrap .mejs-offscreen {
   display: none;
 }
-/* line 1179, scss/_global.scss */
+/* line 1184, scss/_global.scss */
 .qodef-section .qodef-video-wrap .mejs-container .mejs-controls {
   display: none !important;
 }
-/* line 1183, scss/_global.scss */
+/* line 1188, scss/_global.scss */
 .qodef-section .qodef-video-wrap .mejs-poster {
   background-size: cover !important;
   -moz-background-size: cover !important;
   -webkit-background-size: cover !important;
   -o-background-size: cover !important;
 }
-/* line 1190, scss/_global.scss */
+/* line 1195, scss/_global.scss */
 .qodef-section .qodef-video-wrap .mejs-container {
   background-color: transparent !important;
   background-image: none !important;
   height: auto !important;
   width: 100% !important;
 }
-/* line 1197, scss/_global.scss */
+/* line 1202, scss/_global.scss */
 .qodef-section .qodef-video-wrap .mejs-mediaelement {
   background: none !important;
   border: 0px !important;
 }
-/* line 1202, scss/_global.scss */
+/* line 1207, scss/_global.scss */
 .qodef-section .qodef-video-wrap .mejs-container .mejs-poster img {
   max-width: none !important;
   width: 100% !important;
@@ -11592,6 +11598,16 @@ nav.qodef-fullscreen-menu ul.sub_menu {
   position: relative;
 }
 /* line 250, scss/modules/shortcodes/_button.scss */
+.qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline) .qodef-animation-overlay-holder {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+/* line 260, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline) .qodef-animation-overlay {
   position: absolute;
   display: inline-block;
@@ -11608,29 +11624,29 @@ nav.qodef-fullscreen-menu ul.sub_menu {
   -webkit-transition: -webkit-transform .3s ease-out, opacity .2s ease-out;
   transition: transform .3s ease-out, opacity .2s ease-out;
 }
-/* line 268, scss/modules/shortcodes/_button.scss */
+/* line 278, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):not(.qodef-btn-custom-hover-bg):not(.qodef-btn-solid) .qodef-animation-overlay {
   background-color: #b2dd4c;
 }
-/* line 273, scss/modules/shortcodes/_button.scss */
+/* line 283, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline).qodef-btn-solid:not(.qodef-btn-custom-hover-bg) .qodef-animation-overlay {
   background-color: #212121;
 }
-/* line 277, scss/modules/shortcodes/_button.scss */
+/* line 287, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 282, scss/modules/shortcodes/_button.scss */
+/* line 292, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover:not(.qodef-btn-custom-hover-bg):not(.qodef-btn-solid) {
   background-color: transparent !important;
 }
-/* line 286, scss/modules/shortcodes/_button.scss */
+/* line 296, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover.qodef-btn-solid:not(.qodef-btn-custom-hover-bg) {
   background-color: #b2dd4c !important;
 }
-/* line 289, scss/modules/shortcodes/_button.scss */
+/* line 299, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover .qodef-animation-overlay {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
@@ -11640,17 +11656,30 @@ nav.qodef-fullscreen-menu ul.sub_menu {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  /* line 303, scss/modules/shortcodes/_button.scss */
+  /* line 313, scss/modules/shortcodes/_button.scss */
   .qodef-btn-hover-animation {
     display: inline-table;
   }
 }
-/* line 308, scss/modules/shortcodes/_button.scss */
+/* line 318, scss/modules/shortcodes/_button.scss */
 input[type=submit].qodef-btn,
 button.qodef-btn {
   cursor: pointer;
 }
 
+@supports (-ms-ime-align: auto) {
+  /* line 324, scss/modules/shortcodes/_button.scss */
+  .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover .qodef-animation-overlay {
+    transform: scale(1) !important;
+  }
+
+  /* line 327, scss/modules/shortcodes/_button.scss */
+  .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline) .qodef-animation-overlay {
+    border-radius: inherit !important;
+    height: 100% !important;
+    top: 0 !important;
+  }
+}
 /* ==========================================================================
    Accordion shortcode start styles
    ========================================================================== */
@@ -12454,6 +12483,16 @@ footer .qodef-blog-list-holder.qodef-image-in-box .qodef-item-text-holder {
   position: relative;
 }
 /* line 250, scss/modules/shortcodes/_button.scss */
+.qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline) .qodef-animation-overlay-holder {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+/* line 260, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline) .qodef-animation-overlay {
   position: absolute;
   display: inline-block;
@@ -12470,29 +12509,29 @@ footer .qodef-blog-list-holder.qodef-image-in-box .qodef-item-text-holder {
   -webkit-transition: -webkit-transform .3s ease-out, opacity .2s ease-out;
   transition: transform .3s ease-out, opacity .2s ease-out;
 }
-/* line 268, scss/modules/shortcodes/_button.scss */
+/* line 278, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):not(.qodef-btn-custom-hover-bg):not(.qodef-btn-solid) .qodef-animation-overlay {
   background-color: #b2dd4c;
 }
-/* line 273, scss/modules/shortcodes/_button.scss */
+/* line 283, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline).qodef-btn-solid:not(.qodef-btn-custom-hover-bg) .qodef-animation-overlay {
   background-color: #212121;
 }
-/* line 277, scss/modules/shortcodes/_button.scss */
+/* line 287, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 282, scss/modules/shortcodes/_button.scss */
+/* line 292, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover:not(.qodef-btn-custom-hover-bg):not(.qodef-btn-solid) {
   background-color: transparent !important;
 }
-/* line 286, scss/modules/shortcodes/_button.scss */
+/* line 296, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover.qodef-btn-solid:not(.qodef-btn-custom-hover-bg) {
   background-color: #b2dd4c !important;
 }
-/* line 289, scss/modules/shortcodes/_button.scss */
+/* line 299, scss/modules/shortcodes/_button.scss */
 .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover .qodef-animation-overlay {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
@@ -12502,17 +12541,30 @@ footer .qodef-blog-list-holder.qodef-image-in-box .qodef-item-text-holder {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  /* line 303, scss/modules/shortcodes/_button.scss */
+  /* line 313, scss/modules/shortcodes/_button.scss */
   .qodef-btn-hover-animation {
     display: inline-table;
   }
 }
-/* line 308, scss/modules/shortcodes/_button.scss */
+/* line 318, scss/modules/shortcodes/_button.scss */
 input[type=submit].qodef-btn,
 button.qodef-btn {
   cursor: pointer;
 }
 
+@supports (-ms-ime-align: auto) {
+  /* line 324, scss/modules/shortcodes/_button.scss */
+  .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline):hover .qodef-animation-overlay {
+    transform: scale(1) !important;
+  }
+
+  /* line 327, scss/modules/shortcodes/_button.scss */
+  .qodef-btn.qodef-btn-hover-animation:not(.qodef-btn-outline) .qodef-animation-overlay {
+    border-radius: inherit !important;
+    height: 100% !important;
+    top: 0 !important;
+  }
+}
 /* ==========================================================================
 # Carousels style - begin
 ========================================================================== */
@@ -18333,13 +18385,6 @@ in order to override it */
   margin-top: -32px;
 }
 /* line 335, scss/modules/widgets/_widgets.scss */
-.qodef-header-vertical .dwls_search_results {
-  /*margin: 0 0 0 0;
-  @include ipad-landscape {
-      margin: 0;
-  }*/
-}
-/* line 342, scss/modules/widgets/_widgets.scss */
 .dwls_search_results li {
   display: block;
   border-bottom: 1px solid #dadada;
@@ -18347,11 +18392,11 @@ in order to override it */
   text-align: left;
   text-decoration: none;
 }
-/* line 349, scss/modules/widgets/_widgets.scss */
+/* line 342, scss/modules/widgets/_widgets.scss */
 .dwls_search_results li p {
   margin: 5px 0 0 0;
 }
-/* line 353, scss/modules/widgets/_widgets.scss */
+/* line 346, scss/modules/widgets/_widgets.scss */
 .dwls_search_results li a,
 .dwls_search_results li a:visited {
   display: block;
@@ -18360,40 +18405,40 @@ in order to override it */
   text-decoration: none;
   color: #797979;
 }
-/* line 362, scss/modules/widgets/_widgets.scss */
+/* line 355, scss/modules/widgets/_widgets.scss */
 .dwls_search_results li a:hover,
 .dwls_search_results li a:visited {
   color: #b2dd4c;
 }
-/* line 369, scss/modules/widgets/_widgets.scss */
+/* line 362, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .daves-wordpress-live-search_title span {
   display: block;
 }
-/* line 372, scss/modules/widgets/_widgets.scss */
+/* line 365, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .daves-wordpress-live-search_title .search-category {
   font-size: 90%;
 }
-/* line 375, scss/modules/widgets/_widgets.scss */
+/* line 368, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .daves-wordpress-live-search_title .daves-wordpress-live-search_title,
 .dwls_search_results .daves-wordpress-live-search_title .daves-wordpress-live-search_title span {
   display: block;
 }
-/* line 380, scss/modules/widgets/_widgets.scss */
+/* line 373, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .daves-wordpress-live-search_author {
   margin: 5px 0 0 0;
   font-size: 90%;
 }
-/* line 384, scss/modules/widgets/_widgets.scss */
+/* line 377, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .daves-wordpress-live-search_date {
   margin: 0;
   font-size: 90%;
 }
-/* line 388, scss/modules/widgets/_widgets.scss */
+/* line 381, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .excerpt,
 .dwls_search_results .meta {
   width: 100%;
 }
-/* line 393, scss/modules/widgets/_widgets.scss */
+/* line 386, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .search_footer a {
   display: block;
   margin-left: 0;
@@ -18401,22 +18446,22 @@ in order to override it */
   text-decoration: none;
   color: #797979;
 }
-/* line 399, scss/modules/widgets/_widgets.scss */
+/* line 392, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .search_footer a:hover, .dwls_search_results .search_footer a:visited {
   color: #b2dd4c;
 }
-/* line 405, scss/modules/widgets/_widgets.scss */
+/* line 398, scss/modules/widgets/_widgets.scss */
 .dwls_search_results .clearfix {
   float: none !important;
   clear: both !important;
 }
 
-/* line 411, scss/modules/widgets/_widgets.scss */
+/* line 404, scss/modules/widgets/_widgets.scss */
 #search_results_activity_indicator {
   width: 30px;
   height: 30px;
 }
-/* line 414, scss/modules/widgets/_widgets.scss */
+/* line 407, scss/modules/widgets/_widgets.scss */
 #search_results_activity_indicator canvas {
   width: 30px;
   height: 30px;
@@ -18425,7 +18470,7 @@ in order to override it */
   left: 30px;
   background: #fff;
 }
-/* line 422, scss/modules/widgets/_widgets.scss */
+/* line 415, scss/modules/widgets/_widgets.scss */
 .admin-bar #search_results_activity_indicator canvas {
   top: -13px;
 }

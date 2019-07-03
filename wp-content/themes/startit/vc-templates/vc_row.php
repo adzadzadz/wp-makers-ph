@@ -46,64 +46,6 @@ if ( ! empty( $el_id ) ) {
 if(!empty($anchor)){
 	$wrapper_attributes[] = 'data-qodef-anchor="' . esc_attr($anchor ) . '"';
 }
-/*** This functionality is disabled from vc row ***/
-/*
-if ( ! empty( $full_width ) ) {
-	$wrapper_attributes[] = 'data-vc-full-width="true"';
-	$wrapper_attributes[] = 'data-vc-full-width-init="false"';
-	if ( 'stretch_row_content' === $full_width ) {
-		$wrapper_attributes[] = 'data-vc-stretch-content="true"';
-	} elseif ( 'stretch_row_content_no_spaces' === $full_width ) {
-		$wrapper_attributes[] = 'data-vc-stretch-content="true"';
-		$css_classes[] = 'vc_row-no-padding';
-	}
-	$after_output .= '<div class="vc_row-full-width"></div>';
-}
-
-if ( ! empty( $full_height ) ) {
-	$css_classes[] = ' vc_row-o-full-height';
-	if ( ! empty( $content_placement ) ) {
-		$css_classes[] = ' vc_row-o-content-' . $content_placement;
-	}
-}
-
-$has_video_bg = ( ! empty( $video_bg ) && ! empty( $video_bg_url ) && vc_extract_youtube_id( $video_bg_url ) );
-
-if ( $has_video_bg ) {
-	$parallax = $video_bg_parallax;
-	$parallax_image = $video_bg_url;
-	$css_classes[] = ' vc_video-bg-container';
-	wp_enqueue_script( 'vc_youtube_iframe_api_js' );
-}
-
-if ( ! empty( $parallax ) ) {
-	wp_enqueue_script( 'vc_jquery_skrollr_js' );
-	$wrapper_attributes[] = 'data-vc-parallax="1.5"'; // parallax speed
-	$css_classes[] = 'vc_general vc_parallax vc_parallax-' . $parallax;
-	if ( strpos( $parallax, 'fade' ) !== false ) {
-		$css_classes[] = 'js-vc_parallax-o-fade';
-		$wrapper_attributes[] = 'data-vc-parallax-o-fade="on"';
-	} elseif ( strpos( $parallax, 'fixed' ) !== false ) {
-		$css_classes[] = 'js-vc_parallax-o-fixed';
-	}
-}
-
-if ( ! empty ( $parallax_image ) ) {
-	if ( $has_video_bg ) {
-		$parallax_image_src = $parallax_image;
-	} else {
-		$parallax_image_id = preg_replace( '/[^\d]/', '', $parallax_image );
-		$parallax_image_src = wp_get_attachment_image_src( $parallax_image_id, 'full' );
-		if ( ! empty( $parallax_image_src[0] ) ) {
-			$parallax_image_src = $parallax_image_src[0];
-		}
-	}
-	$wrapper_attributes[] = 'data-vc-parallax-image="' . esc_attr( $parallax_image_src ) . '"';
-}
-if ( ! $parallax && $has_video_bg ) {
-	$wrapper_attributes[] = 'data-vc-video-bg="' . esc_attr( $video_bg_url ) . '"';
-}
-*/
 
 /*** Additional Options ***/
 
@@ -113,7 +55,7 @@ if( ! empty($content_aligment)){
 if( ! empty($row_type) && $row_type == 'parallax'){
 	$css_classes[] = 'qodef-parallax-section-holder';
 
-	if(qode_startit_options()->getOptionValue('parallax_on_off') == 'off'){
+	if( startit_qode_options()->getOptionValue('parallax_on_off') == 'off'){
 		$css_classes[] = 'qodef-parallax-section-holder-touch-disabled';
 	}
 }
@@ -221,21 +163,21 @@ if($video == 'show_video'){
 		$video_overlay_style = 'background-image:url("'. $v_overlay_image . '");';
 	}
 	if($video_image) {
-		$video_output .= '<div class="qodef-mobile-video-image" ' . qode_startit_get_inline_attr($video_mobile_style, 'style') . ')"></div>';
+		$video_output .= '<div class="qodef-mobile-video-image" ' . startit_qode_get_inline_attr($video_mobile_style, 'style') . ')"></div>';
 	}
-	$video_output .= '<div ' . qode_startit_get_class_attribute($video_overlay_class) .  qode_startit_get_inline_attr($video_overlay_style, 'style') . '></div>';
+	$video_output .= '<div ' . startit_qode_get_class_attribute($video_overlay_class) . startit_qode_get_inline_attr($video_overlay_style, 'style') . '></div>';
 	$video_output .= '<div class="qodef-video-wrap">';
-	$video_output .= '<video class="qodef-video" width="1920" height="800" '. qode_startit_get_inline_attr($video_attrs, 'poster')  .' controls="controls" preload="auto" loop autoplay muted>';
-	if(!empty($video_webm)) { $video_output .= '<source type="video/webm" src="'.$video_webm.'">'; }
-	if(!empty($video_mp4)) { $video_output .= '<source type="video/mp4" src="'.$video_mp4.'">'; }
-	if(!empty($video_ogv)) { $video_output .= '<source type="video/ogg" src="'. $video_ogv.'">'; }
+	$video_output .= '<video class="qodef-video" width="1920" height="800" ' . startit_qode_get_inline_attr($video_attrs, 'poster') . ' controls="controls" preload="auto" loop autoplay muted>';
+	if(!empty($video_webm)) { $video_output .= '<source type="video/webm" src="'.esc_url($video_webm).'">'; }
+	if(!empty($video_mp4)) { $video_output .= '<source type="video/mp4" src="'.esc_url($video_mp4).'">'; }
+	if(!empty($video_ogv)) { $video_output .= '<source type="video/ogg" src="'. esc_url($video_ogv).'">'; }
 	$video_output .='<object width="320" height="240" type="application/x-shockwave-flash" data="flashmediaelement.swf">';
 		$video_output .='<param name="movie" value="flashmediaelement.swf" />';
 		if(!empty($video_mp4)) {
 			$video_output .= '<param name="flashvars" value="controls=true&amp;file=' . $video_mp4 . '" />';
 		}
 	if($v_image) {
-		$video_output .= '<img ' . qode_startit_get_inline_attr($v_image, 'src') . ' width="1920" height="800" title="No video playback capabilities" alt="Video thumb" />';
+		$video_output .= '<img ' . startit_qode_get_inline_attr($v_image, 'src') . ' width="1920" height="800" title="' . esc_attr('No video playback capabilities', 'startit') . '" alt="' . esc_attr('Video thumb','startit') . '" />';
 	}
 	$video_output .='</object>';
 	$video_output .='</video>';
@@ -262,4 +204,4 @@ $output .= $before_wrapper_close;
 $output .= '</div>';
 $output .= $after_output;
 
-print $output;
+startit_qode_module_part( $output );

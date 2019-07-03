@@ -15,7 +15,7 @@
 <?php if ( have_comments() ) : ?>
 
 	<ul class="qodef-comment-list">
-		<?php wp_list_comments(array( 'callback' => 'qode_startit_comment')); ?>
+		<?php wp_list_comments(array( 'callback' => 'startit_qode_comment')); ?>
 	</ul>
 
 
@@ -38,6 +38,7 @@
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
+$qodef_consent  = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
 
 $args = array(
 	'id_form' => 'commentform',
@@ -46,13 +47,15 @@ $args = array(
 	'title_reply_to' => esc_html__( 'Post a Reply to %s','startit' ),
 	'cancel_reply_link' => esc_html__( 'Cancel Reply','startit' ),
 	'label_submit' => esc_html__( 'Send message','startit' ),
-	'comment_field' => '<span class="qodef-input-title">' . esc_html__( 'Comment','startit' ) .'</span><textarea id="comment" placeholder="'.esc_html__( 'Write your comment here...','startit' ).'" name="comment" cols="45" rows="8" aria-required="true"></textarea>',
+	'comment_field' => '<span class="qodef-input-title">' . esc_html__( 'Comment','startit' ) .'</span><textarea id="comment" placeholder="'.esc_attr__( 'Write your comment here...','startit' ).'" name="comment" cols="45" rows="8" aria-required="true"></textarea>',
 	'comment_notes_before' => '',
 	'comment_notes_after' => '',
 	'fields' => apply_filters( 'comment_form_default_fields', array(
-		'author' => '<div class="qodef-three-columns clearfix"><div class="qodef-three-columns-inner"><div class="qodef-column"><div class="qodef-column-inner"><span class="qodef-input-title">' . esc_html__( 'Name','startit' ) .'</span><input id="author" name="author" placeholder="'. esc_html__( 'Your full name','startit' ) .'" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' /></div></div>',
-		'url' => '<div class="qodef-column"><div class="qodef-column-inner"><span class="qodef-input-title">' . esc_html__( 'Email','startit' ) .'</span><input id="email" name="email" placeholder="'. esc_html__( 'E-mail address','startit' ) .'" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '"' . $aria_req . ' /></div></div>',
-		'email' => '<div class="qodef-column"><div class="qodef-column-inner"><span class="qodef-input-title">' . esc_html__( 'Website','startit' ) .'</span><input id="url" name="url" type="text" placeholder="'. esc_html__( 'Website','startit' ) .'" value="' . esc_attr( $commenter['comment_author_url'] ) . '" /></div></div></div></div>'
+		'author' => '<div class="qodef-three-columns clearfix"><div class="qodef-three-columns-inner"><div class="qodef-column"><div class="qodef-column-inner"><span class="qodef-input-title">' . esc_html__( 'Name','startit' ) .'</span><input id="author" name="author" placeholder="'. esc_attr__( 'Your full name','startit' ) .'" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' /></div></div>',
+		'url' => '<div class="qodef-column"><div class="qodef-column-inner"><span class="qodef-input-title">' . esc_html__( 'Email','startit' ) .'</span><input id="email" name="email" placeholder="'. esc_attr__( 'E-mail address','startit' ) .'" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '"' . $aria_req . ' /></div></div>',
+		'email' => '<div class="qodef-column"><div class="qodef-column-inner"><span class="qodef-input-title">' . esc_html__( 'Website','startit' ) .'</span><input id="url" name="url" type="text" placeholder="'. esc_attr__( 'Website','startit' ) .'" value="' . esc_attr( $commenter['comment_author_url'] ) . '" /></div>',
+        'cookies' => '<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $qodef_consent . ' />' .
+            '<label for="wp-comment-cookies-consent">' . __( 'Save my name, email, and website in this browser for the next time I comment.', 'startit' ) . '</label></p>' . '</div></div></div>'
 		 ) ) );
  ?>
 <?php if(get_comment_pages_count() > 1){

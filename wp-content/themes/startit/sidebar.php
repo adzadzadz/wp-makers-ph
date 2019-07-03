@@ -1,5 +1,5 @@
 <?php
-$sidebar = qode_startit_get_sidebar();
+$sidebar = startit_qode_get_sidebar();
 ?>
 <div class="qodef-column-inner">
     <aside class="qodef-sidebar">

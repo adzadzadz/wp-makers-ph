@@ -6,8 +6,8 @@
 				<?php } ?>
 					<div class="form-inner">
 						<i class="fa fa-search"></i>
-						<input type="text" placeholder="<?php esc_html_e('Search', 'startit'); ?>" name="s" class="qodef-search-field no-livesearch" autocomplete="off" />
-						<input type="submit" value="Search" />
+						<input type="text" placeholder="<?php esc_attr_e('Search', 'startit'); ?>" name="s" class="qodef-search-field no-livesearch" autocomplete="off" />
+						<input type="submit" value="<?php esc_attr_e('Search','startit'); ?>" />
 						<div class="qodef-search-close">
 							<a href="#">
 								<i class="fa fa-times"></i>

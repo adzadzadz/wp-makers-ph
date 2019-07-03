@@ -7,26 +7,26 @@ if(!function_exists('qode_startit_design_styles')) {
 
         $preload_background_styles = array();
 
-        if(qode_startit_options()->getOptionValue('preload_pattern_image') !== ""){
-            $preload_background_styles['background-image'] = 'url('.qode_startit_options()->getOptionValue('preload_pattern_image').') !important';
+        if( startit_qode_options()->getOptionValue('preload_pattern_image') !== ""){
+            $preload_background_styles['background-image'] = 'url(' . startit_qode_options()->getOptionValue('preload_pattern_image') . ') !important';
         }else{
             $preload_background_styles['background-image'] = 'url('.esc_url(QODE_ASSETS_ROOT."/img/preload_pattern.png").') !important';
         }
 
-        echo qode_startit_dynamic_css('.qodef-preload-background', $preload_background_styles);
+        echo startit_qode_dynamic_css('.qodef-preload-background', $preload_background_styles);
 
-		if (qode_startit_options()->getOptionValue('google_fonts')){
-			$font_family = qode_startit_options()->getOptionValue('google_fonts');
-			if(qode_startit_is_font_option_valid($font_family)) {
-				echo qode_startit_dynamic_css('body', array('font-family' => qode_startit_get_font_option_val($font_family)));
+		if (startit_qode_options()->getOptionValue('google_fonts')){
+			$font_family = startit_qode_options()->getOptionValue('google_fonts');
+			if(startit_qode_is_font_option_valid($font_family)) {
+				echo startit_qode_dynamic_css('body', array( 'font-family' => startit_qode_get_font_option_val($font_family)));
 			}
 		}
 
-		if(qode_startit_options()->getOptionValue('sticky_header_height') !== "") {
-			echo qode_startit_dynamic_css('.qodef-page-header .qodef-sticky-header .qodef-sticky-holder .qodef-logo-wrapper a ', array('max-height' => qode_startit_options()->getOptionValue('sticky_header_height')."px"));
+		if( startit_qode_options()->getOptionValue('sticky_header_height') !== "") {
+			echo startit_qode_dynamic_css('.qodef-page-header .qodef-sticky-header .qodef-sticky-holder .qodef-logo-wrapper a ', array( 'max-height' => startit_qode_options()->getOptionValue('sticky_header_height') . "px"));
 		}
 
-        if(qode_startit_options()->getOptionValue('first_color') !== "") {
+        if( startit_qode_options()->getOptionValue('first_color') !== "") {
             $color_selector = array(
                 'h1 a:hover',
                 'h2 a:hover',
@@ -324,59 +324,59 @@ if(!function_exists('qode_startit_design_styles')) {
                 '.qodef-progress-bar .qodef-progress-number-wrapper.qodef-floating .qodef-down-arrow'
             );
 
-            echo qode_startit_dynamic_css('.qodef-btn.qodef-btn-icon:not(.qodef-btn-custom-hover-bg).qodef-btn-solid .qodef-btn-text-icon', array('background-color' => 'rgba(0,0,0,0.05)'));
+            echo startit_qode_dynamic_css('.qodef-btn.qodef-btn-icon:not(.qodef-btn-custom-hover-bg).qodef-btn-solid .qodef-btn-text-icon', array( 'background-color' => 'rgba(0,0,0,0.05)'));
 
-            echo qode_startit_dynamic_css($color_selector, array('color' => qode_startit_options()->getOptionValue('first_color')));
-            echo qode_startit_dynamic_css($color_important_selector, array('color' => qode_startit_options()->getOptionValue('first_color').'!important'));
-            echo qode_startit_dynamic_css('::selection', array('background' => qode_startit_options()->getOptionValue('first_color')));
-            echo qode_startit_dynamic_css('::-moz-selection', array('background' => qode_startit_options()->getOptionValue('first_color')));
-            echo qode_startit_dynamic_css($background_color_selector, array('background-color' => qode_startit_options()->getOptionValue('first_color')));
-            echo qode_startit_dynamic_css($background_color_important_selector, array('background-color' => qode_startit_options()->getOptionValue('first_color').'!important'));
-            echo qode_startit_dynamic_css($border_color_selector, array('border-color' => qode_startit_options()->getOptionValue('first_color')));
-            echo qode_startit_dynamic_css($border_top_color_selector, array('border-top-color' => qode_startit_options()->getOptionValue('first_color')));
-            echo qode_startit_dynamic_css($border_color_important_selector, array('border-color' => qode_startit_options()->getOptionValue('first_color').'!important'));
-            $first_color_rgba = qode_startit_hex2rgb(qode_startit_options()->getOptionValue('first_color'));
-            echo qode_startit_dynamic_css($border_color_opacity_selector, array(
+            echo startit_qode_dynamic_css($color_selector, array( 'color' => startit_qode_options()->getOptionValue('first_color')));
+            echo startit_qode_dynamic_css($color_important_selector, array( 'color' => startit_qode_options()->getOptionValue('first_color') . '!important'));
+            echo startit_qode_dynamic_css('::selection', array( 'background' => startit_qode_options()->getOptionValue('first_color')));
+            echo startit_qode_dynamic_css('::-moz-selection', array( 'background' => startit_qode_options()->getOptionValue('first_color')));
+            echo startit_qode_dynamic_css($background_color_selector, array( 'background-color' => startit_qode_options()->getOptionValue('first_color')));
+            echo startit_qode_dynamic_css($background_color_important_selector, array( 'background-color' => startit_qode_options()->getOptionValue('first_color') . '!important'));
+            echo startit_qode_dynamic_css($border_color_selector, array( 'border-color' => startit_qode_options()->getOptionValue('first_color')));
+            echo startit_qode_dynamic_css($border_top_color_selector, array( 'border-top-color' => startit_qode_options()->getOptionValue('first_color')));
+            echo startit_qode_dynamic_css($border_color_important_selector, array( 'border-color' => startit_qode_options()->getOptionValue('first_color') . '!important'));
+            $first_color_rgba = startit_qode_hex2rgb(startit_qode_options()->getOptionValue('first_color'));
+            echo startit_qode_dynamic_css($border_color_opacity_selector, array(
                     'border-color' => "rgba(". $first_color_rgba[0] . "," . $first_color_rgba[1] . "," . $first_color_rgba[2] . "," . "0.3)"
                 )
             );
         }
 
-		if (qode_startit_options()->getOptionValue('page_background_color')) {
+		if (startit_qode_options()->getOptionValue('page_background_color')) {
 			$background_color_selector = array(
                 '.qodef-content .qodef-content-inner > .qodef-container',
                 '.qodef-content .qodef-content-inner > .qodef-full-width'
 			);
-			echo qode_startit_dynamic_css($background_color_selector, array('background-color' => qode_startit_options()->getOptionValue('page_background_color')));
+			echo startit_qode_dynamic_css($background_color_selector, array( 'background-color' => startit_qode_options()->getOptionValue('page_background_color')));
 		}
 
-		if (qode_startit_options()->getOptionValue('selection_color')) {
-			echo qode_startit_dynamic_css('::selection', array('background' => qode_startit_options()->getOptionValue('selection_color')));
-			echo qode_startit_dynamic_css('::-moz-selection', array('background' => qode_startit_options()->getOptionValue('selection_color')));
+		if (startit_qode_options()->getOptionValue('selection_color')) {
+			echo startit_qode_dynamic_css('::selection', array( 'background' => startit_qode_options()->getOptionValue('selection_color')));
+			echo startit_qode_dynamic_css('::-moz-selection', array( 'background' => startit_qode_options()->getOptionValue('selection_color')));
 		}
 
 		$boxed_background_style = array();
-		if (qode_startit_options()->getOptionValue('page_background_color_in_box')) {
-			$boxed_background_style['background-color'] = qode_startit_options()->getOptionValue('page_background_color_in_box');
+		if (startit_qode_options()->getOptionValue('page_background_color_in_box')) {
+			$boxed_background_style['background-color'] = startit_qode_options()->getOptionValue('page_background_color_in_box');
 		}
 
-		if (qode_startit_options()->getOptionValue('boxed_background_image')) {
-			$boxed_background_style['background-image'] = 'url('.esc_url(qode_startit_options()->getOptionValue('boxed_background_image')).')';
+		if (startit_qode_options()->getOptionValue('boxed_background_image')) {
+			$boxed_background_style['background-image'] = 'url('.esc_url(startit_qode_options()->getOptionValue('boxed_background_image')) . ')';
 			$boxed_background_style['background-position'] = 'center 0px';
 			$boxed_background_style['background-repeat'] = 'no-repeat';
 		}
 
-		if (qode_startit_options()->getOptionValue('boxed_pattern_background_image')) {
-			$boxed_background_style['background-image'] = 'url('.esc_url(qode_startit_options()->getOptionValue('boxed_pattern_background_image')).')';
+		if (startit_qode_options()->getOptionValue('boxed_pattern_background_image')) {
+			$boxed_background_style['background-image'] = 'url('.esc_url(startit_qode_options()->getOptionValue('boxed_pattern_background_image')) . ')';
 			$boxed_background_style['background-position'] = '0px 0px';
 			$boxed_background_style['background-repeat'] = 'repeat';
 		}
 
-		if (qode_startit_options()->getOptionValue('boxed_background_image_attachment')) {
-			$boxed_background_style['background-attachment'] = (qode_startit_options()->getOptionValue('boxed_background_image_attachment'));
+		if (startit_qode_options()->getOptionValue('boxed_background_image_attachment')) {
+			$boxed_background_style['background-attachment'] = (startit_qode_options()->getOptionValue('boxed_background_image_attachment'));
 		}
 
-		echo qode_startit_dynamic_css('.qodef-boxed .qodef-wrapper', $boxed_background_style);
+		echo startit_qode_dynamic_css('.qodef-boxed .qodef-wrapper', $boxed_background_style);
     }
 
     add_action('qode_startit_style_dynamic', 'qode_startit_design_styles');
@@ -388,29 +388,29 @@ if (!function_exists('qode_startit_h1_styles')) {
 
         $h1_styles = array();
 
-        if(qode_startit_options()->getOptionValue('h1_color') !== '') {
-            $h1_styles['color'] = qode_startit_options()->getOptionValue('h1_color');
+        if( startit_qode_options()->getOptionValue('h1_color') !== '') {
+            $h1_styles['color'] = startit_qode_options()->getOptionValue('h1_color');
         }
-        if(qode_startit_options()->getOptionValue('h1_google_fonts') !== '-1') {
-            $h1_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('h1_google_fonts'));
+        if( startit_qode_options()->getOptionValue('h1_google_fonts') !== '-1') {
+            $h1_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('h1_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('h1_fontsize') !== '') {
-            $h1_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h1_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('h1_fontsize') !== '') {
+            $h1_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h1_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h1_lineheight') !== '') {
-            $h1_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h1_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('h1_lineheight') !== '') {
+            $h1_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h1_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h1_texttransform') !== '') {
-            $h1_styles['text-transform'] = qode_startit_options()->getOptionValue('h1_texttransform');
+        if( startit_qode_options()->getOptionValue('h1_texttransform') !== '') {
+            $h1_styles['text-transform'] = startit_qode_options()->getOptionValue('h1_texttransform');
         }
-        if(qode_startit_options()->getOptionValue('h1_fontstyle') !== '') {
-            $h1_styles['font-style'] = qode_startit_options()->getOptionValue('h1_fontstyle');
+        if( startit_qode_options()->getOptionValue('h1_fontstyle') !== '') {
+            $h1_styles['font-style'] = startit_qode_options()->getOptionValue('h1_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('h1_fontweight') !== '') {
-            $h1_styles['font-weight'] = qode_startit_options()->getOptionValue('h1_fontweight');
+        if( startit_qode_options()->getOptionValue('h1_fontweight') !== '') {
+            $h1_styles['font-weight'] = startit_qode_options()->getOptionValue('h1_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('h1_letterspacing') !== '') {
-            $h1_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h1_letterspacing')).'px';
+        if( startit_qode_options()->getOptionValue('h1_letterspacing') !== '') {
+            $h1_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h1_letterspacing')) . 'px';
         }
 
         $h1_selector = array(
@@ -418,7 +418,7 @@ if (!function_exists('qode_startit_h1_styles')) {
         );
 
         if (!empty($h1_styles)) {
-            echo qode_startit_dynamic_css($h1_selector, $h1_styles);
+            echo startit_qode_dynamic_css($h1_selector, $h1_styles);
         }
     }
 
@@ -431,29 +431,29 @@ if (!function_exists('qode_startit_h2_styles')) {
 
         $h2_styles = array();
 
-        if(qode_startit_options()->getOptionValue('h2_color') !== '') {
-            $h2_styles['color'] = qode_startit_options()->getOptionValue('h2_color');
+        if( startit_qode_options()->getOptionValue('h2_color') !== '') {
+            $h2_styles['color'] = startit_qode_options()->getOptionValue('h2_color');
         }
-        if(qode_startit_options()->getOptionValue('h2_google_fonts') !== '-1') {
-            $h2_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('h2_google_fonts'));
+        if( startit_qode_options()->getOptionValue('h2_google_fonts') !== '-1') {
+            $h2_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('h2_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('h2_fontsize') !== '') {
-            $h2_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h2_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('h2_fontsize') !== '') {
+            $h2_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h2_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h2_lineheight') !== '') {
-            $h2_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h2_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('h2_lineheight') !== '') {
+            $h2_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h2_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h2_texttransform') !== '') {
-            $h2_styles['text-transform'] = qode_startit_options()->getOptionValue('h2_texttransform');
+        if( startit_qode_options()->getOptionValue('h2_texttransform') !== '') {
+            $h2_styles['text-transform'] = startit_qode_options()->getOptionValue('h2_texttransform');
         }
-        if(qode_startit_options()->getOptionValue('h2_fontstyle') !== '') {
-            $h2_styles['font-style'] = qode_startit_options()->getOptionValue('h2_fontstyle');
+        if( startit_qode_options()->getOptionValue('h2_fontstyle') !== '') {
+            $h2_styles['font-style'] = startit_qode_options()->getOptionValue('h2_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('h2_fontweight') !== '') {
-            $h2_styles['font-weight'] = qode_startit_options()->getOptionValue('h2_fontweight');
+        if( startit_qode_options()->getOptionValue('h2_fontweight') !== '') {
+            $h2_styles['font-weight'] = startit_qode_options()->getOptionValue('h2_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('h2_letterspacing') !== '') {
-            $h2_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h2_letterspacing')).'px';
+        if( startit_qode_options()->getOptionValue('h2_letterspacing') !== '') {
+            $h2_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h2_letterspacing')) . 'px';
         }
 
         $h2_selector = array(
@@ -461,7 +461,7 @@ if (!function_exists('qode_startit_h2_styles')) {
         );
 
         if (!empty($h2_styles)) {
-            echo qode_startit_dynamic_css($h2_selector, $h2_styles);
+            echo startit_qode_dynamic_css($h2_selector, $h2_styles);
         }
     }
 
@@ -474,29 +474,29 @@ if (!function_exists('qode_startit_h3_styles')) {
 
         $h3_styles = array();
 
-        if(qode_startit_options()->getOptionValue('h3_color') !== '') {
-            $h3_styles['color'] = qode_startit_options()->getOptionValue('h3_color');
+        if( startit_qode_options()->getOptionValue('h3_color') !== '') {
+            $h3_styles['color'] = startit_qode_options()->getOptionValue('h3_color');
         }
-        if(qode_startit_options()->getOptionValue('h3_google_fonts') !== '-1') {
-            $h3_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('h3_google_fonts'));
+        if( startit_qode_options()->getOptionValue('h3_google_fonts') !== '-1') {
+            $h3_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('h3_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('h3_fontsize') !== '') {
-            $h3_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h3_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('h3_fontsize') !== '') {
+            $h3_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h3_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h3_lineheight') !== '') {
-            $h3_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h3_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('h3_lineheight') !== '') {
+            $h3_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h3_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h3_texttransform') !== '') {
-            $h3_styles['text-transform'] = qode_startit_options()->getOptionValue('h3_texttransform');
+        if( startit_qode_options()->getOptionValue('h3_texttransform') !== '') {
+            $h3_styles['text-transform'] = startit_qode_options()->getOptionValue('h3_texttransform');
         }
-        if(qode_startit_options()->getOptionValue('h3_fontstyle') !== '') {
-            $h3_styles['font-style'] = qode_startit_options()->getOptionValue('h3_fontstyle');
+        if( startit_qode_options()->getOptionValue('h3_fontstyle') !== '') {
+            $h3_styles['font-style'] = startit_qode_options()->getOptionValue('h3_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('h3_fontweight') !== '') {
-            $h3_styles['font-weight'] = qode_startit_options()->getOptionValue('h3_fontweight');
+        if( startit_qode_options()->getOptionValue('h3_fontweight') !== '') {
+            $h3_styles['font-weight'] = startit_qode_options()->getOptionValue('h3_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('h3_letterspacing') !== '') {
-            $h3_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h3_letterspacing')).'px';
+        if( startit_qode_options()->getOptionValue('h3_letterspacing') !== '') {
+            $h3_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h3_letterspacing')) . 'px';
         }
 
         $h3_selector = array(
@@ -504,7 +504,7 @@ if (!function_exists('qode_startit_h3_styles')) {
         );
 
         if (!empty($h3_styles)) {
-            echo qode_startit_dynamic_css($h3_selector, $h3_styles);
+            echo startit_qode_dynamic_css($h3_selector, $h3_styles);
         }
     }
 
@@ -517,29 +517,29 @@ if (!function_exists('qode_startit_h4_styles')) {
 
         $h4_styles = array();
 
-        if(qode_startit_options()->getOptionValue('h4_color') !== '') {
-            $h4_styles['color'] = qode_startit_options()->getOptionValue('h4_color');
+        if( startit_qode_options()->getOptionValue('h4_color') !== '') {
+            $h4_styles['color'] = startit_qode_options()->getOptionValue('h4_color');
         }
-        if(qode_startit_options()->getOptionValue('h4_google_fonts') !== '-1') {
-            $h4_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('h4_google_fonts'));
+        if( startit_qode_options()->getOptionValue('h4_google_fonts') !== '-1') {
+            $h4_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('h4_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('h4_fontsize') !== '') {
-            $h4_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h4_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('h4_fontsize') !== '') {
+            $h4_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h4_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h4_lineheight') !== '') {
-            $h4_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h4_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('h4_lineheight') !== '') {
+            $h4_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h4_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h4_texttransform') !== '') {
-            $h4_styles['text-transform'] = qode_startit_options()->getOptionValue('h4_texttransform');
+        if( startit_qode_options()->getOptionValue('h4_texttransform') !== '') {
+            $h4_styles['text-transform'] = startit_qode_options()->getOptionValue('h4_texttransform');
         }
-        if(qode_startit_options()->getOptionValue('h4_fontstyle') !== '') {
-            $h4_styles['font-style'] = qode_startit_options()->getOptionValue('h4_fontstyle');
+        if( startit_qode_options()->getOptionValue('h4_fontstyle') !== '') {
+            $h4_styles['font-style'] = startit_qode_options()->getOptionValue('h4_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('h4_fontweight') !== '') {
-            $h4_styles['font-weight'] = qode_startit_options()->getOptionValue('h4_fontweight');
+        if( startit_qode_options()->getOptionValue('h4_fontweight') !== '') {
+            $h4_styles['font-weight'] = startit_qode_options()->getOptionValue('h4_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('h4_letterspacing') !== '') {
-            $h4_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h4_letterspacing')).'px';
+        if( startit_qode_options()->getOptionValue('h4_letterspacing') !== '') {
+            $h4_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h4_letterspacing')) . 'px';
         }
 
         $h4_selector = array(
@@ -547,7 +547,7 @@ if (!function_exists('qode_startit_h4_styles')) {
         );
 
         if (!empty($h4_styles)) {
-            echo qode_startit_dynamic_css($h4_selector, $h4_styles);
+            echo startit_qode_dynamic_css($h4_selector, $h4_styles);
         }
     }
 
@@ -560,29 +560,29 @@ if (!function_exists('qode_startit_h5_styles')) {
 
         $h5_styles = array();
 
-        if(qode_startit_options()->getOptionValue('h5_color') !== '') {
-            $h5_styles['color'] = qode_startit_options()->getOptionValue('h5_color');
+        if( startit_qode_options()->getOptionValue('h5_color') !== '') {
+            $h5_styles['color'] = startit_qode_options()->getOptionValue('h5_color');
         }
-        if(qode_startit_options()->getOptionValue('h5_google_fonts') !== '-1') {
-            $h5_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('h5_google_fonts'));
+        if( startit_qode_options()->getOptionValue('h5_google_fonts') !== '-1') {
+            $h5_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('h5_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('h5_fontsize') !== '') {
-            $h5_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h5_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('h5_fontsize') !== '') {
+            $h5_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h5_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h5_lineheight') !== '') {
-            $h5_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h5_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('h5_lineheight') !== '') {
+            $h5_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h5_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h5_texttransform') !== '') {
-            $h5_styles['text-transform'] = qode_startit_options()->getOptionValue('h5_texttransform');
+        if( startit_qode_options()->getOptionValue('h5_texttransform') !== '') {
+            $h5_styles['text-transform'] = startit_qode_options()->getOptionValue('h5_texttransform');
         }
-        if(qode_startit_options()->getOptionValue('h5_fontstyle') !== '') {
-            $h5_styles['font-style'] = qode_startit_options()->getOptionValue('h5_fontstyle');
+        if( startit_qode_options()->getOptionValue('h5_fontstyle') !== '') {
+            $h5_styles['font-style'] = startit_qode_options()->getOptionValue('h5_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('h5_fontweight') !== '') {
-            $h5_styles['font-weight'] = qode_startit_options()->getOptionValue('h5_fontweight');
+        if( startit_qode_options()->getOptionValue('h5_fontweight') !== '') {
+            $h5_styles['font-weight'] = startit_qode_options()->getOptionValue('h5_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('h5_letterspacing') !== '') {
-            $h5_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h5_letterspacing')).'px';
+        if( startit_qode_options()->getOptionValue('h5_letterspacing') !== '') {
+            $h5_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h5_letterspacing')) . 'px';
         }
 
         $h5_selector = array(
@@ -590,7 +590,7 @@ if (!function_exists('qode_startit_h5_styles')) {
         );
 
         if (!empty($h5_styles)) {
-            echo qode_startit_dynamic_css($h5_selector, $h5_styles);
+            echo startit_qode_dynamic_css($h5_selector, $h5_styles);
         }
     }
 
@@ -603,29 +603,29 @@ if (!function_exists('qode_startit_h6_styles')) {
 
         $h6_styles = array();
 
-        if(qode_startit_options()->getOptionValue('h6_color') !== '') {
-            $h6_styles['color'] = qode_startit_options()->getOptionValue('h6_color');
+        if( startit_qode_options()->getOptionValue('h6_color') !== '') {
+            $h6_styles['color'] = startit_qode_options()->getOptionValue('h6_color');
         }
-        if(qode_startit_options()->getOptionValue('h6_google_fonts') !== '-1') {
-            $h6_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('h6_google_fonts'));
+        if( startit_qode_options()->getOptionValue('h6_google_fonts') !== '-1') {
+            $h6_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('h6_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('h6_fontsize') !== '') {
-            $h6_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h6_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('h6_fontsize') !== '') {
+            $h6_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h6_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h6_lineheight') !== '') {
-            $h6_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h6_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('h6_lineheight') !== '') {
+            $h6_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h6_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('h6_texttransform') !== '') {
-            $h6_styles['text-transform'] = qode_startit_options()->getOptionValue('h6_texttransform');
+        if( startit_qode_options()->getOptionValue('h6_texttransform') !== '') {
+            $h6_styles['text-transform'] = startit_qode_options()->getOptionValue('h6_texttransform');
         }
-        if(qode_startit_options()->getOptionValue('h6_fontstyle') !== '') {
-            $h6_styles['font-style'] = qode_startit_options()->getOptionValue('h6_fontstyle');
+        if( startit_qode_options()->getOptionValue('h6_fontstyle') !== '') {
+            $h6_styles['font-style'] = startit_qode_options()->getOptionValue('h6_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('h6_fontweight') !== '') {
-            $h6_styles['font-weight'] = qode_startit_options()->getOptionValue('h6_fontweight');
+        if( startit_qode_options()->getOptionValue('h6_fontweight') !== '') {
+            $h6_styles['font-weight'] = startit_qode_options()->getOptionValue('h6_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('h6_letterspacing') !== '') {
-            $h6_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('h6_letterspacing')).'px';
+        if( startit_qode_options()->getOptionValue('h6_letterspacing') !== '') {
+            $h6_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('h6_letterspacing')) . 'px';
         }
 
         $h6_selector = array(
@@ -633,7 +633,7 @@ if (!function_exists('qode_startit_h6_styles')) {
         );
 
         if (!empty($h6_styles)) {
-            echo qode_startit_dynamic_css($h6_selector, $h6_styles);
+            echo startit_qode_dynamic_css($h6_selector, $h6_styles);
         }
     }
 
@@ -646,29 +646,29 @@ if (!function_exists('qode_startit_text_styles')) {
 
         $text_styles = array();
 
-        if(qode_startit_options()->getOptionValue('text_color') !== '') {
-            $text_styles['color'] = qode_startit_options()->getOptionValue('text_color');
+        if( startit_qode_options()->getOptionValue('text_color') !== '') {
+            $text_styles['color'] = startit_qode_options()->getOptionValue('text_color');
         }
-        if(qode_startit_options()->getOptionValue('text_google_fonts') !== '-1') {
-            $text_styles['font-family'] = qode_startit_get_formatted_font_family(qode_startit_options()->getOptionValue('text_google_fonts'));
+        if( startit_qode_options()->getOptionValue('text_google_fonts') !== '-1') {
+            $text_styles['font-family'] = startit_qode_get_formatted_font_family(startit_qode_options()->getOptionValue('text_google_fonts'));
         }
-        if(qode_startit_options()->getOptionValue('text_fontsize') !== '') {
-            $text_styles['font-size'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('text_fontsize')).'px';
+        if( startit_qode_options()->getOptionValue('text_fontsize') !== '') {
+            $text_styles['font-size'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('text_fontsize')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('text_lineheight') !== '') {
-            $text_styles['line-height'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('text_lineheight')).'px';
+        if( startit_qode_options()->getOptionValue('text_lineheight') !== '') {
+            $text_styles['line-height'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('text_lineheight')) . 'px';
         }
-        if(qode_startit_options()->getOptionValue('text_text_transform') !== '') {
-            $text_styles['text-transform'] = qode_startit_options()->getOptionValue('text_text_transform');
+        if( startit_qode_options()->getOptionValue('text_text_transform') !== '') {
+            $text_styles['text-transform'] = startit_qode_options()->getOptionValue('text_text_transform');
         }
-        if(qode_startit_options()->getOptionValue('text_fontstyle') !== '') {
-            $text_styles['font-style'] = qode_startit_options()->getOptionValue('text_fontstyle');
+        if( startit_qode_options()->getOptionValue('text_fontstyle') !== '') {
+            $text_styles['font-style'] = startit_qode_options()->getOptionValue('text_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('text_fontweight') !== '') {
-            $text_styles['font-weight'] = qode_startit_options()->getOptionValue('text_fontweight');
+        if( startit_qode_options()->getOptionValue('text_fontweight') !== '') {
+            $text_styles['font-weight'] = startit_qode_options()->getOptionValue('text_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('text_letter_spacing') !== '') {
-            $text_styles['letter-spacing'] = qode_startit_filter_px(qode_startit_options()->getOptionValue('text_letter_spacing')).'px';
+        if( startit_qode_options()->getOptionValue('text_letter_spacing') !== '') {
+            $text_styles['letter-spacing'] = startit_qode_filter_px(startit_qode_options()->getOptionValue('text_letter_spacing')) . 'px';
         }
 
         $text_selector = array(
@@ -676,7 +676,7 @@ if (!function_exists('qode_startit_text_styles')) {
         );
 
         if (!empty($text_styles)) {
-            echo qode_startit_dynamic_css($text_selector, $text_styles);
+            echo startit_qode_dynamic_css($text_selector, $text_styles);
         }
     }
 
@@ -689,17 +689,17 @@ if (!function_exists('qode_startit_link_styles')) {
 
         $link_styles = array();
 
-        if(qode_startit_options()->getOptionValue('link_color') !== '') {
-            $link_styles['color'] = qode_startit_options()->getOptionValue('link_color');
+        if( startit_qode_options()->getOptionValue('link_color') !== '') {
+            $link_styles['color'] = startit_qode_options()->getOptionValue('link_color');
         }
-        if(qode_startit_options()->getOptionValue('link_fontstyle') !== '') {
-            $link_styles['font-style'] = qode_startit_options()->getOptionValue('link_fontstyle');
+        if( startit_qode_options()->getOptionValue('link_fontstyle') !== '') {
+            $link_styles['font-style'] = startit_qode_options()->getOptionValue('link_fontstyle');
         }
-        if(qode_startit_options()->getOptionValue('link_fontweight') !== '') {
-            $link_styles['font-weight'] = qode_startit_options()->getOptionValue('link_fontweight');
+        if( startit_qode_options()->getOptionValue('link_fontweight') !== '') {
+            $link_styles['font-weight'] = startit_qode_options()->getOptionValue('link_fontweight');
         }
-        if(qode_startit_options()->getOptionValue('link_fontdecoration') !== '') {
-            $link_styles['text-decoration'] = qode_startit_options()->getOptionValue('link_fontdecoration');
+        if( startit_qode_options()->getOptionValue('link_fontdecoration') !== '') {
+            $link_styles['text-decoration'] = startit_qode_options()->getOptionValue('link_fontdecoration');
         }
 
         $link_selector = array(
@@ -708,7 +708,7 @@ if (!function_exists('qode_startit_link_styles')) {
         );
 
         if (!empty($link_styles)) {
-            echo qode_startit_dynamic_css($link_selector, $link_styles);
+            echo startit_qode_dynamic_css($link_selector, $link_styles);
         }
     }
 
@@ -721,11 +721,11 @@ if (!function_exists('qode_startit_link_hover_styles')) {
 
         $link_hover_styles = array();
 
-        if(qode_startit_options()->getOptionValue('link_hovercolor') !== '') {
-            $link_hover_styles['color'] = qode_startit_options()->getOptionValue('link_hovercolor');
+        if( startit_qode_options()->getOptionValue('link_hovercolor') !== '') {
+            $link_hover_styles['color'] = startit_qode_options()->getOptionValue('link_hovercolor');
         }
-        if(qode_startit_options()->getOptionValue('link_hover_fontdecoration') !== '') {
-            $link_hover_styles['text-decoration'] = qode_startit_options()->getOptionValue('link_hover_fontdecoration');
+        if( startit_qode_options()->getOptionValue('link_hover_fontdecoration') !== '') {
+            $link_hover_styles['text-decoration'] = startit_qode_options()->getOptionValue('link_hover_fontdecoration');
         }
 
         $link_hover_selector = array(
@@ -734,13 +734,13 @@ if (!function_exists('qode_startit_link_hover_styles')) {
         );
 
         if (!empty($link_hover_styles)) {
-            echo qode_startit_dynamic_css($link_hover_selector, $link_hover_styles);
+            echo startit_qode_dynamic_css($link_hover_selector, $link_hover_styles);
         }
 
         $link_heading_hover_styles = array();
 
-        if(qode_startit_options()->getOptionValue('link_hovercolor') !== '') {
-            $link_heading_hover_styles['color'] = qode_startit_options()->getOptionValue('link_hovercolor');
+        if( startit_qode_options()->getOptionValue('link_hovercolor') !== '') {
+            $link_heading_hover_styles['color'] = startit_qode_options()->getOptionValue('link_hovercolor');
         }
 
         $link_heading_hover_selector = array(
@@ -753,7 +753,7 @@ if (!function_exists('qode_startit_link_hover_styles')) {
         );
 
         if (!empty($link_heading_hover_styles)) {
-            echo qode_startit_dynamic_css($link_heading_hover_selector, $link_heading_hover_styles);
+            echo startit_qode_dynamic_css($link_heading_hover_selector, $link_heading_hover_styles);
         }
     }
 

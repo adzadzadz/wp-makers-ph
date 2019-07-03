@@ -1,6 +1,6 @@
 <?php
 
-$content_bottom_meta_box = qode_startit_add_meta_box(
+$content_bottom_meta_box = startit_qode_create_meta_box(
 	array(
 		'scope' => array('page', 'portfolio-item', 'post'),
 		'title' => 'Content Bottom',
@@ -8,7 +8,7 @@ $content_bottom_meta_box = qode_startit_add_meta_box(
 	)
 );
 
-	qode_startit_add_meta_box_field(
+	startit_qode_create_meta_box_field(
 		array(
 			'name' => 'qodef_enable_content_bottom_area_meta',
 			'type' => 'selectblank',
@@ -33,7 +33,7 @@ $content_bottom_meta_box = qode_startit_add_meta_box(
 		)
 	);
 
-	$show_content_bottom_meta_container = qode_startit_add_admin_container(
+	$show_content_bottom_meta_container = startit_qode_add_admin_container(
 		array(
 			'parent' => $content_bottom_meta_box,
 			'name' => 'qodef_show_content_bottom_meta_container',
@@ -43,19 +43,19 @@ $content_bottom_meta_box = qode_startit_add_meta_box(
 		)
 	);
 
-		qode_startit_add_meta_box_field(
+		startit_qode_create_meta_box_field(
 			array(
 				'name' => 'qodef_content_bottom_sidebar_custom_display_meta',
 				'type' => 'selectblank',
 				'default_value' => '',
 				'label' => 'Sidebar to Display',
 				'description' => 'Choose a Content Bottom sidebar to display',
-				'options' => qode_startit_get_custom_sidebars(),
+				'options' => startit_qode_get_custom_sidebars(),
 				'parent' => $show_content_bottom_meta_container
 			)
 		);
 
-		qode_startit_add_meta_box_field(
+		startit_qode_create_meta_box_field(
 			array(
 				'type' => 'selectblank',
 				'name' => 'qodef_content_bottom_in_grid_meta',
@@ -70,7 +70,7 @@ $content_bottom_meta_box = qode_startit_add_meta_box(
 			)
 		);
 
-		qode_startit_add_meta_box_field(
+		startit_qode_create_meta_box_field(
 			array(
 				'type' => 'color',
 				'name' => 'qodef_content_bottom_background_color_meta',

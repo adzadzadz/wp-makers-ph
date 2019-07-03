@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $align
  * @var $label
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem_Post_Meta
+ * @var WPBakeryShortCode_Vc_Gitem_Post_Meta $this
  */
 $key = $el_class = $align = $label = '';
 $label_html = '';
@@ -25,6 +25,11 @@ if ( strlen( $label ) ) {
 	$label_html = '<span class="vc_gitem-post-meta-label">' . esc_html( $label ) . '</span>';
 }
 if ( strlen( $key ) ) :  ?>
-	<div class="<?php echo esc_attr( $css_class ) ?>"><?php echo $label_html ?> {{ post_meta_value:<?php echo esc_attr( $key ) ?> }}
+	<div class="<?php echo esc_attr( $css_class ); ?>">
+		<?php
+		// @codingStandardsIgnoreLine
+		echo $label_html;
+		?>
+		{{ post_meta_value:<?php echo esc_attr( $key ); ?> }}
 	</div>
 <?php endif ?>

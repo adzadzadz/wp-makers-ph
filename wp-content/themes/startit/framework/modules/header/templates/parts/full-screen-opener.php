@@ -2,8 +2,8 @@
 $icon_size = '';
 $fullscreen_icon_styles = array();
 
-if (qode_startit_options()->getOptionValue('fullscreen_menu_icon_size') !== '' ) {
-	$icon_size = qode_startit_options()->getOptionValue('fullscreen_menu_icon_size');
+if ( startit_qode_options()->getOptionValue('fullscreen_menu_icon_size') !== '' ) {
+	$icon_size = startit_qode_options()->getOptionValue('fullscreen_menu_icon_size');
 }
 
 ?>

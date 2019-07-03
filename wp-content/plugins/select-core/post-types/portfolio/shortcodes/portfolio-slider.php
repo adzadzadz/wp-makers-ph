@@ -174,13 +174,13 @@ class PortfolioSlider implements Lib\ShortcodeInterface {
             'show_load_more' => 'no'
         );
 
-        $args = array_merge($args, qode_startit_icon_collections()->getShortcodeParams());
+        $args = array_merge($args, startit_qode_icon_collections()->getShortcodeParams());
 		$params = shortcode_atts($args, $atts);
 		
 		extract($params);
 		
 		$html ='';
-		$html .= qode_startit_execute_shortcode('qodef_portfolio_list', $params);
+		$html .= startit_qode_execute_shortcode('qodef_portfolio_list', $params);
         return $html;
     }
 	

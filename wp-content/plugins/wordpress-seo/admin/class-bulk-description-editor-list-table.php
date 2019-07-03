@@ -1,7 +1,9 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Admin\Bulk Editor
- * @since      1.5.0
+ * @since   1.5.0
  */
 
 /**
@@ -17,7 +19,7 @@ class WPSEO_Bulk_Description_List_Table extends WPSEO_Bulk_List_Table {
 	protected $page_type = 'description';
 
 	/**
-	 * Settings with are used in __construct
+	 * Settings with are used in __construct.
 	 *
 	 * @var array
 	 */
@@ -35,7 +37,7 @@ class WPSEO_Bulk_Description_List_Table extends WPSEO_Bulk_List_Table {
 	protected $target_db_field = 'metadesc';
 
 	/**
-	 * The columns shown on the table
+	 * The columns shown on the table.
 	 *
 	 * @return array
 	 */
@@ -49,7 +51,7 @@ class WPSEO_Bulk_Description_List_Table extends WPSEO_Bulk_List_Table {
 	}
 
 	/**
-	 * Parse the metadescription
+	 * Parse the metadescription.
 	 *
 	 * @param string $column_name Column name.
 	 * @param object $record      Data object.

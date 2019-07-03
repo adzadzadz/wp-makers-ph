@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $font_container_data - returned from $this->getAttributes
  * @var $google_fonts_data - returned from $this->getAttributes
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Custom_heading
+ * @var WPBakeryShortCode_Vc_Custom_heading $this
  */
 $source = $text = $link = $google_fonts = $font_container = $el_id = $el_class = $css = $css_animation = $font_container_data = $google_fonts_data = array();
 // This is needed to extract $font_container_data and $google_fonts_data
@@ -40,7 +40,7 @@ if ( is_array( $settings ) && ! empty( $settings ) ) {
 }
 
 if ( ( ! isset( $atts['use_theme_fonts'] ) || 'yes' !== $atts['use_theme_fonts'] ) && isset( $google_fonts_data['values']['font_family'] ) ) {
-	wp_enqueue_style( 'vc_google_fonts_' . vc_build_safe_css_class( $google_fonts_data['values']['font_family'] ), '//fonts.googleapis.com/css?family=' . $google_fonts_data['values']['font_family'] . $subsets );
+	wp_enqueue_style( 'vc_google_fonts_' . vc_build_safe_css_class( $google_fonts_data['values']['font_family'] ), 'https://fonts.googleapis.com/css?family=' . $google_fonts_data['values']['font_family'] . $subsets, [], WPB_VC_VERSION );
 }
 
 if ( ! empty( $styles ) ) {
@@ -73,5 +73,5 @@ if ( apply_filters( 'vc_custom_heading_template_use_wrapper', false ) ) {
 	$output .= $text;
 	$output .= '</' . $font_container_data['values']['tag'] . '>';
 }
-
+// @codingStandardsIgnoreLine
 echo $output;

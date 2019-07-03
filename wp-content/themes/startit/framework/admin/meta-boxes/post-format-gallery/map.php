@@ -2,7 +2,7 @@
 
 /*** Gallery Post Format ***/
 
-$gallery_post_format_meta_box = qode_startit_add_meta_box(
+$gallery_post_format_meta_box = startit_qode_create_meta_box(
 	array(
 		'scope' =>	array('post'),
 		'title' => 'Gallery Post Format',
@@ -10,7 +10,7 @@ $gallery_post_format_meta_box = qode_startit_add_meta_box(
 	)
 );
 
-qode_startit_add_multiple_images_field(
+startit_qode_add_multiple_images_field(
 	array(
 		'name'        => 'qodef_post_gallery_images_meta',
 		'label'       => 'Gallery Images',

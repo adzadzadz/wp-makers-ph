@@ -24,7 +24,7 @@ class HeaderVertical extends HeaderType {
      * @param array $parameters associative array of variables to pass to template
      */
     public function loadTemplate($parameters = array()) {
-        qode_startit_get_module_template_part('templates/types/'.$this->slug, $this->moduleName, '', $parameters);
+        startit_qode_get_module_template_part( 'templates/types/' . $this->slug, $this->moduleName, '', $parameters);
     }
 
     /**

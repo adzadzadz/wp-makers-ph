@@ -65,9 +65,9 @@ class WpbakeryShortcodeParams {
 	}
 
 	/**
+	 * @param $script
 	 * @since 4.2
 	 *
-	 * @param $script
 	 */
 	public static function registerScript( $script ) {
 		$script_name = 'vc_edit_form_enqueue_script_' . md5( $script );
@@ -83,7 +83,7 @@ class WpbakeryShortcodeParams {
 	 * @since 4.2
 	 */
 	public static function enqueueScripts() {
-		// _deprecated_function( 'WpbakeryShortcodeParams::enqueueScripts', '4.4' );
+		// this function is deprecated
 		if ( self::isEnqueue() ) {
 			foreach ( self::$enqueue_script as $item ) {
 				wp_register_script( $item['name'], $item['script'], array(
@@ -99,14 +99,14 @@ class WpbakeryShortcodeParams {
 	 * Create new attribute type
 	 *
 	 * @static
-	 * @since 4.2
-	 *
 	 * @param $name - attribute name
 	 * @param $form_field_callback - hook, will be called when settings form is shown and attribute added to shortcode
 	 *     param list
 	 * @param $script_url - javascript file url which will be attached at the end of settings form.
 	 *
 	 * @return bool - return true if attribute type created
+	 * @since 4.2
+	 *
 	 */
 	public static function addField( $name, $form_field_callback, $script_url = null ) {
 
@@ -119,7 +119,7 @@ class WpbakeryShortcodeParams {
 			);
 			$result = true;
 
-			if ( is_string( $script_url ) && ! in_array( $script_url, self::$scripts ) ) {
+			if ( is_string( $script_url ) && ! in_array( $script_url, self::$scripts, true ) ) {
 				self::registerScript( $script_url );
 				self::$scripts[] = $script_url;
 			}
@@ -130,15 +130,15 @@ class WpbakeryShortcodeParams {
 
 	/**
 	 * Calls hook for attribute type
-	 * @since 4.2
-	 * @static
-	 *
 	 * @param $name - attribute name
 	 * @param $param_settings - attribute settings from shortcode
 	 * @param $param_value - attribute value
 	 * @param $tag - attribute tag
 	 *
 	 * @return mixed|string - returns html which will be render in hook
+	 * @since 4.2
+	 * @static
+	 *
 	 */
 	public static function renderSettingsField( $name, $param_settings, $param_value, $tag ) {
 		if ( isset( self::$params[ $name ]['callbacks']['form'] ) ) {
@@ -150,27 +150,26 @@ class WpbakeryShortcodeParams {
 
 	/**
 	 * List of javascript files urls for shortcode attributes.
+	 * @return array - list of js scripts
 	 * @since 4.2
 	 * @static
-	 * @return array - list of js scripts
 	 */
-
 	public static function getScripts() {
 		return self::$scripts;
 	}
 
 	/**
+	 * @param $value
 	 * @since 4.2
 	 *
-	 * @param $value
 	 */
 	public static function setEnqueue( $value ) {
-		self::$is_enqueue = (boolean) $value;
+		self::$is_enqueue = (bool) $value;
 	}
 
 	/**
-	 * @since 4.2
 	 * @return bool
+	 * @since 4.2
 	 */
 	public static function isEnqueue() {
 		return self::$is_enqueue;
@@ -185,8 +184,8 @@ class WpbakeryShortcodeParams {
  *     param list
  * @param $script_url - javascript file url which will be attached at the end of settings form.
  *
- * @since 4.4
  * @return bool
+ * @since 4.4
  */
 function vc_add_shortcode_param( $name, $form_field_callback, $script_url = null ) {
 	return WpbakeryShortcodeParams::addField( $name, $form_field_callback, $script_url );
@@ -200,8 +199,8 @@ function vc_add_shortcode_param( $name, $form_field_callback, $script_url = null
  * @param $param_value - attribute value
  * @param $tag - attribute tag
  *
- * @since 4.4
  * @return mixed|string - returns html which will be render in hook
+ * @since 4.4
  */
 function vc_do_shortcode_param_settings_field( $name, $param_settings, $param_value, $tag ) {
 	return WpbakeryShortcodeParams::renderSettingsField( $name, $param_settings, $param_value, $tag );

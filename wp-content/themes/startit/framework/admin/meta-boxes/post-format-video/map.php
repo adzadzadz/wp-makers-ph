@@ -2,7 +2,7 @@
 
 /*** Video Post Format ***/
 
-$video_post_format_meta_box = qode_startit_add_meta_box(
+$video_post_format_meta_box = startit_qode_create_meta_box(
 	array(
 		'scope' =>	array('post'),
 		'title' => 'Video Post Format',
@@ -10,7 +10,7 @@ $video_post_format_meta_box = qode_startit_add_meta_box(
 	)
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
 	array(
 		'name'        => 'qodef_video_type_meta',
 		'type'        => 'select',
@@ -38,7 +38,7 @@ qode_startit_add_meta_box_field(
 	)
 );
 
-$qodef_video_embedded_container = qode_startit_add_admin_container(
+$qodef_video_embedded_container = startit_qode_add_admin_container(
 	array(
 		'parent' => $video_post_format_meta_box,
 		'name' => 'qodef_video_embedded_container',
@@ -47,7 +47,7 @@ $qodef_video_embedded_container = qode_startit_add_admin_container(
 	)
 );
 
-$qodef_video_self_hosted_container = qode_startit_add_admin_container(
+$qodef_video_self_hosted_container = startit_qode_add_admin_container(
 	array(
 		'parent' => $video_post_format_meta_box,
 		'name' => 'qodef_video_self_hosted_container',
@@ -58,7 +58,7 @@ $qodef_video_self_hosted_container = qode_startit_add_admin_container(
 
 
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
 	array(
 		'name'        => 'qodef_post_video_id_meta',
 		'type'        => 'text',
@@ -70,7 +70,7 @@ qode_startit_add_meta_box_field(
 );
 
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
 	array(
 		'name'        => 'qodef_post_video_image_meta',
 		'type'        => 'image',
@@ -81,7 +81,7 @@ qode_startit_add_meta_box_field(
 	)
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
 	array(
 		'name'        => 'qodef_post_video_webm_link_meta',
 		'type'        => 'text',
@@ -92,7 +92,7 @@ qode_startit_add_meta_box_field(
 	)
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
 	array(
 		'name'        => 'qodef_post_video_mp4_link_meta',
 		'type'        => 'text',
@@ -103,7 +103,7 @@ qode_startit_add_meta_box_field(
 	)
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
 	array(
 		'name'        => 'qodef_post_video_ogv_link_meta',
 		'type'        => 'text',

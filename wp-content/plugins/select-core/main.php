@@ -3,40 +3,70 @@
 Plugin Name: Select Core
 Description: Plugin that adds all post types needed by our theme
 Author: Select Themes
-Version: 1.3.1
+Version: 2.0.3
 */
-
-require_once 'load.php';
 
 use QodeCore\CPT;
 use QodeCore\Lib;
 
-add_action('after_setup_theme', array(CPT\PostTypesRegister::getInstance(), 'register'));
+if ( ! class_exists( 'StartitCore' ) ) {
+	class StartitCore {
+		private static $instance;
 
-Lib\ShortcodeLoader::getInstance()->load();
+		public function __construct() {
 
-if(!function_exists('qode_core_activation')) {
-    /**
-     * Triggers when plugin is activated. It calls flush_rewrite_rules
-     * and defines qode_startit  _core_on_activate action
-     */
-    function qode_core_activation() {
-        do_action('qode_startit  _core_on_activate');
+			//include all necessary files
+			require_once 'const.php';
+			require_once QODE_CORE_ABS_PATH . '/helpers/select-core-helpers.php';
 
-        QodeCore\CPT\PostTypesRegister::getInstance()->register();
-        flush_rewrite_rules();
-    }
+			// Make plugin available for translation
+			add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
 
-    register_activation_hook(__FILE__, 'qode_core_activation');
-}
+			// Add plugin's body classes
+			add_filter( 'body_class', array( $this, 'add_body_classes' ) );
 
-if(!function_exists('qode_core_text_domain')) {
-    /**
-     * Loads plugin text domain so it can be used in translation
-     */
-    function qode_core_text_domain() {
-        load_plugin_textdomain('select-core', false, QODE_CORE_REL_PATH.'/languages');
-    }
+			add_action( 'after_setup_theme', array( $this, 'init' ), 0 );
 
-    add_action('plugins_loaded', 'qode_core_text_domain');
+
+		}
+
+		public static function get_instance() {
+			if ( self::$instance == null ) {
+				self::$instance = new self();
+			}
+
+			return self::$instance;
+		}
+
+		function load_plugin_textdomain() {
+			load_plugin_textdomain('select-core', false, QODE_CORE_REL_PATH.'/languages');
+		}
+
+		function add_body_classes( $classes ) {
+			$classes[] = 'select-core-' . QODE_CORE_VERSION;
+
+			return $classes;
+		}
+
+		function init() {
+
+			if ( qode_core_theme_installed() ) {
+
+				require_once 'load.php';
+
+				Lib\ShortcodeLoader::getInstance()->load();
+				add_action( 'init', array( $this, 'cpt_activation' ), 0 );
+			}
+		}
+
+		function cpt_activation() {
+
+			do_action('qode_startit_core_on_activate');
+
+			CPT\PostTypesRegister::getInstance()->register();
+			flush_rewrite_rules();
+		}
+	}
+
+	StartitCore::get_instance();
 }

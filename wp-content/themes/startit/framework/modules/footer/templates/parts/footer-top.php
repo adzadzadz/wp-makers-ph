@@ -3,7 +3,7 @@
 	if($footer_top_border_in_grid !== '') { ?>
 		<div class="qodef-footer-ingrid-border-holder-outer">
 	<?php } ?>
-	<div class="qodef-footer-top-border-holder <?php echo esc_attr($footer_top_border_in_grid); ?>" <?php qode_startit_inline_style($footer_top_border); ?>></div>
+	<div class="qodef-footer-top-border-holder <?php echo esc_attr($footer_top_border_in_grid); ?>" <?php startit_qode_inline_style($footer_top_border); ?>></div>
 	<?php if($footer_top_border_in_grid !== '') { ?>
 		</div>
 	<?php }
@@ -20,22 +20,22 @@
 
 		switch ($footer_top_columns) {
 			case 6:
-				qode_startit_get_footer_sidebar_25_25_50();
+				startit_qode_get_footer_sidebar_25_25_50();
 				break;
 			case 5:
-				qode_startit_get_footer_sidebar_50_25_25();
+				startit_qode_get_footer_sidebar_50_25_25();
 				break;
 			case 4:
-				qode_startit_get_footer_sidebar_four_columns();
+				startit_qode_get_footer_sidebar_four_columns();
 				break;
 			case 3:
-				qode_startit_get_footer_sidebar_three_columns();
+				startit_qode_get_footer_sidebar_three_columns();
 				break;
 			case 2:
-				qode_startit_get_footer_sidebar_two_columns();
+				startit_qode_get_footer_sidebar_two_columns();
 				break;
 			case 1:
-				qode_startit_get_footer_sidebar_one_column();
+				startit_qode_get_footer_sidebar_one_column();
 				break;
 		}
 

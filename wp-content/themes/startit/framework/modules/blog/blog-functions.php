@@ -1,24 +1,24 @@
 <?php
-if( !function_exists('qode_startit_get_blog') ) {
+if( !function_exists( 'startit_qode_get_blog' ) ) {
 	/**
 	 * Function which return holder for all blog lists
 	 *
 	 * @return holder.php template
 	 */
-	function qode_startit_get_blog($type) {
+	function startit_qode_get_blog($type) {
 
-		$sidebar = qode_startit_sidebar_layout();
+		$sidebar = startit_qode_sidebar_layout();
 
 		$params = array(
 			"blog_type" => $type,
 			"sidebar" => $sidebar
 		);
-		qode_startit_get_module_template_part('templates/lists/holder', 'blog', '', $params);
+		startit_qode_get_module_template_part('templates/lists/holder', 'blog', '', $params);
 	}
 
 }
 
-if( !function_exists('qode_startit_get_blog_type') ) {
+if( !function_exists( 'startit_qode_get_blog_type' ) ) {
 
 	/**
 	 * Function which create query for blog lists
@@ -26,34 +26,29 @@ if( !function_exists('qode_startit_get_blog_type') ) {
 	 * @return blog list template
 	 */
 
-	function qode_startit_get_blog_type($type) {
+	function startit_qode_get_blog_type($type) {
 		global $wp_query;
 
-		$id = qode_startit_get_page_id();
-		$category = get_post_meta($id, "qodef_blog_category_meta", true);
-		$post_number = esc_attr(get_post_meta($id, "qodef_show_posts_per_page_meta", true));
-
-		$paged = qode_startit_paged();
-
 		if(!is_archive()) {
-			$blog_query = new WP_Query('post_type=post&paged=' . $paged . '&cat=' . $category . '&posts_per_page=' . $post_number);
+			$blog_query = startit_qode_get_blog_query();
 		}else{
 			$blog_query = $wp_query;
 		}
 
-		if(qode_startit_options()->getOptionValue('blog_page_range') != ""){
-			$blog_page_range = esc_attr(qode_startit_options()->getOptionValue('blog_page_range'));
+		if( startit_qode_options()->getOptionValue('blog_page_range') != ""){
+			$blog_page_range = esc_attr(startit_qode_options()->getOptionValue('blog_page_range'));
 		} else{
 			$blog_page_range = $blog_query->max_num_pages;
 		}
+
 		$params = array(
 			'blog_query' => $blog_query,
-			'paged' => $paged,
+			'paged' => $blog_query->query_vars['paged'],
 			'blog_page_range' => $blog_page_range,
 			'blog_type' => $type
 		);
 
-		qode_startit_get_module_template_part('templates/lists/' .  $type, 'blog', '', $params);
+		startit_qode_get_module_template_part( 'templates/lists/' . $type, 'blog', '', $params);
         wp_reset_postdata();
 	}
 
@@ -61,7 +56,7 @@ if( !function_exists('qode_startit_get_blog_type') ) {
 
 
 
-if( !function_exists('qode_startit_get_post_format_html') ) {
+if( !function_exists( 'startit_qode_get_post_format_html' ) ) {
 
 	/**
 	 * Function which return html for post formats
@@ -69,7 +64,7 @@ if( !function_exists('qode_startit_get_post_format_html') ) {
 	 * @return post hormat template
 	 */
 
-	function qode_startit_get_post_format_html($type = "") {
+	function startit_qode_get_post_format_html($type = "") {
 
 		$post_format = get_post_format();
 		if($post_format === false){
@@ -82,7 +77,7 @@ if( !function_exists('qode_startit_get_post_format_html') ) {
 
 		$params = array();
 
-		$chars_array = qode_startit_blog_lists_number_of_chars();
+		$chars_array = startit_qode_blog_lists_number_of_chars();
 		if(isset($chars_array[$type])) {
 			$params['excerpt_length'] = $chars_array[$type];
 		} else {
@@ -95,32 +90,32 @@ if( !function_exists('qode_startit_get_post_format_html') ) {
 		if ($slug == '') {
 			$group = 'standard';
 		}
-		else if(in_array($slug, qode_startit_blog_masonry_types())){
+		else if(in_array($slug, startit_qode_blog_masonry_types())){
 			$group = 'masonry';
 		}
-		else if(in_array($slug, qode_startit_blog_standard_types())){
+		else if(in_array($slug, startit_qode_blog_standard_types())){
             $group = 'standard';
         }
-        else if(in_array($slug, qode_startit_blog_gallery_types())){
+        else if(in_array($slug, startit_qode_blog_gallery_types())){
             $group = 'gallery';
         }
 
-		qode_startit_get_module_template_part('templates/lists/post-formats/' .$group .'/' . $post_format, 'blog', $slug, $params);
+		startit_qode_get_module_template_part( 'templates/lists/post-formats/' . $group . '/' . $post_format, 'blog', $slug, $params);
 
 	}
 
 }
 
-if( !function_exists('qode_startit_get_default_blog_list') ) {
+if( !function_exists( 'startit_qode_get_default_blog_list' ) ) {
 	/**
 	 * Function which return default blog list for archive post types
 	 *
 	 * @return post format template
 	 */
 
-	function qode_startit_get_default_blog_list() {
+	function startit_qode_get_default_blog_list() {
 
-		$blog_list = qode_startit_options()->getOptionValue('blog_list_type');
+		$blog_list = startit_qode_options()->getOptionValue('blog_list_type');
 		return $blog_list;
 
 	}
@@ -128,65 +123,89 @@ if( !function_exists('qode_startit_get_default_blog_list') ) {
 }
 
 
-if (!function_exists('qode_startit_pagination')) {
+if (!function_exists( 'startit_qode_pagination' )) {
 
 	/**
 	 * Function which return pagination
 	 *
-	 * @return blog list pagination html
+	 * @param $blog_query
 	 */
 
-	function qode_startit_pagination($pages = '', $range = 4, $paged = 1){
+	function startit_qode_pagination($blog_query){
 
-		$showitems = $range+1;
-
-		if($pages == ''){
-			global $wp_query;
-			$pages = $wp_query->max_num_pages;
-			if(!$pages){
-				$pages = 1;
-			}
+		if ( get_query_var( 'paged' ) ) {
+			$paged = get_query_var( 'paged' );
+		} elseif ( get_query_var( 'page' ) ) {
+			$paged = get_query_var( 'page' );
+		} else {
+			$paged = 1;
 		}
-		if(1 != $pages){
 
-			echo '<div class="qodef-pagination">';
-				echo '<ul>';
-					if($paged > 2 && $paged > $range+1 && $showitems < $pages){
-						echo '<li class="qodef-pagination-first-page"><a href="'.esc_url(get_pagenum_link(1)).'"><<</a></li>';
-					}
-					echo "<li class='qodef-pagination-prev";
-					if($paged > 2 && $paged > $range+1 && $showitems < $pages) {
-						echo " qodef-pagination prev-first";
-					}
-					echo "'><a href='".esc_url(get_pagenum_link($paged - 1))."'><i class='fa fa-chevron-left'></i></a></li>";
+		if( startit_qode_options()->getOptionValue('blog_page_range') != ""){
+			$max_number_of_pages = esc_attr(startit_qode_options()->getOptionValue('blog_page_range'));
+		} else{
+			$max_number_of_pages = $blog_query->max_num_pages;
+		}
 
-					for ($i=1; $i <= $pages; $i++){
-						if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )){
-							echo ($paged == $i)? "<li class='active'><span>".$i."</span></li>":"<li><a href='".get_pagenum_link($i)."' class='inactive'>".$i."</a></li>";
-						}
-					}
-
-					echo '<li class="qodef-pagination-next';
-					if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages){
-						echo ' qodef-pagination-next-last';
-					}
-					echo '"><a href="';
-					if($pages > $paged){
-						echo esc_url(get_pagenum_link($paged + 1));
-					} else {
-						echo esc_url(get_pagenum_link($paged));
-					}
-					echo '"><i class="fa fa-chevron-right"></i></a></li>';
-					if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages){
-						echo '<li class="qodef-pagination-last-page"><a href="'.esc_url(get_pagenum_link($pages)).'">>></a></li>';
-					}
-				echo '</ul>';
-			echo "</div>";
+		if(1 != $blog_query->max_num_pages){
+			startit_qode_pagination_html($blog_query->max_num_pages, $max_number_of_pages, $paged);
 		}
 	}
 }
 
-if(!function_exists('qode_startit_post_info')){
+if (!function_exists( 'startit_qode_pagination_html' )) {
+
+	/**
+	 * Function which return pagination
+	 *
+	 */
+
+	function startit_qode_pagination_html($pages = '', $range = 4, $paged = 1){
+
+		$showitems = $range+1;
+
+        echo '<div class="qodef-pagination">';
+        echo '<ul>';
+        if($paged > 2 && $paged > $range+1 && $showitems < $pages){
+            echo '<li class="qodef-pagination-first-page"><a href="'.esc_url(get_pagenum_link(1)).'"><<</a></li>';
+        }
+        echo "<li class='qodef-pagination-prev";
+        if($paged > 2 && $paged > $range+1 && $showitems < $pages) {
+            echo " qodef-pagination prev-first";
+        }
+        echo "'><a href='".esc_url(get_pagenum_link($paged - 1))."'><i class='fa fa-chevron-left'></i></a></li>";
+
+        for ($i=1; $i <= $pages; $i++){
+            if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )){
+                if($paged == $i) {
+	                echo "<li class='active'><span>".$i."</span></li>";
+                } else {
+                    echo "<li><a href='".get_pagenum_link($i)."' class='inactive'>".$i."</a></li>";
+                }
+            }
+        }
+
+        echo '<li class="qodef-pagination-next';
+        if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages){
+            echo ' qodef-pagination-next-last';
+        }
+        echo '"><a href="';
+        if($pages > $paged){
+            echo esc_url(get_pagenum_link($paged + 1));
+        } else {
+            echo esc_url(get_pagenum_link($paged));
+        }
+        echo '"><i class="fa fa-chevron-right"></i></a></li>';
+        if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages){
+            echo '<li class="qodef-pagination-last-page"><a href="'.esc_url(get_pagenum_link($pages)).'">>></a></li>';
+        }
+        echo '</ul>';
+        echo "</div>";
+
+	}
+}
+
+if(!function_exists( 'startit_qode_post_info' )){
 	/**
 	 * Function that loads parts of blog post info section
 	 * Possible options are:
@@ -199,7 +218,7 @@ if(!function_exists('qode_startit_post_info')){
 	 *
 	 * @param $config array of sections to load
 	 */
-	function qode_startit_post_info($config,  $params = array()){
+	function startit_qode_post_info($config,  $params = array()){
 		$default_config = array(
 			'date' => '',
 			'author' => '',
@@ -212,27 +231,27 @@ if(!function_exists('qode_startit_post_info')){
 		extract(shortcode_atts($default_config, $config));
 
 		if($date == 'yes'){
-			qode_startit_get_module_template_part('templates/parts/post-info-date', 'blog');
+			startit_qode_get_module_template_part('templates/parts/post-info-date', 'blog');
 		}
 		if($author == 'yes'){
-			qode_startit_get_module_template_part('templates/parts/post-info-author', 'blog');
+			startit_qode_get_module_template_part('templates/parts/post-info-author', 'blog');
 		}
 		if($category == 'yes'){
-			qode_startit_get_module_template_part('templates/parts/post-info-category', 'blog', '', $params);
+			startit_qode_get_module_template_part('templates/parts/post-info-category', 'blog', '', $params);
 		}
 		if($comments == 'yes'){
-			qode_startit_get_module_template_part('templates/parts/post-info-comments', 'blog');
+			startit_qode_get_module_template_part('templates/parts/post-info-comments', 'blog');
 		}
 		if($like == 'yes'){
-			qode_startit_get_module_template_part('templates/parts/post-info-like', 'blog');
+			startit_qode_get_module_template_part('templates/parts/post-info-like', 'blog');
 		}
 		if($share == 'yes'){
-			qode_startit_get_module_template_part('templates/parts/post-info-share', 'blog');
+			startit_qode_get_module_template_part('templates/parts/post-info-share', 'blog');
 		}
 	}
 }
 
-if(!function_exists('qode_startit_excerpt')) {
+if(!function_exists( 'startit_qode_excerpt' )) {
 	/**
 	 * Function that cuts post excerpt to the number of word based on previosly set global
 	 * variable $word_count, which is defined in qode_set_blog_word_count function.
@@ -240,7 +259,7 @@ if(!function_exists('qode_startit_excerpt')) {
 	 * It current post has read more tag set it will return content of the post, else it will return post excerpt
 	 *
 	 */
-	function qode_startit_excerpt($excerpt_length) {
+	function startit_qode_excerpt($excerpt_length) {
 		global $post;
 
 		if(post_password_required()) {
@@ -248,7 +267,7 @@ if(!function_exists('qode_startit_excerpt')) {
 		}
 
 		//does current post has read more tag set?
-		elseif(qode_startit_post_has_read_more()) {
+		elseif(startit_qode_post_has_read_more()) {
 			global $more;
 
 			//override global $more variable so this can be used in blog templates
@@ -259,7 +278,7 @@ if(!function_exists('qode_startit_excerpt')) {
 		//is word count set to something different that 0?
 		elseif($excerpt_length != '0') {
 			//if word count is set and different than empty take that value, else that general option from theme options
-			$word_count = isset($excerpt_length) && $excerpt_length !== "" ? $excerpt_length : esc_attr(qode_startit_options()->getOptionValue('number_of_chars'));
+			$word_count = isset($excerpt_length) && $excerpt_length !== "" ? $excerpt_length : esc_attr(startit_qode_options()->getOptionValue('number_of_chars'));
 
 			//If there is no value set for excerpt
 			if($word_count == 0) {
@@ -295,7 +314,7 @@ if(!function_exists('qode_startit_excerpt')) {
 	}
 }
 
-if(!function_exists('qode_startit_get_blog_single')) {
+if(!function_exists( 'startit_qode_get_blog_single' )) {
 
 	/**
 	 * Function which return holder for single posts
@@ -303,18 +322,18 @@ if(!function_exists('qode_startit_get_blog_single')) {
 	 * @return single holder.php template
 	 */
 
-	function qode_startit_get_blog_single() {
-		$sidebar = qode_startit_sidebar_layout();
+	function startit_qode_get_blog_single() {
+		$sidebar = startit_qode_sidebar_layout();
 
 		$params = array(
 			"sidebar" => $sidebar
 		);
 
-		qode_startit_get_module_template_part('templates/single/holder', 'blog', '', $params);
+		startit_qode_get_module_template_part('templates/single/holder', 'blog', '', $params);
 	}
 }
 
-if( !function_exists('qode_startit_get_single_html') ) {
+if( !function_exists( 'startit_qode_get_single_html' ) ) {
 
 	/**
 	 * Function return all parts on single.php page
@@ -323,23 +342,23 @@ if( !function_exists('qode_startit_get_single_html') ) {
 	 * @return single.php html
 	 */
 
-	function qode_startit_get_single_html() {
+	function startit_qode_get_single_html() {
 
 		$post_format = get_post_format();
 		if($post_format === false){
 			$post_format = 'standard';
 		}
 
-		qode_startit_get_module_template_part('templates/single/post-formats/' . $post_format, 'blog');
-		qode_startit_get_module_template_part('templates/single/parts/single-navigation', 'blog');
-		qode_startit_get_module_template_part('templates/single/parts/author-info', 'blog');
-		if(qode_startit_show_comments()){
+		startit_qode_get_module_template_part( 'templates/single/post-formats/' . $post_format, 'blog');
+		startit_qode_get_module_template_part('templates/single/parts/single-navigation', 'blog');
+		startit_qode_get_module_template_part('templates/single/parts/author-info', 'blog');
+		if(startit_qode_show_comments()){
 			comments_template('', true);
 		}
 	}
 
 }
-if( !function_exists('qode_startit_additional_post_items') ) {
+if( !function_exists( 'startit_qode_additional_post_items' ) ) {
 
 	/**
 	 * Function which return parts on single.php which are just below content
@@ -347,13 +366,13 @@ if( !function_exists('qode_startit_additional_post_items') ) {
 	 * @return single.php html
 	 */
 
-	function qode_startit_additional_post_items() {
+	function startit_qode_additional_post_items() {
 
 		if(has_tag()){
-			qode_startit_get_module_template_part('templates/single/parts/tags', 'blog');
+			startit_qode_get_module_template_part('templates/single/parts/tags', 'blog');
 		}
 
-		qode_startit_get_module_template_part('templates/parts/post-info-share', 'blog');
+		startit_qode_get_module_template_part('templates/parts/post-info-share', 'blog');
 
 		$args_pages = array(
 			'before'           => '<div class="qodef-single-links-pages"><div class="qodef-single-links-pages-inner">',
@@ -366,11 +385,11 @@ if( !function_exists('qode_startit_additional_post_items') ) {
 		wp_link_pages($args_pages);
 
 	}
-	add_action('qode_startit_before_blog_article_closed_tag', 'qode_startit_additional_post_items');
+	add_action('qode_startit_before_blog_article_closed_tag', 'startit_qode_additional_post_items');
 }
 
 
-if (!function_exists('qode_startit_comment')) {
+if (!function_exists( 'startit_qode_comment' )) {
 
 	/**
 	 * Function which modify default wordpress comments
@@ -378,7 +397,7 @@ if (!function_exists('qode_startit_comment')) {
 	 * @return comments html
 	 */
 
-	function qode_startit_comment($comment, $args, $depth) {
+	function startit_qode_comment($comment, $args, $depth) {
 
 		$GLOBALS['comment'] = $comment;
 
@@ -402,7 +421,7 @@ if (!function_exists('qode_startit_comment')) {
 		<li>
 		<div class="<?php echo esc_attr($comment_class); ?>">
 			<?php if(!$is_pingback_comment) { ?>
-				<div class="qodef-comment-image"> <?php echo qode_startit_kses_img(get_avatar($comment, 75)); ?> </div>
+				<div class="qodef-comment-image"> <?php echo startit_qode_kses_img(get_avatar($comment, 75)); ?> </div>
 			<?php } ?>
 			<div class="qodef-comment-text">
 				<div class="qodef-comment-info">
@@ -434,7 +453,7 @@ if (!function_exists('qode_startit_comment')) {
 	}
 }
 
-if( !function_exists('qode_startit_blog_archive_pages_classes') ) {
+if( !function_exists( 'startit_qode_blog_archive_pages_classes' ) ) {
 
 	/**
 	 * Function which create classes for container in archive pages
@@ -442,13 +461,13 @@ if( !function_exists('qode_startit_blog_archive_pages_classes') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_archive_pages_classes($blog_type) {
+	function startit_qode_blog_archive_pages_classes($blog_type) {
 
 		$classes = array();
-		if(in_array($blog_type, qode_startit_blog_full_width_types())){
+		if(in_array($blog_type, startit_qode_blog_full_width_types())){
 			$classes['holder'] = 'qodef-full-width';
 			$classes['inner'] = 'qodef-full-width-inner';
-		} elseif(in_array($blog_type, qode_startit_blog_grid_types())){
+		} elseif(in_array($blog_type, startit_qode_blog_grid_types())){
 			$classes['holder'] = 'qodef-container';
 			$classes['inner'] = 'qodef-container-inner clearfix';
 		}
@@ -459,7 +478,7 @@ if( !function_exists('qode_startit_blog_archive_pages_classes') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_full_width_types') ) {
+if( !function_exists( 'startit_qode_blog_full_width_types' ) ) {
 
 	/**
 	 * Function which return all full width blog types
@@ -467,7 +486,7 @@ if( !function_exists('qode_startit_blog_full_width_types') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_full_width_types() {
+	function startit_qode_blog_full_width_types() {
 
 		$types = array('masonry-full-width', 'gallery');
 
@@ -477,7 +496,7 @@ if( !function_exists('qode_startit_blog_full_width_types') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_grid_types') ) {
+if( !function_exists( 'startit_qode_blog_grid_types' ) ) {
 
 	/**
 	 * Function which return in grid blog types
@@ -485,7 +504,7 @@ if( !function_exists('qode_startit_blog_grid_types') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_grid_types() {
+	function startit_qode_blog_grid_types() {
 
 		$types = array('standard', 'masonry', 'standard-whole-post');
 
@@ -495,7 +514,7 @@ if( !function_exists('qode_startit_blog_grid_types') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_types') ) {
+if( !function_exists( 'startit_qode_blog_types' ) ) {
 
 	/**
 	 * Function which return all blog types
@@ -503,9 +522,9 @@ if( !function_exists('qode_startit_blog_types') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_types() {
+	function startit_qode_blog_types() {
 
-		$types = array_merge(qode_startit_blog_grid_types(), qode_startit_blog_full_width_types());
+		$types = array_merge(startit_qode_blog_grid_types(), startit_qode_blog_full_width_types());
 
 		return $types;
 
@@ -513,7 +532,7 @@ if( !function_exists('qode_startit_blog_types') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_templates') ) {
+if( !function_exists( 'startit_qode_blog_templates' ) ) {
 
 	/**
 	 * Function which return all blog templates names
@@ -521,11 +540,11 @@ if( !function_exists('qode_startit_blog_templates') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_templates() {
+	function startit_qode_blog_templates() {
 
 		$templates = array();
-		$grid_templates = qode_startit_blog_grid_types();
-		$full_templates = qode_startit_blog_full_width_types();
+		$grid_templates = startit_qode_blog_grid_types();
+		$full_templates = startit_qode_blog_full_width_types();
 		foreach($grid_templates as $grid_template){
 			array_push($templates, 'blog-'.$grid_template);
 		}
@@ -539,7 +558,7 @@ if( !function_exists('qode_startit_blog_templates') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_masonry_types') ) {
+if( !function_exists( 'startit_qode_blog_masonry_types' ) ) {
 
 	/**
 	 * Function which return masonry blog types
@@ -547,7 +566,7 @@ if( !function_exists('qode_startit_blog_masonry_types') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_masonry_types() {
+	function startit_qode_blog_masonry_types() {
 
 		$types = array('masonry', 'masonry-full-width');
 
@@ -557,7 +576,7 @@ if( !function_exists('qode_startit_blog_masonry_types') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_standard_types') ) {
+if( !function_exists( 'startit_qode_blog_standard_types' ) ) {
 
 	/**
 	 * Function which return masonry blog types
@@ -565,7 +584,7 @@ if( !function_exists('qode_startit_blog_standard_types') ) {
 	 * @return array
 	 */
 
-	function qode_startit_blog_standard_types() {
+	function startit_qode_blog_standard_types() {
 
 		$types = array('standard', 'standard-whole-post');
 
@@ -575,7 +594,7 @@ if( !function_exists('qode_startit_blog_standard_types') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_gallery_types') ) {
+if( !function_exists( 'startit_qode_blog_gallery_types' ) ) {
 
     /**
      * Function which return masonry blog types
@@ -583,7 +602,7 @@ if( !function_exists('qode_startit_blog_gallery_types') ) {
      * @return array
      */
 
-    function qode_startit_blog_gallery_types() {
+    function startit_qode_blog_gallery_types() {
 
         $types = array('gallery');
 
@@ -593,7 +612,7 @@ if( !function_exists('qode_startit_blog_gallery_types') ) {
 
 }
 
-if( !function_exists('qode_startit_blog_lists_number_of_chars') ) {
+if( !function_exists( 'startit_qode_blog_lists_number_of_chars' ) ) {
 
 	/**
 	 * Function that return number of characters for different lists based on options
@@ -601,17 +620,17 @@ if( !function_exists('qode_startit_blog_lists_number_of_chars') ) {
 	 * @return int
 	 */
 
-	function qode_startit_blog_lists_number_of_chars() {
+	function startit_qode_blog_lists_number_of_chars() {
 
 		$number_of_chars = array();
-		if(qode_startit_options()->getOptionValue('standard_number_of_chars')) {
-			$number_of_chars['standard'] = qode_startit_options()->getOptionValue('standard_number_of_chars');
+		if(startit_qode_options()->getOptionValue('standard_number_of_chars')) {
+			$number_of_chars['standard'] = startit_qode_options()->getOptionValue('standard_number_of_chars');
 		}
-		if(qode_startit_options()->getOptionValue('masonry_number_of_chars')) {
-			$number_of_chars['masonry'] = qode_startit_options()->getOptionValue('masonry_number_of_chars');
+		if(startit_qode_options()->getOptionValue('masonry_number_of_chars')) {
+			$number_of_chars['masonry'] = startit_qode_options()->getOptionValue('masonry_number_of_chars');
 		}
-        if(qode_startit_options()->getOptionValue('gallery_number_of_chars')) {
-            $number_of_chars['gallery'] = qode_startit_options()->getOptionValue('gallery_number_of_chars');
+        if(startit_qode_options()->getOptionValue('gallery_number_of_chars')) {
+            $number_of_chars['gallery'] = startit_qode_options()->getOptionValue('gallery_number_of_chars');
         }
 
 		return $number_of_chars;
@@ -620,86 +639,91 @@ if( !function_exists('qode_startit_blog_lists_number_of_chars') ) {
 
 }
 
-if (!function_exists('qode_startit_excerpt_length')) {
+if (!function_exists( 'startit_qode_excerpt_length' )) {
 	/**
 	 * Function that changes excerpt length based on theme options
 	 * @param $length int original value
 	 * @return int changed value
 	 */
-	function qode_startit_excerpt_length( $length ) {
+	function startit_qode_excerpt_length( $length ) {
 
-		if(qode_startit_options()->getOptionValue('number_of_chars') !== ''){
-			return esc_attr(qode_startit_options()->getOptionValue('number_of_chars'));
+		if( startit_qode_options()->getOptionValue('number_of_chars') !== ''){
+			return esc_attr(startit_qode_options()->getOptionValue('number_of_chars'));
 		} else {
 			return 45;
 		}
 	}
 
-	add_filter( 'excerpt_length', 'qode_startit_excerpt_length', 999 );
+	add_filter( 'excerpt_length', 'startit_qode_excerpt_length', 999 );
 }
 
-if (!function_exists('qode_startit_excerpt_more')) {
+if (!function_exists( 'startit_qode_excerpt_more' )) {
 	/**
 	 * Function that adds three dotes on the end excerpt
 	 * @param $more
 	 * @return string
 	 */
-	function qode_startit_excerpt_more( $more ) {
+	function startit_qode_excerpt_more( $more ) {
 		return '...';
 	}
-	add_filter('excerpt_more', 'qode_startit_excerpt_more');
+	add_filter('excerpt_more', 'startit_qode_excerpt_more');
 }
 
-if(!function_exists('qode_startit_post_has_read_more')) {
+if(!function_exists( 'startit_qode_post_has_read_more' )) {
 	/**
 	 * Function that checks if current post has read more tag set
 	 * @return int position of read more tag text. It will return false if read more tag isn't set
 	 */
-	function qode_startit_post_has_read_more() {
+	function startit_qode_post_has_read_more() {
 		global $post;
 
 		return strpos($post->post_content, '<!--more-->');
 	}
 }
 
-if(!function_exists('qode_startit_post_has_title')) {
+if(!function_exists( 'startit_qode_post_has_title' )) {
 	/**
 	 * Function that checks if current post has title or not
 	 * @return bool
 	 */
-	function qode_startit_post_has_title() {
+	function startit_qode_post_has_title() {
 		return get_the_title() !== '';
 	}
 }
 
-if (!function_exists('qode_startit_modify_read_more_link')) {
+if (!function_exists( 'startit_qode_modify_read_more_link' )) {
 	/**
 	 * Function that modifies read more link output.
 	 * Hooks to the_content_more_link
 	 * @return string modified output
 	 */
-	function qode_startit_modify_read_more_link() {
+	function startit_qode_modify_read_more_link() {
 		$link = '<div class="qodef-more-link-container">';
-		$link .= qode_startit_get_button_html(array(
-			'link' => get_permalink().'#more-'.get_the_ID(),
-			'text' => esc_html__('Continue reading', 'startit')
-		));
+		if(startit_qode_is_plugin_installed('core')) {
+			$link .= startit_qode_get_button_html( array(
+				'link' => get_permalink() . '#more-' . get_the_ID(),
+				'text' => esc_html__( 'Continue reading', 'startit' )
+			) );
+		} else {
+			$link .= '<a href="' . get_the_permalink() . '" target="_self" class="qodef-btn qodef-btn-small qodef-btn-default">
+                <span class="qodef-btn-text">' . esc_html__( 'Continue reading', 'startit' ) .'</span></a>';
+		}
 
 		$link .= '</div>';
 
 		return $link;
 	}
 
-	add_filter( 'the_content_more_link', 'qode_startit_modify_read_more_link');
+	add_filter( 'the_content_more_link', 'startit_qode_modify_read_more_link');
 }
 
 
-if(!function_exists('qode_startit_has_blog_widget')) {
+if(!function_exists( 'startit_qode_has_blog_widget' )) {
 	/**
 	 * Function that checks if latest posts widget is added to widget area
 	 * @return bool
 	 */
-	function qode_startit_has_blog_widget() {
+	function startit_qode_has_blog_widget() {
 		$widgets_array = array(
 			'qode_latest_posts_widget'
 		);
@@ -716,22 +740,22 @@ if(!function_exists('qode_startit_has_blog_widget')) {
 	}
 }
 
-if(!function_exists('qode_startit_has_blog_shortcode')) {
+if(!function_exists( 'startit_qode_has_blog_shortcode' )) {
 	/**
 	 * Function that checks if any of blog shortcodes exists on a page
 	 * @return bool
 	 */
-	function qode_startit_has_blog_shortcode() {
+	function startit_qode_has_blog_shortcode() {
 		$blog_shortcodes = array(
 			'qodef_blog_list',
 			'qodef_blog_slider',
 			'qodef_blog_carousel'
 		);
 
-		$slider_field = get_post_meta(qode_startit_get_page_id(), 'qode_revolution-slider', true); //TODO change
+		$slider_field = get_post_meta(startit_qode_get_page_id(), 'qode_revolution-slider', true); //TODO change
 
 		foreach ($blog_shortcodes as $blog_shortcode) {
-			$has_shortcode = qode_startit_has_shortcode($blog_shortcode) || qode_startit_has_shortcode($blog_shortcode, $slider_field);
+			$has_shortcode = startit_qode_has_shortcode($blog_shortcode) || startit_qode_has_shortcode($blog_shortcode, $slider_field);
 
 			if($has_shortcode) {
 				return true;
@@ -743,7 +767,7 @@ if(!function_exists('qode_startit_has_blog_shortcode')) {
 }
 
 
-if(!function_exists('qode_startit_load_blog_assets')) {
+if(!function_exists( 'startit_qode_load_blog_assets' )) {
 	/**
 	 * Function that checks if blog assets should be loaded
 	 *
@@ -756,12 +780,12 @@ if(!function_exists('qode_startit_load_blog_assets')) {
 	 * @see qode_has_blog_widget()
 	 * @return bool
 	 */
-	function qode_startit_load_blog_assets() {
-		return qode_startit_is_blog_template() || is_home() || is_single() || qode_startit_has_blog_shortcode() || is_archive() || is_search() || qode_startit_has_blog_widget();
+	function startit_qode_load_blog_assets() {
+		return startit_qode_is_blog_template() || is_home() || is_single() || startit_qode_has_blog_shortcode() || is_archive() || is_search() || startit_qode_has_blog_widget();
 	}
 }
 
-if(!function_exists('qode_startit_is_blog_template')) {
+if(!function_exists( 'startit_qode_is_blog_template' )) {
 	/**
 	 * Checks if current template page is blog template page.
 	 *
@@ -769,21 +793,21 @@ if(!function_exists('qode_startit_is_blog_template')) {
 	 *
 	 *@return bool
 	 *
-	 * @see qode_startit_get_page_template_name()
+	 * @see startit_qode_get_page_template_name()
 	 */
-	function qode_startit_is_blog_template($current_page = '') {
+	function startit_qode_is_blog_template($current_page = '') {
 
 		if($current_page == '') {
-			$current_page = qode_startit_get_page_template_name();
+			$current_page = startit_qode_get_page_template_name();
 		}
 
-		$blog_templates = qode_startit_blog_templates();
+		$blog_templates = startit_qode_blog_templates();
 
 		return in_array($current_page, $blog_templates);
 	}
 }
 
-if(!function_exists('qode_startit_read_more_button')) {
+if(!function_exists( 'startit_qode_read_more_button' )) {
 	/**
 	 * Function that outputs read more button html if necessary.
 	 * It checks if read more button should be outputted only if option for given template is enabled and post does'nt have read more tag
@@ -793,30 +817,33 @@ if(!function_exists('qode_startit_read_more_button')) {
 	 * @param string $class additional class to add to button
 	 *
 	 */
-	function qode_startit_read_more_button($option = '', $class = '') {
+	function startit_qode_read_more_button($option = '', $class = '') {
 		if($option != '') {
-			$show_read_more_button = qode_startit_options()->getOptionValue($option) == 'yes';
+			$show_read_more_button = startit_qode_options()->getOptionValue($option) == 'yes';
 		}else {
 			$show_read_more_button = 'yes';
 		}
-		if($show_read_more_button && !qode_startit_post_has_read_more() && !post_password_required()) {
-			echo qode_startit_get_button_html(array(
+		if(startit_qode_is_plugin_installed('core') && $show_read_more_button && !startit_qode_post_has_read_more() && !post_password_required()) {
+			echo startit_qode_get_button_html(array(
 				'size'         => 'small',
 				'link'         => get_the_permalink(),
 				'text'         => esc_html__('Read More', 'startit'),
 				'custom_class' => $class
 			));
-		}
+		} else { ?>
+            <a href="<?php echo get_the_permalink(); ?>" target="_self" class="qodef-btn qodef-btn-small qodef-btn-default">
+                <span class="qodef-btn-text"><?php echo esc_html__( 'Read More', 'startit' ) ?></span></a>
+        <?php }
 	}
 }
 
-if(!function_exists('qode_startit_add_user_custom_fields')) {
+if(!function_exists( 'startit_qode_add_user_custom_fields' )) {
 
 	/**
 	 * Function that extends wordpress user info with social media links
 	 */
 
-	function qode_startit_add_user_custom_fields($user_contact) {
+	function startit_qode_add_user_custom_fields($user_contact) {
 		$user_contact['facebook']   = esc_html__( 'Facebook', 'startit');
 		$user_contact['twitter'] = esc_html__( 'Twitter', 'startit');
 		$user_contact['instagram'] = esc_html__( 'Instagram', 'startit');
@@ -826,21 +853,21 @@ if(!function_exists('qode_startit_add_user_custom_fields')) {
 		return $user_contact;
 	}
 
-	add_filter( 'user_contactmethods', 'qode_startit_add_user_custom_fields' );
+	add_filter( 'user_contactmethods', 'startit_qode_add_user_custom_fields' );
 }
 
-if(!function_exists('qode_startit_get_user_gravatar')) {
+if(!function_exists( 'startit_qode_get_user_gravatar' )) {
 
 	/**
 	 * Function for connecting wordpress user account with gravatar
 	 */
 
-	function qode_startit_get_user_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array()) {
+	function startit_qode_get_user_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array()) {
 		$url = 'http://www.gravatar.com/avatar/';
 		$url .= md5(strtolower(trim($email)));
 		$url .= "?s=$s&d=$d&r=$r";
 		if ($img) {
-			$url = '<img src="' . $url . '"';
+			$url = '<img src="' . esc_url($url) . '"';
 			foreach ($atts as $key => $val)
 				$url .= ' ' . $key . '="' . $val . '"';
 			$url .= ' alt="user-gravatar"/>';
@@ -849,6 +876,37 @@ if(!function_exists('qode_startit_get_user_gravatar')) {
 	}
 }
 
+if(!function_exists('startit_qodef_get_max_number_of_pages')) {
+	/**
+	 * Function that return max number of posts/pages for pagination
+	 */
+	function startit_qodef_get_max_number_of_pages() {
+		global $wp_query;
 
+		$max_number_of_pages = 10; //default value
 
+		if($wp_query) {
+			$max_number_of_pages = $wp_query->max_num_pages;
+		}
+
+		return $max_number_of_pages;
+	}
+}
+
+if(!function_exists('startit_qodef_get_blog_page_range')) {
+	/**
+	 * Function that returns current page for blog list pagination
+	 */
+	function startit_qodef_get_blog_page_range() {
+		global $wp_query;
+
+		if( startit_qode_options()->getOptionValue('blog_page_range') != ""){
+			$blog_page_range = esc_attr(startit_qode_options()->getOptionValue('blog_page_range'));
+		} else{
+			$blog_page_range = $wp_query->max_num_pages;
+		}
+
+		return $blog_page_range;
+	}
+}
 ?>

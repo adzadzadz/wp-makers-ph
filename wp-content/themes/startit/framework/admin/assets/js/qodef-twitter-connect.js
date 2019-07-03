@@ -1,15 +1,17 @@
 (function($) {
+    "use strict";
     $(document).ready(function() {
         qodefTwitterRequestToken();
     });
 
     function qodefTwitterRequestToken() {
         if($('#qodef-tw-request-token-btn').length) {
-            $('#qodef-tw-request-token-btn').click(function(e) {
+            $('#qodef-tw-request-token-btn').on('click',function(e) {
                 e.preventDefault();
 
                 var that = $(this);
                 var currentPageUrl = $('input[data-name="current-page-url"]').val();
+                var twitterConnectNonce = $('input[name="startit_qode_twitter_connect"]').val();
 
                 console.log(currentPageUrl);
 
@@ -18,7 +20,8 @@
 
                 var data = {
                     action: 'qode_twitter_obtain_request_token',
-                    currentPageUrl: currentPageUrl
+                    currentPageUrl: currentPageUrl,
+                    startit_qode_twitter_connect: twitterConnectNonce
                 }
 
                 $.ajax({

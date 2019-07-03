@@ -2,7 +2,7 @@
 
 //Testimonials
 
-$testimonial_meta_box = qode_startit_add_meta_box(
+$testimonial_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('testimonials'),
         'title' => 'Testimonial',
@@ -10,7 +10,7 @@ $testimonial_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        	=> 'qodef_testimonial_title',
             'type'        	=> 'text',
@@ -21,7 +21,7 @@ $testimonial_meta_box = qode_startit_add_meta_box(
     );
 
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        	=> 'qodef_testimonial_author',
             'type'        	=> 'text',
@@ -31,7 +31,7 @@ $testimonial_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        	=> 'qodef_testimonial_author_position',
             'type'        	=> 'text',
@@ -41,7 +41,7 @@ $testimonial_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        	=> 'qodef_testimonial_text',
             'type'        	=> 'text',

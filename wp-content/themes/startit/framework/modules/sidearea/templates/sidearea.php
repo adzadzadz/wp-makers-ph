@@ -1,6 +1,6 @@
 <section class="qodef-side-menu right">
 	<?php if ($show_side_area_title) {
-		qode_startit_get_side_area_title();
+		startit_qode_get_side_area_title();
 	} ?>
 	<div class="qodef-close-side-menu-holder">
 		<div class="qodef-close-side-menu-holder-inner">

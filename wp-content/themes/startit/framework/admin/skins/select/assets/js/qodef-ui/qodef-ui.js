@@ -1,4 +1,5 @@
 (function($){
+    "use strict";
     $(document).ready(function() {
         //plugins init goes here
         qodefInitSelectChange();
@@ -175,8 +176,8 @@
 		});
 		
 		$(document).on('change','.qodef-form-element.dependence',function(){
-            hidden_elements_array = qodefGetArrayOfHiddenElementsSelectBox($(this),$(this).val());
-            shown_elements_array  = qodefGetArrayOfShownElementsSelectBox($(this),$(this).val());
+            var hidden_elements_array = qodefGetArrayOfHiddenElementsSelectBox($(this),$(this).val());
+            var shown_elements_array  = qodefGetArrayOfShownElementsSelectBox($(this),$(this).val());
 
             //show all buttons, but hide unnecessary ones
             $.each(hidden_elements_array, function(index, value){
@@ -509,7 +510,9 @@
 
         var $qodef_upload_button = jQuery('.qodef-gallery-upload-btn');
 
-        var $qodef_clear_button = jQuery('.qodef-gallery-clear-btn');
+        var $qodef_clear_button = jQuery('.qodef-gallery-clear-btn'),
+            $thumbs_wrap,
+            $input_gallery_items;
 
         wp.media.customlibEditGallery1 = {
 
@@ -537,12 +540,20 @@
                     // Need to get all the attachment ids for gallery
                     var ids = library.pluck('id');
 
+
                     $input_gallery_items.val(ids);
+
+                    var data = {
+                        action: 'startit_qode_gallery_upload_get_images',
+                        ids: ids,
+                        post_name: $input_gallery_items.attr('name'),
+                        gallery_upload_get_images: $('#startit-qode-update-images_' + $input_gallery_items.attr('name')).val()
+                    };
 
                     jQuery.ajax({
                         type: "post",
                         url: ajaxurl,
-                        data: "action=qode_startit_gallery_upload_get_images&ids=" + ids,
+                        data: data,
                         success: function(data) {
 
                             $thumbs_wrap.empty().html(data);
@@ -705,7 +716,7 @@
 	
 	function qodefInitPortfolioItemsBox() {
 		var qode_portfolio_additional_item = $('.qodef-portfolio-additional-item-holder').clone().html();
-        $portfolio_item = '<div class="qodef-portfolio-additional-item" rel="">'+ qode_portfolio_additional_item +'</div>';
+        var $portfolio_item = '<div class="qodef-portfolio-additional-item" rel="">'+ qode_portfolio_additional_item +'</div>';
 		
 		$('a.qodef-add-item').click(function (event) {
 			event.preventDefault();
@@ -830,10 +841,10 @@
 
     function qodefInitPortfolioImagesVideosBox() {
          var qodef_portfolio_images = $('.qodef-hidden-portfolio-images').clone().html();
-        $portfolio_image = '<div class="qodef-portfolio-images qodef-portfolio-media" rel="">'+ qodef_portfolio_images +'</div>';
+        var $portfolio_image = '<div class="qodef-portfolio-images qodef-portfolio-media" rel="">'+ qodef_portfolio_images +'</div>';
         var qodef_portfolio_videos = $('.qodef-hidden-portfolio-videos').clone().html();
 
-        $portfolio_videos = '<div class="qodef-portfolio-videos qodef-portfolio-media" rel="">'+ qodef_portfolio_videos +'</div>';
+        var $portfolio_videos = '<div class="qodef-portfolio-videos qodef-portfolio-media" rel="">'+ qodef_portfolio_videos +'</div>';
         $('a.qodef-add-image').click(function (e) {
             e.preventDefault();
             $(this).parent().before($($portfolio_image).hide().fadeIn(500));

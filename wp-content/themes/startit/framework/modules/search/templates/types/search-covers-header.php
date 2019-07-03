@@ -6,10 +6,10 @@
 			<div class="qodef-form-holder-outer">
 				<div class="qodef-form-holder">
 					<div class="qodef-form-holder-inner">
-						<input type="text" placeholder="<?php esc_html_e('Search', 'startit'); ?>" name="s" class="qode_search_field no-livesearch" autocomplete="off" />
+						<input type="text" placeholder="<?php esc_attr_e('Search', 'startit'); ?>" name="s" class="qode_search_field no-livesearch" autocomplete="off" />
 						<div class="qodef-search-close">
 							<a href="#">
-								<?php print $search_icon_close; ?>
+								<?php startit_qode_module_part($search_icon_close); ?>
 							</a>
 						</div>
 					</div>

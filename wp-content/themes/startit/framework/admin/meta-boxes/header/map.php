@@ -1,6 +1,6 @@
 <?php
 
-$header_meta_box = qode_startit_add_meta_box(
+$header_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('page', 'portfolio-item', 'post'),
         'title' => 'Header',
@@ -16,7 +16,7 @@ $temp_array_vertical = array();
 $temp_array_full_screen = array();
 $temp_array_overlapping = array();
 
-switch (qode_startit_options()->getOptionValue('header_type')) {
+switch (startit_qode_options()->getOptionValue('header_type')) {
 
     case 'header-standard':
         $temp_holder_show = '#qodef_qodef_header_standard_type_meta_container';
@@ -96,7 +96,7 @@ switch (qode_startit_options()->getOptionValue('header_type')) {
         break;
 }
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'header_type_meta',
         'type' => 'select',
@@ -132,7 +132,7 @@ qode_startit_add_meta_box_field(
 );
 
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_header_style_meta',
             'type' => 'select',
@@ -148,7 +148,7 @@ qode_startit_add_meta_box_field(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $header_meta_box,
             'type' => 'select',
@@ -164,7 +164,7 @@ qode_startit_add_meta_box_field(
         )
     );
 
-$header_standard_type_meta_container = qode_startit_add_admin_container(
+$header_standard_type_meta_container = startit_qode_add_admin_container(
     array_merge(
         array(
             'parent' => $header_meta_box,
@@ -176,7 +176,7 @@ $header_standard_type_meta_container = qode_startit_add_admin_container(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_menu_area_background_color_header_standard_meta',
         'type' => 'color',
@@ -186,7 +186,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_menu_area_background_transparency_header_standard_meta',
         'type' => 'text',
@@ -199,7 +199,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'menu_area_in_grid_header_standard_meta',
         'type' => 'select',
@@ -215,7 +215,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-$header_vertical_type_meta_container = qode_startit_add_admin_container(
+$header_vertical_type_meta_container = startit_qode_add_admin_container(
     array_merge(
         array(
             'parent' => $header_meta_box,
@@ -226,7 +226,7 @@ $header_vertical_type_meta_container = qode_startit_add_admin_container(
     )
 );
 
-qode_startit_add_meta_box_field(array(
+startit_qode_create_meta_box_field(array(
     'name'        => 'qodef_vertical_header_background_color_meta',
     'type'        => 'color',
     'label'       => 'Background Color',
@@ -234,7 +234,7 @@ qode_startit_add_meta_box_field(array(
     'parent'      => $header_vertical_type_meta_container
 ));
 
-qode_startit_add_meta_box_field(array(
+startit_qode_create_meta_box_field(array(
     'name'        => 'qodef_vertical_header_transparency_meta',
     'type'        => 'text',
     'label'       => 'Background Transparency',
@@ -245,7 +245,7 @@ qode_startit_add_meta_box_field(array(
     )
 ));
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name'          => 'qodef_vertical_header_background_image_meta',
         'type'          => 'image',
@@ -256,7 +256,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_disable_vertical_header_background_image_meta',
         'type' => 'yesno',
@@ -267,7 +267,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-$header_overlapping_type_meta_container = qode_startit_add_admin_container(
+$header_overlapping_type_meta_container = startit_qode_add_admin_container(
     array_merge(
         array(
             'parent' => $header_meta_box,
@@ -279,7 +279,7 @@ $header_overlapping_type_meta_container = qode_startit_add_admin_container(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_menu_area_background_color_header_overlapping_meta',
         'type' => 'color',
@@ -289,7 +289,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_menu_area_background_transparency_header_overlapping_meta',
         'type' => 'text',
@@ -302,7 +302,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'menu_area_in_grid_header_overlapping_meta',
         'type' => 'select',
@@ -318,7 +318,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-$header_full_screen_type_meta_container = qode_startit_add_admin_container(
+$header_full_screen_type_meta_container = startit_qode_add_admin_container(
     array_merge(
         array(
             'parent' => $header_meta_box,
@@ -329,7 +329,7 @@ $header_full_screen_type_meta_container = qode_startit_add_admin_container(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_menu_area_background_color_header_full_screen_meta',
         'type' => 'color',
@@ -339,7 +339,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'qodef_menu_area_background_transparency_header_full_screen_meta',
         'type' => 'text',
@@ -352,7 +352,7 @@ qode_startit_add_meta_box_field(
     )
 );
 
-qode_startit_add_meta_box_field(
+startit_qode_create_meta_box_field(
     array(
         'name' => 'menu_area_in_grid_header_full_screen_meta',
         'type' => 'select',
@@ -369,7 +369,7 @@ qode_startit_add_meta_box_field(
 );
 
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'            => 'qodef_scroll_amount_for_sticky_meta',
             'type'            => 'text',
@@ -385,7 +385,7 @@ qode_startit_add_meta_box_field(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $header_meta_box,
             'type' => 'select',
@@ -400,8 +400,8 @@ qode_startit_add_meta_box_field(
             )
         )
     );
-if(qode_startit_options() -> getOptionValue('header_behaviour') == 'sticky-header-on-scroll-up' || qode_startit_options() -> getOptionValue('header_behaviour') == 'sticky-header-on-scroll-down-up') {
-    qode_startit_add_meta_box_field(
+if( startit_qode_options()-> getOptionValue('header_behaviour') == 'sticky-header-on-scroll-up' || startit_qode_options()-> getOptionValue('header_behaviour') == 'sticky-header-on-scroll-down-up') {
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $header_meta_box,
             'type' => 'select',
@@ -418,7 +418,7 @@ if(qode_startit_options() -> getOptionValue('header_behaviour') == 'sticky-heade
     );
 }
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'parent' => $header_meta_box,
             'type' => 'select',

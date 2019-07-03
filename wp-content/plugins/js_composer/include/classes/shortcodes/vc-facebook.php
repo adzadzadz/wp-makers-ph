@@ -3,7 +3,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Facebook extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Facebook
+ */
+class WPBakeryShortCode_Vc_Facebook extends WPBakeryShortCode {
+	/**
+	 * @param $atts
+	 * @param null $content
+	 * @return string
+	 * @throws \Exception
+	 */
 	protected function contentInline( $atts, $content = null ) {
 		/**
 		 * Shortcode attributes
@@ -13,7 +22,7 @@ class WPBakeryShortCode_VC_Facebook extends WPBakeryShortCode {
 		 * @var $css
 		 * @var $css_animation
 		 * Shortcode class
-		 * @var $this WPBakeryShortCode_VC_Facebook
+		 * @var WPBakeryShortCode_Vc_Facebook $this
 		 */
 		$type = $css = $el_class = '';
 		$atts = vc_map_get_attributes( $this->getShortcode(), $atts );

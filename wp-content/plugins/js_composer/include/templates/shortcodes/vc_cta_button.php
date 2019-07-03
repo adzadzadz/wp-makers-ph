@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Cta_button
+ * @var WPBakeryShortCode_Vc_Cta_button $this
  */
 $color = $icon = $size = $target = $href = $target = $call_text = $position = $el_class = $css_animation = '';
 $output = '';
@@ -42,7 +42,7 @@ $size = ( '' !== $size && 'wpb_regularsize' !== $size ) ? ' wpb_' . $size : ' ' 
 $a_class = '';
 if ( '' !== $el_class ) {
 	$tmp_class = explode( ' ', $el_class );
-	if ( in_array( 'prettyphoto', $tmp_class ) ) {
+	if ( in_array( 'prettyphoto', $tmp_class, true ) ) {
 		wp_enqueue_script( 'prettyphoto' );
 		wp_enqueue_style( 'prettyphoto' );
 		$a_class .= ' prettyphoto';
@@ -70,4 +70,5 @@ if ( 'cta_align_bottom' === $position ) {
 }
 $output .= '</div>';
 
+// @codingStandardsIgnoreLine
 echo $output;

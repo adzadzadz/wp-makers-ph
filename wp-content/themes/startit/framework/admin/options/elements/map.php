@@ -1,12 +1,12 @@
 <?php
 
-if ( ! function_exists('qode_startit_load_elements_map') ) {
+if ( ! function_exists( 'startit_qode_load_elements_map' ) ) {
 	/**
 	 * Add Elements option page for shortcodes
 	 */
-	function qode_startit_load_elements_map() {
+	function startit_qode_load_elements_map() {
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug' => '_elements_page',
 				'title' => 'Elements',
@@ -18,6 +18,6 @@ if ( ! function_exists('qode_startit_load_elements_map') ) {
 
 	}
 
-	add_action('qode_startit_options_map', 'qode_startit_load_elements_map', 8);
+	add_action('qode_startit_options_map', 'startit_qode_load_elements_map', 8);
 
 }

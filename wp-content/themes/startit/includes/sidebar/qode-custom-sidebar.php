@@ -27,20 +27,20 @@ if( ! class_exists('QodeStartitSidebar') ){
 			add_action('admin_print_scripts', array(&$this, 'template_add_widget_field') );
 			add_action('load-widgets.php', array(&$this, 'add_sidebar_area'), 100);
 			
-			wp_enqueue_script('qode_startit_sidebar' , QODE_ROOT . '/framework/admin/assets/js/qodef-sidebar.js');
-			wp_enqueue_style('qode_startit_sidebar' , QODE_ROOT . '/framework/admin/assets/css/qodef-sidebar.css');
+			wp_enqueue_script('startit-qode-sidebar' , QODE_ROOT . '/framework/admin/assets/js/qodef-sidebar.js');
+			wp_enqueue_style('startit-qode-sidebar' , QODE_ROOT . '/framework/admin/assets/css/qodef-sidebar.css');
 		}
 		
 		//widget form template
 		function template_add_widget_field(){
 			$nonce =  wp_create_nonce ('qode-delete-sidebar');
-			$nonce = '<input type="hidden" name="qode-delete-sidebar" value="'.$nonce.'" />';
+			$nonce = '<input type="hidden" name="qode-delete-sidebar" value="'.esc_attr($nonce).'" />';
 
 			echo "\n<script type='text/html' id='qode-add-widget'>";
 			echo "\n  <form class='qode-add-widget' method='POST'>";
 			echo "\n  <h3>". esc_html($this->title) ."</h3>";
-			echo "\n    <span class='input_wrap'><input type='text' value='' placeholder = '".esc_html__('Enter Name of the new Widget Area', 'startit')."' name='qode-add-widget' /></span>";
-			echo "\n    <input class='button' type='submit' value='".esc_html__('Add Widget Area', 'startit')."' />";
+			echo "\n    <span class='input_wrap'><input type='text' value='' placeholder = '".esc_attr__('Enter Name of the new Widget Area', 'startit')."' name='qode-add-widget' /></span>";
+			echo "\n    <input class='button' type='submit' value='".esc_attr__('Add Widget Area', 'startit')."' />";
 			echo "\n    ".$nonce;
 			echo "\n  </form>";
 			echo "\n</script>\n";
@@ -50,7 +50,7 @@ if( ! class_exists('QodeStartitSidebar') ){
 		function add_sidebar_area(){
 			if(!empty($_POST['qode-add-widget'])){
 				$this->sidebars = get_option($this->stored);
-				$name = $this->get_name($_POST['qode-add-widget']);
+				$name = $this->get_name(sanitize_text_field($_POST['qode-add-widget']));
 
 				if(empty($this->sidebars)){
 					$this->sidebars = array($name);
@@ -70,7 +70,7 @@ if( ! class_exists('QodeStartitSidebar') ){
 			check_ajax_referer('qode-delete-sidebar');
 
 			if(!empty($_POST['name'])){
-				$name = stripslashes($_POST['name']);
+				$name = stripslashes(sanitize_text_field($_POST['name']));
 				$this->sidebars = get_option($this->stored);
 
 				if(($key = array_search($name, $this->sidebars)) !== false){

@@ -171,7 +171,7 @@
 
         $(".qodef-preload-background").each(function() {
             var preloadBackground = $(this);
-            if(preloadBackground.css("background-image") !== "" && preloadBackground.css("background-image") != "none") {
+            if(preloadBackground.css("background-image") !== "" && preloadBackground.css("background-image") !== "none") {
 
                 var bgUrl = preloadBackground.attr('style');
 
@@ -192,47 +192,48 @@
     }
 
     function qodefPrettyPhoto() {
-        var markupWhole = '<div class="pp_pic_holder"> \
-                        <div class="ppt">&nbsp;</div> \
-                        <div class="pp_top"> \
-                            <div class="pp_left"></div> \
-                            <div class="pp_middle"></div> \
-                            <div class="pp_right"></div> \
-                        </div> \
-                        <div class="pp_content_container"> \
-                            <div class="pp_left"> \
-                            <div class="pp_right"> \
-                                <div class="pp_content"> \
-                                    <div class="pp_loaderIcon"></div> \
-                                    <div class="pp_fade"> \
-                                        <a href="#" class="pp_expand" title="Expand the image">Expand</a> \
-                                        <div class="pp_hoverContainer"> \
-                                            <a class="pp_next" href="#"><span class="fa fa-chevron-right"></span></a> \
-                                            <a class="pp_previous" href="#"><span class="fa fa-chevron-left"></span></a> \
-                                        </div> \
-                                        <div id="pp_full_res"></div> \
-                                        <div class="pp_details"> \
-                                            <div class="pp_nav"> \
-                                                <a href="#" class="pp_arrow_previous">Previous</a> \
-                                                <p class="currentTextHolder">0/0</p> \
-                                                <a href="#" class="pp_arrow_next">Next</a> \
-                                            </div> \
-                                            <p class="pp_description"></p> \
-                                            {pp_social} \
-                                            <a class="pp_close" href="#">Close</a> \
-                                        </div> \
-                                    </div> \
-                                </div> \
-                            </div> \
-                            </div> \
-                        </div> \
-                        <div class="pp_bottom"> \
-                            <div class="pp_left"></div> \
-                            <div class="pp_middle"></div> \
-                            <div class="pp_right"></div> \
-                        </div> \
-                    </div> \
-                    <div class="pp_overlay"></div>';
+        var markupWhole = '<div class="pp_pic_holder"> '+
+                        '<div class="ppt">&nbsp;</div> '+
+                        '<div class="pp_top"> '+
+                            '<div class="pp_left"></div> '+
+                            '<div class="pp_middle"></div> '+
+                            '<div class="pp_right"></div> '+
+                        '</div> '+
+                        '<div class="pp_content_container"> '+
+                            '<div class="pp_left"> '+
+                            '<div class="pp_right"> '+
+                                '<div class="pp_content"> '+
+                                    '<div class="pp_loaderIcon"></div> '+
+                                    '<div class="pp_fade"> '+
+                                        '<a href="#" class="pp_expand" title="Expand the image">Expand</a> '+
+                                        '<div class="pp_hoverContainer"> '+
+                                            '<a class="pp_next" href="#"><span class="fa fa-chevron-right"></span></a> '+
+                                            '<a class="pp_previous" href="#"><span class="fa fa-chevron-left"></span></a> '+
+                                        '</div> '+
+                                        '<div id="pp_full_res"></div> '+
+                                        '<div class="pp_details"> '+
+                                            '<div class="pp_nav"> '+
+                                                '<a href="#" class="pp_arrow_previous">Previous</a> '+
+                                                '<p class="currentTextHolder">0/0</p> '+
+                                                '<a href="#" class="pp_arrow_next">Next</a> '+
+                                            '</div> '+
+                                            '<p class="pp_description"></p> '+
+                                            '{pp_social} '+
+                                            '<a class="pp_close" href="#">Close</a> '+
+                                        '</div> '+
+                                    '</div> '+
+                                '</div> '+
+                            '</div> '+
+                            '</div> '+
+                        '</div> '+
+                        '<div class="pp_bottom"> '+
+                            '<div class="pp_left"></div> '+
+                            '<div class="pp_middle"></div> '+
+                            '<div class="pp_right"></div> '+
+                        '</div> '+
+                    '</div> '+
+                    '<div class="pp_overlay"></div>';
+
 
         $("a[data-rel^='prettyPhoto']").prettyPhoto({
             hook: 'data-rel',
@@ -418,11 +419,11 @@ var qodefInitAnchor = qodef.modules.common.qodefInitAnchor = function() {
      */
     var headerHeihtToSubtract = function(anchoredElementOffset){
 
-        if(qodef.modules.header.behaviour == 'qodef-sticky-header-on-scroll-down-up') {
+        if(qodef.modules.header.behaviour === 'qodef-sticky-header-on-scroll-down-up') {
             (anchoredElementOffset > qodef.modules.header.stickyAppearAmount) ? qodef.modules.header.isStickyVisible = true : qodef.modules.header.isStickyVisible = false;
         }
 
-        if(qodef.modules.header.behaviour == 'qodef-sticky-header-on-scroll-up') {
+        if(qodef.modules.header.behaviour === 'qodef-sticky-header-on-scroll-up') {
             (anchoredElementOffset > qodef.scroll) ? qodef.modules.header.isStickyVisible = false : '';
         }
 
@@ -440,7 +441,7 @@ var qodefInitAnchor = qodef.modules.common.qodefInitAnchor = function() {
             var anchor = $(this);
             var hash = anchor.prop("hash").split('#')[1];
 
-            if(hash !== "" && $('[data-qodef-anchor="' + hash + '"]').length > 0 /*&& anchor.attr('href').split('#')[0] == window.location.href.split('#')[0]*/) {
+            if(hash !== "" && $('[data-qodef-anchor="' + hash + '"]').length > 0) {
 
                 var anchoredElementOffset = $('[data-qodef-anchor="' + hash + '"]').offset().top;
                 scrollAmount = $('[data-qodef-anchor="' + hash + '"]').offset().top - headerHeihtToSubtract(anchoredElementOffset);
@@ -647,23 +648,23 @@ function qodefInitVideoBackground(){
 
     function qodefBindTouch(selector) {
         if($(selector).length > 0) {
-            $(selector).bind('touchstart', function() {});
+            $(selector).on('touchstart', function() {});
         }
     }
 
     function qodefSmoothTransition() {
         if (qodef.body.hasClass('qodef-smooth-page-transitions')) {
 
-            $(window).bind("pageshow", function(event) {
+            $(window).on("pageshow", function(event) {
                 if (event.originalEvent.persisted) {
                     $('.qodef-wrapper-inner').fadeIn(0);
                 }
             });
 
-            $('a').click(function(e) {
+            $('a').on('click',function(e) {
                 var a = $(this);
                 if (
-                    e.which == 1 && // check if the left mouse button has been pressed
+                    e.which === 1 && // check if the left mouse button has been pressed
                     (typeof a.data('rel') === 'undefined') && //Not pretty photo link
                     (typeof a.attr('rel') === 'undefined') && //Not VC pretty photo link
                     a.attr('href').indexOf(window.location.host) >= 0 && // check if the link is to the same domain
@@ -845,7 +846,7 @@ function qodefInitVideoBackground(){
 
         }
 
-        $('a.qodef-side-menu-button-opener, a.qodef-close-side-menu').click( function(e) {
+        $('a.qodef-side-menu-button-opener, a.qodef-close-side-menu').on('click', function(e) {
             e.preventDefault();
 
             if(!sideMenuButtonOpen.hasClass('opened')) {
@@ -854,7 +855,7 @@ function qodefInitVideoBackground(){
                 qodef.body.addClass(cssClass);
 
                 if (slideFromRight) {
-                    $('.qodef-wrapper .qodef-cover').click(function() {
+                    $('.qodef-wrapper .qodef-cover').on('click',function() {
                         qodef.body.removeClass('qodef-right-side-menu-opened');
                         sideMenuButtonOpen.removeClass('opened');
                     });
@@ -896,7 +897,7 @@ function qodefInitVideoBackground(){
             if (slideWithContent) {
 
                 e.stopPropagation();
-                wrapper.click(function() {
+                wrapper.on('click',function() {
                     e.preventDefault();
                     sideMenuButtonOpen.removeClass('opened');
                     qodef.body.removeClass('qodef-side-menu-open');
@@ -1014,7 +1015,7 @@ function qodefInitVideoBackground(){
                         qodef.modules.common.qodefDisableScroll();
                     }
                     $(document).keyup(function(e){
-                        if (e.keyCode == 27 ) {
+                        if (e.keyCode === 27 ) {
                             popupMenuOpener.removeClass('opened');
                             qodef.body.removeClass('qodef-fullscreen-menu-opened');
                             qodef.body.removeClass('qodef-fullscreen-fade-in').addClass('qodef-fullscreen-fade-out');
@@ -1063,11 +1064,11 @@ function qodefInitVideoBackground(){
             });
 
             //if link has no submenu and if it's not dead, than open that link
-            menuItemWithoutChild.click(function (e) {
+            menuItemWithoutChild.on('click',function (e) {
 
                 if(($(this).attr('href') !== "http://#") && ($(this).attr('href') !== "#")){
 
-                    if (e.which == 1) {
+                    if (e.which === 1) {
                         popupMenuOpener.removeClass('opened');
                         qodef.body.removeClass('qodef-fullscreen-menu-opened');
                         qodef.body.removeClass('qodef-fullscreen-fade-in').addClass('qodef-fullscreen-fade-out');
@@ -1174,10 +1175,6 @@ function qodefInitVideoBackground(){
                 } else {
                     mobileHeader.addClass('mobile-header-appear');
                     mobileHeader.css('margin-bottom', stickyAppearAmount);
-
-                    //if(adminBar.length) {
-                    //    mobileHeader.find('.qodef-mobile-header-inner').css('top', adminBarHeight);
-                    //}
                 }
 
                 docYScroll1 = $(document).scrollTop();
@@ -1260,7 +1257,7 @@ function qodefInitVideoBackground(){
                         }
                     } else {
                         if(!$(this).hasClass('left_position') && !$(this).hasClass('right_position')) {
-                            var left_position = dropdown.offset().left;
+                            var left_position = $(this).find('.second').offset().left;
 
                             dropDownSecondDiv.css('left', -left_position);
                             dropDownSecondDiv.css('width', qodef.windowWidth);
@@ -1339,7 +1336,7 @@ function qodefInitVideoBackground(){
             }
         });
         $('.qodef-drop-down ul li.wide ul li a').on('click', function(e) {
-            if (e.which == 1){
+            if (e.which === 1){
                 var $this = $(this);
                 setTimeout(function() {
                     $this.mouseleave();
@@ -1399,7 +1396,7 @@ function qodefInitVideoBackground(){
          */
         function qodefSearchWindowTop() {
 
-            searchOpener.click( function(e) {
+            searchOpener.on('click', function(e) {
                 e.preventDefault();
 
                 if($('.title').hasClass('has_parallax_background')){
@@ -1407,7 +1404,7 @@ function qodefInitVideoBackground(){
                 }else {
                     var yPos = 0;
                 }
-                if ( searchForm.height() == "0") {
+                if ( searchForm.height() === 0) {
                     $('.qodef-search-slide-window-top input[type="text"]').focus();
                     //Push header bottom
                     qodef.body.addClass('qodef-search-open');
@@ -1422,13 +1419,13 @@ function qodefInitVideoBackground(){
                 }
 
                 $(window).scroll(function() {
-                    if ( searchForm.height() != '0' && qodef.scroll > 50 ) {
+                    if ( searchForm.height() !== 0 && qodef.scroll > 50 ) {
                         qodef.body.removeClass('qodef-search-open');
                         $('.title.has_parallax_background').css('backgroundPosition', 'center '+(yPos)+'px');
                     }
                 });
 
-                searchClose.click(function(e){
+                searchClose.on('click',function(e){
                     e.preventDefault();
                     qodef.body.removeClass('qodef-search-open');
                     $('.title.has_parallax_background').animate({
@@ -1444,7 +1441,7 @@ function qodefInitVideoBackground(){
          */
         function qodefSearchCoversHeader() {
 
-            searchOpener.click( function(e) {
+            searchOpener.on('click', function(e) {
                 e.preventDefault();
                 var searchFormHeight,
                     searchFormHolder = $('.qodef-search-cover .qodef-form-holder-outer'),
@@ -1487,7 +1484,7 @@ function qodefInitVideoBackground(){
                 searchFormHolder.height(searchFormHeight);
                 searchForm.stop(true).fadeIn(600);
                 $('.qodef-search-cover input[type="text"]').focus();
-                $('.qodef-search-close, .content, footer').click(function(e){
+                $('.qodef-search-close, .content, footer').on('click',function(e){
                     e.preventDefault();
                     searchForm.stop(true).fadeOut(450);
                 });
@@ -1506,7 +1503,7 @@ function qodefInitVideoBackground(){
             var searchHolder = $( '.qodef-fullscreen-search-holder'),
                 searchOverlay = $( '.qodef-fullscreen-search-overlay' );
 
-            searchOpener.click( function(e) {
+            searchOpener.on('click', function(e) {
                 e.preventDefault();
                 var samePosition = false;
                 if ( $(this).data('icon-close-same-position') === 'yes' ) {
@@ -1539,7 +1536,7 @@ function qodefInitVideoBackground(){
                             qodef.modules.common.qodefDisableScroll();
                         }
                     }
-                    searchClose.click( function(e) {
+                    searchClose.on('click', function(e) {
                         e.preventDefault();
                         qodef.body.removeClass('qodef-fullscreen-search-opened');
                         searchHolder.removeClass('qodef-animate');
@@ -1551,7 +1548,7 @@ function qodefInitVideoBackground(){
                     });
                     //Close on escape
                     $(document).keyup(function(e){
-                        if (e.keyCode == 27 ) { //KeyCode for ESC button is 27
+                        if (e.keyCode === 27 ) { //KeyCode for ESC button is 27
                             qodef.body.removeClass('qodef-fullscreen-search-opened');
                             searchHolder.removeClass('qodef-animate');
                             qodef.body.removeClass('qodef-search-fade-in');
@@ -1604,7 +1601,7 @@ function qodefInitVideoBackground(){
                             qodef.modules.common.qodefDisableScroll();
                         }
                     }
-                    searchClose.click(function(e) {
+                    searchClose.on('click',function(e) {
                         e.preventDefault();
                         searchOverlay.removeClass('qodef-animate');
                         searchHolder.css({
@@ -1624,7 +1621,7 @@ function qodefInitVideoBackground(){
                     });
                     //Close on escape
                     $(document).keyup(function(e){
-                        if (e.keyCode == 27 ) { //KeyCode for ESC button is 27
+                        if (e.keyCode === 27 ) { //KeyCode for ESC button is 27
                             searchOverlay.removeClass('qodef-animate');
                             searchHolder.css({
                                 'opacity' : 0,
@@ -1670,25 +1667,6 @@ function qodefInitVideoBackground(){
         var verticalMenuObject = $('.qodef-vertical-menu-area');
 
         /**
-         * Resizes vertical area. Called whenever height of navigation area changes
-         * It first check if vertical area is scrollable, and if it is resizes scrollable area
-         */
-        //var resizeVerticalArea = function() {
-        //    if(verticalAreaScrollable()) {
-        //        verticalMenuObject.getNiceScroll().resize();
-        //    }
-        //};
-
-        /**
-         * Checks if vertical area is scrollable (if it has qodef-with-scroll class)
-         *
-         * @returns {bool}
-         */
-        //var verticalAreaScrollable = function() {
-        //    return verticalMenuObject.hasClass('.qodef-with-scroll');
-        //};
-
-        /**
          * Initialzes navigation functionality. It checks navigation type data attribute and calls proper functions
          */
         var initNavigation = function() {
@@ -1696,111 +1674,10 @@ function qodefInitVideoBackground(){
             var navigationType = typeof verticalNavObject.data('navigation-type') !== 'undefined' ? verticalNavObject.data('navigation-type') : '';
 
             switch(navigationType) {
-                //case 'dropdown-toggle':
-                //    dropdownHoverToggle();
-                //    break;
-                //case 'dropdown-toggle-click':
-                //    dropdownClickToggle();
-                //    break;
-                //case 'float':
-                //    dropdownFloat();
-                //    break;
-                //case 'slide-in':
-                //    dropdownSlideIn();
-                //    break;
                 default:
                     dropdownFloat();
                     break;
             }
-
-            /**
-             * Initializes hover toggle navigation type. It has separate functionalities for touch and no-touch devices
-             */
-            //function dropdownHoverToggle() {
-            //    var menuItems = verticalNavObject.find('ul li.menu-item-has-children');
-            //
-            //    menuItems.each(function() {
-            //        var elementToExpand = $(this).find(' > .second, > ul');
-            //        var numberOfChildItems = elementToExpand.find(' > .inner > ul > li, > li').length;
-            //
-            //        var animSpeed = numberOfChildItems * 40;
-            //        var animFunc = 'easeInOutSine';
-            //        var that = this;
-            //
-            //        //touch devices functionality
-            //        if(Modernizr.touch) {
-            //            var dropdownOpener = $(this).find('> a');
-            //
-            //            dropdownOpener.on('click tap', function(e) {
-            //                e.preventDefault();
-            //                e.stopPropagation();
-            //
-            //                if(elementToExpand.is(':visible')) {
-            //                    $(that).removeClass('open');
-            //                    elementToExpand.slideUp(animSpeed, animFunc, function() {
-            //                        resizeVerticalArea();
-            //                    });
-            //                } else {
-            //                    $(that).addClass('open');
-            //                    elementToExpand.slideDown(animSpeed, animFunc, function() {
-            //                        resizeVerticalArea();
-            //                    });
-            //                }
-            //            });
-            //        } else {
-            //            $(this).hover(function() {
-            //                $(that).addClass('open');
-            //                elementToExpand.slideDown(animSpeed, animFunc, function() {
-            //                    resizeVerticalArea();
-            //                });
-            //            }, function() {
-            //                setTimeout(function() {
-            //                    $(that).removeClass('open');
-            //                    elementToExpand.slideUp(animSpeed, animFunc, function() {
-            //                        resizeVerticalArea();
-            //                    });
-            //                }, 1000);
-            //            });
-            //        }
-            //    });
-            //}
-
-            /**
-             * Initializes click toggle navigation type. Works the same for touch and no-touch devices
-             */
-            //function dropdownClickToggle() {
-            //    var menuItems = verticalNavObject.find('ul li.menu-item-has-children');
-            //
-            //    menuItems.each(function() {
-            //        var elementToExpand = $(this).find(' > .second, > ul');
-            //        var menuItem = this;
-            //        var dropdownOpener = $(this).find('> a');
-            //        var slideUpSpeed = 'fast';
-            //        var slideDownSpeed = 'slow';
-            //
-            //        dropdownOpener.on('click tap', function(e) {
-            //            e.preventDefault();
-            //            e.stopPropagation();
-            //
-            //            if(elementToExpand.is(':visible')) {
-            //                $(menuItem).removeClass('open');
-            //                elementToExpand.slideUp(slideUpSpeed, function() {
-            //                    resizeVerticalArea();
-            //                });
-            //            } else {
-            //                if(!$(this).parents('li').hasClass('open')) {
-            //                    menuItems.removeClass('open');
-            //                    menuItems.find(' > .second, > ul').slideUp(slideUpSpeed);
-            //                }
-            //
-            //                $(menuItem).addClass('open');
-            //                elementToExpand.slideDown(slideDownSpeed, function() {
-            //                    resizeVerticalArea();
-            //                });
-            //            }
-            //        });
-            //    });
-            //}
 
             /**
              * Initializes floating navigation type (it comes from the side as a dropdown)
@@ -1851,139 +1728,8 @@ function qodefInitVideoBackground(){
                 });
             }
 
-            /**
-             * Initializes slide in navigation type (dropdowns are coming on top of parent element and cover whole navigation area)
-             */
-            //function dropdownSlideIn() {
-            //    var menuItems = verticalNavObject.find('ul li.menu-item-has-children');
-            //    var menuItemsLinks = menuItems.find('> a');
-            //
-            //    menuItemsLinks.each(function() {
-            //        var elementToExpand = $(this).next('.second, ul');
-            //        appendToExpandableElement(elementToExpand, this);
-            //
-            //        if($(this).parent('li').is('.current-menu-ancestor', '.current_page_parent', '.current-menu-parent ')) {
-            //            elementToExpand.addClass('qodef-vertical-slide-open');
-            //        }
-            //
-            //        $(this).on('click tap', function(e) {
-            //            e.preventDefault();
-            //            e.stopPropagation();
-            //
-            //            menuItems.removeClass('open');
-            //
-            //            $(this).parent('li').addClass('open');
-            //            elementToExpand.addClass('qodef-vertical-slide-open');
-            //        });
-            //    });
-            //
-            //    var previousLevelItems = menuItems.find('li.qodef-previous-level > a');
-            //
-            //    previousLevelItems.on('click tap', function(e) {
-            //        e.preventDefault();
-            //        e.stopPropagation();
-            //
-            //        menuItems.removeClass('open');
-            //        $(this).parents('.qodef-vertical-slide-open').first().removeClass('qodef-vertical-slide-open');
-            //    });
-            //
-            //    /**
-            //     * Appends 'li' element as first element in dropdown, which will close current dropdown when clicked
-            //     * @param {jQuery object} elementToExpand current dropdown to append element to
-            //     * @param currentMenuItem
-            //     */
-            //    function appendToExpandableElement(elementToExpand, currentMenuItem) {
-            //        var itemUrl = $(currentMenuItem).attr('href');
-            //        var itemText = $(currentMenuItem).text();
-            //
-            //        var liItem = $('<li />', {class: 'qodef-previous-level'});
-            //
-            //        $('<a />', {
-            //            'href': itemUrl,
-            //            'html': '<i class="qodef-vertical-slide-arrow fa fa-angle-left"></i>' + itemText
-            //        }).appendTo(liItem);
-            //
-            //        if(elementToExpand.hasClass('second')) {
-            //            elementToExpand.find('> div > ul').prepend(liItem);
-            //        } else {
-            //            elementToExpand.prepend(liItem);
-            //        }
-            //    }
-            //}
         };
 
-        /**
-         * Initializes scrolling in vertical area. It checks if vertical area is scrollable before doing so
-         */
-        //var initVerticalAreaScroll = function() {
-        //    if(verticalAreaScrollable()) {
-        //        verticalMenuObject.niceScroll({
-        //            scrollspeed: 60,
-        //            mousescrollstep: 40,
-        //            cursorwidth: 0,
-        //            cursorborder: 0,
-        //            cursorborderradius: 0,
-        //            cursorcolor: "transparent",
-        //            autohidemode: false,
-        //            horizrailenabled: false
-        //        });
-        //    }
-        //};
-
-        //var initHiddenVerticalArea = function() {
-        //    var verticalLogo = $('.qodef-vertical-area-bottom-logo');
-        //    var verticalMenuOpener = verticalMenuObject.find('.qodef-vertical-menu-hidden-button');
-        //    var scrollPosition = 0;
-        //
-        //    verticalMenuOpener.on('click tap', function() {
-        //        if(isVerticalAreaOpen()) {
-        //            closeVerticalArea();
-        //        } else {
-        //            openVerticalArea();
-        //        }
-        //    });
-        //
-        //    //take click outside vertical left/right area and close it
-        //    $j(verticalMenuObject).outclick({
-        //        callback: function() {
-        //            closeVerticalArea();
-        //        }
-        //    });
-        //
-        //    $(window).scroll(function() {
-        //        if(Math.abs($(window).scrollTop() - scrollPosition) > 400){
-        //            closeVerticalArea();
-        //        }
-        //    });
-        //
-        //    /**
-        //     * Closes vertical menu area by removing 'active' class on that element
-        //     */
-        //    function closeVerticalArea() {
-        //        verticalMenuObject.removeClass('active');
-        //
-        //        if(verticalLogo.length) {
-        //            verticalLogo.removeClass('active');
-        //        }
-        //    }
-        //
-        //    /**
-        //     * Opens vertical menu area by adding 'active' class on that element
-        //     */
-        //    function openVerticalArea() {
-        //        verticalMenuObject.addClass('active');
-        //
-        //        if(verticalLogo.length) {
-        //            verticalLogo.addClass('active');
-        //        }
-        //
-        //        scrollPosition = $(window).scrollTop();
-        //    }
-        //
-        //    function isVerticalAreaOpen() {
-        //        return verticalMenuObject.hasClass('active');
-        //    }
-        //};
 
         return {
             /**
@@ -1992,11 +1738,6 @@ function qodefInitVideoBackground(){
             init: function() {
                 if(verticalMenuObject.length) {
                     initNavigation();
-                    //initVerticalAreaScroll();
-                    //
-                    //if(qodef.body.hasClass('qodef-vertical-header-hidden')) {
-                    //    initHiddenVerticalArea();
-                    //}
                 }
             }
         };
@@ -2047,7 +1788,7 @@ function qodefInitVideoBackground(){
             var margin = 0;
             var maxMargin = verticalMenuHeight - browserHeight;
 
-            $(verticalMenuArea).hover(
+            $(verticalMenuArea).on('hover',
                 function() {
                     qodef.modules.common.qodefDisableScroll();
                     if (window.addEventListener) {
@@ -2285,7 +2026,7 @@ function qodefInitVideoBackground(){
         if(message.length){
             message.each(function(){
                 var thisMessage = $(this);
-                thisMessage.find('.qodef-close').click(function(e){
+                thisMessage.find('.qodef-close').on('click',function(e){
                     e.preventDefault();
                     $(this).parent().parent().fadeOut(500);
                 });
@@ -2326,10 +2067,15 @@ function qodefInitVideoBackground(){
             minute,
             timezone,
             monthLabel,
+            sinMonthLabel,
             dayLabel,
+            sinDayLabel,
             hourLabel,
+            sinHourLabel,
             minuteLabel,
-            secondLabel;
+            sinMinuteLabel,
+            secondLabel,
+            sinSecondLabel;
 
         if (countdowns.length) {
 
@@ -2352,10 +2098,15 @@ function qodefInitVideoBackground(){
                 minute = countdown.data('minute');
                 timezone = countdown.data('timezone');
                 monthLabel = countdown.data('month-label');
+                sinMonthLabel = countdown.data('sin-month-label');
                 dayLabel = countdown.data('day-label');
+                sinDayLabel = countdown.data('sin-day-label');
                 hourLabel = countdown.data('hour-label');
+                sinHourLabel = countdown.data('sin-hour-label');
                 minuteLabel = countdown.data('minute-label');
+                sinMinuteLabel = countdown.data('sin-minute-label');
                 secondLabel = countdown.data('second-label');
+                sinSecondLabel = countdown.data('sin-second-label');
                 digitFontSize = countdown.data('digit-size');
                 labelFontSize = countdown.data('label-size');
                 digitColor = countdown.data('digit-color');
@@ -2367,6 +2118,7 @@ function qodefInitVideoBackground(){
                 countdown.countdown({
                     until: new Date(year, month - 1, day, hour, minute, 44),
                     labels: ['Years', monthLabel, 'Weeks', dayLabel, hourLabel, minuteLabel, secondLabel],
+                    labels1: ['Years', sinMonthLabel, 'Weeks', sinDayLabel, sinHourLabel, sinMinuteLabel, sinSecondLabel],
                     format: 'ODHMS',
                     timezone: timezone,
                     padZeroes: true,
@@ -2536,7 +2288,7 @@ function qodefInitVideoBackground(){
                 if(typeof thisTestimonial.data('layout') !== 'undefined') {
                     type = thisTestimonial.data('layout');
                 }
-                if(type == 'standard_carousel') {
+                if(type === 'standard_carousel') {
                     controlNav = true;
                 }
 
@@ -2557,11 +2309,11 @@ function qodefInitVideoBackground(){
                     ],*/
                 });
 
-                previous.click(function() {
+                previous.on('click',function() {
                     thisTestimonial.trigger('owl.next');
                 });
 
-                next.click(function() {
+                next.on('click',function() {
                    thisTestimonial.trigger('owl.prev');
                 });
 
@@ -2591,8 +2343,8 @@ function qodefInitVideoBackground(){
                 var controlNav = true;
                 var directionNav = false;
                 var animationSpeed = 600;
-                if(typeof thisFullwidthSlider.data('animation-speed') !== 'undefined' && thisFullwidthSlider.data('animation-speed') !== false) {
-                    animationSpeed = thisFullwidthSlider.data('animation-speed');
+                if(typeof thisFullwidthSlider.data('interval') !== 'undefined' && thisFullwidthSlider.data('interval') !== false) {
+                    interval = thisFullwidthSlider.data('interval');
                 }
 
                 //var iconClasses = getIconClassesForNavigation(directionNavArrowsTestimonials); TODO
@@ -2611,14 +2363,6 @@ function qodefInitVideoBackground(){
                      '<span class="qodef-next-icon"><i class="fa fa-angle-right"></i></span>'
                      ],*/
                 });
-
-                /*previous.click(function() {
-                    thisTestimonial.trigger('owl.next');
-                });
-
-                next.click(function() {
-                    thisTestimonial.trigger('owl.prev');
-                });*/
 
             });
 
@@ -2641,7 +2385,7 @@ function qodefInitVideoBackground(){
                 var carouselHolder = $(this);
                 carousel = carouselHolder.find('.qodef-carousel');
                 numberOfItems = carousel.data('items');
-                navigation = (carousel.data('navigation') == 'yes') ? true : false;
+                navigation = (carousel.data('navigation') === 'yes') ? true : false;
 
                 //Responsive breakpoints
                 var items = [
@@ -3072,6 +2816,10 @@ function qodefInitVideoBackground(){
      */
     function qodefInitializeGoogleMap(customMapStyle, color, saturation, lightness, wheel, zoom, holderId, height, pin,  map, geocoder, data){
 
+        if(typeof google !== 'object') {
+            return;
+        }
+
         var mapStyles = [
             {
                 stylers: [
@@ -3211,7 +2959,7 @@ function qodefInitVideoBackground(){
 
 					toggleAccordionTitle.each(function(){
 						var thisTitle = $(this);
-						thisTitle.hover(function(){
+						thisTitle.on('hover',function(){
 							thisTitle.toggleClass("ui-state-hover");
 						});
 
@@ -3233,9 +2981,9 @@ function qodefInitVideoBackground(){
             galleries.each(function () {
                 var gallery = $(this).children('.qodef-image-gallery-slider'),
                     autoplay = gallery.data('autoplay'),
-                    animation = (gallery.data('animation') == 'slide') ? false : gallery.data('animation'),
-                    navigation = (gallery.data('navigation') == 'yes'),
-                    pagination = (gallery.data('pagination') == 'yes');
+                    animation = (gallery.data('animation') === 'slide') ? false : gallery.data('animation'),
+                    navigation = (gallery.data('navigation') === 'yes'),
+                    pagination = (gallery.data('pagination') === 'yes');
 
                 gallery.owlCarousel({
                     singleItem: true,
@@ -3295,7 +3043,7 @@ function qodefInitVideoBackground(){
 
             recalculateValues(priceElement, units, price, sliderTextLabel, progressBar, xPos, parentWidth, unitName);
 
-            pricingButtonHolder.find('.qodef-btn').click(function() {
+            pricingButtonHolder.find('.qodef-btn').on('click',function() {
                 if(!$(this).parent().hasClass('active')) {
                     activeFilter.removeClass('active');
                     $(this).parent().addClass('active');
@@ -3322,14 +3070,14 @@ function qodefInitVideoBackground(){
                     xPos = offset.left - parentXPos;
                     units = Math.floor(xPos / iterator);
                     if(xPos >= 0 && xPos <= parentWidth) {
-                        if (direction == 'right') {
+                        if (direction === 'right') {
                             if (units > breakpointValue) {
                                 breakpointValue = breakpointValue + unitsBreakpoints;
                                 breakPointsIterator ++;
                                 price = price - reduceRate;
                             }
                         }
-                        else if (direction == 'left') {
+                        else if (direction === 'left') {
                             if (units <= breakpointValue - unitsBreakpoints) {
                                 breakpointValue = breakpointValue - unitsBreakpoints;
                                 breakPointsIterator --;
@@ -3345,7 +3093,7 @@ function qodefInitVideoBackground(){
 
         function recalculateValues(priceElement, units, price, sliderTextLabel, progressBar, xPos, parentWidth, unitName) {
             priceElement.text(((Math.round(units * price * 100)) / 100));
-            if(units == 1) {
+            if(units === 1) {
                 sliderTextLabel.text(units + " " + unitName);
             } else {
                 sliderTextLabel.text(units + " " + unitName + "s");
@@ -3475,6 +3223,12 @@ function qodefInitVideoBackground(){
                 loadMoreButton.on('click', function (e) {  
                     var loadMoreDatta = qodefGetPortfolioAjaxData(thisPortList);
                     nextPage = loadMoreDatta.nextPage;
+
+                    var nonceHolder = thisPortList.find('input[name*="qodef_ptf_load_more_nonce_"]');
+
+                    loadMoreDatta.ptf_load_more_id = nonceHolder.attr('name').substring(nonceHolder.attr('name').length - 4, nonceHolder.attr('name').length);
+                    loadMoreDatta.ptf_load_more_nonce = nonceHolder.val();
+
                     e.preventDefault();
                     e.stopPropagation(); 
                     if(nextPage <= maxNumPages){
@@ -3605,7 +3359,9 @@ function qodefInitVideoBackground(){
             selectedProjectes: container.selectedProjectes,
             showLoadMore: container.showLoadMore,
             titleTag: container.titleTag,
-            nextPage: container.nextPage
+            nextPage: container.nextPage,
+            ptf_load_more_id: container.ptf_load_more_id,
+            ptf_load_more_nonce: container.ptf_load_more_nonce
         };
         return returnValue;
     }
@@ -3650,18 +3406,6 @@ function qodefInitVideoBackground(){
                 height: qodefP.container.height()
             };
         };
-
-        /*
-        qodefP.check_resize = function() {
-            console.log('Checked resize');
-            var width = qodefP.container.width();
-            var height = qodefP.container.height();
-            if (width != qodefP.size.width || height != qodefP.size.height) {
-                qodefP.record_size();
-                qodefP.init_particles();
-            }
-        };
-        */
 
         qodefP.init_particles = function() {
             particlesJS(
@@ -4188,10 +3932,10 @@ function qodefInitVideoBackground(){
          * @param totalItemCount, total number of slide items
          */
         var setPrevNextNumbers = function(slider, currentItem, totalItemCount) {
-            if(currentItem == 1){
+            if(currentItem === 1){
                 slider.find('.left.carousel-control .prev').html(totalItemCount);
                 slider.find('.right.carousel-control .next').html(currentItem + 1);
-            }else if(currentItem == totalItemCount){
+            }else if(currentItem === totalItemCount){
                 slider.find('.left.carousel-control .prev').html(currentItem - 1);
                 slider.find('.right.carousel-control .next').html(1);
             }else{
@@ -4208,10 +3952,10 @@ function qodefInitVideoBackground(){
          */
 
         var setPrevNextThumbnail = function(slider, currentItem, totalItemCount) {
-            if(currentItem == 1){
+            if(parseInt(currentItem) === 1){
                 slider.find('.left.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(totalItemCount)).fadeIn('slow');
                 slider.find('.right.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(currentItem+1)).fadeIn('slow');
-            }else if(currentItem == totalItemCount){
+            }else if(parseInt(currentItem) === parseInt(totalItemCount)){
                 slider.find('.left.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(currentItem-1)).fadeIn('slow');
                 slider.find('.right.carousel-control .qodef-thumb-holder .img').hide().html(getThumbnail(1)).fadeIn('slow');
             }else{
@@ -4372,7 +4116,7 @@ function qodefInitVideoBackground(){
                         var slideAnimationTimeout = $this.data('slide_animation_timeout');
                         var totalItemCount = $this.find('.item').length;
                         if($this.data('qodef_responsive_breakpoints')){
-                            if($this.data('qodef_responsive_breakpoints') == 'set2'){
+                            if($this.data('qodef_responsive_breakpoints') === 'set2'){
                                 responsiveBreakpointSet = [1600,1300,1000,768,567,320];
                             }
                         }

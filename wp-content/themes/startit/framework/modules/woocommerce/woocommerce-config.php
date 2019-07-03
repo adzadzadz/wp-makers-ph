@@ -9,7 +9,7 @@ add_theme_support('woocommerce');
 //Disable the default WooCommerce stylesheet.
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
-if (!function_exists('qode_startit_woocommerce_content')){
+if (!function_exists( 'startit_qode_woocommerce_content' )){
 	/**
 	 * Output WooCommerce content.
 	 *
@@ -20,7 +20,7 @@ if (!function_exists('qode_startit_woocommerce_content')){
 	 * @access public
 	 * @return void
 	 */
-	function qode_startit_woocommerce_content() {
+	function startit_qode_woocommerce_content() {
 
 		if ( is_singular( 'product' ) ) {
 
@@ -61,27 +61,27 @@ if (!function_exists('qode_startit_woocommerce_content')){
 }
 
 //Define number of products per page
-add_filter('loop_shop_per_page', 'qode_startit_woocommerce_products_per_page', 20);
+add_filter('loop_shop_per_page', 'startit_qode_woocommerce_products_per_page', 20);
 
 //Set number of related products
-add_filter( 'woocommerce_output_related_products_args', 'qode_startit_woocommerce_related_products_args');
+add_filter( 'woocommerce_output_related_products_args', 'startit_qode_woocommerce_related_products_args');
 
 //Overide Product List Loop Title
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-add_action( 'woocommerce_shop_loop_item_title', 'qode_startit_woocommerce_template_loop_product_title', 10 );
+add_action( 'woocommerce_shop_loop_item_title', 'startit_qode_woocommerce_template_loop_product_title', 10 );
 
 //Override Product List Loop Add To Cart
-add_filter('woocommerce_loop_add_to_cart_link', 'qode_startit_woocommerce_loop_add_to_cart_link');
+add_filter('woocommerce_loop_add_to_cart_link', 'startit_qode_woocommerce_loop_add_to_cart_link');
 
 //Override Product List Loop Pagination
-add_filter('woocommerce_pagination_args', 'qode_startit_woocommerce_loop_pagination');
+add_filter('woocommerce_pagination_args', 'startit_qode_woocommerce_loop_pagination');
 
 //Add Out Of Stock Label On Product List
-add_action( 'qode_startit_woocommerce_out_of_stock', 'qode_startit_get_woocommerce_out_of_stock');
+add_action( 'qode_startit_woocommerce_out_of_stock', 'startit_qode_get_woocommerce_out_of_stock');
 
 //Single Product Title template override
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-add_action( 'woocommerce_single_product_summary', 'qode_startit_woocommerce_template_single_title', 5 );
+add_action( 'woocommerce_single_product_summary', 'startit_qode_woocommerce_template_single_title', 5 );
 
 //Single Product override meta position
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
@@ -92,48 +92,48 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 40);
 
 //Single product add social share)
-add_action( 'woocommerce_share', 'qode_startit_woocommerce_share', 50);
+add_action( 'woocommerce_share', 'startit_qode_woocommerce_share', 50);
 
 //Single Product override tabs position
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 add_action('woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 60);
 
 //Sale flash template override
-add_filter( 'woocommerce_sale_flash', 'qode_startit_woocommerce_sale_flash');
+add_filter( 'woocommerce_sale_flash', 'startit_qode_woocommerce_sale_flash');
 
 //Override Checkout Fields
-add_filter('woocommerce_checkout_fields', 'qode_startit_custom_override_checkout_fields');
+add_filter('woocommerce_checkout_fields', 'startit_qode_custom_override_checkout_fields');
 
 //Set Woocommerce button style
 //Simple and grouped products
-add_action('qode_startit_woocommerce_add_to_cart_button', 'qode_startit_get_woocommerce_add_to_cart_button');
+add_action('qode_startit_woocommerce_add_to_cart_button', 'startit_qode_get_woocommerce_add_to_cart_button');
 
 //External product
-add_action('qode_startit_woocommerce_add_to_cart_button_external', 'qode_startit_get_woocommerce_add_to_cart_button_external');
+add_action('qode_startit_woocommerce_add_to_cart_button_external', 'startit_qode_get_woocommerce_add_to_cart_button_external');
 
 //Product details button
-add_action('qode_startit_woocommerce_before_add_to_cart_button', 'qode_startit_get_woocommerce_product_link_button');
+add_action('qode_startit_woocommerce_before_add_to_cart_button', 'startit_qode_get_woocommerce_product_link_button');
 
 //Variable product
 remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
-add_action( 'woocommerce_single_variation', 'qode_startit_woocommerce_single_variation_add_to_cart_button', 20 );
+add_action( 'woocommerce_single_variation', 'startit_qode_woocommerce_single_variation_add_to_cart_button', 20 );
 
 //Apply Coupon Button
-add_action('qode_startit_woocommerce_apply_coupon_button', 'qode_startit_get_woocommerce_apply_coupon_button');
+add_action('qode_startit_woocommerce_apply_coupon_button', 'startit_qode_get_woocommerce_apply_coupon_button');
 
 //Update Cart
-add_action('qode_startit_woocommerce_update_cart_button', 'qode_startit_get_woocommerce_update_cart_button');
+add_action('qode_startit_woocommerce_update_cart_button', 'startit_qode_get_woocommerce_update_cart_button');
 
 //Proceed To Checkout Button
 remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
-add_action( 'woocommerce_proceed_to_checkout', 'qode_startit_woocommerce_button_proceed_to_checkout', 20 );
+add_action( 'woocommerce_proceed_to_checkout', 'startit_qode_woocommerce_button_proceed_to_checkout', 20 );
 
 //Update Totals Button, Shipping Calculator
-add_action('qode_startit_woocommerce_update_totals_button', 'qode_startit_get_woocommerce_update_totals_button');
+add_action('qode_startit_woocommerce_update_totals_button', 'startit_qode_get_woocommerce_update_totals_button');
 
 //Pay For Order Button, Checkout page
-add_filter('woocommerce_pay_order_button_html', 'qode_startit_woocommerce_pay_order_button_html');
+add_filter('woocommerce_pay_order_button_html', 'startit_qode_woocommerce_pay_order_button_html');
 
 //Place Order Button, Checkout page
-add_filter('woocommerce_order_button_html', 'qode_startit_woocommerce_order_button_html');
+add_filter('woocommerce_order_button_html', 'startit_qode_woocommerce_order_button_html');
 

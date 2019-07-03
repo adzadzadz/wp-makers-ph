@@ -6,7 +6,8 @@ foreach($pages as $page) {
 	$qode_pages[$page->ID] = $page->post_title;
 }
 
-global $qode_startit_IconCollections;
+$qode_startit_IconCollections = startit_qode_return_icon_collection();
+$qode_startit_Framework = startit_qode_return_framework();
 
 //Portfolio Images
 

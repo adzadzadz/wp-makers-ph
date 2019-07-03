@@ -1,20 +1,26 @@
 <?php
 /**
- * @package WPSEO\Admin|Google_Search_Console
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Admin\Google_Search_Console
  */
 
 /**
- * Class WPSEO_GSC_Count
+ * Class WPSEO_GSC_Count.
  */
 class WPSEO_GSC_Count {
 
 	/**
-	 * @var string The name of the option containing the last checked timestamp.
+	 * The name of the option containing the last checked timestamp.
+	 *
+	 * @var string
 	 */
 	const OPTION_CI_LAST_FETCH = 'wpseo_gsc_last_fetch';
 
 	/**
-	 * @var string The option name where the issues counts are saved.
+	 * The option name where the issues counts are saved.
+	 *
+	 * @var string
 	 */
 	const OPTION_CI_COUNTS = 'wpseo_gsc_issues_counts';
 
@@ -24,7 +30,7 @@ class WPSEO_GSC_Count {
 	private $service;
 
 	/**
-	 * Holder for the fetched issues from GSC
+	 * Holder for the fetched issues from GSC.
 	 *
 	 * @var array
 	 */
@@ -40,7 +46,7 @@ class WPSEO_GSC_Count {
 	}
 
 	/**
-	 * Getting the counts for given platform and return them as an array
+	 * Getting the counts for given platform and return them as an array.
 	 *
 	 * @param string $platform Platform (desktop, mobile, feature phone).
 	 *
@@ -56,7 +62,7 @@ class WPSEO_GSC_Count {
 	}
 
 	/**
-	 * Return the fetched issues
+	 * Return the fetched issues.
 	 *
 	 * @return array
 	 */
@@ -65,7 +71,7 @@ class WPSEO_GSC_Count {
 	}
 
 	/**
-	 * Listing the issues an gives them back as fetched issues
+	 * Listing the issues an gives them back as fetched issues.
 	 *
 	 * @param string $platform Platform (desktop, mobile, feature phone).
 	 * @param string $category Issue category.
@@ -100,7 +106,7 @@ class WPSEO_GSC_Count {
 	}
 
 	/**
-	 * Update the count of the issues
+	 * Update the count of the issues.
 	 *
 	 * @param string  $platform  Platform (desktop, mobile, feature phone).
 	 * @param string  $category  Issue type.
@@ -117,7 +123,7 @@ class WPSEO_GSC_Count {
 	}
 
 	/**
-	 * Fetching the counts from the GSC API
+	 * Fetching the counts from the GSC API.
 	 */
 	public function fetch_counts() {
 		if ( WPSEO_GSC_Settings::get_profile() && $this->get_last_fetch() <= strtotime( '-12 hours' ) ) {
@@ -136,7 +142,7 @@ class WPSEO_GSC_Count {
 	}
 
 	/**
-	 * Parsing the received counts from the API and map the keys to plugin friendly values
+	 * Parsing the received counts from the API and map the keys to plugin friendly values.
 	 *
 	 * @param array $fetched_counts Set of retrieved counts.
 	 *

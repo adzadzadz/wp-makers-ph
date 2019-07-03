@@ -106,7 +106,7 @@
 
         $(".qodef-preload-background").each(function() {
             var preloadBackground = $(this);
-            if(preloadBackground.css("background-image") !== "" && preloadBackground.css("background-image") != "none") {
+            if(preloadBackground.css("background-image") !== "" && preloadBackground.css("background-image") !== "none") {
 
                 var bgUrl = preloadBackground.attr('style');
 
@@ -127,47 +127,48 @@
     }
 
     function qodefPrettyPhoto() {
-        var markupWhole = '<div class="pp_pic_holder"> \
-                        <div class="ppt">&nbsp;</div> \
-                        <div class="pp_top"> \
-                            <div class="pp_left"></div> \
-                            <div class="pp_middle"></div> \
-                            <div class="pp_right"></div> \
-                        </div> \
-                        <div class="pp_content_container"> \
-                            <div class="pp_left"> \
-                            <div class="pp_right"> \
-                                <div class="pp_content"> \
-                                    <div class="pp_loaderIcon"></div> \
-                                    <div class="pp_fade"> \
-                                        <a href="#" class="pp_expand" title="Expand the image">Expand</a> \
-                                        <div class="pp_hoverContainer"> \
-                                            <a class="pp_next" href="#"><span class="fa fa-chevron-right"></span></a> \
-                                            <a class="pp_previous" href="#"><span class="fa fa-chevron-left"></span></a> \
-                                        </div> \
-                                        <div id="pp_full_res"></div> \
-                                        <div class="pp_details"> \
-                                            <div class="pp_nav"> \
-                                                <a href="#" class="pp_arrow_previous">Previous</a> \
-                                                <p class="currentTextHolder">0/0</p> \
-                                                <a href="#" class="pp_arrow_next">Next</a> \
-                                            </div> \
-                                            <p class="pp_description"></p> \
-                                            {pp_social} \
-                                            <a class="pp_close" href="#">Close</a> \
-                                        </div> \
-                                    </div> \
-                                </div> \
-                            </div> \
-                            </div> \
-                        </div> \
-                        <div class="pp_bottom"> \
-                            <div class="pp_left"></div> \
-                            <div class="pp_middle"></div> \
-                            <div class="pp_right"></div> \
-                        </div> \
-                    </div> \
-                    <div class="pp_overlay"></div>';
+        var markupWhole = '<div class="pp_pic_holder"> '+
+                        '<div class="ppt">&nbsp;</div> '+
+                        '<div class="pp_top"> '+
+                            '<div class="pp_left"></div> '+
+                            '<div class="pp_middle"></div> '+
+                            '<div class="pp_right"></div> '+
+                        '</div> '+
+                        '<div class="pp_content_container"> '+
+                            '<div class="pp_left"> '+
+                            '<div class="pp_right"> '+
+                                '<div class="pp_content"> '+
+                                    '<div class="pp_loaderIcon"></div> '+
+                                    '<div class="pp_fade"> '+
+                                        '<a href="#" class="pp_expand" title="Expand the image">Expand</a> '+
+                                        '<div class="pp_hoverContainer"> '+
+                                            '<a class="pp_next" href="#"><span class="fa fa-chevron-right"></span></a> '+
+                                            '<a class="pp_previous" href="#"><span class="fa fa-chevron-left"></span></a> '+
+                                        '</div> '+
+                                        '<div id="pp_full_res"></div> '+
+                                        '<div class="pp_details"> '+
+                                            '<div class="pp_nav"> '+
+                                                '<a href="#" class="pp_arrow_previous">Previous</a> '+
+                                                '<p class="currentTextHolder">0/0</p> '+
+                                                '<a href="#" class="pp_arrow_next">Next</a> '+
+                                            '</div> '+
+                                            '<p class="pp_description"></p> '+
+                                            '{pp_social} '+
+                                            '<a class="pp_close" href="#">Close</a> '+
+                                        '</div> '+
+                                    '</div> '+
+                                '</div> '+
+                            '</div> '+
+                            '</div> '+
+                        '</div> '+
+                        '<div class="pp_bottom"> '+
+                            '<div class="pp_left"></div> '+
+                            '<div class="pp_middle"></div> '+
+                            '<div class="pp_right"></div> '+
+                        '</div> '+
+                    '</div> '+
+                    '<div class="pp_overlay"></div>';
+
 
         $("a[data-rel^='prettyPhoto']").prettyPhoto({
             hook: 'data-rel',
@@ -353,11 +354,11 @@ var qodefInitAnchor = qodef.modules.common.qodefInitAnchor = function() {
      */
     var headerHeihtToSubtract = function(anchoredElementOffset){
 
-        if(qodef.modules.header.behaviour == 'qodef-sticky-header-on-scroll-down-up') {
+        if(qodef.modules.header.behaviour === 'qodef-sticky-header-on-scroll-down-up') {
             (anchoredElementOffset > qodef.modules.header.stickyAppearAmount) ? qodef.modules.header.isStickyVisible = true : qodef.modules.header.isStickyVisible = false;
         }
 
-        if(qodef.modules.header.behaviour == 'qodef-sticky-header-on-scroll-up') {
+        if(qodef.modules.header.behaviour === 'qodef-sticky-header-on-scroll-up') {
             (anchoredElementOffset > qodef.scroll) ? qodef.modules.header.isStickyVisible = false : '';
         }
 
@@ -375,7 +376,7 @@ var qodefInitAnchor = qodef.modules.common.qodefInitAnchor = function() {
             var anchor = $(this);
             var hash = anchor.prop("hash").split('#')[1];
 
-            if(hash !== "" && $('[data-qodef-anchor="' + hash + '"]').length > 0 /*&& anchor.attr('href').split('#')[0] == window.location.href.split('#')[0]*/) {
+            if(hash !== "" && $('[data-qodef-anchor="' + hash + '"]').length > 0) {
 
                 var anchoredElementOffset = $('[data-qodef-anchor="' + hash + '"]').offset().top;
                 scrollAmount = $('[data-qodef-anchor="' + hash + '"]').offset().top - headerHeihtToSubtract(anchoredElementOffset);
@@ -582,23 +583,23 @@ function qodefInitVideoBackground(){
 
     function qodefBindTouch(selector) {
         if($(selector).length > 0) {
-            $(selector).bind('touchstart', function() {});
+            $(selector).on('touchstart', function() {});
         }
     }
 
     function qodefSmoothTransition() {
         if (qodef.body.hasClass('qodef-smooth-page-transitions')) {
 
-            $(window).bind("pageshow", function(event) {
+            $(window).on("pageshow", function(event) {
                 if (event.originalEvent.persisted) {
                     $('.qodef-wrapper-inner').fadeIn(0);
                 }
             });
 
-            $('a').click(function(e) {
+            $('a').on('click',function(e) {
                 var a = $(this);
                 if (
-                    e.which == 1 && // check if the left mouse button has been pressed
+                    e.which === 1 && // check if the left mouse button has been pressed
                     (typeof a.data('rel') === 'undefined') && //Not pretty photo link
                     (typeof a.attr('rel') === 'undefined') && //Not VC pretty photo link
                     a.attr('href').indexOf(window.location.host) >= 0 && // check if the link is to the same domain

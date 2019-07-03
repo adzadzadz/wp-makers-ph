@@ -70,9 +70,9 @@ class QodefTwitterApi {
      * Private constructor because of singletone pattern. It sets all necessary properties
      */
     public function __construct() {
-        $this->consumerKey = 'NHNJ5vU6cbhKn1E7ysgMGGkyG';
-        $this->consumerSecret = 'XAui19zHob3rX4N5vICBlYrdSelqKDMycIFMYIlml7BXMERylw';
-        $this->redirectURI = 'http://startit.select-themes.com/twitter-app/twitter-redirect.php';
+        $this->consumerKey = 'F64ToIHrgKVVHbPQedGC0am2L';
+        $this->consumerSecret = 'nTH3qtIXxVtEXPuKI54aTqVXTTCAQxH0ySZi8a2HwonHMJpvBK';
+        $this->redirectURI = 'http://demo.select-themes.com/twitter-app/twitter-redirect.php';
         $this->signatureMethod = 'HMAC-SHA1';
         $this->oauthVersion = '1.0';
         $this->requestTokenURL = 'https://api.twitter.com/oauth/request_token';
@@ -229,7 +229,7 @@ class QodefTwitterApi {
 
         if(is_wp_error($response)) {
             $responseObj->status = false;
-            $responseObj->message = __('Internal WP error', 'qode');
+            $responseObj->message = __('Internal WP error', 'startit-twitter-feed');
         } else {
             $responseBody = wp_remote_retrieve_body($response);
 
@@ -245,14 +245,14 @@ class QodefTwitterApi {
                     $responseObj->redirectURL = $this->buildAuthorizeURL();
                     if(!empty($responseObj->redirectUrl)) {
                         $responseObj->status = false;
-                        $responseObj->message = __('Redirect URL couldn\t not be generated', 'qode');
+                        $responseObj->message = __('Redirect URL couldn\t not be generated', 'startit-twitter-feed');
                     } else {
                         $responseObj->status = true;
                         $responseObj->message = 'Ok';
                     }
                 } else {
                     $responseObj->status = false;
-                    $responseObj->message = __('Couldn\'t connect with Twitter API', 'qode');
+                    $responseObj->message = __('Couldn\'t connect with Twitter API', 'startit-twitter-feed');
                 }
             }
         }
@@ -296,7 +296,7 @@ class QodefTwitterApi {
 
             if(is_wp_error($response)) {
                 $responseObj->status = false;
-                $responseObj->message = __('Internal WP error', 'qode');
+                $responseObj->message = __('Internal WP error', 'startit-twitter-feed');
             } else {
                 $responseBody = wp_remote_retrieve_body($response);
                 parse_str($responseBody, $responseParsed);
@@ -308,12 +308,12 @@ class QodefTwitterApi {
                     update_option(self::USER_SCREEN_NAME_FIELD, $responseParsed['screen_name']);
 
                     $responseObj->status = true;
-                    $responseObj->message = __('Access token obtained', 'qode');
+                    $responseObj->message = __('Access token obtained', 'startit-twitter-feed');
                 }
             }
         } else {
             $responseObj->status = false;
-            $responseObj->message = __('Authorize token and it\'s secret were not obtainer', 'qode');
+            $responseObj->message = __('Authorize token and it\'s secret were not obtainer', 'startit-twitter-feed');
         }
 
         return $responseObj;
@@ -360,7 +360,7 @@ class QodefTwitterApi {
 
                 if(is_wp_error($response)) {
                     $responseObj->status = false;
-                    $responseObj->message = __('Internal WP error', 'qode');
+                    $responseObj->message = __('Internal WP error', 'startit-twitter-feed');
                 } else {
                     if(isset($response['response']['code']) && $response['response']['code'] == 200) {
                         $responseObj->status = true;
@@ -370,12 +370,12 @@ class QodefTwitterApi {
                         $this->updateTransient($transient, $responseObj->data);
                     } else {
                         $responseObj->status = false;
-                        $responseObj->message = __('Couldn\'t connect with Twitter', 'qode');
+                        $responseObj->message = __('Couldn\'t connect with Twitter', 'startit-twitter-feed');
                     }
                 }
             } else {
                 $responseObj->status = false;
-                $responseObj->message = __('It seams like you haven\t connected with your Twitter account', 'qode');
+                $responseObj->message = __('It seams like you haven\t connected with your Twitter account', 'startit-twitter-feed');
             }
         } else {
             $transientContent = $this->getTransient($transient);
@@ -385,7 +385,7 @@ class QodefTwitterApi {
                 $responseObj->data = $transientContent;
             } else {
                 $responseObj->status = false;
-                $responseObj->message = __('Couldn\'t retreive content from database', 'qode');
+                $responseObj->message = __('Couldn\'t retreive content from database', 'startit-twitter-feed');
             }
         }
 

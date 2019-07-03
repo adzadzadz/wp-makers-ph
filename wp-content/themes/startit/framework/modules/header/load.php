@@ -7,7 +7,7 @@ include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/lib/header-factory.php';
 include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/lib/header-connector.php';
 
 //options
-include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/options-map/header-map.inc';
+include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/options-map/header-map.php';
 include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/options-map/logo-map.php';
 include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/options-map/mobile-header.php';
 
@@ -24,5 +24,5 @@ include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/template-hooks.php';
 include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/widget-areas-functions.php';
 
 //custom styles
-include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/custom-styles/header.inc';
+include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/custom-styles/header.php';
 include_once QODE_FRAMEWORK_MODULES_ROOT_DIR.'/header/custom-styles/mobile-header.php';
