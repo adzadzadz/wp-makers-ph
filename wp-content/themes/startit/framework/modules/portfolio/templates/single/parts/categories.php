@@ -1,4 +1,4 @@
-<?php if(qode_startit_options()->getOptionValue('portfolio_single_hide_categories') !== 'yes') : ?>
+<?php if( startit_qode_options()->getOptionValue('portfolio_single_hide_categories') !== 'yes') : ?>
 
     <?php
     $categories   = wp_get_post_terms(get_the_ID(), 'portfolio-category');

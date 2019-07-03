@@ -616,7 +616,7 @@ class PortfolioList implements Lib\ShortcodeInterface {
 		
 		$args = array(
 			'child_of' => $cat_id,
-			'order_by' => $params['filter_order_by']
+			'orderby' => $params['filter_order_by']
 		);
 		
 		$filter_categories = get_terms('portfolio-category',$args);

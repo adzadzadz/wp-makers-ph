@@ -1,6 +1,6 @@
 <?php
 
-$general_meta_box = qode_startit_add_meta_box(
+$general_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('page', 'portfolio-item', 'post'),
         'title' => 'General',
@@ -9,7 +9,7 @@ $general_meta_box = qode_startit_add_meta_box(
 );
 
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_page_background_color_meta',
             'type' => 'color',
@@ -20,7 +20,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name' => 'qodef_page_slider_meta',
             'type' => 'text',
@@ -31,7 +31,7 @@ $general_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_page_comments_meta',
             'type'        => 'selectblank',

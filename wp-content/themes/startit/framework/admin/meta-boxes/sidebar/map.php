@@ -1,8 +1,8 @@
 <?php
 
-$custom_sidebars = qode_startit_get_custom_sidebars();
+$custom_sidebars = startit_qode_get_custom_sidebars();
 
-$sidebar_meta_box = qode_startit_add_meta_box(
+$sidebar_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('page', 'portfolio-item', 'post'),
         'title' => 'Sidebar',
@@ -10,7 +10,7 @@ $sidebar_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_sidebar_meta',
             'type'        => 'select',
@@ -29,7 +29,7 @@ $sidebar_meta_box = qode_startit_add_meta_box(
     );
 
 if(count($custom_sidebars) > 0) {
-    qode_startit_add_meta_box_field(array(
+    startit_qode_create_meta_box_field(array(
         'name' => 'qodef_custom_sidebar_meta',
         'type' => 'selectblank',
         'label' => 'Choose Widget Area in Sidebar',

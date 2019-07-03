@@ -5,9 +5,9 @@
 			<?php } ?>
 			<div class="qodef-form-holder-outer">
 				<div class="qodef-form-holder">
-					<input type="text" placeholder="<?php esc_html_e('Search', 'startit'); ?>" name="s" class="qodef-search-field no-livesearch" autocomplete="off" />
+					<input type="text" placeholder="<?php esc_attr_e('Search', 'startit'); ?>" name="s" class="qodef-search-field no-livesearch" autocomplete="off" />
 					<a class="qodef-search-submit" href="javascript:void(0)">
-						<?php print $search_icon ?>
+						<?php startit_qode_module_part($search_icon) ?>
 					</a>
 				</div>
 			</div>

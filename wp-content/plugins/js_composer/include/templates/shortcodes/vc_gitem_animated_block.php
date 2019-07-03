@@ -9,12 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $animation
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem_Animated_Block
+ * @var WPBakeryShortCode_Vc_Gitem_Animated_Block $this
  */
 $css = $animation = $animation_attr = '';
 
 extract( shortcode_atts( array(
-	'css' => '', // unmapped
+	'css' => '',
+	// unmapped
 	'animation' => '',
 ), $atts ) );
 
@@ -27,6 +28,10 @@ if ( ! empty( $animation ) ) {
 	$content = preg_replace( '/(?<=\[)(vc_gitem_zone_b\b)/', '$1 render="no"', $content );
 }
 ?>
-<div class="<?php echo esc_attr( $css_class ) ?>"<?php echo $animation_attr ?><?php
-echo( empty( $css_style ) ? '' : ' style="' . esc_attr( $css_style ) . '"' )
-?>><?php echo do_shortcode( $content ) ?></div>
+<div class="<?php echo esc_attr( $css_class ); ?>"
+	<?php
+	// @codingStandardsIgnoreLine
+	echo $animation_attr;
+	echo empty( $css_style ) ? '' : ' style="' . esc_attr( $css_style ) . '"';
+	?>
+><?php echo do_shortcode( $content ); ?></div>

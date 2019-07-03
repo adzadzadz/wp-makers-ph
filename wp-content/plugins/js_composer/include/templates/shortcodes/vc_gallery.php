@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_gallery
+ * @var WPBakeryShortCode_Vc_gallery $this
  */
 $thumbnail = '';
 $title = $source = $type = $onclick = $custom_links = $custom_links_target = $img_size = $external_img_size = $images = $custom_srcs = $el_class = $el_id = $interval = $css = $css_animation = '';
@@ -88,7 +88,7 @@ if ( '' === $images ) {
 	$images = '-1,-2,-3';
 }
 
-$pretty_rel_random = ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . rand() . ']"';
+$pretty_rel_random = ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . wp_rand() . ']"';
 
 if ( 'custom_link' === $onclick ) {
 	$custom_links = vc_value_from_safe( $custom_links );
@@ -124,7 +124,7 @@ foreach ( $images as $i => $image ) {
 
 		case 'external_link':
 			$image = esc_attr( $image );
-			$dimensions = vcExtractDimensions( $external_img_size );
+			$dimensions = vc_extract_dimensions( $external_img_size );
 			$hwstring = $dimensions ? image_hwstring( $dimensions[0], $dimensions[1] ) : '';
 			$thumbnail = '<img ' . $hwstring . ' src="' . $image . '" />';
 			$large_img_src = $image;
@@ -173,4 +173,5 @@ $output .= '<div class="wpb_gallery_slides' . $type . '" data-interval="' . $int
 $output .= '</div>';
 $output .= '</div>';
 
+// @codingStandardsIgnoreLine
 echo $output;

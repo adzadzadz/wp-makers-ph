@@ -1,4 +1,4 @@
-<?php global $qode_startit_Framework; ?>
+<?php $qode_startit_Framework = startit_qode_return_framework(); ?>
 
 <div class="qodef-tabs-navigation-wrapper">
     <ul class="nav nav-tabs">
@@ -18,9 +18,9 @@
         <?php
         }
         ?>
-        <?php if (qode_startit_core_installed()) { ?>
+        <?php if (startit_qode_core_installed()) { ?>
         <li <?php if($is_import_page) { echo "class='active'"; } ?>><a href="<?php echo esc_url(get_admin_url().'admin.php?page=qode_startit_theme_menu_tabimport'); ?>"><i
-                    class="fa fa-download qodef-tooltip qodef-inline-tooltip left" data-placement="top" data-toggle="tooltip" title="Import"></i><span>Import</span></a></li>
+                    class="fa fa-download qodef-tooltip qodef-inline-tooltip left" data-placement="top" data-toggle="tooltip" title="<?php esc_attr_e('Import', 'startit')?>"></i><span><?php esc_html_e( 'Import', 'startit' ); ?></span></a></li>
         <?php } ?>
     </ul>
 </div> <!-- close div.qodef-tabs-navigation-wrapper -->

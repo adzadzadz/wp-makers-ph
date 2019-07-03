@@ -1,7 +1,8 @@
-<?php $sidebar = qode_startit_sidebar_layout(); ?>
+<?php $sidebar = startit_qode_sidebar_layout(); ?>
 <?php get_header(); ?>
+
 <?php get_template_part( 'title' ); ?>
-<?php get_template_part('slider'); ?>
+
 	<div class="qodef-container">
 		<?php do_action('qode_startit_after_container_open'); ?>
 		<div class="qodef-container-inner clearfix">
@@ -18,7 +19,7 @@
 										<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 									</h2>
 									<?php
-										qode_startit_read_more_button();
+										startit_qode_read_more_button();
 									?>
 								</div>
 							</div>
@@ -26,8 +27,8 @@
 					</article>
 					<?php endwhile; ?>
 					<?php
-						if(qode_startit_options()->getOptionValue('pagination') == 'yes') {
-							qode_startit_pagination();
+						if( startit_qode_options()->getOptionValue('pagination') == 'yes') {
+							startit_qode_pagination(startit_qode_get_blog_query());
 						}
 					?>
 					<?php else: ?>

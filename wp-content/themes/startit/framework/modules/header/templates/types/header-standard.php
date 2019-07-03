@@ -4,7 +4,7 @@
     <?php if($show_fixed_wrapper) : ?>
         <div class="qodef-fixed-wrapper">
     <?php endif; ?>
-    <div class="qodef-menu-area" <?php qode_startit_inline_style($menu_area_background_color); ?>>
+    <div class="qodef-menu-area" <?php startit_qode_inline_style($menu_area_background_color); ?>>
         <?php if($menu_area_in_grid) : ?>
             <div class="qodef-grid">
         <?php endif; ?>
@@ -13,13 +13,13 @@
                 <div class="qodef-position-left">
                     <div class="qodef-position-left-inner">
                         <?php if(!$hide_logo) {
-                            qode_startit_get_logo();
+                            startit_qode_get_logo();
                         } ?>
                     </div>
                 </div>
                 <div class="qodef-position-right">
                     <div class="qodef-position-right-inner">
-                        <?php qode_startit_get_main_menu(); ?>
+                        <?php startit_qode_get_main_menu(); ?>
                         <?php if(is_active_sidebar('qodef-right-from-main-menu')) : ?>
                             <?php dynamic_sidebar('qodef-right-from-main-menu'); ?>
                         <?php endif; ?>
@@ -34,7 +34,7 @@
         </div>
     <?php endif; ?>
     <?php if($show_sticky) {
-        qode_startit_get_sticky_header();
+        startit_qode_get_sticky_header();
     } ?>
 </header>
 

@@ -13,12 +13,14 @@ define('QODE_THEME_ENV', 'dev');
 
 //include necessary files
 include_once QODE_ROOT_DIR.'/framework/qode-framework.php';
+include_once QODE_ROOT_DIR.'/includes/qode-helper-functions.php';
+include_once QODE_ROOT_DIR.'/includes/qode-dynamic-helper-functions.php';
 include_once QODE_ROOT_DIR.'/includes/nav-menu/qode-menu.php';
 include_once QODE_ROOT_DIR.'/includes/sidebar/qode-custom-sidebar.php';
 include_once QODE_ROOT_DIR.'/includes/qodef-related-posts.php';
 include_once QODE_ROOT_DIR.'/includes/qode-options-helper-functions.php';
 include_once QODE_ROOT_DIR.'/includes/sidebar/sidebar.php';
-require_once QODE_ROOT_DIR.'/includes/plugins/class-tgm-plugin-activation.inc';
+require_once QODE_ROOT_DIR.'/includes/plugins/class-tgm-plugin-activation.php';
 include_once QODE_ROOT_DIR.'/includes/plugins/plugins-activation.php';
 include_once QODE_ROOT_DIR.'/assets/custom-styles/general-custom-styles.php';
 include_once QODE_ROOT_DIR.'/assets/custom-styles/general-custom-styles-responsive.php';

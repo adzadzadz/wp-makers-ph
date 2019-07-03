@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $css
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Message
+ * @var WPBakeryShortCode_Vc_Message $this
  */
 $el_class = $el_id = $message_box_color = $message_box_style = $style = $css = $color = $css_animation = $icon_type = '';
 $icon_fontawesome = $icon_linecons = $icon_openiconic = $icon_typicons = $icon_entypo = '';
@@ -91,7 +91,14 @@ if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
 ?>
-<div class="<?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<div class="<?php echo esc_attr( $css_class ); ?>" 
+						<?php
+	// @codingStandardsIgnoreLine
+	echo implode( ' ', $wrapper_attributes ); ?>>
 	<div class="vc_message_box-icon"><i class="<?php echo esc_attr( $iconClass ); ?>"></i>
-	</div><?php echo wpb_js_remove_wpautop( $content, true );
-	?></div>
+	</div>
+	<?php
+	// @codingStandardsIgnoreLine
+	echo wpb_js_remove_wpautop( $content, true );
+	?>
+	</div>

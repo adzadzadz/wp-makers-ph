@@ -1,4 +1,5 @@
 (function($) {
+    "use strict";
 	$(document).ready(function() {
         qodefUpdateIconOptions();
 		qodefInitAdditionalItemOptions();
@@ -8,6 +9,7 @@
 	 * Function that serializes additional menu item options in a single field.
 	 */
 	function qodefInitAdditionalItemOptions() {
+        "use strict";
 		var navForm = $('#update-nav-menu');
 
 		navForm.on('change', '[data-item-option]', function() {
@@ -16,6 +18,7 @@
 	}
 
 	function qodefGenerateSerializedString() {
+        "use strict";
 		var dataArrayString = '';
 		var navForm = $('#update-nav-menu');
 		var menuItemsData = navForm.find("[data-name]");
@@ -55,6 +58,7 @@
      * Function that loads icon options via AJAX based on icon pack option
      */
     function qodefUpdateIconOptions() {
+        "use strict";
         var navForm = $('#update-nav-menu');
 
         navForm.on('change', '[data-icon-pack]', function() {
@@ -64,6 +68,7 @@
 
             var data = {
                 action: 'update_admin_nav_icon_options',
+                update_nav_menu_nonce: $('#update-nav-menu').find('#update-nav-menu-nonce').val(),
                 icon_pack: chosenIconPack
             }
 

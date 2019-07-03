@@ -1,35 +1,35 @@
 <?php
 
-if(!function_exists('qode_startit_get_title')) {
+if(!function_exists( 'startit_qode_get_title' )) {
     /**
      * Loads title area HTML
      */
-    function qode_startit_get_title() {
-        $id = qode_startit_get_page_id();
+    function startit_qode_get_title() {
+        $id = startit_qode_get_page_id();
 
-        extract(qode_startit_title_area_height());
-        extract(qode_startit_title_area_background());
+        extract(startit_qode_title_area_height());
+        extract(startit_qode_title_area_background());
 
 
         //check if title area is visible on page first, then in the options
         if(get_post_meta($id, "qodef_show_title_area_meta", true) !== ""){
             $show_title_area = get_post_meta($id, "qodef_show_title_area_meta", true) == 'yes' ? true : false;
         }else {
-            $show_title_area = qode_startit_options()->getOptionValue('show_title_area') == 'yes' ? true : false;
+            $show_title_area = startit_qode_options()->getOptionValue('show_title_area') == 'yes' ? true : false;
         }
 
         //check for title type on page first, then in options
         if(get_post_meta($id, "qodef_title_area_type_meta", true) !== ""){
             $type = get_post_meta($id, "qodef_title_area_type_meta", true);
         }else {
-            $type = qode_startit_options()->getOptionValue('title_area_type');
+            $type = startit_qode_options()->getOptionValue('title_area_type');
         }
 
         //check if breadcrumbs are enabled on page first, then in options
         if(get_post_meta($id, "qodef_title_area_enable_breadcrumbs_meta", true) !== ""){
             $enable_breadcrumbs = get_post_meta($id, "qodef_title_area_enable_breadcrumbs_meta", true) == 'yes' ? true : false;
         }else {
-            $enable_breadcrumbs = qode_startit_options()->getOptionValue('title_area_enable_breadcrumbs') == 'yes' ? true : false;
+            $enable_breadcrumbs = startit_qode_options()->getOptionValue('title_area_enable_breadcrumbs') == 'yes' ? true : false;
         }
 
         //check if title color is set on page
@@ -62,11 +62,11 @@ if(!function_exists('qode_startit_get_title')) {
 
         $parameters = apply_filters('qode_startit_title_area_height_params', $parameters);
 
-        qode_startit_get_module_template_part('templates/title', 'title', '', $parameters);
+        startit_qode_get_module_template_part('templates/title', 'title', '', $parameters);
     }
 }
 
-if(!function_exists('qode_startit_get_title_text')) {
+if(!function_exists( 'startit_qode_get_title_text' )) {
     /**
      * Function that returns current page title text. Defines qode_startit_title_text filter
      * @return string current page title text
@@ -79,9 +79,9 @@ if(!function_exists('qode_startit_get_title_text')) {
      * @see is_search()
      * @see is_404()
      * @see get_queried_object_id()
-     * @see qode_startit_is_woocommerce_installed()
+     * @see startit_qode_is_woocommerce_installed()
      */
-    function qode_startit_get_title_text() {
+    function startit_qode_get_title_text() {
 
 
         $id 	= get_queried_object_id();
@@ -126,9 +126,9 @@ if(!function_exists('qode_startit_get_title_text')) {
         //is current page 404?
         elseif (is_404()) {
             //is 404 title text set in theme options?
-            if(qode_startit_options()->getOptionValue('404_title') != "") {
+            if( startit_qode_options()->getOptionValue('404_title') != "") {
                 //get it from options
-                $title = qode_startit_options()->getOptionValue('404_title');
+                $title = startit_qode_options()->getOptionValue('404_title');
             } else {
                 //get default 404 page title
                 $title = esc_html__('404 - Page not found', 'startit');
@@ -136,7 +136,7 @@ if(!function_exists('qode_startit_get_title_text')) {
         }
 
         //is WooCommerce installed and is shop or single product page?
-        elseif(qode_startit_is_woocommerce_installed() && (is_shop() || is_singular('product'))) {
+        elseif( startit_qode_is_woocommerce_installed() && ( is_shop() || is_singular('product'))) {
             //get shop page id from options table
             $shop_id = get_option('woocommerce_shop_page_id');
 
@@ -149,7 +149,7 @@ if(!function_exists('qode_startit_get_title_text')) {
         }
 
         //is WooCommerce installed and is current page product archive page?
-        elseif(qode_startit_is_woocommerce_installed() && (is_product_category() || is_product_tag())) {
+        elseif( startit_qode_is_woocommerce_installed() && ( is_product_category() || is_product_tag())) {
             global $wp_query;
 
             //get current taxonomy and it's name and assign to title
@@ -174,23 +174,23 @@ if(!function_exists('qode_startit_get_title_text')) {
     }
 }
 
-if(!function_exists('qode_startit_title_text')) {
+if(!function_exists( 'startit_qode_title_text' )) {
     /**
      * Function that echoes title text.
      *
-     * @see qode_startit_get_title_text()
+     * @see startit_qode_get_title_text()
      */
-    function qode_startit_title_text() {
-        echo qode_startit_get_title_text();
+    function startit_qode_title_text() {
+        echo startit_qode_get_title_text();
     }
 }
 
-if(!function_exists('qode_startit_subtitle_text')) {
+if(!function_exists( 'startit_qode_subtitle_text' )) {
     /**
      * Function that echoes subtitle text.
      *
      */
-    function qode_startit_subtitle_text() {
+    function startit_qode_subtitle_text() {
         $id 	= get_queried_object_id();
         $subtitle 	= '';
 
@@ -198,11 +198,11 @@ if(!function_exists('qode_startit_subtitle_text')) {
             $subtitle = wp_kses_post(get_post_meta($id, "qodef_title_area_subtitle_meta", true));
         }
 
-        print $subtitle;
+	    startit_qode_module_part($subtitle);
     }
 }
 
-if(!function_exists('qode_startit_custom_breadcrumbs')) {
+if(!function_exists( 'startit_qode_custom_breadcrumbs' )) {
     /**
      * Function that renders breadcrumbs
      *
@@ -212,10 +212,10 @@ if(!function_exists('qode_startit_custom_breadcrumbs')) {
      * @see is_home()
      * @see is_front_page()
      * @see is_category()
-     * @see qode_startit_is_product_category()
+     * @see startit_qode_is_product_category()
      * @see get_search_query()
      */
-    function qode_startit_custom_breadcrumbs() {
+    function startit_qode_custom_breadcrumbs() {
         global $post, $wp_query;
 
         $output = "";
@@ -228,28 +228,28 @@ if(!function_exists('qode_startit_custom_breadcrumbs')) {
         }
 
         $showOnHome = 1; // 1 - show breadcrumbs on the homepage, 0 - don't show
-        $delimiter = '<span class="qodef-delimiter" '.qode_startit_get_inline_style($bread_style).'>&nbsp;&gt;&nbsp;</span>'; // delimiter between crumbs
+        $delimiter = '<span class="qodef-delimiter" ' . startit_qode_get_inline_style($bread_style) . '>&nbsp;&gt;&nbsp;</span>'; // delimiter between crumbs
         $home = get_bloginfo('name'); // text for the 'Home' link
         $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
-        $before = '<span class="qodef-current" '.qode_startit_get_inline_style($bread_style).'>'; // tag before the current crumb
+        $before = '<span class="qodef-current" ' . startit_qode_get_inline_style($bread_style) . '>'; // tag before the current crumb
         $after = '</span>'; // tag after the current crumb
 
         if (is_home() && !is_front_page()) {
-            $output = '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner"><a '.qode_startit_get_inline_style($bread_style).' href="' . $homeLink . '">' . $home . '</a>' . $delimiter . ' <a '.qode_startit_get_inline_style($bread_style).' href="' . $homeLink . '">'. get_the_title($pageid) .'</a></div></div>';
+            $output = '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner"><a ' . startit_qode_get_inline_style($bread_style) . ' href="' . esc_url($homeLink) . '">' . $home . '</a>' . $delimiter . ' <a ' . startit_qode_get_inline_style($bread_style) . ' href="' . esc_url($homeLink) . '">' . get_the_title($pageid) . '</a></div></div>';
 
         } elseif(is_home()) {
             $output = '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner">'.$before.$home.$after.'</div></div>';
         }
 
         elseif(is_front_page()) {
-            if ($showOnHome == 1) $output = '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner"><a '.qode_startit_get_inline_style($bread_style).' href="' . $homeLink . '">' . $home . '</a></div></div>';
+            if ($showOnHome == 1) $output = '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner"><a ' . startit_qode_get_inline_style($bread_style) . ' href="' . esc_url($homeLink) . '">' . $home . '</a></div></div>';
         }
 
         else {
 
-            $output .= '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner"><a '.qode_startit_get_inline_style($bread_style).' href="' . $homeLink . '">' . $home . '</a>' . $delimiter;
+            $output .= '<div class="qodef-breadcrumbs"><div class="qodef-breadcrumbs-inner"><a ' . startit_qode_get_inline_style($bread_style) . ' href="' . esc_url($homeLink) . '">' . $home . '</a>' . $delimiter;
 
-            if ( is_category() || qode_startit_is_product_category()) {
+            if ( is_category() || startit_qode_is_product_category()) {
                 $thisCat = get_category(get_query_var('cat'), false);
                 if (isset($thisCat->parent) && $thisCat->parent != 0) $output .= get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter);
                 $output .= $before . single_cat_title('', false) . $after;
@@ -258,12 +258,12 @@ if(!function_exists('qode_startit_custom_breadcrumbs')) {
                 $output .= $before . esc_html__( 'Search results for ', 'startit' ) . '"' . get_search_query() . '"' . $after;
 
             } elseif ( is_day() ) {
-                $output .= '<a '.qode_startit_get_inline_style($bread_style).' href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a>' . $delimiter;
-                $output .= '<a '.qode_startit_get_inline_style($bread_style).' href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a>' . $delimiter;
+                $output .= '<a ' . startit_qode_get_inline_style($bread_style) . ' href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a>' . $delimiter;
+                $output .= '<a ' . startit_qode_get_inline_style($bread_style) . ' href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a>' . $delimiter;
                 $output .= $before . get_the_time('d') . $after;
 
             } elseif ( is_month() ) {
-                $output .= '<a '.qode_startit_get_inline_style($bread_style).' href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a>' . $delimiter;
+                $output .= '<a ' . startit_qode_get_inline_style($bread_style) . ' href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a>' . $delimiter;
                 $output .= $before . get_the_time('F') . $after;
 
             } elseif ( is_year() ) {
@@ -292,7 +292,7 @@ if(!function_exists('qode_startit_custom_breadcrumbs')) {
                     $cat = $cat[0];
                     $output .= get_category_parents($cat, TRUE, ' ' . $delimiter);
                 }
-                $output .= '<a '.qode_startit_get_inline_style($bread_style).' href="' . get_permalink($parent) . '">' . $parent->post_title . '</a>';
+                $output .= '<a ' . startit_qode_get_inline_style($bread_style) . ' href="' . get_permalink($parent) . '">' . $parent->post_title . '</a>';
                 if ($showCurrent == 1) $output .= $delimiter . $before . get_the_title() . $after;
 
             } elseif ( is_page() && !$post->post_parent ) {
@@ -303,7 +303,7 @@ if(!function_exists('qode_startit_custom_breadcrumbs')) {
                 $breadcrumbs = array();
                 while ($parent_id) {
                     $page = get_page($parent_id);
-                    $breadcrumbs[] = '<a '.qode_startit_get_inline_style($bread_style).' href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
+                    $breadcrumbs[] = '<a ' . startit_qode_get_inline_style($bread_style) . ' href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
                     $parent_id  = $page->post_parent;
                 }
                 $breadcrumbs = array_reverse($breadcrumbs);
@@ -360,19 +360,19 @@ if(!function_exists('qode_startit_custom_breadcrumbs')) {
     }
 }
 
-if(!function_exists('qode_startit_get_title_area_height')) {
+if(!function_exists( 'startit_qode_get_title_area_height' )) {
 
     /**
      * Function that returns title height
      **/
-    function qode_startit_get_title_area_height() {
+    function startit_qode_get_title_area_height() {
 
-        $id = qode_startit_get_page_id();
+        $id = startit_qode_get_page_id();
 
         if(get_post_meta($id, 'qodef_title_area_type_meta', true) != '') {
             $title_type = get_post_meta($id, 'qodef_title_area_type_meta', true);
         } else {
-            $title_type = qode_startit_options()->getOptionValue('title_area_type');
+            $title_type = startit_qode_options()->getOptionValue('title_area_type');
         }
 
         $title_height = 250; // default title height without header height
@@ -382,35 +382,35 @@ if(!function_exists('qode_startit_get_title_area_height')) {
 
         if(get_post_meta($id, "qodef_title_area_height_meta", true) != '') {
             $title_height = get_post_meta($id, 'qodef_title_area_height_meta', true);
-        } elseif(qode_startit_options()->getOptionValue('title_area_height') !== '') {
-            $title_height = qode_startit_options()->getOptionValue('title_area_height');
+        } elseif( startit_qode_options()->getOptionValue('title_area_height') !== '') {
+            $title_height = startit_qode_options()->getOptionValue('title_area_height');
         }
 
         return apply_filters('qode_startit_title_area_height', $title_height);
     }
 }
 
-if(!function_exists('qode_startit_get_title_content_padding')) {
+if(!function_exists( 'startit_qode_get_title_content_padding' )) {
     /**
      * Function that returns title content pading
      **/
 
-    function qode_startit_get_title_content_padding() {
+    function startit_qode_get_title_content_padding() {
         return apply_filters('qode_startit_title_content_padding', 0);
     }
 }
 
 
-if(!function_exists('qode_startit_title_area_height')) {
+if(!function_exists( 'startit_qode_title_area_height' )) {
     /**
      * Function that returns title height and padding to be applied in template
      **/
 
-    function qode_startit_title_area_height() {
-        $id = qode_startit_get_page_id();
+    function startit_qode_title_area_height() {
+        $id = startit_qode_get_page_id();
         $title_height_and_padding = array();
-        $title_height          = qode_startit_get_title_area_height();
-        $header_height_padding = qode_startit_get_title_content_padding();
+        $title_height          = startit_qode_get_title_area_height();
+        $header_height_padding = startit_qode_get_title_content_padding();
         $title_vertical_alignment = 'header_bottom';
         $title_holder_height = '';
         $title_subtitle_holder_padding = '';
@@ -420,13 +420,13 @@ if(!function_exists('qode_startit_title_area_height')) {
             $is_img_responsive = get_post_meta($id, "qodef_title_area_background_image_responsive_meta", true);
         } else {
             //take value from theme options
-            $is_img_responsive = qode_startit_options()->getOptionValue('title_area_background_image_responsive');
+            $is_img_responsive = startit_qode_options()->getOptionValue('title_area_background_image_responsive');
         }
 
         if(get_post_meta($id, "qodef_title_area_vertial_alignment_meta", true) !== '') {
             $title_vertical_alignment = get_post_meta($id, "qodef_title_area_vertial_alignment_meta", true);
         }else{
-            $title_vertical_alignment = qode_startit_options()->getOptionValue('title_area_vertial_alignment');;
+            $title_vertical_alignment = startit_qode_options()->getOptionValue('title_area_vertial_alignment');;
         }
 
         //we need to define title height only when aligning text bellog header and when image isn't responsive
@@ -452,13 +452,13 @@ if(!function_exists('qode_startit_title_area_height')) {
     }
 }
 
-if(!function_exists('qode_startit_title_area_background')) {
+if(!function_exists( 'startit_qode_title_area_background' )) {
     /**
      * Function that returns title background style be applied in template
      **/
 
-    function qode_startit_title_area_background() {
-        $id = qode_startit_get_page_id();
+    function startit_qode_title_area_background() {
+        $id = startit_qode_get_page_id();
         $show_title_img = true;
         $title_area_background = array();
         $title_background_color = '';
@@ -477,27 +477,27 @@ if(!function_exists('qode_startit_title_area_background')) {
             $is_img_responsive = get_post_meta($id, "qodef_title_area_background_image_responsive_meta", true);
         } else {
             //take value from theme options
-            $is_img_responsive = qode_startit_options()->getOptionValue('title_area_background_image_responsive');
+            $is_img_responsive = startit_qode_options()->getOptionValue('title_area_background_image_responsive');
         }
 
         //check if background color is set on page or in options
         if(get_post_meta($id, "qodef_title_area_background_color_meta", true) != ""){
             $background_color = get_post_meta($id, "qodef_title_area_background_color_meta", true);
         }else{
-            $background_color = qode_startit_options()->getOptionValue('title_area_background_color');
+            $background_color = startit_qode_options()->getOptionValue('title_area_background_color');
         }
 
         //check if background image is set on page or in options
         if(get_post_meta($id, "qodef_title_area_background_image_meta", true) != ""){
             $background_image = get_post_meta($id, "qodef_title_area_background_image_meta", true);
         }else{
-            $background_image = qode_startit_options()->getOptionValue('title_area_background_image');
+            $background_image = startit_qode_options()->getOptionValue('title_area_background_image');
         }
 
         //check for background image width
         $background_image_width = "";
         if($background_image !== ''){
-            $background_image_width_dimensions_array = qode_startit_get_image_dimensions($background_image);
+            $background_image_width_dimensions_array = startit_qode_get_image_dimensions($background_image);
             if (count($background_image_width_dimensions_array)) {
                 $background_image_width = $background_image_width_dimensions_array["width"];
             }

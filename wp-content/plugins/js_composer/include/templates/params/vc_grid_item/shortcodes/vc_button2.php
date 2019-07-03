@@ -3,12 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 $wrapper_css_class = 'vc_button-2-wrapper';
-/** @var $this WPBakeryShortCode_VC_Button2 */
+/** @var WPBakeryShortCode_Vc_Button2 $this */
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
 $class = 'vc_btn';
-//parse link
+// parse link
 
 $class .= ( '' !== $color ) ? ( ' vc_btn_' . $color . ' vc_btn-' . $color ) : '';
 $class .= ( '' !== $size ) ? ( ' vc_btn_' . $size . ' vc_btn-' . $size ) : '';
@@ -38,7 +38,7 @@ if ( isset( $atts['link'] ) ) {
 	} elseif ( 'image' === $atts['link'] ) {
 		$link = '{{ post_image_url_href }} class="' . esc_attr( $css_class ) . '"';
 	} elseif ( 'image_lightbox' === $atts['link'] ) {
-		$link = '{{ post_image_url_attr_prettyphoto:' . $css_class . ' }}';
+		$link = '{{ post_image_url_attr_prettyphoto:' . esc_attr( $css_class ) . ' }}';
 	}
 }
 
@@ -48,6 +48,9 @@ if ( $align ) {
 	$wrapper_css_class .= ' vc_button-2-align-' . $align;
 }
 ?>
-<div class="<?php echo esc_attr( $wrapper_css_class ) ?>">
-	<?php echo '<' . $link . $target . $rel . '>' . $title . '</a>' ?>
+<div class="<?php echo esc_attr( $wrapper_css_class ); ?>">
+	<?php
+	// @codingStandardsIgnoreLine
+	echo '<' . $link . $target . $rel . '>' . $title . '</a>';
+	?>
 </div>

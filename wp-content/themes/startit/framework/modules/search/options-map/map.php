@@ -1,33 +1,33 @@
 <?php
 
-if ( ! function_exists('qode_startit_search_options_map') ) {
+if ( ! function_exists( 'startit_qode_search_options_map' ) ) {
 
-	function qode_startit_search_options_map() {
+	function startit_qode_search_options_map() {
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug' => '_search_page',
-				'title' => 'Search',
+				'title' => esc_html__( 'Search', 'startit' ),
 				'icon' => 'fa fa-search'
 			)
 		);
 
-		$search_panel = qode_startit_add_admin_panel(
+		$search_panel = startit_qode_add_admin_panel(
 			array(
-				'title' => 'Search',
+				'title' => esc_html__( 'Search', 'startit' ),
 				'name' => 'search',
 				'page' => '_search_page'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_panel,
 				'type'			=> 'select',
 				'name'			=> 'search_type',
 				'default_value'	=> 'search-covers-header',
-				'label' 		=> 'Select Search Type',
-				'description' 	=> "Choose a type of Select search bar",
+				'label' => esc_html__( 'Select Search Type', 'startit' ),
+				'description' => esc_html__( "Choose a type of Select search bar", 'startit' ),
 				'options' 		=> array(
 					'search-covers-header' => 'Search Covers Header',
 					'fullscreen-search' => 'Fullscreen Search',
@@ -49,19 +49,19 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_panel,
 				'type'			=> 'select',
 				'name'			=> 'search_icon_pack',
 				'default_value'	=> 'font_awesome',
-				'label'			=> 'Search Icon Pack',
-				'description'	=> 'Choose icon pack for search icon',
-				'options'		=> qode_startit_icon_collections()->getIconCollectionsExclude(array('linea_icons', 'simple_line_icons', 'dripicons'))
+				'label' => esc_html__( 'Search Icon Pack', 'startit' ),
+				'description' => esc_html__( 'Choose icon pack for search icon', 'startit' ),
+				'options'		=> startit_qode_icon_collections()->getIconCollectionsExclude(array('linea_icons', 'simple_line_icons', 'dripicons'))
 			)
 		);
 
-		$search_height_container = qode_startit_add_admin_container(
+		$search_height_container = startit_qode_add_admin_container(
 			array(
 				'parent'			=> $search_panel,
 				'name'				=> 'search_height_container',
@@ -75,14 +75,14 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_height_container,
 				'type'			=> 'text',
 				'name'			=> 'search_height',
 				'default_value'	=> '',
-				'label'			=> 'Search bar height',
-				'description'	=> 'Set search bar height',
+				'label' => esc_html__( 'Search bar height', 'startit' ),
+				'description' => esc_html__( 'Set search bar height', 'startit' ),
 				'args'			=> array(
 					'col_width' => 3,
 					'suffix'	=> 'px'
@@ -90,7 +90,7 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$search_animation_container = qode_startit_add_admin_container(
+		$search_animation_container = startit_qode_add_admin_container(
 			array(
 				'parent'			=> $search_panel,
 				'name'				=> 'search_animation_container',
@@ -103,47 +103,47 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_animation_container,
 				'type'			=> 'select',
 				'name'			=> 'search_animation',
 				'default_value'	=> 'search-fade',
-				'label'			=> 'Fullscreen Search Overlay Animation',
-				'description'	=> 'Choose animation for fullscreen search overlay',
+				'label' => esc_html__( 'Fullscreen Search Overlay Animation', 'startit' ),
+				'description' => esc_html__( 'Choose animation for fullscreen search overlay', 'startit' ),
 				'options'		=> array(
-					'search-fade'			=> 'Fade'
+					'search-fade'			=> esc_html__('Fade', 'startit')
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_panel,
 				'type'			=> 'yesno',
 				'name'			=> 'search_in_grid',
 				'default_value'	=> 'yes',
-				'label'			=> 'Search area in grid',
-				'description'	=> 'Set search area to be in grid',
+				'label' => esc_html__( 'Search area in grid', 'startit' ),
+				'description' => esc_html__( 'Set search area to be in grid', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_section_title(
+		startit_qode_add_admin_section_title(
 			array(
 				'parent' 	=> $search_panel,
 				'name'		=> 'initial_header_icon_title',
-				'title'		=> 'Initial Search Icon in Header'
+				'title' => esc_html__( 'Initial Search Icon in Header', 'startit' )
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_panel,
 				'type'			=> 'text',
 				'name'			=> 'header_search_icon_size',
 				'default_value'	=> '',
-				'label'			=> 'Icon Size',
-				'description'	=> 'Set size for icon',
+				'label' => esc_html__( 'Icon Size', 'startit' ),
+				'description' => esc_html__( 'Set size for icon', 'startit' ),
 				'args'			=> array(
 					'col_width' => 3,
 					'suffix'	=> 'px'
@@ -151,56 +151,56 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$search_icon_color_group = qode_startit_add_admin_group(
+		$search_icon_color_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Icon Colors',
-				'description'	=> 'Define color style for icon',
+				'title' => esc_html__( 'Icon Colors', 'startit' ),
+				'description' => esc_html__( 'Define color style for icon', 'startit' ),
 				'name'		=> 'search_icon_color_group'
 			)
 		);
 
-		$search_icon_color_row = qode_startit_add_admin_row(
+		$search_icon_color_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_icon_color_group,
 				'name'		=> 'search_icon_color_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'	=> $search_icon_color_row,
 				'type'		=> 'colorsimple',
 				'name'		=> 'header_search_icon_color',
-				'label'		=> 'Color'
+				'label' => esc_html__( 'Color', 'startit' )
 			)
 		);
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $search_icon_color_row,
 				'type'		=> 'colorsimple',
 				'name'		=> 'header_search_icon_hover_color',
-				'label'		=> 'Hover Color'
+				'label' => esc_html__( 'Hover Color', 'startit' )
 			)
 		);
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $search_icon_color_row,
 				'type'		=> 'colorsimple',
 				'name'		=> 'header_light_search_icon_color',
-				'label'		=> 'Light Header Icon Color'
+				'label' => esc_html__( 'Light Header Icon Color', 'startit' )
 			)
 		);
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $search_icon_color_row,
 				'type'		=> 'colorsimple',
 				'name'		=> 'header_light_search_icon_hover_color',
-				'label'		=> 'Light Header Icon Hover Color'
+				'label' => esc_html__( 'Light Header Icon Hover Color', 'startit' )
 			)
 		);
 
-		$search_icon_color_row2 = qode_startit_add_admin_row(
+		$search_icon_color_row2 = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_icon_color_group,
 				'name'		=> 'search_icon_color_row2',
@@ -208,68 +208,68 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $search_icon_color_row2,
 				'type'		=> 'colorsimple',
 				'name'		=> 'header_dark_search_icon_color',
-				'label'		=> 'Dark Header Icon Color'
+				'label' => esc_html__( 'Dark Header Icon Color', 'startit' )
 			)
 		);
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $search_icon_color_row2,
 				'type'		=> 'colorsimple',
 				'name'		=> 'header_dark_search_icon_hover_color',
-				'label'		=> 'Dark Header Icon Hover Color'
+				'label' => esc_html__( 'Dark Header Icon Hover Color', 'startit' )
 			)
 		);
 
 
-		$search_icon_background_group = qode_startit_add_admin_group(
+		$search_icon_background_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Icon Background Style',
-				'description'	=> 'Define background style for icon',
+				'title' => esc_html__( 'Icon Background Style', 'startit' ),
+				'description' => esc_html__( 'Define background style for icon', 'startit' ),
 				'name'		=> 'search_icon_background_group'
 			)
 		);
 
-		$search_icon_background_row = qode_startit_add_admin_row(
+		$search_icon_background_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_icon_background_group,
 				'name'		=> 'search_icon_background_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_background_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_background_color',
 				'default_value'	=> '',
-				'label'			=> 'Background Color',
+				'label' => esc_html__( 'Background Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_background_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_background_hover_color',
 				'default_value'	=> '',
-				'label'			=> 'Background Hover Color',
+				'label' => esc_html__( 'Background Hover Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_panel,
 				'type'			=> 'yesno',
 				'name'			=> 'enable_search_icon_text',
 				'default_value'	=> 'no',
-				'label'			=> 'Enable Search Icon Text',
-				'description'	=> "Enable this option to show 'Search' text next to search icon in header",
+				'label' => esc_html__( 'Enable Search Icon Text', 'startit' ),
+				'description'	=> esc_html__("Enable this option to show 'Search' text next to search icon in header", 'startit'),
 				'args'			=> array(
 					'dependence' => true,
 					'dependence_hide_on_yes' => '',
@@ -278,7 +278,7 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$enable_search_icon_text_container = qode_startit_add_admin_container(
+		$enable_search_icon_text_container = startit_qode_add_admin_container(
 			array(
 				'parent'			=> $search_panel,
 				'name'				=> 'enable_search_icon_text_container',
@@ -287,48 +287,48 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$enable_search_icon_text_group = qode_startit_add_admin_group(
+		$enable_search_icon_text_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $enable_search_icon_text_container,
-				'title'		=> 'Search Icon Text',
+				'title' => esc_html__( 'Search Icon Text', 'startit' ),
 				'name'		=> 'enable_search_icon_text_group',
-				'description'	=> 'Define Style for Search Icon Text'
+				'description' => esc_html__( 'Define Style for Search Icon Text', 'startit' )
 			)
 		);
 
-		$enable_search_icon_text_row = qode_startit_add_admin_row(
+		$enable_search_icon_text_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $enable_search_icon_text_group,
 				'name'		=> 'enable_search_icon_text_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_text_color',
-				'label'			=> 'Text Color',
+				'label' => esc_html__( 'Text Color', 'startit' ),
 				'default_value'	=> ''
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_text_color_hover',
-				'label'			=> 'Text Hover Color',
+				'label' => esc_html__( 'Text Hover Color', 'startit' ),
 				'default_value'	=> ''
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_icon_text_fontsize',
-				'label'			=> 'Font Size',
+				'label' => esc_html__( 'Font Size', 'startit' ),
 				'default_value'	=> '',
 				'args'			=> array(
 					'suffix'	=> 'px'
@@ -336,12 +336,12 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_icon_text_lineheight',
-				'label'			=> 'Line Height',
+				'label' => esc_html__( 'Line Height', 'startit' ),
 				'default_value'	=> '',
 				'args'			=> array(
 					'suffix'	=> 'px'
@@ -349,7 +349,7 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$enable_search_icon_text_row2 = qode_startit_add_admin_row(
+		$enable_search_icon_text_row2 = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $enable_search_icon_text_group,
 				'name'		=> 'enable_search_icon_text_row2',
@@ -357,50 +357,50 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_icon_text_texttransform',
-				'label'			=> 'Text Transform',
+				'label' => esc_html__( 'Text Transform', 'startit' ),
 				'default_value'	=> '',
-				'options'		=> qode_startit_get_text_transform_array()
+				'options'		=> startit_qode_get_text_transform_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row2,
 				'type'			=> 'fontsimple',
 				'name'			=> 'search_icon_text_google_fonts',
-				'label'			=> 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 				'default_value'	=> '-1',
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_icon_text_fontstyle',
-				'label'			=> 'Font Style',
+				'label' => esc_html__( 'Font Style', 'startit' ),
 				'default_value'	=> '',
-				'options'		=> qode_startit_get_font_style_array(),
+				'options'		=> startit_qode_get_font_style_array(),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_icon_text_fontweight',
-				'label'			=> 'Font Weight',
+				'label' => esc_html__( 'Font Weight', 'startit' ),
 				'default_value'	=> '',
-				'options'		=> qode_startit_get_font_weight_array(),
+				'options'		=> startit_qode_get_font_weight_array(),
 			)
 		);
 
-		$enable_search_icon_text_row3 = qode_startit_add_admin_row(
+		$enable_search_icon_text_row3 = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $enable_search_icon_text_group,
 				'name'		=> 'enable_search_icon_text_row3',
@@ -408,12 +408,12 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $enable_search_icon_text_row3,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_icon_text_letterspacing',
-				'label'			=> 'Letter Spacing',
+				'label' => esc_html__( 'Letter Spacing', 'startit' ),
 				'default_value'	=> '',
 				'args'			=> array(
 					'suffix'	=> 'px'
@@ -421,256 +421,256 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$search_icon_spacing_group = qode_startit_add_admin_group(
+		$search_icon_spacing_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Icon Spacing',
-				'description'	=> 'Define padding and margins for Search icon',
+				'title' => esc_html__( 'Icon Spacing', 'startit' ),
+				'description' => esc_html__( 'Define padding and margins for Search icon', 'startit' ),
 				'name'		=> 'search_icon_spacing_group'
 			)
 		);
 
-		$search_icon_spacing_row = qode_startit_add_admin_row(
+		$search_icon_spacing_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_icon_spacing_group,
 				'name'		=> 'search_icon_spacing_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_spacing_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_padding_left',
 				'default_value'	=> '',
-				'label'			=> 'Padding Left',
+				'label' => esc_html__( 'Padding Left', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_spacing_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_padding_right',
 				'default_value'	=> '',
-				'label'			=> 'Padding Right',
+				'label' => esc_html__( 'Padding Right', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_spacing_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_margin_left',
 				'default_value'	=> '',
-				'label'			=> 'Margin Left',
+				'label' => esc_html__( 'Margin Left', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_spacing_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_margin_right',
 				'default_value'	=> '',
-				'label'			=> 'Margin Right',
+				'label' => esc_html__( 'Margin Right', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_section_title(
+		startit_qode_add_admin_section_title(
 			array(
 				'parent' 	=> $search_panel,
 				'name'		=> 'search_form_title',
-				'title'		=> 'Search Bar'
+				'title' => esc_html__( 'Search Bar', 'startit' )
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_panel,
 				'type'			=> 'color',
 				'name'			=> 'search_background_color',
 				'default_value'	=> '',
-				'label'			=> 'Background Color',
-				'description'	=> 'Choose a background color for Select search bar'
+				'label' => esc_html__( 'Background Color', 'startit' ),
+				'description' => esc_html__( 'Choose a background color for Select search bar', 'startit' )
 			)
 		);
 
-		$search_input_text_group = qode_startit_add_admin_group(
+		$search_input_text_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Search Input Text',
-				'description'	=> 'Define style for search text',
+				'title' => esc_html__( 'Search Input Text', 'startit' ),
+				'description' => esc_html__( 'Define style for search text', 'startit' ),
 				'name'		=> 'search_input_text_group'
 			)
 		);
 
-		$search_input_text_row = qode_startit_add_admin_row(
+		$search_input_text_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_input_text_group,
 				'name'		=> 'search_input_text_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_text_color',
 				'default_value'	=> '',
-				'label'			=> 'Text Color',
+				'label' => esc_html__( 'Text Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_text_disabled_color',
 				'default_value'	=> '',
-				'label'			=> 'Disabled Text Color',
+				'label' => esc_html__( 'Disabled Text Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_text_fontsize',
 				'default_value'	=> '',
-				'label'			=> 'Font Size',
+				'label' => esc_html__( 'Font Size', 'startit' ),
 				'args'			=> array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_text_texttransform',
 				'default_value'	=> '',
-				'label'			=> 'Text Transform',
-				'options'		=> qode_startit_get_text_transform_array()
+				'label' => esc_html__( 'Text Transform', 'startit' ),
+				'options'		=> startit_qode_get_text_transform_array()
 			)
 		);
 
-		$search_input_text_row2 = qode_startit_add_admin_row(
+		$search_input_text_row2 = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_input_text_group,
 				'name'		=> 'search_input_text_row2'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row2,
 				'type'			=> 'fontsimple',
 				'name'			=> 'search_text_google_fonts',
 				'default_value'	=> '-1',
-				'label'			=> 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_text_fontstyle',
 				'default_value'	=> '',
-				'label'			=> 'Font Style',
-				'options'		=> qode_startit_get_font_style_array(),
+				'label' => esc_html__( 'Font Style', 'startit' ),
+				'options'		=> startit_qode_get_font_style_array(),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_text_fontweight',
 				'default_value'	=> '',
-				'label'			=> 'Font Weight',
-				'options'		=> qode_startit_get_font_weight_array()
+				'label' => esc_html__( 'Font Weight', 'startit' ),
+				'options'		=> startit_qode_get_font_weight_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_input_text_row2,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_text_letterspacing',
 				'default_value'	=> '',
-				'label'			=> 'Letter Spacing',
+				'label' => esc_html__( 'Letter Spacing', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		$search_label_text_group = qode_startit_add_admin_group(
+		$search_label_text_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Search Label Text',
-				'description'	=> 'Define style for search label text',
+				'title' => esc_html__( 'Search Label Text', 'startit' ),
+				'description' => esc_html__( 'Define style for search label text', 'startit' ),
 				'name'		=> 'search_label_text_group'
 			)
 		);
 
-		$search_label_text_row = qode_startit_add_admin_row(
+		$search_label_text_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_label_text_group,
 				'name'		=> 'search_label_text_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_label_text_color',
 				'default_value'	=> '',
-				'label'			=> 'Text Color',
+				'label' => esc_html__( 'Text Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_label_text_fontsize',
 				'default_value'	=> '',
-				'label'			=> 'Font Size',
+				'label' => esc_html__( 'Font Size', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_label_text_texttransform',
 				'default_value'	=> '',
-				'label'			=> 'Text Transform',
-				'options'		=> qode_startit_get_text_transform_array()
+				'label' => esc_html__( 'Text Transform', 'startit' ),
+				'options'		=> startit_qode_get_text_transform_array()
 			)
 		);
 
-		$search_label_text_row2 = qode_startit_add_admin_row(
+		$search_label_text_row2 = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_label_text_group,
 				'name'		=> 'search_label_text_row2',
@@ -678,152 +678,152 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row2,
 				'type'			=> 'fontsimple',
 				'name'			=> 'search_label_text_google_fonts',
 				'default_value'	=> '-1',
-				'label'			=> 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_label_text_fontstyle',
 				'default_value'	=> '',
-				'label'			=> 'Font Style',
-				'options'		=> qode_startit_get_font_style_array()
+				'label' => esc_html__( 'Font Style', 'startit' ),
+				'options'		=> startit_qode_get_font_style_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row2,
 				'type'			=> 'selectblanksimple',
 				'name'			=> 'search_label_text_fontweight',
 				'default_value'	=> '',
-				'label'			=> 'Font Weight',
-				'options'		=> qode_startit_get_font_weight_array()
+				'label' => esc_html__( 'Font Weight', 'startit' ),
+				'options'		=> startit_qode_get_font_weight_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_label_text_row2,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_label_text_letterspacing',
 				'default_value'	=> '',
-				'label'			=> 'Letter Spacing',
+				'label' => esc_html__( 'Letter Spacing', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		$search_icon_group = qode_startit_add_admin_group(
+		$search_icon_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Search Icon',
-				'description'	=> 'Define style for search icon',
+				'title' => esc_html__( 'Search Icon', 'startit' ),
+				'description' => esc_html__( 'Define style for search icon', 'startit' ),
 				'name'		=> 'search_icon_group'
 			)
 		);
 
-		$search_icon_row = qode_startit_add_admin_row(
+		$search_icon_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_icon_group,
 				'name'		=> 'search_icon_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_color',
 				'default_value'	=> '',
-				'label'			=> 'Icon Color',
+				'label' => esc_html__( 'Icon Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_hover_color',
 				'default_value'	=> '',
-				'label'			=> 'Icon Hover Color',
+				'label' => esc_html__( 'Icon Hover Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_icon_disabled_color',
 				'default_value'	=> '',
-				'label'			=> 'Icon Disabled Color',
+				'label' => esc_html__( 'Icon Disabled Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_icon_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_icon_size',
 				'default_value'	=> '',
-				'label'			=> 'Icon Size',
+				'label' => esc_html__( 'Icon Size', 'startit' ),
 				'args'			=> array(
 					'suffix'	=> 'px'
 				)
 			)
 		);
 
-		$search_close_icon_group = qode_startit_add_admin_group(
+		$search_close_icon_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Search Close',
-				'description'	=> 'Define style for search close icon',
+				'title' => esc_html__( 'Search Close', 'startit' ),
+				'description' => esc_html__( 'Define style for search close icon', 'startit' ),
 				'name'		=> 'search_close_icon_group'
 			)
 		);
 
-		$search_close_icon_row = qode_startit_add_admin_row(
+		$search_close_icon_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_close_icon_group,
 				'name'		=> 'search_icon_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_close_icon_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_close_color',
-				'label'			=> 'Icon Color',
+				'label' => esc_html__( 'Icon Color', 'startit' ),
 				'default_value'	=> ''
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_close_icon_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_close_hover_color',
-				'label'			=> 'Icon Hover Color',
+				'label' => esc_html__( 'Icon Hover Color', 'startit' ),
 				'default_value'	=> ''
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_close_icon_row,
 				'type'			=> 'textsimple',
 				'name'			=> 'search_close_size',
-				'label'			=> 'Icon Size',
+				'label' => esc_html__( 'Icon Size', 'startit' ),
 				'default_value'	=> '',
 				'args'			=> array(
 					'suffix'	=> 'px'
@@ -831,44 +831,44 @@ if ( ! function_exists('qode_startit_search_options_map') ) {
 			)
 		);
 
-		$search_bottom_border_group = qode_startit_add_admin_group(
+		$search_bottom_border_group = startit_qode_add_admin_group(
 			array(
 				'parent'	=> $search_panel,
-				'title'		=> 'Search Bottom Border',
-				'description'	=> 'Define style for Search text input bottom border (for Fullscreen search type)',
+				'title' => esc_html__( 'Search Bottom Border', 'startit' ),
+				'description' => esc_html__( 'Define style for Search text input bottom border (for Fullscreen search type)', 'startit' ),
 				'name'		=> 'search_bottom_border_group'
 			)
 		);
 
-		$search_bottom_border_row = qode_startit_add_admin_row(
+		$search_bottom_border_row = startit_qode_add_admin_row(
 			array(
 				'parent'	=> $search_bottom_border_group,
 				'name'		=> 'search_icon_row'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_bottom_border_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_border_color',
-				'label'			=> 'Border Color',
+				'label' => esc_html__( 'Border Color', 'startit' ),
 				'default_value'	=> ''
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent'		=> $search_bottom_border_row,
 				'type'			=> 'colorsimple',
 				'name'			=> 'search_border_focus_color',
-				'label'			=> 'Border Focus Color',
+				'label' => esc_html__( 'Border Focus Color', 'startit' ),
 				'default_value'	=> ''
 			)
 		);
 
 	}
 
-	add_action('qode_startit_options_map', 'qode_startit_search_options_map', 13);
+	add_action('qode_startit_options_map', 'startit_qode_search_options_map', 13);
 
 }

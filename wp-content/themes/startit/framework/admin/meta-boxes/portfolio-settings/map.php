@@ -2,13 +2,13 @@
 
 if(!function_exists('qode_startit_map_portfolio_settings')) {
     function qode_startit_map_portfolio_settings() {
-        $meta_box = qode_startit_add_meta_box(array(
+        $meta_box = startit_qode_create_meta_box(array(
             'scope' => 'portfolio-item',
             'title' => 'Portfolio Settings',
             'name'  => 'portfolio_settings_meta_box'
         ));
 
-        qode_startit_add_meta_box_field(array(
+        startit_qode_create_meta_box_field(array(
             'name'        => 'portfolio_single_template_meta',
             'type'        => 'select',
             'label'       => 'Portfolio Type',
@@ -32,7 +32,7 @@ if(!function_exists('qode_startit_map_portfolio_settings')) {
             $all_pages[$page->ID] = $page->post_title;
         }
 
-        qode_startit_add_meta_box_field(array(
+        startit_qode_create_meta_box_field(array(
             'name'        => 'portfolio_single_back_to_link',
             'type'        => 'select',
             'label'       => '"Back To" Link',
@@ -41,7 +41,7 @@ if(!function_exists('qode_startit_map_portfolio_settings')) {
             'options'     => $all_pages
         ));
 
-        qode_startit_add_meta_box_field(array(
+        startit_qode_create_meta_box_field(array(
             'name'        => 'portfolio_external_link',
             'type'        => 'text',
             'label'       => 'Portfolio External Link',

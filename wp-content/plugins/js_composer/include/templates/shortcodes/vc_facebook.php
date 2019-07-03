@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Facebook
+ * @var WPBakeryShortCode_Vc_Facebook $this
  */
 $type = $css = $el_class = $el_id = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -33,4 +33,5 @@ $output = '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrappe
 	. $url . '&amp;layout='
 	. $type . '&amp;show_faces=false&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true"></iframe></div>';
 
+// @codingStandardsIgnoreLine
 echo $output;

@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $gradient_custom_color_2 ;
  * @var $gradient_text_color ;
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Btn
+ * @var WPBakeryShortCode_Vc_Btn $this
  */
 $style = $shape = $color = $size = $custom_background = $custom_text = $align = $link = $title = $button_block = $el_class = $outline_custom_color = $outline_custom_hover_background = $outline_custom_hover_text = $add_icon = $i_align = $i_type = $i_icon_entypo = $i_icon_fontawesome = $i_icon_linecons = $i_icon_pixelicons = $i_icon_typicons = $css = $css_animation = '';
 $gradient_color_1 = $gradient_color_2 = $gradient_custom_color_1 = $gradient_custom_color_2 = $gradient_text_color = '';
@@ -50,7 +50,8 @@ $attributes = array();
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
-//parse link
+// parse link
+$link = trim( $link );
 $link = ( '||' === $link ) ? '' : $link;
 $link = vc_build_link( $link );
 $use_link = false;
@@ -188,8 +189,8 @@ if ( 'custom' === $style ) {
 	$gradient_css_hover[] = 'background-position: 100% 0';
 
 	$uid = uniqid();
-	echo '<style type="text/css">.vc_btn3-style-' . $style . '.vc_btn-gradient-btn-' . $uid . ':hover{' . implode( ';', $gradient_css_hover ) . ';' . '}</style>';
-	echo '<style type="text/css">.vc_btn3-style-' . $style . '.vc_btn-gradient-btn-' . $uid . '{' . implode( ';', $gradient_css ) . ';' . '}</style>';
+	echo '<style type="text/css">.vc_btn3-style-' . esc_attr( $style ) . '.vc_btn-gradient-btn-' . esc_attr( $uid ) . ':hover{' . esc_attr( implode( ';', $gradient_css_hover ) ) . ';' . '}</style>';
+	echo '<style type="text/css">.vc_btn3-style-' . esc_attr( $style ) . '.vc_btn-gradient-btn-' . esc_attr( $uid ) . '{' . esc_attr( implode( ';', $gradient_css ) ) . ';' . '}</style>';
 	$button_classes[] = 'vc_btn-gradient-btn-' . $uid;
 	$attributes[] = 'data-vc-gradient-1="' . $gradient_color_1 . '"';
 	$attributes[] = 'data-vc-gradient-2="' . $gradient_color_2 . '"';
@@ -226,16 +227,15 @@ if ( ! empty( $custom_onclick ) && $custom_onclick_code ) {
 }
 
 $attributes = implode( ' ', $attributes );
-$wrapper_attributes = array();
-if ( ! empty( $el_id ) ) {
-	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
-}
 ?>
-<div class="<?php echo trim( esc_attr( $css_class ) ) ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<div class="<?php echo esc_attr( trim( $css_class ) ); ?>"<?php echo ! empty( $el_id ) ? ' id="' . esc_attr( $el_id ) . '"' : false; ?> >
 	<?php
 	if ( $use_link ) {
+		// @codingStandardsIgnoreLine
 		echo '<a ' . $attributes . '>' . $button_html . '</a>';
 	} else {
+		// @codingStandardsIgnoreLine
 		echo '<button ' . $attributes . '>' . $button_html . '</button>';
 	}
-	?></div>
+	?>
+	</div>

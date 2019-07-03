@@ -14,7 +14,7 @@
 				<object width="320" height="240" type="application/x-shockwave-flash" data="<?php echo esc_url(get_template_directory_uri().'/js/flashmediaelement.swf'); ?>">
 					<param name="movie" value="<?php echo esc_url(get_template_directory_uri().'/js/flashmediaelement.swf'); ?>" />
 					<param name="flashvars" value="controls=true&file=<?php echo esc_url(get_post_meta(get_the_ID(), "qodef_post_video_mp4_link_meta", true));  ?>" />
-					<img src="<?php echo esc_url(get_post_meta(get_the_ID(), "qodef_post_video_image_meta", true));  ?>" width="1920" height="800" title="No video playback capabilities" alt="Video thumb" />
+					<img src="<?php echo esc_url(get_post_meta(get_the_ID(), "qodef_post_video_image_meta", true));  ?>" width="1920" height="800" title="<?php echo esc_attr_e('No video playback capabilities', 'startit'); ?>" alt="<?php esc_attr_e( 'Video thumb', 'startit' ); ?>" />
 				</object>
 			</video>
 		</div>

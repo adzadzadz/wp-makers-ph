@@ -1,8 +1,8 @@
 <?php
 
-if(!function_exists('qode_startit_single_portfolio')) {
-    function qode_startit_single_portfolio() {
-        $portfolio_template = qode_startit_get_portfolio_single_type();
+if(!function_exists( 'startit_qode_single_portfolio' )) {
+    function startit_qode_single_portfolio() {
+        $portfolio_template = startit_qode_get_portfolio_single_type();
 
         $params = array(
             'portfolio_template' => $portfolio_template,
@@ -14,21 +14,21 @@ if(!function_exists('qode_startit_single_portfolio')) {
         );
 
         if ($portfolio_template == 'gallery') {
-            $params['holder_class'][] = 'qodef-portfolio-gallery-' . qode_startit_options()->getOptionValue('portfolio_single_numb_columns');
+            $params['holder_class'][] = 'qodef-portfolio-gallery-' . startit_qode_options()->getOptionValue('portfolio_single_numb_columns');
         }
 
-        qode_startit_get_module_template_part('templates/single/holder', 'portfolio', '', $params);
+        startit_qode_get_module_template_part('templates/single/holder', 'portfolio', '', $params);
     }
 }
 
-if(!function_exists('qode_startit_get_portfolio_single_type')) {
-    function qode_startit_get_portfolio_single_type() {
-        return qode_startit_get_meta_field_intersect('portfolio_single_template');
+if(!function_exists( 'startit_qode_get_portfolio_single_type' )) {
+    function startit_qode_get_portfolio_single_type() {
+        return startit_qode_get_meta_field_intersect('portfolio_single_template');
     }
 }
 
-if(!function_exists('qode_startit_get_portfolio_single_media')) {
-    function qode_startit_get_portfolio_single_media() {
+if(!function_exists( 'startit_qode_get_portfolio_single_media' )) {
+    function startit_qode_get_portfolio_single_media() {
         $image_ids       = get_post_meta(get_the_ID(), 'qode_portfolio-image-gallery', true);
         $videos          = get_post_meta(get_the_ID(), 'qode_portfolio_images', true);
         $portfolio_media = array();
@@ -48,7 +48,7 @@ if(!function_exists('qode_startit_get_portfolio_single_media')) {
         }
 
         if(is_array($videos) && count($videos)) {
-            usort($videos, 'qode_startit_compare_portfolio_videos');
+            usort($videos, 'startit_qode_compare_portfolio_videos' );
             foreach($videos as $video) {
                 $media = array();
 
@@ -56,7 +56,7 @@ if(!function_exists('qode_startit_get_portfolio_single_media')) {
                     $media['title']       = $video['portfoliotitle'];
                     $media['type']        = $video['portfoliovideotype'];
                     $media['description'] = 'video';
-                    $media['video_url']   = qode_startit_portfolio_get_video_url($video);
+                    $media['video_url']   = startit_qode_portfolio_get_video_url($video);
 
                     if($video['portfoliovideotype'] == 'self') {
                         $media['video_cover'] = !empty($video['portfoliovideoimage']) ? $video['portfoliovideoimage'] : '';
@@ -79,8 +79,8 @@ if(!function_exists('qode_startit_get_portfolio_single_media')) {
     }
 }
 
-if(!function_exists('qode_startit_portfolio_get_video_url')) {
-    function qode_startit_portfolio_get_video_url($video) {
+if(!function_exists( 'startit_qode_portfolio_get_video_url' )) {
+    function startit_qode_portfolio_get_video_url($video) {
         switch($video['portfoliovideotype']) {
             case 'youtube':
                 return 'https://www.youtube.com/embed/'.$video['portfoliovideoid'].'?wmode=transparent';
@@ -109,16 +109,16 @@ if(!function_exists('qode_startit_portfolio_get_video_url')) {
     }
 }
 
-if(!function_exists('qode_startit_portfolio_get_media_html')) {
-    function qode_startit_portfolio_get_media_html($media) {
+if(!function_exists( 'startit_qode_portfolio_get_media_html' )) {
+    function startit_qode_portfolio_get_media_html($media) {
         global $wp_filesystem;
         $params = array();
 
         //For adding image overlay in gallery template type
-        $params['gallery'] = (qode_startit_get_portfolio_single_type() == 'gallery') ? true : false;
+        $params['gallery'] = ( startit_qode_get_portfolio_single_type() == 'gallery') ? true : false;
 
         if($media['type'] == 'image') {
-            $params['lightbox'] = qode_startit_options()->getOptionValue('portfolio_single_lightbox_images') == 'yes';
+            $params['lightbox'] = startit_qode_options()->getOptionValue('portfolio_single_lightbox_images') == 'yes';
 
             $media['image_url'] = is_array($media['image_src']) ? $media['image_src'][0] : $media['image_src'];
             if(empty($media['description'])) {
@@ -127,7 +127,7 @@ if(!function_exists('qode_startit_portfolio_get_media_html')) {
         }
 
         if(in_array($media['type'], array('youtube', 'vimeo'))) {
-            $params['lightbox'] = qode_startit_options()->getOptionValue('portfolio_single_lightbox_videos') == 'yes';
+            $params['lightbox'] = startit_qode_options()->getOptionValue('portfolio_single_lightbox_videos') == 'yes';
 
             if($params['lightbox']) {
                 switch($media['type']) {
@@ -152,11 +152,11 @@ if(!function_exists('qode_startit_portfolio_get_media_html')) {
 
         $params['media'] = $media;
 
-        qode_startit_get_module_template_part('templates/single/media/'.$media['type'], 'portfolio', '', $params);
+        startit_qode_get_module_template_part( 'templates/single/media/' . $media['type'], 'portfolio', '', $params);
     }
 }
 
-if(!function_exists('qode_startit_compare_portfolio_videos')) {
+if(!function_exists( 'startit_qode_compare_portfolio_videos' )) {
     /**
      * Function that compares two portfolio image for sorting
      *
@@ -165,7 +165,7 @@ if(!function_exists('qode_startit_compare_portfolio_videos')) {
      *
      * @return int result of comparison
      */
-    function qode_startit_compare_portfolio_videos($a, $b) {
+    function startit_qode_compare_portfolio_videos($a, $b) {
         if(isset($a['portfolioimgordernumber']) && isset($b['portfolioimgordernumber'])) {
             if($a['portfolioimgordernumber'] == $b['portfolioimgordernumber']) {
                 return 0;
@@ -178,7 +178,7 @@ if(!function_exists('qode_startit_compare_portfolio_videos')) {
     }
 }
 
-if(!function_exists('qode_startit_compare_portfolio_options')) {
+if(!function_exists( 'startit_qode_compare_portfolio_options' )) {
     /**
      * Function that compares two portfolio options for sorting
      *
@@ -187,7 +187,7 @@ if(!function_exists('qode_startit_compare_portfolio_options')) {
      *
      * @return int result of comparison
      */
-    function qode_startit_compare_portfolio_options($a, $b) {
+    function startit_qode_compare_portfolio_options($a, $b) {
         if(isset($a['optionlabelordernumber']) && isset($b['optionlabelordernumber'])) {
             if($a['optionlabelordernumber'] == $b['optionlabelordernumber']) {
                 return 0;
@@ -202,8 +202,8 @@ if(!function_exists('qode_startit_compare_portfolio_options')) {
 
 if(!function_exists('qode_startit_portfolio_get_info_part')) {
     function qode_startit_portfolio_get_info_part($part) {
-        $portfolio_template = qode_startit_get_portfolio_single_type();
+        $portfolio_template = startit_qode_get_portfolio_single_type();
 
-        qode_startit_get_module_template_part('templates/single/parts/'.$part, 'portfolio', $portfolio_template);
+        startit_qode_get_module_template_part( 'templates/single/parts/' . $part, 'portfolio', $portfolio_template);
     }
 }

@@ -7,8 +7,8 @@ class QodefTwitterWidget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'qodef_twitter_widget',
-            'Qode Twitter Widget',
-            array( 'description' => __( 'Display tweets', 'qode' ) )
+            'Select Twitter Widget',
+            array( 'description' => __( 'Display tweets', 'startit-twitter-feed' ) )
         );
 
         $this->setParams();
@@ -151,7 +151,7 @@ class QodefTwitterWidget extends WP_Widget {
                 echo esc_html($response->message);
             }
         } else {
-            _e('It seams that you haven\'t connected with your Twitter account', 'qode');
+            _e('It seams that you haven\'t connected with your Twitter account', 'startit-twitter-feed');
         }
 
         print $args['after_widget'];

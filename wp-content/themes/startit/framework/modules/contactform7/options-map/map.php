@@ -1,16 +1,16 @@
 <?php
 
-if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
+if ( ! function_exists( 'startit_qode_contact_form_7_options_map' ) ) {
 
-	function qode_startit_contact_form_7_options_map() {
+	function startit_qode_contact_form_7_options_map() {
 
-		qode_startit_add_admin_page(array(
+		startit_qode_add_admin_page(array(
 			'slug'	=> '_contact_form7_page',
 			'title'	=> 'Contact Form 7',
 			'icon'	=> 'fa fa-envelope-o'
 		));
 
-		$panel_contact_form_style_1 = qode_startit_add_admin_panel(array(
+		$panel_contact_form_style_1 = startit_qode_add_admin_panel(array(
 			'page'	=> '_contact_form7_page',
 			'name'	=> 'panel_contact_form_style_1',
 			'title'	=> 'Custom Style 1'
@@ -18,19 +18,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		//Text Typography
 
-		$typography_text_group = qode_startit_add_admin_group(array(
+		$typography_text_group = startit_qode_add_admin_group(array(
 			'name'			=> 'typography_text_group',
 			'title'			=> 'Form Text Typography',
 			'description'	=> 'Setup typography for form elements text',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$typography_text_row1 = qode_startit_add_admin_row(array(
+		$typography_text_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_text_row1',
 			'parent'	=> $typography_text_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_text_color',
@@ -38,7 +38,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Color',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_focus_text_color',
@@ -46,7 +46,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Text Color',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_text_font_size',
@@ -57,7 +57,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_text_line_height',
@@ -68,13 +68,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		$typography_text_row2 = qode_startit_add_admin_row(array(
+		$typography_text_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_text_row2',
 			'next'		=> true,
 			'parent'	=> $typography_text_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'fontsimple',
 			'name'			=> 'cf7_style_1_text_font_family',
@@ -82,40 +82,40 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Font Family',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_text_font_style',
 			'default_value'	=> '',
 			'label'			=> 'Font Style',
-			'options'		=>  qode_startit_get_font_style_array()
+			'options'		=>  startit_qode_get_font_style_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_text_font_weight',
 			'default_value'	=> '',
 			'label'			=> 'Font Weight',
-			'options'		=> qode_startit_get_font_weight_array()
+			'options'		=> startit_qode_get_font_weight_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_text_text_transform',
 			'default_value'	=> '',
 			'label'			=> 'Text Transform',
-			'options'		=> qode_startit_get_text_transform_array()
+			'options'		=> startit_qode_get_text_transform_array()
 		));
 
-		$typography_text_row3 = qode_startit_add_admin_row(array(
+		$typography_text_row3 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_text_row3',
 			'next'		=> true,
 			'parent'	=> $typography_text_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_text_letter_spacing',
@@ -128,19 +128,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Labels Typography
 
-		$typography_label_group = qode_startit_add_admin_group(array(
+		$typography_label_group = startit_qode_add_admin_group(array(
 			'name'			=> 'typography_label_group',
 			'title'			=> 'Form Label Typography',
 			'description'	=> 'Setup typography for form elements label',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$typography_label_row1 = qode_startit_add_admin_row(array(
+		$typography_label_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_label_row1',
 			'parent'	=> $typography_label_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_label_color',
@@ -148,7 +148,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Color',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_label_font_size',
@@ -159,7 +159,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_label_line_height',
@@ -170,7 +170,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'fontsimple',
 			'name'			=> 'cf7_style_1_label_font_family',
@@ -178,41 +178,41 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Font Family',
 		));
 
-		$typography_label_row2 = qode_startit_add_admin_row(array(
+		$typography_label_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_label_row2',
 			'next'		=> true,
 			'parent'	=> $typography_label_group
 		));
 
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_label_font_style',
 			'default_value'	=> '',
 			'label'			=> 'Font Style',
-			'options'		=>  qode_startit_get_font_style_array()
+			'options'		=>  startit_qode_get_font_style_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_label_font_weight',
 			'default_value'	=> '',
 			'label'			=> 'Font Weight',
-			'options'		=> qode_startit_get_font_weight_array()
+			'options'		=> startit_qode_get_font_weight_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_label_text_transform',
 			'default_value'	=> '',
 			'label'			=> 'Text Transform',
-			'options'		=> qode_startit_get_text_transform_array()
+			'options'		=> startit_qode_get_text_transform_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_label_letter_spacing',
@@ -225,19 +225,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Form Elements Background and Border
 
-		$background_border_group = qode_startit_add_admin_group(array(
+		$background_border_group = startit_qode_add_admin_group(array(
 			'name'			=> 'background_border_group',
 			'title'			=> 'Form Elements Background and Border',
 			'description'	=> 'Setup form elements background and border style',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$background_border_row1 = qode_startit_add_admin_row(array(
+		$background_border_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'background_border_row1',
 			'parent'	=> $background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_background_color',
@@ -245,7 +245,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_background_transparency',
@@ -253,7 +253,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_focus_background_color',
@@ -261,7 +261,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Background Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_focus_background_transparency',
@@ -269,13 +269,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Background Transparency'
 		));
 
-		$background_border_row2 = qode_startit_add_admin_row(array(
+		$background_border_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'background_border_row2',
 			'next'		=> true,
 			'parent'	=> $background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_border_color',
@@ -283,7 +283,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_border_transparency',
@@ -291,7 +291,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_focus_border_color',
@@ -299,7 +299,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Border Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_focus_border_transparency',
@@ -307,13 +307,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Border Transparency'
 		));
 
-		$background_border_row3 = qode_startit_add_admin_row(array(
+		$background_border_row3 = startit_qode_add_admin_row(array(
 			'name'		=> 'background_border_row3',
 			'next'		=> true,
 			'parent'	=> $background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_border_width',
@@ -324,7 +324,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_border_radius',
@@ -337,19 +337,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Form Elements Padding
 
-		$padding_group = qode_startit_add_admin_group(array(
+		$padding_group = startit_qode_add_admin_group(array(
 			'name'			=> 'padding_group',
 			'title'			=> 'Elements Padding',
 			'description'	=> 'Setup form elements padding',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$padding_row = qode_startit_add_admin_row(array(
+		$padding_row = startit_qode_add_admin_row(array(
 			'name'		=> 'padding_row',
 			'parent'	=> $padding_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_padding_top',
@@ -360,7 +360,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_padding_right',
@@ -371,7 +371,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_padding_bottom',
@@ -382,7 +382,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_padding_left',
@@ -395,19 +395,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Form Elements Margin
 
-		$margin_group = qode_startit_add_admin_group(array(
+		$margin_group = startit_qode_add_admin_group(array(
 			'name'			=> 'margin_group',
 			'title'			=> 'Elements Margin',
 			'description'	=> 'Setup form elements margin',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$margin_row = qode_startit_add_admin_row(array(
+		$margin_row = startit_qode_add_admin_row(array(
 			'name'		=> 'margin_row',
 			'parent'	=> $margin_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $margin_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_margin_top',
@@ -418,7 +418,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $margin_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_margin_bottom',
@@ -431,7 +431,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Textarea
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $panel_contact_form_style_1,
 			'type'			=> 'text',
 			'name'			=> 'cf7_style_1_textarea_height',
@@ -446,19 +446,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Typography
 
-		$button_typography_group = qode_startit_add_admin_group(array(
+		$button_typography_group = startit_qode_add_admin_group(array(
 			'name'			=> 'button_typography_group',
 			'title'			=> 'Button Typography',
 			'description'	=> 'Setup button text typography',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$button_typography_row1 = qode_startit_add_admin_row(array(
+		$button_typography_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_typography_row1',
 			'parent'	=> $button_typography_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_button_color',
@@ -466,7 +466,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_button_hover_color',
@@ -474,7 +474,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Hover Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_font_size',
@@ -485,7 +485,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'fontsimple',
 			'name'			=> 'cf7_style_1_button_font_family',
@@ -493,40 +493,40 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Font Family'
 		));
 
-		$button_typography_row2 = qode_startit_add_admin_row(array(
+		$button_typography_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_typography_row2',
 			'next'		=> true,
 			'parent'	=> $button_typography_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_button_font_style',
 			'default_value'	=> '',
 			'label'			=> 'Font Style',
-			'options'		=> qode_startit_get_font_style_array()
+			'options'		=> startit_qode_get_font_style_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_button_font_weight',
 			'default_value'	=> '',
 			'label'			=> 'Font Weight',
-			'options'		=> qode_startit_get_font_weight_array()
+			'options'		=> startit_qode_get_font_weight_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_1_button_text_transform',
 			'default_value'	=> '',
 			'label'			=> 'Text Transform',
-			'options'		=> qode_startit_get_text_transform_array()
+			'options'		=> startit_qode_get_text_transform_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_letter_spacing',
@@ -539,19 +539,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Background and Border
 
-		$button_background_border_group = qode_startit_add_admin_group(array(
+		$button_background_border_group = startit_qode_add_admin_group(array(
 			'name'			=> 'button_background_border_group',
 			'title'			=> 'Button Background and Border',
 			'description'	=> 'Setup button background and border style',
 			'parent'		=> $panel_contact_form_style_1
 		));
 
-		$button_background_border_row1 = qode_startit_add_admin_row(array(
+		$button_background_border_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_background_border_row1',
 			'parent'	=> $button_background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_button_background_color',
@@ -559,7 +559,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_background_transparency',
@@ -567,7 +567,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_button_hover_bckg_color',
@@ -575,7 +575,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Hover Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_hover_bckg_transparency',
@@ -583,13 +583,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Hover Transparency'
 		));
 
-		$button_background_border_row2 = qode_startit_add_admin_row(array(
+		$button_background_border_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_background_border_row2',
 			'next'		=> true,
 			'parent'	=> $button_background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_button_border_color',
@@ -597,7 +597,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_border_transparency',
@@ -605,7 +605,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_1_button_hover_border_color',
@@ -613,7 +613,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Hover Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_hover_border_transparency',
@@ -621,13 +621,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Hover Transparency'
 		));
 
-		$button_background_border_row3 = qode_startit_add_admin_row(array(
+		$button_background_border_row3 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_background_border_row3',
 			'next'		=> true,
 			'parent'	=> $button_background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_border_width',
@@ -638,7 +638,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_1_button_border_radius',
@@ -651,7 +651,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Height
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $panel_contact_form_style_1,
 			'type'			=> 'text',
 			'name'			=> 'cf7_style_1_button_height',
@@ -666,7 +666,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Padding
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $panel_contact_form_style_1,
 			'type'			=> 'text',
 			'name'			=> 'cf7_style_1_button_padding',
@@ -681,7 +681,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
         // Button Margin
 
-        qode_startit_add_admin_field(array(
+        startit_qode_add_admin_field(array(
             'parent'		=> $panel_contact_form_style_1,
             'type'			=> 'text',
             'name'			=> 'cf7_style_1_button_margin_top',
@@ -694,7 +694,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
             )
         ));
 
-		$panel_contact_form_style_2 = qode_startit_add_admin_panel(array(
+		$panel_contact_form_style_2 = startit_qode_add_admin_panel(array(
 			'page'	=> '_contact_form7_page',
 			'name'	=> 'panel_contact_form_style_2',
 			'title'	=> 'Custom Style 2'
@@ -702,19 +702,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		//Text Typography
 
-		$typography_text_group = qode_startit_add_admin_group(array(
+		$typography_text_group = startit_qode_add_admin_group(array(
 			'name'			=> 'typography_text_group',
 			'title'			=> 'Form Text Typography',
 			'description'	=> 'Setup typography for form elements text',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$typography_text_row1 = qode_startit_add_admin_row(array(
+		$typography_text_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_text_row1',
 			'parent'	=> $typography_text_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_text_color',
@@ -722,7 +722,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Color',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_focus_text_color',
@@ -730,7 +730,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Text Color',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_text_font_size',
@@ -741,7 +741,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_text_line_height',
@@ -752,13 +752,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		$typography_text_row2 = qode_startit_add_admin_row(array(
+		$typography_text_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_text_row2',
 			'next'		=> true,
 			'parent'	=> $typography_text_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'fontsimple',
 			'name'			=> 'cf7_style_2_text_font_family',
@@ -766,40 +766,40 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Font Family',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_text_font_style',
 			'default_value'	=> '',
 			'label'			=> 'Font Style',
-			'options'		=>  qode_startit_get_font_style_array()
+			'options'		=>  startit_qode_get_font_style_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_text_font_weight',
 			'default_value'	=> '',
 			'label'			=> 'Font Weight',
-			'options'		=> qode_startit_get_font_weight_array()
+			'options'		=> startit_qode_get_font_weight_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_text_text_transform',
 			'default_value'	=> '',
 			'label'			=> 'Text Transform',
-			'options'		=> qode_startit_get_text_transform_array()
+			'options'		=> startit_qode_get_text_transform_array()
 		));
 
-		$typography_text_row3 = qode_startit_add_admin_row(array(
+		$typography_text_row3 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_text_row3',
 			'next'		=> true,
 			'parent'	=> $typography_text_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_text_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_text_letter_spacing',
@@ -812,19 +812,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Labels Typography
 
-		$typography_label_group = qode_startit_add_admin_group(array(
+		$typography_label_group = startit_qode_add_admin_group(array(
 			'name'			=> 'typography_label_group',
 			'title'			=> 'Form Label Typography',
 			'description'	=> 'Setup typography for form elements label',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$typography_label_row1 = qode_startit_add_admin_row(array(
+		$typography_label_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_label_row1',
 			'parent'	=> $typography_label_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_label_color',
@@ -832,7 +832,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Color',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_label_font_size',
@@ -843,7 +843,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_label_line_height',
@@ -854,7 +854,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row1,
 			'type'			=> 'fontsimple',
 			'name'			=> 'cf7_style_2_label_font_family',
@@ -862,41 +862,41 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Font Family',
 		));
 
-		$typography_label_row2 = qode_startit_add_admin_row(array(
+		$typography_label_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'typography_label_row2',
 			'next'		=> true,
 			'parent'	=> $typography_label_group
 		));
 
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_label_font_style',
 			'default_value'	=> '',
 			'label'			=> 'Font Style',
-			'options'		=>  qode_startit_get_font_style_array()
+			'options'		=>  startit_qode_get_font_style_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_label_font_weight',
 			'default_value'	=> '',
 			'label'			=> 'Font Weight',
-			'options'		=> qode_startit_get_font_weight_array()
+			'options'		=> startit_qode_get_font_weight_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_label_text_transform',
 			'default_value'	=> '',
 			'label'			=> 'Text Transform',
-			'options'		=> qode_startit_get_text_transform_array()
+			'options'		=> startit_qode_get_text_transform_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $typography_label_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_label_letter_spacing',
@@ -909,19 +909,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Form Elements Background and Border
 
-		$background_border_group = qode_startit_add_admin_group(array(
+		$background_border_group = startit_qode_add_admin_group(array(
 			'name'			=> 'background_border_group',
 			'title'			=> 'Form Elements Background and Border',
 			'description'	=> 'Setup form elements background and border style',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$background_border_row1 = qode_startit_add_admin_row(array(
+		$background_border_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'background_border_row1',
 			'parent'	=> $background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_background_color',
@@ -929,7 +929,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_background_transparency',
@@ -937,7 +937,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_focus_background_color',
@@ -945,7 +945,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Background Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_focus_background_transparency',
@@ -953,13 +953,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Background Transparency'
 		));
 
-		$background_border_row2 = qode_startit_add_admin_row(array(
+		$background_border_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'background_border_row2',
 			'next'		=> true,
 			'parent'	=> $background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_border_color',
@@ -967,7 +967,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_border_transparency',
@@ -975,7 +975,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_focus_border_color',
@@ -983,7 +983,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Border Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_focus_border_transparency',
@@ -991,13 +991,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Focus Border Transparency'
 		));
 
-		$background_border_row3 = qode_startit_add_admin_row(array(
+		$background_border_row3 = startit_qode_add_admin_row(array(
 			'name'		=> 'background_border_row3',
 			'next'		=> true,
 			'parent'	=> $background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_border_width',
@@ -1008,7 +1008,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_border_radius',
@@ -1021,19 +1021,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Form Elements Padding
 
-		$padding_group = qode_startit_add_admin_group(array(
+		$padding_group = startit_qode_add_admin_group(array(
 			'name'			=> 'padding_group',
 			'title'			=> 'Elements Padding',
 			'description'	=> 'Setup form elements padding',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$padding_row = qode_startit_add_admin_row(array(
+		$padding_row = startit_qode_add_admin_row(array(
 			'name'		=> 'padding_row',
 			'parent'	=> $padding_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_padding_top',
@@ -1044,7 +1044,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_padding_right',
@@ -1055,7 +1055,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_padding_bottom',
@@ -1066,7 +1066,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $padding_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_padding_left',
@@ -1079,19 +1079,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Form Elements Margin
 
-		$margin_group = qode_startit_add_admin_group(array(
+		$margin_group = startit_qode_add_admin_group(array(
 			'name'			=> 'margin_group',
 			'title'			=> 'Elements Margin',
 			'description'	=> 'Setup form elements margin',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$margin_row = qode_startit_add_admin_row(array(
+		$margin_row = startit_qode_add_admin_row(array(
 			'name'		=> 'margin_row',
 			'parent'	=> $margin_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $margin_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_margin_top',
@@ -1102,7 +1102,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $margin_row,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_margin_bottom',
@@ -1115,7 +1115,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Textarea
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $panel_contact_form_style_2,
 			'type'			=> 'text',
 			'name'			=> 'cf7_style_2_textarea_height',
@@ -1130,19 +1130,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Typography
 
-		$button_typography_group = qode_startit_add_admin_group(array(
+		$button_typography_group = startit_qode_add_admin_group(array(
 			'name'			=> 'button_typography_group',
 			'title'			=> 'Button Typography',
 			'description'	=> 'Setup button text typography',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$button_typography_row1 = qode_startit_add_admin_row(array(
+		$button_typography_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_typography_row1',
 			'parent'	=> $button_typography_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_button_color',
@@ -1150,7 +1150,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_button_hover_color',
@@ -1158,7 +1158,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Text Hover Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_font_size',
@@ -1169,7 +1169,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row1,
 			'type'			=> 'fontsimple',
 			'name'			=> 'cf7_style_2_button_font_family',
@@ -1177,40 +1177,40 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Font Family'
 		));
 
-		$button_typography_row2 = qode_startit_add_admin_row(array(
+		$button_typography_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_typography_row2',
 			'next'		=> true,
 			'parent'	=> $button_typography_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_button_font_style',
 			'default_value'	=> '',
 			'label'			=> 'Font Style',
-			'options'		=> qode_startit_get_font_style_array()
+			'options'		=> startit_qode_get_font_style_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_button_font_weight',
 			'default_value'	=> '',
 			'label'			=> 'Font Weight',
-			'options'		=> qode_startit_get_font_weight_array()
+			'options'		=> startit_qode_get_font_weight_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'selectsimple',
 			'name'			=> 'cf7_style_2_button_text_transform',
 			'default_value'	=> '',
 			'label'			=> 'Text Transform',
-			'options'		=> qode_startit_get_text_transform_array()
+			'options'		=> startit_qode_get_text_transform_array()
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_typography_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_letter_spacing',
@@ -1223,19 +1223,19 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Background and Border
 
-		$button_background_border_group = qode_startit_add_admin_group(array(
+		$button_background_border_group = startit_qode_add_admin_group(array(
 			'name'			=> 'button_background_border_group',
 			'title'			=> 'Button Background and Border',
 			'description'	=> 'Setup button background and border style',
 			'parent'		=> $panel_contact_form_style_2
 		));
 
-		$button_background_border_row1 = qode_startit_add_admin_row(array(
+		$button_background_border_row1 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_background_border_row1',
 			'parent'	=> $button_background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_button_background_color',
@@ -1243,7 +1243,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_background_transparency',
@@ -1251,7 +1251,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_button_hover_bckg_color',
@@ -1259,7 +1259,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Hover Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row1,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_hover_bckg_transparency',
@@ -1267,13 +1267,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Background Hover Transparency'
 		));
 
-		$button_background_border_row2 = qode_startit_add_admin_row(array(
+		$button_background_border_row2 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_background_border_row2',
 			'next'		=> true,
 			'parent'	=> $button_background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_button_border_color',
@@ -1281,7 +1281,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_border_transparency',
@@ -1289,7 +1289,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Transparency',
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'colorsimple',
 			'name'			=> 'cf7_style_2_button_hover_border_color',
@@ -1297,7 +1297,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Hover Color'
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row2,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_hover_border_transparency',
@@ -1305,13 +1305,13 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			'label'			=> 'Border Hover Transparency'
 		));
 
-		$button_background_border_row3 = qode_startit_add_admin_row(array(
+		$button_background_border_row3 = startit_qode_add_admin_row(array(
 			'name'		=> 'button_background_border_row3',
 			'next'		=> true,
 			'parent'	=> $button_background_border_group
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_border_width',
@@ -1322,7 +1322,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 			)
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $button_background_border_row3,
 			'type'			=> 'textsimple',
 			'name'			=> 'cf7_style_2_button_border_radius',
@@ -1335,7 +1335,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Height
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $panel_contact_form_style_2,
 			'type'			=> 'text',
 			'name'			=> 'cf7_style_2_button_height',
@@ -1350,7 +1350,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 		// Button Padding
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'parent'		=> $panel_contact_form_style_2,
 			'type'			=> 'text',
 			'name'			=> 'cf7_style_2_button_padding',
@@ -1365,7 +1365,7 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
         // Button Margin
 
-        qode_startit_add_admin_field(array(
+        startit_qode_add_admin_field(array(
             'parent'		=> $panel_contact_form_style_2,
             'type'			=> 'text',
             'name'			=> 'cf7_style_2_button_margin_top',
@@ -1380,6 +1380,6 @@ if ( ! function_exists('qode_startit_contact_form_7_options_map') ) {
 
 	}
 
-	add_action( 'qode_startit_options_map', 'qode_startit_contact_form_7_options_map', 20);
+	add_action( 'qode_startit_options_map', 'startit_qode_contact_form_7_options_map', 20);
 
 }

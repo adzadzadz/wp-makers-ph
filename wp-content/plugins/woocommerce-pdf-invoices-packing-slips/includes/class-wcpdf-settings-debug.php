@@ -13,6 +13,15 @@ class Settings_Debug {
 		add_action( 'admin_init', array( $this, 'init_settings' ) );
 		add_action( 'wpo_wcpdf_settings_output_debug', array( $this, 'output' ), 10, 1 );
 		add_action( 'wpo_wcpdf_after_settings_page', array( $this, 'debug_tools' ), 10, 2 );
+
+		// yes, we're hiring!
+		if (defined('WP_DEBUG') && WP_DEBUG) {
+			add_action( 'wpo_wcpdf_before_settings_page', array( $this, 'work_at_wpovernight' ), 10, 2 );
+		} else {
+			add_action( 'wpo_wcpdf_after_settings_page', array( $this, 'work_at_wpovernight' ), 30, 2 );			
+		}
+
+		add_action( 'wpo_wcpdf_after_settings_page', array( $this, 'dompdf_status' ), 20, 2 );
 	}
 
 	public function output( $section ) {
@@ -28,10 +37,16 @@ class Settings_Debug {
 		}
 		?>
 		<form method="post">
+			<?php wp_nonce_field( 'wpo_wcpdf_debug_tools_action', 'security' ); ?>
 			<input type="hidden" name="wpo_wcpdf_debug_tools_action" value="install_fonts">
 			<input type="submit" name="submit" id="submit" class="button" value="<?php _e( 'Reinstall fonts', 'woocommerce-pdf-invoices-packing-slips' ); ?>">
 			<?php
-			if (isset($_POST['wpo_wcpdf_debug_tools_action']) && $_POST['wpo_wcpdf_debug_tools_action'] == 'install_fonts') {
+			if ( !empty($_POST) && isset($_POST['wpo_wcpdf_debug_tools_action']) && $_POST['wpo_wcpdf_debug_tools_action'] == 'install_fonts' ) {
+				// check permissions
+				if ( !check_admin_referer( 'wpo_wcpdf_debug_tools_action', 'security' ) ) {
+					return;
+				}
+
 				$font_path = WPO_WCPDF()->main->get_tmp_path( 'fonts' );
 
 				// clear folder first
@@ -50,10 +65,15 @@ class Settings_Debug {
 			?>
 		</form>
 		<form method="post">
+			<?php wp_nonce_field( 'wpo_wcpdf_debug_tools_action', 'security' ); ?>
 			<input type="hidden" name="wpo_wcpdf_debug_tools_action" value="clear_tmp">
 			<input type="submit" name="submit" id="submit" class="button" value="<?php _e( 'Remove temporary files', 'woocommerce-pdf-invoices-packing-slips' ); ?>">
 			<?php
-			if (isset($_POST['wpo_wcpdf_debug_tools_action']) && $_POST['wpo_wcpdf_debug_tools_action'] == 'clear_tmp') {
+			if ( !empty($_POST) && isset($_POST['wpo_wcpdf_debug_tools_action']) && $_POST['wpo_wcpdf_debug_tools_action'] == 'clear_tmp' ) {
+				// check permissions
+				if ( !check_admin_referer( 'wpo_wcpdf_debug_tools_action', 'security' ) ) {
+					return;
+				}
 				$tmp_path = WPO_WCPDF()->main->get_tmp_path('attachments');
 
 				if ( !function_exists("glob") ) {
@@ -89,10 +109,15 @@ class Settings_Debug {
 			?>
 		</form>
 		<form method="post">
+			<?php wp_nonce_field( 'wpo_wcpdf_debug_tools_action', 'security' ); ?>
 			<input type="hidden" name="wpo_wcpdf_debug_tools_action" value="delete_legacy_settings">
 			<input type="submit" name="submit" id="submit" class="button" value="<?php _e( 'Delete legacy (1.X) settings', 'woocommerce-pdf-invoices-packing-slips' ); ?>">
 			<?php
-			if (isset($_POST['wpo_wcpdf_debug_tools_action']) && $_POST['wpo_wcpdf_debug_tools_action'] == 'delete_legacy_settings') {
+			if ( !empty($_POST) && isset($_POST['wpo_wcpdf_debug_tools_action']) && $_POST['wpo_wcpdf_debug_tools_action'] == 'delete_legacy_settings' ) {
+				// check permissions
+				if ( !check_admin_referer( 'wpo_wcpdf_debug_tools_action', 'security' ) ) {
+					return;
+				}
 				// delete options
 				delete_option( 'wpo_wcpdf_general_settings' );
 				delete_option( 'wpo_wcpdf_template_settings' );
@@ -107,7 +132,18 @@ class Settings_Debug {
 			?>
 		</form>
 		<?php
-		include( WPO_WCPDF()->plugin_path() . '/includes/views/dompdf-status.php' );
+	}
+
+	public function work_at_wpovernight( $tab, $section ) {
+		if ($tab === 'debug') {
+			include( WPO_WCPDF()->plugin_path() . '/includes/views/work-at-wpovernight.php' );		
+		}
+	}
+
+	public function dompdf_status( $tab, $section ) {
+		if ($tab === 'debug') {
+			include( WPO_WCPDF()->plugin_path() . '/includes/views/dompdf-status.php' );
+		}
 	}
 
 	public function init_settings() {
@@ -135,6 +171,18 @@ class Settings_Debug {
 			),
 			array(
 				'type'			=> 'setting',
+				'id'			=> 'guest_access',
+				'title'			=> __( 'Allow guest access', 'woocommerce-pdf-invoices-packing-slips' ),
+				'callback'		=> 'checkbox',
+				'section'		=> 'debug_settings',
+				'args'			=> array(
+					'option_name'		=> $option_name,
+					'id'				=> 'guest_access',
+					'description'		=> __( 'Enable this to allow customers that purchase without an account to access their PDF with a unique key', 'woocommerce-pdf-invoices-packing-slips' ),
+				)
+			),
+			array(
+				'type'			=> 'setting',
 				'id'			=> 'calculate_document_numbers',
 				'title'			=> __( 'Calculate document numbers (slow)', 'woocommerce-pdf-invoices-packing-slips' ),
 				'callback'		=> 'checkbox',
@@ -156,6 +204,25 @@ class Settings_Debug {
 					'id'			=> 'enable_debug',
 					'description'	=> __( "Enable this option to output plugin errors if you're getting a blank page or other PDF generation issues", 'woocommerce-pdf-invoices-packing-slips' ) . '<br>' .
 									   __( '<b>Caution!</b> This setting may reveal errors (from other plugins) in other places on your site too, therefor this is not recommended to leave it enabled on live sites.', 'woocommerce-pdf-invoices-packing-slips' ),
+				)
+			),
+			array(
+				'type'			=> 'setting',
+				'id'			=> 'enable_cleanup',
+				'title'			=> __( 'Enable automatic cleanup', 'woocommerce-pdf-invoices-packing-slips' ),
+				'callback'		=> 'checkbox_text_input',
+				'section'		=> 'debug_settings',
+				'args'			=> array(
+					'option_name'		=> $option_name,
+					'id'				=> 'enable_cleanup',
+					'disabled'			=> ( !function_exists("glob") || !function_exists('filemtime') ) ? 1 : NULL,
+					'text_input_wrap'	=> __( "every %s days", 'woocommerce-pdf-invoices-packing-slips' ),
+					'text_input_size'	=> 4,
+					'text_input_id'		=> 'cleanup_days',
+					'text_input_default'=> 7,
+					'description'		=> ( function_exists("glob") && function_exists('filemtime') ) ?
+										   __( "Automatically clean up PDF files stored in the temporary folder (used for email attachments)", 'woocommerce-pdf-invoices-packing-slips' ) :
+										   __( '<b>Disabled:</b> The PHP functions glob and filemtime are required for automatic cleanup but not enabled on your server.', 'woocommerce-pdf-invoices-packing-slips' ),
 				)
 			),
 			array(

@@ -1,4 +1,4 @@
-<?php $sidebar = qode_startit_sidebar_layout(); ?>
+<?php $sidebar = startit_qode_sidebar_layout(); ?>
 <?php get_header(); ?>
 	<?php get_template_part( 'title' ); ?>
 	<?php get_template_part('slider'); ?>
@@ -11,7 +11,7 @@
 					<?php the_content(); ?>
 					<?php do_action('qode_startit_page_after_content'); ?>
 				<?php elseif($sidebar == 'sidebar-33-right' || $sidebar == 'sidebar-25-right'): ?>
-					<div <?php echo qode_startit_sidebar_columns_class(); ?>>
+					<div <?php echo startit_qode_sidebar_columns_class(); ?>>
 						<div class="qodef-column1 qodef-content-left-from-sidebar">
 							<div class="qodef-column-inner">
 								<?php the_content(); ?>
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 				<?php elseif($sidebar == 'sidebar-33-left' || $sidebar == 'sidebar-25-left'): ?>
-					<div <?php echo qode_startit_sidebar_columns_class(); ?>>
+					<div <?php echo startit_qode_sidebar_columns_class(); ?>>
 						<div class="qodef-column1">
 							<?php get_sidebar(); ?>
 						</div>

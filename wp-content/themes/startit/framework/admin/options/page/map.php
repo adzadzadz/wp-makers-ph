@@ -1,10 +1,10 @@
 <?php
 
-if ( ! function_exists('qode_startit_page_options_map') ) {
+if ( ! function_exists( 'startit_qode_page_options_map' ) ) {
 
-    function qode_startit_page_options_map() {
+    function startit_qode_page_options_map() {
 
-        qode_startit_add_admin_page(
+        startit_qode_add_admin_page(
             array(
                 'slug'  => '_page_page',
                 'title' => 'Page',
@@ -12,9 +12,9 @@ if ( ! function_exists('qode_startit_page_options_map') ) {
             )
         );
 
-        $custom_sidebars = qode_startit_get_custom_sidebars();
+        $custom_sidebars = startit_qode_get_custom_sidebars();
 
-        $panel_sidebar = qode_startit_add_admin_panel(
+        $panel_sidebar = startit_qode_add_admin_panel(
             array(
                 'page'  => '_page_page',
                 'name'  => 'panel_sidebar',
@@ -22,7 +22,7 @@ if ( ! function_exists('qode_startit_page_options_map') ) {
             )
         );
 
-        qode_startit_add_admin_field(array(
+        startit_qode_add_admin_field(array(
             'name'        => 'page_sidebar_layout',
             'type'        => 'select',
             'label'       => 'Sidebar Layout',
@@ -40,7 +40,7 @@ if ( ! function_exists('qode_startit_page_options_map') ) {
 
 
         if(count($custom_sidebars) > 0) {
-            qode_startit_add_admin_field(array(
+            startit_qode_add_admin_field(array(
                 'name' => 'page_custom_sidebar',
                 'type' => 'selectblank',
                 'label' => 'Sidebar to Display',
@@ -50,7 +50,7 @@ if ( ! function_exists('qode_startit_page_options_map') ) {
             ));
         }
 
-        qode_startit_add_admin_field(array(
+        startit_qode_add_admin_field(array(
             'name'        => 'page_show_comments',
             'type'        => 'yesno',
             'label'       => 'Show Comments',
@@ -61,6 +61,6 @@ if ( ! function_exists('qode_startit_page_options_map') ) {
 
     }
 
-    add_action( 'qode_startit_options_map', 'qode_startit_page_options_map', 9);
+    add_action( 'qode_startit_options_map', 'startit_qode_page_options_map', 9);
 
 }

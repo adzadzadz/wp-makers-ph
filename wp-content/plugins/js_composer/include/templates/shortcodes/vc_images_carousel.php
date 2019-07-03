@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_images_carousel
+ * @var WPBakeryShortCode_Vc_images_carousel $this
  */
 $title = $onclick = $custom_links = $custom_links_target =
 $img_size = $images = $el_class = $el_id = $mode = $slides_per_view =
@@ -42,7 +42,7 @@ $el_start = '';
 $el_end = '';
 $slides_wrap_start = '';
 $slides_wrap_end = '';
-$pretty_rand = 'link_image' === $onclick ? ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . rand() . ']"' : '';
+$pretty_rand = 'link_image' === $onclick ? ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . wp_rand() . ']"' : '';
 
 wp_enqueue_script( 'vc_carousel_js' );
 wp_enqueue_style( 'vc_carousel_css' );
@@ -67,22 +67,27 @@ $class_to_filter = 'wpb_images_carousel wpb_content_element vc_clearfix';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
 
-$carousel_id = 'vc_images-carousel-' . WPBakeryShortCode_VC_images_carousel::getCarouselIndex();
+$carousel_id = 'vc_images-carousel-' . WPBakeryShortCode_Vc_images_carousel::getCarouselIndex();
 $slider_width = $this->getSliderWidth( $img_size );
-$wrapper_attributes = array();
-if ( ! empty( $el_id ) ) {
-	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
-}
 ?>
-<div <?php echo implode( ' ', $wrapper_attributes ); ?> class="<?php echo esc_attr( apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $css_class, $this->settings['base'], $atts ) ); ?>">
+<div<?php echo ! empty( $el_id ) ? ' id="' . esc_attr( $el_id ) . '"' : false; ?> class="<?php echo esc_attr( apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $css_class, $this->settings['base'], $atts ) ); ?>">
 	<div class="wpb_wrapper">
-		<?php echo wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_gallery_heading' ) ) ?>
-		<div id="<?php echo $carousel_id ?>" data-ride="vc_carousel" data-wrap="<?php echo 'yes' === $wrap ? 'true' : 'false' ?>" style="width: <?php echo $slider_width ?>;" data-interval="<?php echo 'yes' === $autoplay ? $speed : 0 ?>" data-auto-height="yes" data-mode="<?php echo $mode ?>" data-partial="<?php echo 'yes' === $partial_view ? 'true' : 'false' ?>" data-per-view="<?php echo $slides_per_view ?>" data-hide-on-end="<?php echo 'yes' === $autoplay ? 'false' : 'true' ?>" class="vc_slide vc_images_carousel">
-			<?php if ( 'yes' !== $hide_pagination_control ) :  ?>
+		<?php
+		// @codingStandardsIgnoreLine
+		echo wpb_widget_title( array(
+			'title' => $title,
+			'extraclass' => 'wpb_gallery_heading',
+		) );
+		?>
+		<div id="<?php echo esc_attr( $carousel_id ); ?>" data-ride="vc_carousel" data-wrap="<?php echo 'yes' === $wrap ? 'true' : 'false'; ?>" style="width: <?php echo esc_attr( $slider_width ); ?>;" data-interval="<?php echo 'yes' === $autoplay ? esc_attr( $speed ) : 0; ?>" data-auto-height="yes" data-mode="<?php echo esc_attr( $mode ); ?>" data-partial="<?php echo 'yes' === $partial_view ? 'true' : 'false'; ?>" data-per-view="<?php echo esc_attr( $slides_per_view ); ?>" data-hide-on-end="<?php echo 'yes' === $autoplay ? 'false' : 'true'; ?>" class="vc_slide vc_images_carousel">
+			<?php if ( 'yes' !== $hide_pagination_control ) : ?>
 				<!-- Indicators -->
 				<ol class="vc_carousel-indicators">
-					<?php for ( $z = 0; $z < count( $images ); $z ++ ) :  ?>
-						<li data-target="#<?php echo $carousel_id ?>" data-slide-to="<?php echo $z ?>"></li>
+					<?php
+					$count = count( $images );
+					for ( $z = 0; $z < $count; $z ++ ) :
+						?>
+						<li data-target="#<?php echo esc_attr( $carousel_id ); ?>" data-slide-to="<?php echo esc_attr( $z ); ?>"></li>
 					<?php endfor; ?>
 				</ol>
 			<?php endif ?>
@@ -90,7 +95,7 @@ if ( ! empty( $el_id ) ) {
 			<div class="vc_carousel-inner">
 				<div class="vc_carousel-slideline">
 					<div class="vc_carousel-slideline-inner">
-						<?php foreach ( $images as $attach_id ) :  ?>
+						<?php foreach ( $images as $attach_id ) : ?>
 							<?php
 							$i ++;
 							if ( $attach_id > 0 ) {
@@ -107,17 +112,31 @@ if ( ! empty( $el_id ) ) {
 							?>
 							<div class="vc_item">
 								<div class="vc_inner">
-									<?php if ( 'link_image' === $onclick ) :  ?>
+									<?php if ( 'link_image' === $onclick ) : ?>
 										<?php $p_img_large = $post_thumbnail['p_img_large']; ?>
-										<a class="prettyphoto" href="<?php echo $p_img_large[0] ?>" <?php echo $pretty_rand; ?>>
-											<?php echo $thumbnail ?>
+										<a class="prettyphoto" href="<?php echo esc_url( $p_img_large[0] ); ?>"
+											<?php
+											// @codingStandardsIgnoreLine
+											echo $pretty_rand;
+											?>
+											>
+											<?php
+											// @codingStandardsIgnoreLine
+											echo $thumbnail;
+											?>
 										</a>
-									<?php elseif ( 'custom_link' === $onclick && isset( $custom_links[ $i ] ) && '' !== $custom_links[ $i ] ) :  ?>
-										<a href="<?php echo $custom_links[ $i ] ?>"<?php echo( ! empty( $custom_links_target ) ? ' target="' . $custom_links_target . '"' : '' ) ?>>
-											<?php echo $thumbnail ?>
+									<?php elseif ( 'custom_link' === $onclick && isset( $custom_links[ $i ] ) && '' !== $custom_links[ $i ] ) : ?>
+										<a href="<?php echo esc_url( $custom_links[ $i ] ); ?>"<?php echo( ! empty( $custom_links_target ) ? ' target="' . esc_attr( $custom_links_target ) . '"' : '' ); ?>>
+											<?php
+											// @codingStandardsIgnoreLine
+											echo $thumbnail;
+											?>
 										</a>
 									<?php else : ?>
-										<?php echo $thumbnail ?>
+										<?php
+										// @codingStandardsIgnoreLine
+										echo $thumbnail;
+										?>
 									<?php endif ?>
 								</div>
 							</div>
@@ -125,12 +144,12 @@ if ( ! empty( $el_id ) ) {
 					</div>
 				</div>
 			</div>
-			<?php if ( 'yes' !== $hide_prev_next_buttons ) :  ?>
+			<?php if ( 'yes' !== $hide_prev_next_buttons ) : ?>
 				<!-- Controls -->
-				<a class="vc_left vc_carousel-control" href="#<?php echo $carousel_id ?>" data-slide="prev">
+				<a class="vc_left vc_carousel-control" href="#<?php echo esc_attr( $carousel_id ); ?>" data-slide="prev">
 					<span class="icon-prev"></span>
 				</a>
-				<a class="vc_right vc_carousel-control" href="#<?php echo $carousel_id ?>" data-slide="next">
+				<a class="vc_right vc_carousel-control" href="#<?php echo esc_attr( $carousel_id ); ?>" data-slide="next">
 					<span class="icon-next"></span>
 				</a>
 			<?php endif ?>

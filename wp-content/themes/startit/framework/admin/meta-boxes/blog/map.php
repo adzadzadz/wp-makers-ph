@@ -6,7 +6,7 @@ foreach($categories as $category) {
     $qode_blog_categories[$category->term_id] = $category->name;
 }
 
-$blog_meta_box = qode_startit_add_meta_box(
+$blog_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('page'),
         'title' => 'Blog',
@@ -14,7 +14,7 @@ $blog_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_blog_category_meta',
             'type'        => 'selectblank',
@@ -25,7 +25,7 @@ $blog_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_show_posts_per_page_meta',
             'type'        => 'text',

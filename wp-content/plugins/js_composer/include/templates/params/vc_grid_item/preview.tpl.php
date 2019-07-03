@@ -4,15 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
-<!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>"/>
 	<meta name="viewport" content="width=device-width"/>
@@ -25,7 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			font-size: 12px;
 		}
 
-		<?php echo visual_composer()->parseShortcodesCustomCss( $shortcodes_string ) ?>
+		<?php
+		// @codingStandardsIgnoreLine
+		echo visual_composer()->parseShortcodesCustomCss( $shortcodes_string );
+		?>
 		.vc_gitem-preview {
 			margin: 60px auto;
 		}
@@ -54,7 +49,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="vc_gitem-preview" data-vc-grid-settings="{}">
 			<div class="vc_container">
 				<div class="vc_row">
-					<?php echo $grid_item->renderItem( $post ); ?>
+					<?php
+					// @codingStandardsIgnoreLine
+					echo $grid_item->renderItem( $post );
+					?>
 				</div>
 			</div>
 
@@ -65,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!-- #primary -->
 <?php wp_footer(); ?>
 <script type="text/javascript">
-	var currentWidth = '<?php echo $default_width_value ?>',
+	var currentWidth = '<?php echo esc_js( $default_width_value ); ?>',
 		vcSetItemWidth = function ( value ) {
 			jQuery( '.vc_grid-item' ).removeClass( 'vc_col-sm-' + currentWidth )
 				.addClass( 'vc_col-sm-' + value );

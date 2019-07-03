@@ -5,10 +5,10 @@
 				<div class="qodef-post-mark">
 					<span class="fa fa-quote-right quote_mark"></span>
 				</div>
-				<?php qode_startit_get_module_template_part('templates/lists/parts/date', 'blog'); ?>
+				<?php startit_qode_get_module_template_part('templates/lists/parts/date', 'blog'); ?>
 				<div class="qodef-blog-standard-info-holder">
 					<div class="qodef-post-info">
-						<?php qode_startit_post_info(array('date' => 'no', 'author' => 'yes', 'category' => 'yes', 'comments' => 'yes', 'share' => 'no', 'like' => 'no')) ?>
+						<?php startit_qode_post_info(array( 'date' => 'no', 'author' => 'yes', 'category' => 'yes', 'comments' => 'yes', 'share' => 'no', 'like' => 'no')) ?>
 					</div>
 					<div class="qodef-post-title">
 						<h5><?php echo esc_html(get_post_meta(get_the_ID(), "qodef_post_quote_text_meta", true)); ?></h5>

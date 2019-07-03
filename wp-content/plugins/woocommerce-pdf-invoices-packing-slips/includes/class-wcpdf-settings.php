@@ -22,7 +22,7 @@ class Settings {
 
 
 		// Settings menu item
-		add_action( 'admin_menu', array( $this, 'menu' ) ); // Add menu.
+		add_action( 'admin_menu', array( $this, 'menu' ), 999 ); // Add menu
 		// Links on plugin page
 		add_filter( 'plugin_action_links_'.WPO_WCPDF()->plugin_basename, array( $this, 'add_settings_link' ) );
 		add_filter( 'plugin_row_meta', array( $this, 'add_support_links' ), 10, 2 );
@@ -178,13 +178,13 @@ class Settings {
 		return false;
 	}
 
-	public function get_output_format() {
+	public function get_output_format( $document_type = null ) {
 		if ( isset( $this->debug_settings['html_output'] ) ) {
 			$output_format = 'html';
 		} else {
 			$output_format = 'pdf';
 		}
-		return $output_format;
+		return apply_filters( 'wpo_wcpdf_output_format', $output_format, $document_type );
 	}
 
 	public function get_output_mode() {
@@ -227,6 +227,11 @@ class Settings {
 
 	public function set_number_store() {
 		check_ajax_referer( "wpo_wcpdf_next_{$_POST['store']}", 'security' );
+		// check permissions
+		if ( !current_user_can('manage_woocommerce') ) {
+			die(); 
+		}
+
 		$number = isset( $_POST['number'] ) ? (int) $_POST['number'] : 0;
 		$number_store_method = $this->get_sequential_number_store_method();
 		$number_store = new Sequential_Number_Store( $_POST['store'], $number_store_method );

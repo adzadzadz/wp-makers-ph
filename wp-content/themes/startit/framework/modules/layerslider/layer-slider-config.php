@@ -1,12 +1,12 @@
 <?php
-	if(!function_exists('qode_startit_layerslider_overrides')) {
+	if(!function_exists( 'startit_qode_layerslider_overrides' )) {
 		/**
 		 * Disables Layer Slider auto update box
 		 */
-		function qode_startit_layerslider_overrides() {
+		function startit_qode_layerslider_overrides() {
 			$GLOBALS['lsAutoUpdateBox'] = false;
 		}
 
-		add_action('layerslider_ready', 'qode_startit_layerslider_overrides');
+		add_action('layerslider_ready', 'startit_qode_layerslider_overrides');
 	}
 ?>

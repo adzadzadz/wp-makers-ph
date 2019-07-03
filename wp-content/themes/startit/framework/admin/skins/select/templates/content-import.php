@@ -2,16 +2,16 @@
     <div class="tab-content">
         <div class="tab-pane fade in active" id="import">
             <div class="qodef-tab-content">
-                <h2 class="qodef-page-title">Import</h2>
+                <h2 class="qodef-page-title"><?php esc_html_e( 'Import', 'startit' ); ?></h2>
                 <form method="post" class="qode_ajax_form qodef-import-page-holder">
                     <div class="qodef-page-form">
                         <div class="qodef-page-form-section-holder">
-                            <h3 class="qodef-page-section-title">Import Demo Content</h3>
+                            <h3 class="qodef-page-section-title"><?php esc_html_e( 'Import Demo Content', 'startit' ); ?></h3>
                             <div class="qodef-page-form-section">
                                 <div class="qodef-field-desc">
-                                    <h4>Import</h4>
+                                    <h4><?php esc_html_e( 'Import', 'startit' ); ?></h4>
 
-                                    <p>Choose demo content you want to import</p>
+                                    <p><?php esc_html_e( 'Choose demo content you want to import', 'startit' ); ?></p>
                                 </div>
                                 <!-- close div.qodef-field-desc -->
 
@@ -20,8 +20,8 @@
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <select name="import_example" id="import_example" class="form-control qodef-form-element dependence">
-                                                    <option value="startit">StartIt</option>
-                                                    <option value="startit1">StartIt Onepage Demo</option>
+                                                    <option value="startit"><?php esc_html_e( 'StartIt', 'startit' ); ?></option>
+                                                    <option value="startit1"><?php esc_html_e( 'StartIt Onepage Demo', 'startit' ); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -35,9 +35,9 @@
 
 
                                 <div class="qodef-field-desc">
-                                    <h4>Import Type</h4>
+                                    <h4><?php esc_html_e( 'Import Type', 'startit' ); ?></h4>
 
-                                    <p>Enabling this option will switch to a Side Position (default is Top Position)</p>
+                                    <p><?php esc_html_e( 'Enabling this option will switch to a Side Position (default is Top Position)', 'startit' ); ?></p>
                                 </div>
                                 <!-- close div.qodef-field-desc -->
 
@@ -48,11 +48,11 @@
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <select name="import_option" id="import_option" class="form-control qodef-form-element">
-                                                    <option value="">Please Select</option>
-                                                    <option value="complete_content">All</option>
-                                                    <option value="content">Content</option>
-                                                    <option value="widgets">Widgets</option>
-                                                    <option value="options">Options</option>
+                                                    <option value=""><?php esc_html_e( 'Please Select', 'startit' ); ?></option>
+                                                    <option value="complete_content"><?php esc_html_e( 'All', 'startit' ); ?></option>
+                                                    <option value="content"><?php esc_html_e( 'Content', 'startit' ); ?></option>
+                                                    <option value="widgets"><?php esc_html_e( 'Widgets', 'startit' ); ?></option>
+                                                    <option value="options"><?php esc_html_e( 'Options', 'startit' ); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
 
 
                                 <div class="qodef-field-desc">
-                                    <h4>Import attachments</h4>
+                                    <h4><?php esc_html_e( 'Import attachments', 'startit' ); ?></h4>
 
                                     <p>Do you want to import media files?</p>
                                 </div>
@@ -75,8 +75,8 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <p class="field switch">
-                                                    <label class="cb-enable dependence"><span>Yes</span></label>
-                                                    <label class="cb-disable selected dependence"><span>No</span></label>
+                                                    <label class="cb-enable dependence"><span><?php esc_html_e( 'Yes', 'startit' ); ?></span></label>
+                                                    <label class="cb-disable selected dependence"><span><?php esc_html_e( 'No', 'startit' ); ?></span></label>
                                                     <input type="checkbox" id="import_attachments" class="checkbox" name="import_attachments" value="1">
                                                 </p>
                                             </div>
@@ -89,7 +89,7 @@
 
 
                                 <div class="qodef-field-desc">
-                                    <input type="submit" class="btn btn-primary btn-sm " value="Import" name="import" id="import_demo_data" />
+                                    <input type="submit" class="btn btn-primary btn-sm " value="<?php esc_attr_e('Import','startit'); ?>" name="import" id="import_demo_data" />
                                 </div>
                                 <!-- close div.qodef-field-desc -->
                                 <div class="qodef-section-content">
@@ -101,7 +101,7 @@
                                                         <div class="progress-bar-wrapper">
                                                             <progress id="progressbar" value="0" max="100"></progress>
                                                         </div>
-                                                        <div class="progress-value">0%</div>
+                                                        <div class="progress-value"><?php esc_html_e( '0%', 'startit' ); ?></div>
                                                         <div class="progress-bar-message">
                                                         </div>
                                                     </div>

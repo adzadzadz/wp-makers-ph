@@ -13,7 +13,7 @@
 			<?php endif;
 
 			//Navigation
-			qode_startit_get_full_screen_menu_navigation();
+			startit_qode_get_full_screen_menu_navigation();
 
 			//Sidearea under menu
 			if(is_active_sidebar('fullscreen_menu_below')) : ?>

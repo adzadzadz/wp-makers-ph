@@ -1,5 +1,5 @@
-<?php if(qode_startit_options()->getOptionValue('blog_single_navigation') == 'yes'){ ?>
-	<?php $navigation_blog_through_category = qode_startit_options()->getOptionValue('blog_navigation_through_same_category') ?>
+<?php if( startit_qode_options()->getOptionValue('blog_single_navigation') == 'yes'){ ?>
+	<?php $navigation_blog_through_category = startit_qode_options()->getOptionValue('blog_navigation_through_same_category') ?>
 	<div class="qodef-blog-single-navigation">
 		<div class="qodef-blog-single-navigation-inner">
 			<?php if(get_previous_post() != ""){ ?>

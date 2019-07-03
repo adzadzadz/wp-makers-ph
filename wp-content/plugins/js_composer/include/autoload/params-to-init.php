@@ -10,6 +10,10 @@ if ( 'vc_edit_form' === vc_post_param( 'action' ) ) {
 	add_filter( 'vc_edit_form_fields_optional_params', 'vc_edit_for_fields_add_optional_params' );
 }
 
+/**
+ * @param $params
+ * @return array
+ */
 function vc_edit_for_fields_add_optional_params( $params ) {
 	$arr = array(
 		'hidden',
@@ -52,6 +56,7 @@ function vc_output_required_params_to_init() {
 		$js_array[] = '"' . $param . '"';
 	}
 
+	// @codingStandardsIgnoreStart
 	echo '
 		<script type="text/javascript">
 			if ( window.vc ) {
@@ -59,4 +64,5 @@ function vc_output_required_params_to_init() {
 			}
 		</script>
 	';
+	// @codingStandardsIgnoreEnd
 }

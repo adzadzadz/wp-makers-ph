@@ -1,15 +1,16 @@
 <div class="qodef-blog-holder qodef-blog-type-standard">
 	<?php
+	$blog_query = startit_qode_get_blog_query();
 		if($blog_query->have_posts()) : while ( $blog_query->have_posts() ) : $blog_query->the_post();
-			qode_startit_get_post_format_html($blog_type);
+			startit_qode_get_post_format_html($blog_type);
 		endwhile;
 		else:
-			qode_startit_get_module_template_part('templates/parts/no-posts', 'blog');
+			startit_qode_get_module_template_part('templates/parts/no-posts', 'blog');
 		endif;
 	?>
 	<?php
-		if(qode_startit_options()->getOptionValue('pagination') == 'yes') {
-			if (qode_startit_options()->getOptionValue('pagination_type') == 'navigation') {
+		if( startit_qode_options()->getOptionValue('pagination') == 'yes') {
+			if ( startit_qode_options()->getOptionValue('pagination_type') == 'navigation') {
 				?>
 				<div class="qodef-pagination">
 					<ul>
@@ -19,7 +20,7 @@
 				</div>
 				<?php
 			} else {
-				qode_startit_pagination($blog_query->max_num_pages, $blog_page_range, $paged);
+				startit_qode_pagination($blog_query);
 			}
 		}
 	?>

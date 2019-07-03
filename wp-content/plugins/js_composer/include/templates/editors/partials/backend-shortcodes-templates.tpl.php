@@ -16,27 +16,29 @@ if ( vc_user_access()->part( 'presets' )->can()->get() ) {
 }
 ?>
 <script type="text/javascript">
-	var vc_user_mapper = <?php echo json_encode( WPBMap::getUserShortCodes() ) ?>,
-		vc_mapper = <?php echo json_encode( WPBMap::getShortCodes() ) ?>,
-		vc_vendor_settings_presets = <?php echo json_encode( $vc_vendor_settings_presets ) ?>,
-		vc_roles = [], // @todo fix_roles check BC
-		vc_frontend_enabled = <?php echo vc_enabled_frontend() ? 'true' : 'false' ?>,
-		vc_all_presets = <?php echo json_encode( $vc_all_presets ) ?>,
-		vc_mode = '<?php echo vc_mode() ?>',
-		vcAdminNonce = '<?php echo vc_generate_nonce( 'vc-admin-nonce' ); ?>';
+	var vc_user_mapper = <?php echo wp_json_encode( WPBMap::getUserShortCodes() ); ?>,
+		vc_mapper = <?php echo wp_json_encode( WPBMap::getShortCodes() ); ?>,
+		vc_vendor_settings_presets = <?php echo wp_json_encode( $vc_vendor_settings_presets ); ?>,
+		vc_roles = [],
+		vc_frontend_enabled = <?php echo vc_enabled_frontend() ? 'true' : 'false'; ?>,
+		vc_all_presets = <?php echo wp_json_encode( $vc_all_presets ); ?>,
+		vc_mode = '<?php echo esc_js( vc_mode() ); ?>',
+		vcAdminNonce = '<?php echo esc_js( vc_generate_nonce( 'vc-admin-nonce' ) ); ?>';
 </script>
 
-<?php vc_include_template( 'editors/partials/vc_settings-image-block.tpl.php' ) ?>
+<?php vc_include_template( 'editors/partials/vc_settings-image-block.tpl.php' ); ?>
 
-<?php foreach ( WPBMap::getShortCodes() as $sc_base => $el ) :  ?>
-	<script type="text/html" id="vc_shortcode-template-<?php echo $sc_base ?>">
+<?php foreach ( WPBMap::getShortCodes() as $sc_base => $el ) : ?>
+	<script type="text/html" id="vc_shortcode-template-<?php echo esc_attr( $sc_base ); ?>">
 		<?php
+		// @codingStandardsIgnoreLine
 		echo visual_composer()->getShortCode( $sc_base )->template();
 		?>
 	</script>
 <?php endforeach ?>
 <script type="text/html" id="vc_row-inner-element-template">
 	<?php
+	// @codingStandardsIgnoreLine
 	echo visual_composer()->getShortCode( 'vc_row_inner' )->template();
 	?>
 </script>

@@ -10,23 +10,20 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see 	    https://docs.woocommerce.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     3.2.0
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce/Templates
+ * @version 3.5.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+defined( 'ABSPATH' ) || exit;
 
 if ( 'no' === get_option( 'woocommerce_enable_shipping_calc' ) || ! WC()->cart->needs_shipping() ) {
 	return;
 }
 
-?>
+wp_enqueue_script( 'wc-country-select' );
 
-<?php do_action( 'woocommerce_before_shipping_calculator' ); ?>
+do_action( 'woocommerce_before_shipping_calculator' ); ?>
 
 <form class="woocommerce-shipping-calculator" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
@@ -35,7 +32,7 @@ if ( 'no' === get_option( 'woocommerce_enable_shipping_calc' ) || ! WC()->cart->
 	<section class="shipping-calculator-form" style="display:none;">
 
 		<p class="form-row form-row-wide" id="calc_shipping_country_field">
-			<select name="calc_shipping_country" id="calc_shipping_country" class="country_to_state" rel="calc_shipping_state">
+			<select name="calc_shipping_country" id="calc_shipping_country" class="country_to_state country_select" rel="calc_shipping_state">
 				<option value=""><?php esc_html_e( 'Select a country&hellip;', 'startit' ); ?></option>
 				<?php
 					foreach( WC()->countries->get_shipping_countries() as $key => $value )
@@ -59,7 +56,7 @@ if ( 'no' === get_option( 'woocommerce_enable_shipping_calc' ) || ! WC()->cart->
 				} elseif ( is_array( $states ) ) {
 
 					?><span>
-						<select name="calc_shipping_state" id="calc_shipping_state" placeholder="<?php esc_attr_e( 'State / county', 'startit' ); ?>">
+						<select name="calc_shipping_state" id="calc_shipping_state" class="state_select" placeholder="<?php esc_attr_e( 'State / county', 'startit' ); ?>">
 							<option value=""><?php esc_html_e( 'Select a state&hellip;', 'startit' ); ?></option>
 							<?php
 								foreach ( $states as $ckey => $cvalue )
@@ -100,7 +97,7 @@ if ( 'no' === get_option( 'woocommerce_enable_shipping_calc' ) || ! WC()->cart->
 			?>
 		</p>
 
-		<?php wp_nonce_field( 'woocommerce-cart' ); ?>
+		<?php wp_nonce_field( 'woocommerce-shipping-calculator', 'woocommerce-shipping-calculator-nonce' ); ?>
 	</section>
 </form>
 

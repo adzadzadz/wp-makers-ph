@@ -1,5 +1,6 @@
 
 (function($){
+    "use strict";
 	var QodeSidebar = function(){
 
 		this.widget_wrap = $('.widget-liquid-right');
@@ -48,7 +49,7 @@
 					spinner.addClass('activate_spinner');
 				},
 				success: function(response){     
-					if(response == 'sidebar-deleted'){
+					if(response === 'sidebar-deleted'){
 						widget.slideUp(200, function(){
 
 						$('.widget-control-remove', widget).trigger('click'); //delete all widgets inside

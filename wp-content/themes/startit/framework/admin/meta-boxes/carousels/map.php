@@ -2,7 +2,7 @@
 
 //Carousels
 
-$carousel_meta_box = qode_startit_add_meta_box(
+$carousel_meta_box = startit_qode_create_meta_box(
     array(
         'scope' => array('carousels'),
         'title' => 'Carousel',
@@ -10,7 +10,7 @@ $carousel_meta_box = qode_startit_add_meta_box(
     )
 );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_carousel_image',
             'type'        => 'image',
@@ -20,7 +20,7 @@ $carousel_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_carousel_hover_image',
             'type'        => 'image',
@@ -30,7 +30,7 @@ $carousel_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_carousel_item_link',
             'type'        => 'text',
@@ -40,7 +40,7 @@ $carousel_meta_box = qode_startit_add_meta_box(
         )
     );
 
-    qode_startit_add_meta_box_field(
+    startit_qode_create_meta_box_field(
         array(
             'name'        => 'qodef_carousel_item_target',
             'type'        => 'selectblank',

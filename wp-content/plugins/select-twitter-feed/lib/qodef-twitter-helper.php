@@ -23,7 +23,7 @@ class QodefTwitterHelper {
 
     public function getTweetTime($tweet) {
         if(!empty($tweet['created_at'])) {
-            return human_time_diff(strtotime($tweet['created_at']), current_time('timestamp') ).' '.__('ago', 'qode');
+            return human_time_diff(strtotime($tweet['created_at']), current_time('timestamp') ).' '.__('ago', 'startit-twitter-feed');
         }
 
         return '';

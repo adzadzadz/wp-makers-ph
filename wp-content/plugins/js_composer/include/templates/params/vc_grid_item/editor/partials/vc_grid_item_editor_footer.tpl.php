@@ -25,13 +25,13 @@ if ( vc_user_access()->part( 'presets' )->can()->get() ) {
 
 ?>
 	<script type="text/javascript">
-		var vc_user_mapper = <?php echo json_encode( WpbMap_Grid_Item::getGitemUserShortCodes() ) ?>,
-			vc_mapper = <?php echo json_encode( WpbMap_Grid_Item::getShortCodes() ) ?>,
-			vc_vendor_settings_presets = <?php echo json_encode( $vc_vendor_settings_presets ) ?>,
-			vc_all_presets = <?php echo json_encode( $vc_all_presets ) ?>,
+		var vc_user_mapper = <?php echo wp_json_encode( WpbMap_Grid_Item::getGitemUserShortCodes() ); ?>,
+			vc_mapper = <?php echo wp_json_encode( WpbMap_Grid_Item::getShortCodes() ); ?>,
+			vc_vendor_settings_presets = <?php echo wp_json_encode( $vc_vendor_settings_presets ); ?>,
+			vc_all_presets = <?php echo wp_json_encode( $vc_all_presets ); ?>,
 			vc_frontend_enabled = false,
-			vc_mode = '<?php echo vc_mode(); ?>',
-			vcAdminNonce = '<?php echo vc_generate_nonce( 'vc-admin-nonce' ); ?>';
+			vc_mode = '<?php echo esc_js( vc_mode() ); ?>',
+			vcAdminNonce = '<?php echo esc_js( vc_generate_nonce( 'vc-admin-nonce' ) ); ?>';
 	</script>
 
 	<script type="text/html" id="vc_settings-image-block">
@@ -42,12 +42,14 @@ if ( vc_user_access()->part( 'presets' )->can()->get() ) {
 			<a href="#" class="vc_icon-remove"><i class="vc-composer-icon vc-c-icon-close"></i></a>
 		</li>
 	</script>
-<?php foreach ( WpbMap_Grid_Item::getShortCodes() as $sc_base => $el ) :  ?>
-	<script type="text/html" id="vc_shortcode-template-<?php echo $sc_base ?>">
+<?php foreach ( WpbMap_Grid_Item::getShortCodes() as $sc_base => $el ) : ?>
+	<script type="text/html" id="vc_shortcode-template-<?php echo esc_attr( $sc_base ); ?>">
 		<?php
+		// @codingStandardsIgnoreLine
 		echo visual_composer()->getShortCode( $sc_base )->template();
 		?>
 	</script>
 <?php endforeach ?>
 
-<?php vc_include_template( 'editors/partials/access-manager-js.tpl.php' );
+<?php
+vc_include_template( 'editors/partials/access-manager-js.tpl.php' );

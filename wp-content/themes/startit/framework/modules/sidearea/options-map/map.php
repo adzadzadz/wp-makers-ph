@@ -1,37 +1,37 @@
 <?php
 
-if ( ! function_exists('qode_startit_sidearea_options_map') ) {
+if ( ! function_exists( 'startit_qode_sidearea_options_map' ) ) {
 
-	function qode_startit_sidearea_options_map() {
+	function startit_qode_sidearea_options_map() {
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug' => '_side_area_page',
-				'title' => 'Side Area',
+				'title' => esc_html__( 'Side Area', 'startit' ),
 				'icon' => 'fa fa-indent'
 			)
 		);
 
-		$side_area_panel = qode_startit_add_admin_panel(
+		$side_area_panel = startit_qode_add_admin_panel(
 			array(
-				'title' => 'Side Area',
+				'title' => esc_html__( 'Side Area', 'startit' ),
 				'name' => 'side_area',
 				'page' => '_side_area_page'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'select',
 				'name' => 'side_area_type',
 				'default_value' => 'side-menu-slide-with-content',
-				'label' => 'Side Area Type',
-				'description' => 'Choose a type of Side Area',
+				'label' => esc_html__( 'Side Area Type', 'startit' ),
+				'description' => esc_html__( 'Choose a type of Side Area', 'startit' ),
 				'options' => array(
-					'side-menu-slide-from-right' => 'Slide from Right Over Content',
-					'side-menu-slide-with-content' => 'Slide from Right With Content',
-					'side-area-uncovered-from-content' => 'Side Area Uncovered from Content'
+					'side-menu-slide-from-right' => esc_html__('Slide from Right Over Content','startit'),
+					'side-menu-slide-with-content' => esc_html__('Slide from Right With Content','startit'),
+					'side-area-uncovered-from-content' => esc_html__('Side Area Uncovered from Content','startit')
 				),
 				'args' => array(
 					'dependence' => true,
@@ -49,7 +49,7 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		$side_area_width_container = qode_startit_add_admin_container(
+		$side_area_width_container = startit_qode_add_admin_container(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'side_area_width_container',
@@ -62,14 +62,14 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_width_container,
 				'type' => 'text',
 				'name' => 'side_area_width',
 				'default_value' => '',
-				'label' => 'Side Area Width',
-				'description' => 'Enter a width for Side Area (in percentages, enter more than 30)',
+				'label' => esc_html__( 'Side Area Width', 'startit' ),
+				'description' => esc_html__( 'Enter a width for Side Area (in percentages, enter more than 30)', 'startit' ),
 				'args' => array(
 					'col_width' => 3,
 					'suffix' => '%'
@@ -77,32 +77,32 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_width_container,
 				'type' => 'color',
 				'name' => 'side_area_content_overlay_color',
 				'default_value' => '',
-				'label' => 'Content Overlay Background Color',
-				'description' => 'Choose a background color for a content overlay',
+				'label' => esc_html__( 'Content Overlay Background Color', 'startit' ),
+				'description' => esc_html__( 'Choose a background color for a content overlay', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_width_container,
 				'type' => 'text',
 				'name' => 'side_area_content_overlay_opacity',
 				'default_value' => '',
-				'label' => 'Content Overlay Background Transparency',
-				'description' => 'Choose a transparency for the content overlay background color (0 = fully transparent, 1 = opaque)',
+				'label' => esc_html__( 'Content Overlay Background Transparency', 'startit' ),
+				'description' => esc_html__( 'Choose a transparency for the content overlay background color (0 = fully transparent, 1 = opaque)', 'startit' ),
 				'args' => array(
 					'col_width' => 3
 				)
 			)
 		);
 
-		$side_area_slide_with_content_container = qode_startit_add_admin_container(
+		$side_area_slide_with_content_container = startit_qode_add_admin_container(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'side_area_slide_with_content_container',
@@ -115,18 +115,18 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_slide_with_content_container,
 				'type' => 'select',
 				'name' => 'side_area_slide_with_content_width',
 				'default_value' => 'width-470',
-				'label' => 'Side Area Width',
-				'description' => 'Choose width for Side Area',
+				'label' => esc_html__( 'Side Area Width', 'startit' ),
+				'description' => esc_html__( 'Choose width for Side Area', 'startit' ),
 				'options' => array(
-					'width-270' => '270px',
-					'width-370' => '370px',
-					'width-470' => '470px'
+					'width-270' => esc_html__('270px','startit'),
+					'width-370' => esc_html__('370px','startit'),
+					'width-470' => esc_html__('470px','startit')
 				)
 			)
 		);
@@ -136,12 +136,12 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 		$side_area_icon_pack_show_array = array();
 
 //do we have some collection added in collections array?
-		if (is_array(qode_startit_icon_collections()->iconCollections) && count(qode_startit_icon_collections()->iconCollections)) {
+		if ( is_array(startit_qode_icon_collections()->iconCollections) && count(startit_qode_icon_collections()->iconCollections)) {
 			//get collections params array. It will contain values of 'param' property for each collection
-			$side_area_icon_collections_params = qode_startit_icon_collections()->getIconCollectionsParams();
+			$side_area_icon_collections_params = startit_qode_icon_collections()->getIconCollectionsParams();
 
 			//foreach collection generate hide and show array
-			foreach (qode_startit_icon_collections()->iconCollections as $dep_collection_key => $dep_collection_object) {
+			foreach (startit_qode_icon_collections()->iconCollections as $dep_collection_key => $dep_collection_object) {
 				$side_area_icon_pack_hide_array[$dep_collection_key] = '';
 
 				//we need to include only current collection in show string as it is the only one that needs to show
@@ -161,15 +161,15 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 
 		}
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'select',
 				'name' => 'side_area_button_icon_pack',
 				'default_value' => 'font_elegant',
-				'label' => 'Side Area Button Icon Pack',
-				'description' => 'Choose icon pack for side area button',
-				'options' => qode_startit_icon_collections()->getIconCollections(),
+				'label' => esc_html__( 'Side Area Button Icon Pack', 'startit' ),
+				'description' => esc_html__( 'Choose icon pack for side area button', 'startit' ),
+				'options' => startit_qode_icon_collections()->getIconCollections(),
 				'args' => array(
 					'dependence' => true,
 					'hide' => $side_area_icon_pack_hide_array,
@@ -178,21 +178,21 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		if (is_array(qode_startit_icon_collections()->iconCollections) && count(qode_startit_icon_collections()->iconCollections)) {
+		if ( is_array(startit_qode_icon_collections()->iconCollections) && count(startit_qode_icon_collections()->iconCollections)) {
 			//foreach icon collection we need to generate separate container that will have dependency set
 			//it will have one field inside with icons dropdown
-			foreach (qode_startit_icon_collections()->iconCollections as $collection_key => $collection_object) {
+			foreach (startit_qode_icon_collections()->iconCollections as $collection_key => $collection_object) {
 				$icons_array = $collection_object->getIconsArray();
 
 				//get icon collection keys (keys from collections array, e.g 'font_awesome', 'font_elegant' etc.)
-				$icon_collections_keys = qode_startit_icon_collections()->getIconCollectionsKeys();
+				$icon_collections_keys = startit_qode_icon_collections()->getIconCollectionsKeys();
 
 				//unset current one, because it doesn't have to be included in dependency that hides icon container
 				unset($icon_collections_keys[array_search($collection_key, $icon_collections_keys)]);
 
 				$side_area_icon_hide_values = $icon_collections_keys;
 
-				$side_area_icon_container = qode_startit_add_admin_container(
+				$side_area_icon_container = startit_qode_add_admin_container(
 					array(
 						'parent' => $side_area_panel,
 						'name' => 'side_area_icon_' . $collection_object->param . '_container',
@@ -202,14 +202,14 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 					)
 				);
 
-				qode_startit_add_admin_field(
+				startit_qode_add_admin_field(
 					array(
 						'parent' => $side_area_icon_container,
 						'type' => 'select',
 						'name' => 'side_area_icon_' . $collection_object->param,
 						'default_value' => 'icon_menu',
-						'label' => 'Side Area Icon',
-						'description' => 'Choose Side Area Icon',
+						'label' => esc_html__( 'Side Area Icon', 'startit' ),
+						'description' => esc_html__( 'Choose Side Area Icon', 'startit' ),
 						'options' => $icons_array,
 					)
 				);
@@ -218,14 +218,14 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 
 		}
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'text',
 				'name' => 'side_area_icon_font_size',
 				'default_value' => '',
-				'label' => 'Side Area Icon Size',
-				'description' => 'Choose a size for Side Area (px)',
+				'label' => esc_html__( 'Side Area Icon Size', 'startit' ),
+				'description' => esc_html__( 'Choose a size for Side Area (px)', 'startit' ),
 				'args' => array(
 					'col_width' => 3,
 					'suffix' => 'px'
@@ -233,59 +233,59 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'select',
 				'name' => 'side_area_predefined_icon_size',
 				'default_value' => 'normal',
-				'label' => 'Predefined Side Menu Icon Size',
-				'description' => 'Choose predefined size for Side Area icons',
+				'label' => esc_html__( 'Predefined Side Menu Icon Size', 'startit' ),
+				'description' => esc_html__( 'Choose predefined size for Side Area icons', 'startit' ),
 				'options' => array(
-					'normal' => 'Normal',
-					'medium' => 'Medium',
-					'large' => 'Large'
+					'normal' => esc_html__('Normal','startit'),
+					'medium' => esc_html__('Medium','startit'),
+					'large' => esc_html__('Large','startit'),
 				),
 			)
 		);
 
-		$side_area_icon_style_group = qode_startit_add_admin_group(
+		$side_area_icon_style_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'side_area_icon_style_group',
-				'title' => 'Side Area Icon Style',
-				'description' => 'Define styles for Side Area icon'
+				'title' => esc_html__( 'Side Area Icon Style', 'startit' ),
+				'description' => esc_html__( 'Define styles for Side Area icon', 'startit' )
 			)
 		);
 
-		$side_area_icon_style_row1 = qode_startit_add_admin_row(
+		$side_area_icon_style_row1 = startit_qode_add_admin_row(
 			array(
 				'parent'		=> $side_area_icon_style_group,
 				'name'			=> 'side_area_icon_style_row1'
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_icon_style_row1,
 				'type' => 'colorsimple',
 				'name' => 'side_area_icon_color',
 				'default_value' => '',
-				'label' => 'Color',
+				'label' => esc_html__( 'Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_icon_style_row1,
 				'type' => 'colorsimple',
 				'name' => 'side_area_icon_hover_color',
 				'default_value' => '',
-				'label' => 'Hover Color',
+				'label' => esc_html__( 'Hover Color', 'startit' ),
 			)
 		);
 
-		$side_area_icon_style_row2 = qode_startit_add_admin_row(
+		$side_area_icon_style_row2 = startit_qode_add_admin_row(
 			array(
 				'parent'		=> $side_area_icon_style_group,
 				'name'			=> 'side_area_icon_style_row2',
@@ -293,27 +293,27 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_icon_style_row2,
 				'type' => 'colorsimple',
 				'name' => 'side_area_light_icon_color',
 				'default_value' => '',
-				'label' => 'Light Menu Icon Color',
+				'label' => esc_html__( 'Light Menu Icon Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_icon_style_row2,
 				'type' => 'colorsimple',
 				'name' => 'side_area_light_icon_hover_color',
 				'default_value' => '',
-				'label' => 'Light Menu Icon Hover Color',
+				'label' => esc_html__( 'Light Menu Icon Hover Color', 'startit' ),
 			)
 		);
 
-		$side_area_icon_style_row3 = qode_startit_add_admin_row(
+		$side_area_icon_style_row3 = startit_qode_add_admin_row(
 			array(
 				'parent'		=> $side_area_icon_style_group,
 				'name'			=> 'side_area_icon_style_row3',
@@ -321,101 +321,101 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_icon_style_row3,
 				'type' => 'colorsimple',
 				'name' => 'side_area_dark_icon_color',
 				'default_value' => '',
-				'label' => 'Dark Menu Icon Color',
+				'label' => esc_html__( 'Dark Menu Icon Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_icon_style_row3,
 				'type' => 'colorsimple',
 				'name' => 'side_area_dark_icon_hover_color',
 				'default_value' => '',
-				'label' => 'Dark Menu Icon Hover Color',
+				'label' => esc_html__( 'Dark Menu Icon Hover Color', 'startit' ),
 			)
 		);
 
-		$icon_spacing_group = qode_startit_add_admin_group(
+		$icon_spacing_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'icon_spacing_group',
-				'title' => 'Side Area Icon Spacing',
-				'description' => 'Define padding and margin for side area icon'
+				'title' => esc_html__( 'Side Area Icon Spacing', 'startit' ),
+				'description' => esc_html__( 'Define padding and margin for side area icon', 'startit' )
 			)
 		);
 
-		$icon_spacing_row = qode_startit_add_admin_row(
+		$icon_spacing_row = startit_qode_add_admin_row(
 			array(
 				'parent'		=> $icon_spacing_group,
 				'name'			=> 'icon_spancing_row',
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $icon_spacing_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_icon_padding_left',
 				'default_value' => '',
-				'label' => 'Padding Left',
+				'label' => esc_html__( 'Padding Left', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $icon_spacing_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_icon_padding_right',
 				'default_value' => '',
-				'label' => 'Padding Right',
+				'label' => esc_html__( 'Padding Right', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $icon_spacing_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_icon_margin_left',
 				'default_value' => '',
-				'label' => 'Margin Left',
+				'label' => esc_html__( 'Margin Left', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $icon_spacing_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_icon_margin_right',
 				'default_value' => '',
-				'label' => 'Margin Right',
+				'label' => esc_html__( 'Margin Right', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'yesno',
 				'name' => 'side_area_icon_border_yesno',
 				'default_value' => 'no',
-				'label' => 'Icon Border',
+				'label' => esc_html__( 'Icon Border', 'startit' ),
 				'descritption' => 'Enable border around icon',
 				'args' => array(
 					'dependence' => true,
@@ -425,7 +425,7 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		$side_area_icon_border_container = qode_startit_add_admin_container(
+		$side_area_icon_border_container = startit_qode_add_admin_container(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'side_area_icon_border_container',
@@ -434,43 +434,43 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		$border_style_group = qode_startit_add_admin_group(
+		$border_style_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_icon_border_container,
 				'name' => 'border_style_group',
-				'title' => 'Border Style',
-				'description' => 'Define styling for border around icon'
+				'title' => esc_html__( 'Border Style', 'startit' ),
+				'description' => esc_html__( 'Define styling for border around icon', 'startit' )
 			)
 		);
 
-		$border_style_row_1 = qode_startit_add_admin_row(
+		$border_style_row_1 = startit_qode_add_admin_row(
 			array(
 				'parent'		=> $border_style_group,
 				'name'			=> 'border_style_row_1',
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $border_style_row_1,
 				'type' => 'colorsimple',
 				'name' => 'side_area_icon_border_color',
 				'default_value' => '',
-				'label' => 'Color',
+				'label' => esc_html__( 'Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $border_style_row_1,
 				'type' => 'colorsimple',
 				'name' => 'side_area_icon_border_hover_color',
 				'default_value' => '',
-				'label' => 'Hover Color',
+				'label' => esc_html__( 'Hover Color', 'startit' ),
 			)
 		);
 
-		$border_style_row_2 = qode_startit_add_admin_row(
+		$border_style_row_2 = startit_qode_add_admin_row(
 			array(
 				'parent'		=> $border_style_group,
 				'name'			=> 'border_style_row_2',
@@ -478,98 +478,98 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $border_style_row_2,
 				'type' => 'textsimple',
 				'name' => 'side_area_icon_border_width',
 				'default_value' => '',
-				'label' => 'Width',
+				'label' => esc_html__( 'Width', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $border_style_row_2,
 				'type' => 'textsimple',
 				'name' => 'side_area_icon_border_radius',
 				'default_value' => '',
-				'label' => 'Radius',
+				'label' => esc_html__( 'Radius', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $border_style_row_2,
 				'type' => 'selectsimple',
 				'name' => 'side_area_icon_border_style',
 				'default_value' => '',
-				'label' => 'Style',
+				'label' => esc_html__( 'Style', 'startit' ),
 				'options' => array(
-					'solid' => 'Solid',
-					'dashed' => 'Dashed',
-					'dotted' => 'Dotted'
+					'solid' => esc_html__('Solid','startit'),
+					'dashed' => esc_html__('Dashed','startit'),
+					'dotted' => esc_html__('Dotted','startit'),
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'selectblank',
 				'name' => 'side_area_aligment',
 				'default_value' => '',
-				'label' => 'Text Aligment',
-				'description' => 'Choose text aligment for side area',
+				'label' => esc_html__( 'Text Aligment', 'startit' ),
+				'description' => esc_html__( 'Choose text aligment for side area', 'startit' ),
 				'options' => array(
-					'center' => 'Center',
-					'left' => 'Left',
-					'right' => 'Right'
+					'center' => esc_html__('Center','startit'),
+					'left' => esc_html__('Left','startit'),
+					'right' => esc_html__('Right','startit')
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'text',
 				'name' => 'side_area_title',
 				'default_value' => '',
-				'label' => 'Side Area Title',
-				'description' => 'Enter a title to appear in Side Area',
+				'label' => esc_html__( 'Side Area Title', 'startit' ),
+				'description' => esc_html__( 'Enter a title to appear in Side Area', 'startit' ),
 				'args' => array(
 					'col_width' => 3,
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'color',
 				'name' => 'side_area_background_color',
 				'default_value' => '',
-				'label' => 'Background Color',
-				'description' => 'Choose a background color for Side Area',
+				'label' => esc_html__( 'Background Color', 'startit' ),
+				'description' => esc_html__( 'Choose a background color for Side Area', 'startit' ),
 			)
 		);
 
-		$padding_group = qode_startit_add_admin_group(
+		$padding_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'padding_group',
-				'title' => 'Padding',
-				'description' => 'Define padding for Side Area'
+				'title' => esc_html__( 'Padding', 'startit' ),
+				'description' => esc_html__( 'Define padding for Side Area', 'startit' )
 			)
 		);
 
-		$padding_row = qode_startit_add_admin_row(
+		$padding_row = startit_qode_add_admin_row(
 			array(
 				'parent' => $padding_group,
 				'name' => 'padding_row',
@@ -577,66 +577,66 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $padding_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_padding_top',
 				'default_value' => '',
-				'label' => 'Top Padding',
+				'label' => esc_html__( 'Top Padding', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $padding_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_padding_right',
 				'default_value' => '',
-				'label' => 'Right Padding',
+				'label' => esc_html__( 'Right Padding', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $padding_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_padding_bottom',
 				'default_value' => '',
-				'label' => 'Bottom Padding',
+				'label' => esc_html__( 'Bottom Padding', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $padding_row,
 				'type' => 'textsimple',
 				'name' => 'side_area_padding_left',
 				'default_value' => '',
-				'label' => 'Left Padding',
+				'label' => esc_html__( 'Left Padding', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'select',
 				'name' => 'side_area_close_icon',
 				'default_value' => 'light',
-				'label' => 'Close Icon Style',
-				'description' => 'Choose a type of close icon',
+				'label' => esc_html__( 'Close Icon Style', 'startit' ),
+				'description' => esc_html__( 'Choose a type of close icon', 'startit' ),
 				'options' => array(
 					'light' => 'Light',
 					'dark' => 'Dark'
@@ -644,14 +644,14 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'text',
 				'name' => 'side_area_close_icon_size',
 				'default_value' => '',
-				'label' => 'Close Icon Size',
-				'description' => 'Define close icon size',
+				'label' => esc_html__( 'Close Icon Size', 'startit' ),
+				'description' => esc_html__( 'Define close icon size', 'startit' ),
 				'args' => array(
 					'col_width' => 3,
 					'suffix' => 'px'
@@ -659,70 +659,70 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		$title_group = qode_startit_add_admin_group(
+		$title_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'title_group',
-				'title' => 'Title',
-				'description' => 'Define Style for Side Area title'
+				'title' => esc_html__( 'Title', 'startit' ),
+				'description' => esc_html__( 'Define Style for Side Area title', 'startit' )
 			)
 		);
 
-		$title_row_1 = qode_startit_add_admin_row(
+		$title_row_1 = startit_qode_add_admin_row(
 			array(
 				'parent' => $title_group,
 				'name' => 'title_row_1',
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_1,
 				'type' => 'colorsimple',
 				'name' => 'side_area_title_color',
 				'default_value' => '',
-				'label' => 'Text Color',
+				'label' => esc_html__( 'Text Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_1,
 				'type' => 'textsimple',
 				'name' => 'side_area_title_fontsize',
 				'default_value' => '',
-				'label' => 'Font Size',
+				'label' => esc_html__( 'Font Size', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_1,
 				'type' => 'textsimple',
 				'name' => 'side_area_title_lineheight',
 				'default_value' => '',
-				'label' => 'Line Height',
+				'label' => esc_html__( 'Line Height', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_1,
 				'type' => 'selectblanksimple',
 				'name' => 'side_area_title_texttransform',
 				'default_value' => '',
-				'label' => 'Text Transform',
-				'options' => qode_startit_get_text_transform_array()
+				'label' => esc_html__( 'Text Transform', 'startit' ),
+				'options' => startit_qode_get_text_transform_array()
 			)
 		);
 
-		$title_row_2 = qode_startit_add_admin_row(
+		$title_row_2 = startit_qode_add_admin_row(
 			array(
 				'parent' => $title_group,
 				'name' => 'title_row_2',
@@ -730,45 +730,45 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_2,
 				'type' => 'fontsimple',
 				'name' => 'side_area_title_google_fonts',
 				'default_value' => '-1',
-				'label' => 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_2,
 				'type' => 'selectblanksimple',
 				'name' => 'side_area_title_fontstyle',
 				'default_value' => '',
-				'label' => 'Font Style',
-				'options' => qode_startit_get_font_style_array()
+				'label' => esc_html__( 'Font Style', 'startit' ),
+				'options' => startit_qode_get_font_style_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_2,
 				'type' => 'selectblanksimple',
 				'name' => 'side_area_title_fontweight',
 				'default_value' => '',
-				'label' => 'Font Weight',
-				'options' => qode_startit_get_font_weight_array()
+				'label' => esc_html__( 'Font Weight', 'startit' ),
+				'options' => startit_qode_get_font_weight_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $title_row_2,
 				'type' => 'textsimple',
 				'name' => 'side_area_title_letterspacing',
 				'default_value' => '',
-				'label' => 'Letter Spacing',
+				'label' => esc_html__( 'Letter Spacing', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
@@ -776,70 +776,70 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 		);
 
 
-		$text_group = qode_startit_add_admin_group(
+		$text_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'text_group',
-				'title' => 'Text',
-				'description' => 'Define Style for Side Area text'
+				'title' => esc_html__( 'Text', 'startit' ),
+				'description' => esc_html__( 'Define Style for Side Area text', 'startit' )
 			)
 		);
 
-		$text_row_1 = qode_startit_add_admin_row(
+		$text_row_1 = startit_qode_add_admin_row(
 			array(
 				'parent' => $text_group,
 				'name' => 'text_row_1',
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_1,
 				'type' => 'colorsimple',
 				'name' => 'side_area_text_color',
 				'default_value' => '',
-				'label' => 'Text Color',
+				'label' => esc_html__( 'Text Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_1,
 				'type' => 'textsimple',
 				'name' => 'side_area_text_fontsize',
 				'default_value' => '',
-				'label' => 'Font Size',
+				'label' => esc_html__( 'Font Size', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_1,
 				'type' => 'textsimple',
 				'name' => 'side_area_text_lineheight',
 				'default_value' => '',
-				'label' => 'Line Height',
+				'label' => esc_html__( 'Line Height', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_1,
 				'type' => 'selectblanksimple',
 				'name' => 'side_area_text_texttransform',
 				'default_value' => '',
-				'label' => 'Text Transform',
-				'options' => qode_startit_get_text_transform_array()
+				'label' => esc_html__( 'Text Transform', 'startit' ),
+				'options' => startit_qode_get_text_transform_array()
 			)
 		);
 
-		$text_row_2 = qode_startit_add_admin_row(
+		$text_row_2 = startit_qode_add_admin_row(
 			array(
 				'parent' => $text_group,
 				'name' => 'text_row_2',
@@ -847,125 +847,125 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_2,
 				'type' => 'fontsimple',
 				'name' => 'side_area_text_google_fonts',
 				'default_value' => '-1',
-				'label' => 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_2,
 				'type' => 'fontsimple',
 				'name' => 'side_area_text_google_fonts',
 				'default_value' => '-1',
-				'label' => 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_2,
 				'type' => 'selectblanksimple',
 				'name' => 'side_area_text_fontstyle',
 				'default_value' => '',
-				'label' => 'Font Style',
-				'options' => qode_startit_get_font_style_array()
+				'label' => esc_html__( 'Font Style', 'startit' ),
+				'options' => startit_qode_get_font_style_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_2,
 				'type' => 'selectblanksimple',
 				'name' => 'side_area_text_fontweight',
 				'default_value' => '',
-				'label' => 'Font Weight',
-				'options' => qode_startit_get_font_weight_array()
+				'label' => esc_html__( 'Font Weight', 'startit' ),
+				'options' => startit_qode_get_font_weight_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $text_row_2,
 				'type' => 'textsimple',
 				'name' => 'side_area_text_letterspacing',
 				'default_value' => '',
-				'label' => 'Letter Spacing',
+				'label' => esc_html__( 'Letter Spacing', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		$widget_links_group = qode_startit_add_admin_group(
+		$widget_links_group = startit_qode_add_admin_group(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'widget_links_group',
-				'title' => 'Link Style',
-				'description' => 'Define styles for Side Area widget links'
+				'title' => esc_html__( 'Link Style', 'startit' ),
+				'description' => esc_html__( 'Define styles for Side Area widget links', 'startit' )
 			)
 		);
 
-		$widget_links_row_1 = qode_startit_add_admin_row(
+		$widget_links_row_1 = startit_qode_add_admin_row(
 			array(
 				'parent' => $widget_links_group,
 				'name' => 'widget_links_row_1',
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_1,
 				'type' => 'colorsimple',
 				'name' => 'sidearea_link_color',
 				'default_value' => '',
-				'label' => 'Text Color',
+				'label' => esc_html__( 'Text Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_1,
 				'type' => 'textsimple',
 				'name' => 'sidearea_link_font_size',
 				'default_value' => '',
-				'label' => 'Font Size',
+				'label' => esc_html__( 'Font Size', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_1,
 				'type' => 'textsimple',
 				'name' => 'sidearea_link_line_height',
 				'default_value' => '',
-				'label' => 'Line Height',
+				'label' => esc_html__( 'Line Height', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_1,
 				'type' => 'selectblanksimple',
 				'name' => 'sidearea_link_text_transform',
 				'default_value' => '',
-				'label' => 'Text Transform',
-				'options' => qode_startit_get_text_transform_array()
+				'label' => esc_html__( 'Text Transform', 'startit' ),
+				'options' => startit_qode_get_text_transform_array()
 			)
 		);
 
-		$widget_links_row_2 = qode_startit_add_admin_row(
+		$widget_links_row_2 = startit_qode_add_admin_row(
 			array(
 				'parent' => $widget_links_group,
 				'name' => 'widget_links_row_2',
@@ -973,52 +973,52 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_2,
 				'type' => 'fontsimple',
 				'name' => 'sidearea_link_font_family',
 				'default_value' => '-1',
-				'label' => 'Font Family',
+				'label' => esc_html__( 'Font Family', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_2,
 				'type' => 'selectblanksimple',
 				'name' => 'sidearea_link_font_style',
 				'default_value' => '',
-				'label' => 'Font Style',
-				'options' => qode_startit_get_font_style_array()
+				'label' => esc_html__( 'Font Style', 'startit' ),
+				'options' => startit_qode_get_font_style_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_2,
 				'type' => 'selectblanksimple',
 				'name' => 'sidearea_link_font_weight',
 				'default_value' => '',
-				'label' => 'Font Weight',
-				'options' => qode_startit_get_font_weight_array()
+				'label' => esc_html__( 'Font Weight', 'startit' ),
+				'options' => startit_qode_get_font_weight_array()
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_2,
 				'type' => 'textsimple',
 				'name' => 'sidearea_link_letter_spacing',
 				'default_value' => '',
-				'label' => 'Letter Spacing',
+				'label' => esc_html__( 'Letter Spacing', 'startit' ),
 				'args' => array(
 					'suffix' => 'px'
 				)
 			)
 		);
 
-		$widget_links_row_3 = qode_startit_add_admin_row(
+		$widget_links_row_3 = startit_qode_add_admin_row(
 			array(
 				'parent' => $widget_links_group,
 				'name' => 'widget_links_row_3',
@@ -1026,24 +1026,24 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $widget_links_row_3,
 				'type' => 'colorsimple',
 				'name' => 'sidearea_link_hover_color',
 				'default_value' => '',
-				'label' => 'Hover Color',
+				'label' => esc_html__( 'Hover Color', 'startit' ),
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_panel,
 				'type' => 'yesno',
 				'name' => 'side_area_enable_bottom_border',
 				'default_value' => 'no',
-				'label' => 'Border Bottom on Elements',
-				'description' => 'Enable border bottom on elements in side area',
+				'label' => esc_html__( 'Border Bottom on Elements', 'startit' ),
+				'description' => esc_html__( 'Enable border bottom on elements in side area', 'startit' ),
 				'args' => array(
 					'dependence' => true,
 					'dependence_hide_on_yes' => '',
@@ -1052,7 +1052,7 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		$side_area_bottom_border_container = qode_startit_add_admin_container(
+		$side_area_bottom_border_container = startit_qode_add_admin_container(
 			array(
 				'parent' => $side_area_panel,
 				'name' => 'side_area_bottom_border_container',
@@ -1061,19 +1061,19 @@ if ( ! function_exists('qode_startit_sidearea_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(
+		startit_qode_add_admin_field(
 			array(
 				'parent' => $side_area_bottom_border_container,
 				'type' => 'color',
 				'name' => 'side_area_bottom_border_color',
 				'default_value' => '',
-				'label' => 'Border Bottom Color',
-				'description' => 'Choose color for border bottom on elements in sidearea'
+				'label' => esc_html__( 'Border Bottom Color', 'startit' ),
+				'description' => esc_html__( 'Choose color for border bottom on elements in sidearea', 'startit' )
 			)
 		);
 
 	}
 
-	add_action('qode_startit_options_map', 'qode_startit_sidearea_options_map', 14);
+	add_action('qode_startit_options_map', 'startit_qode_sidearea_options_map', 14);
 
 }

@@ -41,7 +41,7 @@
             });
 
             var filters = $('.qodef-filter-blog-holder');
-            $('.qodef-filter').click(function() {
+            $('.qodef-filter').on('click',function() {
                 var filter = $(this);
                 var selector = filter.attr('data-filter');
                 filters.find('.qodef-active').removeClass('qodef-active');

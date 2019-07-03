@@ -1,23 +1,14 @@
 /*
 Theme Name: Startit
-Theme URI: http://startit.select-themes.com/
+Theme URI: https://startit.select-themes.com/
 Description: A Fresh Startup Business Theme
 Author: Select Themes
-Author URI:  http://themeforest.net/user/select-themes
-Version: 2.4.1
+Author URI:  https://themeforest.net/user/select-themes
+Version: 3.0.4
+Text Domain: startit
 License: GNU General Public License
 License URI: licence/GPL.txt
 
 CSS changes can be made in files in the /css/ folder. This is a placeholder file required by WordPress, so do not delete it.
 
 */
-
-.product {
-	margin-top: 100px !important;
-}
-.single-product .qodef-content {
-	margin-top: 0px !important;
-}
-.qodef-cart-totals .cross-sells {
-  display: none !important;
-}

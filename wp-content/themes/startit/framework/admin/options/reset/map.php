@@ -1,12 +1,12 @@
 <?php
 
-if ( ! function_exists('qode_startit_reset_options_map') ) {
+if ( ! function_exists( 'startit_qode_reset_options_map' ) ) {
 	/**
 	 * Reset options panel
 	 */
-	function qode_startit_reset_options_map() {
+	function startit_qode_reset_options_map() {
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug'  => '_reset_page',
 				'title' => 'Reset',
@@ -14,7 +14,7 @@ if ( ! function_exists('qode_startit_reset_options_map') ) {
 			)
 		);
 
-		$panel_reset = qode_startit_add_admin_panel(
+		$panel_reset = startit_qode_add_admin_panel(
 			array(
 				'page'  => '_reset_page',
 				'name'  => 'panel_reset',
@@ -22,7 +22,7 @@ if ( ! function_exists('qode_startit_reset_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'	=> 'yesno',
 			'name'	=> 'reset_to_defaults',
 			'default_value'	=> 'no',
@@ -33,6 +33,6 @@ if ( ! function_exists('qode_startit_reset_options_map') ) {
 
 	}
 
-	add_action( 'qode_startit_options_map', 'qode_startit_reset_options_map', 100 );
+	add_action( 'qode_startit_options_map', 'startit_qode_reset_options_map', 100 );
 
 }

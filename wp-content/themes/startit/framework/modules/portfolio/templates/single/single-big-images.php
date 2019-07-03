@@ -1,12 +1,12 @@
 <div class="qodef-big-image-holder">
     <?php
-    $media = qode_startit_get_portfolio_single_media();
+    $media = startit_qode_get_portfolio_single_media();
 
     if(is_array($media) && count($media)) : ?>
         <div class="qodef-portfolio-media">
             <?php foreach($media as $single_media) : ?>
                 <div class="qodef-portfolio-single-media">
-                    <?php qode_startit_portfolio_get_media_html($single_media); ?>
+                    <?php startit_qode_portfolio_get_media_html($single_media); ?>
                 </div>
             <?php endforeach; ?>
         </div>

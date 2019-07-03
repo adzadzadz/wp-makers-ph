@@ -223,7 +223,7 @@ class QodeStartit_Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
             </p>
 
             <?php
-            $iconCollections = qode_startit_icon_collections()->getIconCollectionsEmpty();
+            $iconCollections = startit_qode_icon_collections()->getIconCollectionsEmpty();
 
             if(is_array($iconCollections) && count($iconCollections)) {
 
@@ -243,7 +243,7 @@ class QodeStartit_Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
 
                 <?php
                 $icon_data_attr = 'menu_item_icon_'.$item_id;
-                $collection_obj = qode_startit_icon_collections()->getIconCollection($item->icon_pack);
+                $collection_obj = startit_qode_icon_collections()->getIconCollection($item->icon_pack);
 
                 ?>
                 <p class="field-custom description description-thin description-thin-custom qodef-icon-select-holder">
@@ -272,8 +272,8 @@ class QodeStartit_Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
                     <?php esc_html_e( 'Dropdown Featured Icon', 'startit' ); ?><br />
                     <select class="widefat" id="edit-menu-item-featured-icon<?php echo esc_attr($item_id); ?>" data-item-option data-name="menu_item_featured_icon_<?php echo esc_attr($item_id); ?>">
                         <option value="" <?php if($item->featured_icon == ""){echo 'selected="selected"';} ?>></option>
-                        <option value="icon_star" <?php if($item->featured_icon == "icon_star"){echo 'selected="selected"';} ?>>Star</option>
-                        <option value="New" <?php if($item->featured_icon == "New"){echo 'selected="selected"';} ?>>Text (New)</option>
+                        <option value="icon_star" <?php if($item->featured_icon == "icon_star"){echo 'selected="selected"';} ?>><?php esc_html_e( 'Star', 'startit' ); ?></option>
+                        <option value="New" <?php if($item->featured_icon == "New"){echo 'selected="selected"';} ?>><?php esc_html_e( 'Text (New)', 'startit' ); ?></option>
                     </select>
                 </label>
             </p>
@@ -283,7 +283,7 @@ class QodeStartit_Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
                     <select class="widefat" id="edit-menu-item-sidebar<?php echo esc_attr($item_id); ?>" data-item-option data-name="menu_item_sidebar_<?php echo esc_attr($item_id); ?>">
                         <option value="" <?php if($item->sidebar == ""){echo 'selected="selected"';} ?>></option>
                         <?php
-                        $custom_sidebars = qode_startit_get_custom_sidebars();
+                        $custom_sidebars = startit_qode_get_custom_sidebars();
                         foreach ($custom_sidebars as $sidebar_key => $sidebar) { ?>
                             <option value="<?php echo esc_attr($sidebar_key); ?>" <?php if ($item->sidebar == $sidebar_key) { ?> selected="selected" <?php } ?>>
                                 <?php echo esc_html(ucwords( $sidebar )); ?>
@@ -299,7 +299,7 @@ class QodeStartit_Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
             <div class="menu-item-actions description-wide submitbox">
                 <?php if( 'custom' != $item->type && $original_title !== false ) : ?>
                     <p class="link-to-original">
-                        <?php printf( esc_html__('Original: %s', 'startit'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
+                        <?php printf( esc_html__('Original: %s', 'startit'), '<a href="' . esc_url( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
                     </p>
                 <?php endif; ?>
                 <a class="item-delete submitdelete deletion" id="delete-<?php echo esc_attr($item_id); ?>" href="<?php

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $position
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem_Row
+ * @var WPBakeryShortCode_Vc_Gitem_Row $this
  */
 $css = $el_class = $position = '';
 

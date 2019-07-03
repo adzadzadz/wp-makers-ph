@@ -2,7 +2,7 @@
 	<div class="qodef-fullscreen-search-close-container">
 		<div class="qodef-search-close-holder">
 			<a class="qodef-fullscreen-search-close" href="javascript:void(0)">
-				<?php print $search_icon_close; ?>
+				<?php startit_qode_module_part($search_icon_close); ?>
 			</a>
 		</div>
 	</div>

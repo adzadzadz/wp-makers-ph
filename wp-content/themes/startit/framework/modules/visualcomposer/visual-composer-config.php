@@ -15,12 +15,12 @@ if(function_exists('vc_set_shortcodes_templates_dir')) {
 	vc_set_shortcodes_templates_dir( $dir );
 }
 
-if ( ! function_exists('qode_startit_configure_visual_composer') ) {
+if ( ! function_exists( 'startit_qode_configure_visual_composer' ) ) {
 	/**
 	 * Configuration for Visual Composer
 	 * Hooks on vc_after_init action
 	 */
-	function qode_startit_configure_visual_composer() {
+	function startit_qode_configure_visual_composer() {
 
 		/**
 		 * Removing shortcodes
@@ -106,17 +106,17 @@ if ( ! function_exists('qode_startit_configure_visual_composer') ) {
 		}
 	}
 
-	add_action('vc_after_init', 'qode_startit_configure_visual_composer');
+	add_action('vc_after_init', 'startit_qode_configure_visual_composer');
 }
 
-if ( ! function_exists('qode_startit_configure_visual_composer_grid_elemets') ) {
+if ( ! function_exists( 'startit_qode_configure_visual_composer_grid_elemets' ) ) {
 
 	/**
 	 * Configuration for Visual Composer for Grid Elements
 	 * Hooks on vc_after_init action
 	 */
 
-	function qode_startit_configure_visual_composer_grid_elemets() {
+	function startit_qode_configure_visual_composer_grid_elemets() {
 
 		/**
 		 * Remove Grid Elements if grid elements disabled
@@ -164,16 +164,16 @@ if ( ! function_exists('qode_startit_configure_visual_composer_grid_elemets') ) 
 			vc_remove_param('vc_masonry_media_grid', 'arrows_color');
 		}
 	}
-	add_action('vc_after_init', 'qode_startit_configure_visual_composer_grid_elemets');
+	add_action('vc_after_init', 'startit_qode_configure_visual_composer_grid_elemets');
 }
 
 
-if ( ! function_exists('qode_startit_configure_visual_composer_frontend_editor') ) {
+if ( ! function_exists( 'startit_qode_configure_visual_composer_frontend_editor' ) ) {
 	/**
 	 * Configuration for Visual Composer FrontEnd Editor
 	 * Hooks on vc_after_init action
 	 */
-	function qode_startit_configure_visual_composer_frontend_editor() {
+	function startit_qode_configure_visual_composer_frontend_editor() {
 
 		/**
 		 * Remove frontend editor
@@ -183,7 +183,7 @@ if ( ! function_exists('qode_startit_configure_visual_composer_frontend_editor')
 		}
 
 	}
-	add_action('vc_after_init', 'qode_startit_configure_visual_composer_frontend_editor');
+	add_action('vc_after_init', 'startit_qode_configure_visual_composer_frontend_editor');
 }
 
 
@@ -209,12 +209,12 @@ if ( class_exists( 'WPBakeryShortCode' ) ) {
 }
 
 /*** Row ***/
-if ( ! function_exists('qode_startit_vc_row_map') ) {
+if ( ! function_exists( 'startit_qode_vc_row_map' ) ) {
 	/**
 	 * Map VC Row shortcode
 	 * Hooks on vc_after_init action
 	 */
-	function qode_startit_vc_row_map()
+	function startit_qode_vc_row_map()
 	{
 
 		$animations = array(
@@ -229,7 +229,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Row Type',
+			'heading' => esc_html__( 'Row Type', 'startit' ),
 			'param_name' => 'row_type',
 			'value' => array(
 				'Row' => 'row',
@@ -240,7 +240,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Content Width',
+			'heading' => esc_html__( 'Content Width', 'startit' ),
 			'param_name' => 'content_width',
 			'value' => array(
 				'Full Width' => 'full-width',
@@ -251,7 +251,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Header Style',
+			'heading' => esc_html__( 'Header Style', 'startit' ),
 			'param_name' => 'header_style',
 			'value' => array(
 				'Default' => '',
@@ -263,15 +263,15 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Anchor ID',
+			'heading' => esc_html__( 'Anchor ID', 'startit' ),
 			'param_name' => 'anchor',
 			'value' => '',
-			'description' => 'For example "home"'
+			'description' => esc_html__( 'For example "home"', 'startit' )
 		));
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Content Aligment',
+			'heading' => esc_html__( 'Content Aligment', 'startit' ),
 			'param_name' => 'content_aligment',
 			'value' => array(
 				'Left' => 'left',
@@ -283,83 +283,76 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Video Background',
+			'heading' => esc_html__( 'Video Background', 'startit' ),
 			'value' => array(
 				'No' => '',
 				'Yes' => 'show_video'
 			),
 			'param_name' => 'video',
-			'description' => '',
 			'dependency' => Array('element' => 'row_type', 'value' => array('row'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Video Overlay',
+			'heading' => esc_html__( 'Video Overlay', 'startit' ),
 			'value' => array(
 				'No' => '',
 				'Yes' => 'show_video_overlay'
 			),
 			'param_name' => 'video_overlay',
-			'description' => '',
 			'dependency' => Array('element' => 'video', 'value' => array('show_video'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'attach_image',
 			'class' => '',
-			'heading' => 'Video Overlay Image (pattern)',
+			'heading' => esc_html__( 'Video Overlay Image (pattern)', 'startit' ),
 			'value' => '',
 			'param_name' => 'video_overlay_image',
-			'description' => '',
 			'dependency' => Array('element' => 'video_overlay', 'value' => array('show_video_overlay'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Video Background (webm) File URL',
+			'heading' => esc_html__( 'Video Background (webm) File URL', 'startit' ),
 			'value' => '',
 			'param_name' => 'video_webm',
-			'description' => '',
 			'dependency' => Array('element' => 'video', 'value' => array('show_video'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Video Background (mp4) file URL',
+			'heading' => esc_html__( 'Video Background (mp4) file URL', 'startit' ),
 			'value' => '',
 			'param_name' => 'video_mp4',
-			'description' => '',
 			'dependency' => Array('element' => 'video', 'value' => array('show_video'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Video Background (ogv) file URL',
+			'heading' => esc_html__( 'Video Background (ogv) file URL', 'startit' ),
 			'value' => '',
 			'param_name' => 'video_ogv',
-			'description' => '',
 			'dependency' => Array('element' => 'video', 'value' => array('show_video'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'attach_image',
 			'class' => '',
-			'heading' => 'Video Preview Image',
+			'heading' => esc_html__( 'Video Preview Image', 'startit' ),
 			'value' => '',
 			'param_name' => 'video_image',
-			'description' => '',
 			'dependency' => Array('element' => 'video', 'value' => array('show_video'))
 		));
 
 		vc_add_param("vc_row", array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Full Screen Height',
+			'heading' => esc_html__( 'Full Screen Height', 'startit' ),
 			'param_name' => 'full_screen_section_height',
 			'value' => array(
 				'No' => 'no',
@@ -372,7 +365,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Vertically Align Content In Middle',
+			'heading' => esc_html__( 'Vertically Align Content In Middle', 'startit' ),
 			'param_name' => 'vertically_align_content_in_middle',
 			'value' => array(
 				'No' => 'no',
@@ -384,7 +377,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Section Height',
+			'heading' => esc_html__( 'Section Height', 'startit' ),
 			'param_name' => 'section_height',
 			'value' => '',
 			'dependency' => Array('element' => 'full_screen_section_height', 'value' => array('no'))
@@ -393,17 +386,17 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row', array(
 			'type' => 'attach_image',
 			'class' => '',
-			'heading' => 'Parallax Background image',
+			'heading' => esc_html__( 'Parallax Background image', 'startit' ),
 			'value' => '',
 			'param_name' => 'parallax_background_image',
-			'description' => 'Please note that for parallax row type, background image from Design Options will not work so you should to fill this field',
+			'description' => esc_html__( 'Please note that for parallax row type, background image from Design Options will not work so you should to fill this field', 'startit' ),
 			'dependency' => Array('element' => 'row_type', 'value' => array('parallax'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Parallax speed',
+			'heading' => esc_html__( 'Parallax speed', 'startit' ),
 			'param_name' => 'parallax_speed',
 			'value' => '',
 			'dependency' => Array('element' => 'row_type', 'value' => array('parallax'))
@@ -412,20 +405,18 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 
 		vc_add_param('vc_row', array(
 			'type' => 'dropdown',
-			'heading' => 'CSS Animation',
+			'heading' => esc_html__( 'CSS Animation', 'startit' ),
 			'param_name' => 'css_animation',
 			'value' => $animations,
-			'description' => '',
 			'dependency' => Array('element' => 'row_type', 'value' => array('row'))
 		));
 
 		vc_add_param('vc_row', array(
 			'type' => 'textfield',
-			'heading' => 'Transition delay (ms)',
+			'heading' => esc_html__( 'Transition delay (ms)', 'startit' ),
 			'param_name' => 'transition_delay',
 			'admin_label' => true,
 			'value' => '',
-			'description' => '',
 			'dependency' => array('element' => 'css_animation', 'not_empty' => true)
 
 		));
@@ -435,40 +426,37 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param("vc_row", array(
 			"type" => "dropdown",
 			"class" => "",
-			"heading" => "Angled Shape in Background",
+			"heading" => esc_html__( "Angled Shape in Background", 'startit' ),
 			"param_name" => "angled_shape",
 			"value" => array(
 				'No' => 'no',
 				'Yes' => 'yes'
 			),
-			"description" => "",
 			"dependency" => Array('element' => "row_type", 'value' => array('row'))
 		));
 
 		vc_add_param("vc_row", array(
 			"type" => "dropdown",
 			"class" => "",
-			"heading" => "Angled Shape Top",
+			"heading" => esc_html__( "Angled Shape Top", 'startit' ),
 			"param_name" => "angled_shape_top",
 			"value" => array(
 				'Yes' => 'yes',
 				'No' => 'no'
 
 			),
-			"description" => "",
 			"dependency" => Array('element' => "angled_shape", 'value' => array('yes'))
 		));
 
 		vc_add_param("vc_row", array(
 			"type" => "dropdown",
 			"class" => "",
-			"heading" => "Angled Shape Top Direction",
+			"heading" => esc_html__( "Angled Shape Top Direction", 'startit' ),
 			"param_name" => "angled_shape_top_direction",
 			"value" => array(
 				'From Left To Right' => 'from_left_to_right_top',
 				'From Right To Left' => 'from_right_to_left_top'
 			),
-			"description" => "",
 			"dependency" => Array('element' => "angled_shape_top", 'value' => array('yes'))
 		));
 
@@ -476,36 +464,33 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param("vc_row", array(
 			"type" => "dropdown",
 			"class" => "",
-			"heading" => "Angled Shape Bottom",
+			"heading" => esc_html__( "Angled Shape Bottom", 'startit' ),
 			"param_name" => "angled_shape_bottom",
 			"value" => array(
 				'Yes' => 'yes',
 				'No' => 'no'
 
 			),
-			"description" => "",
 			"dependency" => Array('element' => "angled_shape", 'value' => array('yes'))
 		));
 
 		vc_add_param("vc_row", array(
 			"type" => "dropdown",
 			"class" => "",
-			"heading" => "Angled Shape Bottom Direction",
+			"heading" => esc_html__( "Angled Shape Bottom Direction", 'startit' ),
 			"param_name" => "angled_shape_bottom_direction",
 			"value" => array(
 				'From Left To Right' => 'from_left_to_right_bottom',
 				'From Right To Left' => 'from_right_to_left_bottom'
 			),
-			"description" => "",
 			"dependency" => Array('element' => "angled_shape_bottom", 'value' => array('yes'))
 		));
 
 		vc_add_param("vc_row", array(
 			"type" => "colorpicker",
 			"class" => "",
-			"heading" => "Angled Shape Background",
+			"heading" => esc_html__( "Angled Shape Background", 'startit' ),
 			"param_name" => "angled_shape_background",
-			"description" => "",
 			"dependency" => Array('element' => "angled_shape", 'value' => array('yes'))
 		));
 
@@ -515,7 +500,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row_inner', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Row Type',
+			'heading' => esc_html__( 'Row Type', 'startit' ),
 			'param_name' => 'row_type',
 			'value' => array(
 				'Row' => 'row',
@@ -526,7 +511,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row_inner', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Content Width',
+			'heading' => esc_html__( 'Content Width', 'startit' ),
 			'param_name' => 'content_width',
 			'value' => array(
 				'Full Width' => 'full-width',
@@ -537,7 +522,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param("vc_row_inner", array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Full Screen Height',
+			'heading' => esc_html__( 'Full Screen Height', 'startit' ),
 			'param_name' => 'full_screen_section_height',
 			'value' => array(
 				'No' => 'no',
@@ -550,7 +535,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row_inner', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Vertically Align Content In Middle',
+			'heading' => esc_html__( 'Vertically Align Content In Middle', 'startit' ),
 			'param_name' => 'vertically_align_content_in_middle',
 			'value' => array(
 				'No' => 'no',
@@ -562,7 +547,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row_inner', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Section Height',
+			'heading' => esc_html__( 'Section Height', 'startit' ),
 			'param_name' => 'section_height',
 			'value' => '',
 			'dependency' => Array('element' => 'full_screen_section_height', 'value' => array('no'))
@@ -571,17 +556,17 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row_inner', array(
 			'type' => 'attach_image',
 			'class' => '',
-			'heading' => 'Parallax Background image',
+			'heading' => esc_html__( 'Parallax Background image', 'startit' ),
 			'value' => '',
 			'param_name' => 'parallax_background_image',
-			'description' => 'Please note that for parallax row type, background image from Design Options will not work so you should to fill this field',
+			'description' => esc_html__( 'Please note that for parallax row type, background image from Design Options will not work so you should to fill this field', 'startit' ),
 			'dependency' => Array('element' => 'row_type', 'value' => array('parallax'))
 		));
 
 		vc_add_param('vc_row_inner', array(
 			'type' => 'textfield',
 			'class' => '',
-			'heading' => 'Parallax speed',
+			'heading' => esc_html__( 'Parallax speed', 'startit' ),
 			'param_name' => 'parallax_speed',
 			'value' => '',
 			'dependency' => Array('element' => 'row_type', 'value' => array('parallax'))
@@ -589,7 +574,7 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 		vc_add_param('vc_row_inner', array(
 			'type' => 'dropdown',
 			'class' => '',
-			'heading' => 'Content Aligment',
+			'heading' => esc_html__( 'Content Aligment', 'startit' ),
 			'param_name' => 'content_aligment',
 			'value' => array(
 				'Left' => 'left',
@@ -600,31 +585,29 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
 
 		vc_add_param('vc_row_inner', array(
 			'type' => 'dropdown',
-			'heading' => 'CSS Animation',
+			'heading' => esc_html__( 'CSS Animation', 'startit' ),
 			'param_name' => 'css_animation',
 			'admin_label' => true,
 			'value' => $animations,
-			'description' => '',
 			'dependency' => Array('element' => 'row_type', 'value' => array('row'))
 
 		));
 
 		vc_add_param('vc_row_inner', array(
 			'type' => 'textfield',
-			'heading' => 'Transition delay (ms)',
+			'heading' => esc_html__( 'Transition delay (ms)', 'startit' ),
 			'param_name' => 'transition_delay',
 			'admin_label' => true,
 			'value' => '',
-			'description' => '',
 			'dependency' => Array('element' => 'row_type', 'value' => array('row'))
 
 		));
 
-        if(qode_startit_is_live_search_installed()) {
+        if(startit_qode_is_live_search_installed()) {
             vc_add_param('vc_wp_search', array(
                 'type' => 'dropdown',
                 'class' => '',
-                'heading' => 'Enable Live Search',
+                'heading' => esc_html__( 'Enable Live Search', 'startit' ),
                 'param_name' => 'enable_live_search',
                 'value' => array(
                     'Default' => '',
@@ -635,5 +618,5 @@ if ( ! function_exists('qode_startit_vc_row_map') ) {
         }
 	}
 
-	add_action('vc_after_init', 'qode_startit_vc_row_map');
+	add_action('vc_after_init', 'startit_qode_vc_row_map');
 }

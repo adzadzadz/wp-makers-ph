@@ -2,11 +2,14 @@
 	<div class="qodef-ptf-list-paging">
 		<span class="qodef-ptf-list-load-more">
 			<?php 
-				echo qode_startit_get_button_html(array(
+				echo startit_qode_get_button_html(array(
 					'link' => 'javascript: void(0)',
 					'text' => 'Show more'
 				));
 			?>
 		</span>
 	</div>
-<?php }
+	<?php
+	$unique_id = rand( 1000, 9999 );
+	wp_nonce_field( 'qodef_ptf_load_more_nonce_' . $unique_id, 'qodef_ptf_load_more_nonce_' . $unique_id );
+}

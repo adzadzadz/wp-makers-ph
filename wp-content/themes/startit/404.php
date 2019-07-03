@@ -7,16 +7,16 @@
 		<div class="qodef-container-inner qodef-404-page">
 			<div class="qodef-page-not-found">
 				<h2>
-					<?php if(qode_startit_options()->getOptionValue('404_title')){
-						echo esc_html(qode_startit_options()->getOptionValue('404_title'));
+					<?php if(startit_qode_options()->getOptionValue('404_title')){
+						echo esc_html(startit_qode_options()->getOptionValue('404_title'));
 					}
 					else{
-						esc_html_e('Page you are looking is not found', 'startit');
+						esc_html_e('Page you are looking for is not found', 'startit');
 					} ?>
 				</h2>
 				<h4>
-					<?php if(qode_startit_options()->getOptionValue('404_text')){
-						echo esc_html(qode_startit_options()->getOptionValue('404_text'));
+					<?php if(startit_qode_options()->getOptionValue('404_text')){
+						echo esc_html(startit_qode_options()->getOptionValue('404_text'));
 					}
 					else{
 						esc_html_e('The page you are looking for does not exist. It may have been moved, or removed altogether. Perhaps you can return back to the site\'s homepage and see if you can find what you are looking for.', 'startit');
@@ -24,15 +24,15 @@
 				</h4>
 				<?php
 					$params = array();
-					if (qode_startit_options()->getOptionValue('404_back_to_home')){
-						$params['text'] = qode_startit_options()->getOptionValue('404_back_to_home');
+					if (startit_qode_options()->getOptionValue('404_back_to_home')){
+						$params['text'] = startit_qode_options()->getOptionValue('404_back_to_home');
 					}
 					else{
 						$params['text'] = "Back to Home Page";
 					}
 					$params['link'] = esc_url(home_url('/'));
 					$params['target'] = '_self';
-				echo qode_startit_execute_shortcode('qodef_button',$params);?>
+				echo startit_qode_execute_shortcode('qodef_button',$params);?>
 			</div>
 		</div>
 		<?php do_action('qode_startit_before_container_close'); ?>

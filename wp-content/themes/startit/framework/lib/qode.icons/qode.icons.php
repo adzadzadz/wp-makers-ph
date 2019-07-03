@@ -359,7 +359,7 @@ class QodeStartitIconCollections {
     public function enqueueStyles() {
         if(is_array($this->iconCollections) && count($this->iconCollections)) {
             foreach($this->iconCollections as $collection_key => $collection_obj) {
-                wp_enqueue_style('qodef_'.$collection_key, $collection_obj->styleUrl);
+	            wp_enqueue_style( 'startit-qode-' . str_replace( '_', '-', $collection_key ), $collection_obj->styleUrl );
             }
         }
     }
@@ -373,7 +373,7 @@ class QodeStartitIconCollections {
             if($return) {
                 return $iconsObject->getSearchIcon();
             } else {
-                print $iconsObject->getSearchIcon();
+	            startit_qode_module_part($iconsObject->getSearchIcon());
             }
 
         }
@@ -388,7 +388,7 @@ class QodeStartitIconCollections {
             if($return) {
                 return $iconsObject->getSearchClose();
             } else {
-                print $iconsObject->getSearchClose();
+	            startit_qode_module_part($iconsObject->getSearchClose());
             }
 
         }
@@ -400,7 +400,7 @@ class QodeStartitIconCollections {
         if($this->hasIconCollection($iconPack)) {
 
             $iconsObject = $this->getIconCollection($iconPack);
-            print $iconsObject->getSearchIconValue();
+	        startit_qode_module_part($iconsObject->getSearchIconValue());
 
         }
 
@@ -411,7 +411,7 @@ class QodeStartitIconCollections {
         if($this->hasIconCollection($iconPack)) {
 
             $iconsObject = $this->getIconCollection($iconPack);
-            print $iconsObject->getMenuSideIcon();
+	        startit_qode_module_part($iconsObject->getMenuSideIcon());
 
         }
 
@@ -422,7 +422,7 @@ class QodeStartitIconCollections {
         if($this->hasIconCollection($iconPack)) {
 
             $iconsObject = $this->getIconCollection($iconPack);
-            print $iconsObject->getBackToTopIcon();
+	        startit_qode_module_part($iconsObject->getBackToTopIcon());
 
         }
 
@@ -438,7 +438,7 @@ class QodeStartitIconCollections {
             if($return) {
                 return $iconsObject->getMobileMenuIcon();
             } else {
-                print $iconsObject->getMobileMenuIcon();
+	            startit_qode_module_part($iconsObject->getMobileMenuIcon());
             }
         }
 
@@ -452,7 +452,7 @@ class QodeStartitIconCollections {
             if($return == true) {
                 return $iconsObject->getQuoteIcon();
             } else {
-                print $iconsObject->getQuoteIcon();
+	            startit_qode_module_part($iconsObject->getQuoteIcon());
             }
 
         }

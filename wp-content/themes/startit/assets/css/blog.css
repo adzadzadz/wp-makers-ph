@@ -939,4 +939,10 @@
   margin-top: 10px;
 }
 
+.page-template-blog-gallery-php 
+.qodef-blog-holder article .qodef-post-image img {
+    max-width: none;
+    width: auto;
+}
+
 /*# sourceMappingURL=blog.css.map */

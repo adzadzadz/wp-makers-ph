@@ -1,10 +1,12 @@
 <?php
 /**
- * @package WPSEO\Admin|Google_Search_Console
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Admin\Google_Search_Console
  */
 
 /**
- * Class WPSEO_GSC_Platform_Tabs
+ * Class WPSEO_GSC_Platform_Tabs.
  */
 class WPSEO_GSC_Platform_Tabs {
 
@@ -14,7 +16,7 @@ class WPSEO_GSC_Platform_Tabs {
 	private $current_tab;
 
 	/**
-	 * Return the tabs as a string
+	 * Return the tabs as a string.
 	 *
 	 * @return string
 	 */
@@ -23,7 +25,7 @@ class WPSEO_GSC_Platform_Tabs {
 	}
 
 	/**
-	 * Getting the current_tab
+	 * Getting the current_tab.
 	 *
 	 * @return string
 	 */
@@ -32,7 +34,7 @@ class WPSEO_GSC_Platform_Tabs {
 	}
 
 	/**
-	 * Loops through the array with all the platforms and convert it into an array
+	 * Loops through the array with all the platforms and convert it into an array.
 	 *
 	 * @return string
 	 */
@@ -63,7 +65,7 @@ class WPSEO_GSC_Platform_Tabs {
 	}
 
 	/**
-	 * Setting the current tab
+	 * Setting the current tab.
 	 *
 	 * @param array $platforms Set of platforms (desktop, mobile, feature phone).
 	 */
@@ -76,7 +78,7 @@ class WPSEO_GSC_Platform_Tabs {
 	}
 
 	/**
-	 * Parses the tab
+	 * Parses the tab.
 	 *
 	 * @param string $platform_target Platform (desktop, mobile, feature phone).
 	 * @param string $platform_value  Link anchor.

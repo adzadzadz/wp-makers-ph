@@ -1,7 +1,7 @@
 <?php
 
-if(!function_exists('qode_startit_register_full_screen_menu_nav')) {
-    function qode_startit_register_full_screen_menu_nav() {
+if(!function_exists( 'startit_qode_register_full_screen_menu_nav' )) {
+    function startit_qode_register_full_screen_menu_nav() {
 	    register_nav_menus(
 		    array(
 			    'popup-navigation' => esc_html__('Fullscreen Navigation', 'startit')
@@ -9,17 +9,17 @@ if(!function_exists('qode_startit_register_full_screen_menu_nav')) {
 	    );
     }
 
-	add_action('after_setup_theme', 'qode_startit_register_full_screen_menu_nav');
+	add_action('after_setup_theme', 'startit_qode_register_full_screen_menu_nav');
 }
 
-if ( !function_exists('qode_startit_register_full_screen_menu_sidebars') ) {
+if ( !function_exists( 'startit_qode_register_full_screen_menu_sidebars' ) ) {
 
-	function qode_startit_register_full_screen_menu_sidebars() {
+	function startit_qode_register_full_screen_menu_sidebars() {
 
 		register_sidebar(array(
-			'name' => 'Fullscreen Menu Top',
+			'name' => esc_html__('Fullscreen Menu Top','startit'),
 			'id' => 'fullscreen_menu_above',
-			'description' => 'This widget area is rendered above fullscreen menu',
+			'description' => esc_html__('This widget area is rendered above fullscreen menu','startit'),
 			'before_widget' => '<div class="%2$s qodef-fullscreen-menu-above-widget">',
 			'after_widget' => '</div>',
 			'before_title' => '<h4 class="qodef-fullscreen-widget-title">',
@@ -27,9 +27,9 @@ if ( !function_exists('qode_startit_register_full_screen_menu_sidebars') ) {
 		));
 
 		register_sidebar(array(
-			'name' => 'Fullscreen Menu Bottom',
+			'name' => esc_html__('Fullscreen Menu Bottom','startit'),
 			'id' => 'fullscreen_menu_below',
-			'description' => 'This widget area is rendered below fullscreen menu',
+			'description' => esc_html__('This widget area is rendered below fullscreen menu','startit'),
 			'before_widget' => '<div class="%2$s qodef-fullscreen-menu-below-widget">',
 			'after_widget' => '</div>',
 			'before_title' => '<h4 class="qodef-fullscreen-widget-title">',
@@ -38,11 +38,11 @@ if ( !function_exists('qode_startit_register_full_screen_menu_sidebars') ) {
 
 	}
 
-	add_action('widgets_init', 'qode_startit_register_full_screen_menu_sidebars');
+	add_action('widgets_init', 'startit_qode_register_full_screen_menu_sidebars');
 
 }
 
-if(!function_exists('qode_startit_fullscreen_menu_body_class')) {
+if(!function_exists( 'startit_qode_fullscreen_menu_body_class' )) {
 	/**
 	 * Function that adds body classes for different full screen menu types
 	 *
@@ -50,11 +50,11 @@ if(!function_exists('qode_startit_fullscreen_menu_body_class')) {
 	 *
 	 * @return array modified array of classes
 	 */
-	function qode_startit_fullscreen_menu_body_class($classes) {
+	function startit_qode_fullscreen_menu_body_class($classes) {
 
-		if ( is_active_widget( false, false, 'qodef_full_screen_menu_opener' )  || qode_startit_get_meta_field_intersect('header_type', qode_startit_get_page_id()) == 'header-full-screen'  ) {
+		if ( is_active_widget( false, false, 'qodef_full_screen_menu_opener' ) || startit_qode_get_meta_field_intersect('header_type', startit_qode_get_page_id()) == 'header-full-screen'  ) {
 
-			$classes[] = 'qodef-' . qode_startit_options()->getOptionValue('fullscreen_menu_animation_style');
+			$classes[] = 'qodef-' . startit_qode_options()->getOptionValue('fullscreen_menu_animation_style');
 
 		}
 
@@ -62,32 +62,32 @@ if(!function_exists('qode_startit_fullscreen_menu_body_class')) {
 		return $classes;
 	}
 
-	add_filter('body_class', 'qode_startit_fullscreen_menu_body_class');
+	add_filter('body_class', 'startit_qode_fullscreen_menu_body_class');
 }
 
-if ( !function_exists('qode_startit_get_full_screen_menu') ) {
+if ( !function_exists( 'startit_qode_get_full_screen_menu' ) ) {
 	/**
 	 * Loads fullscreen menu HTML template
 	 */
-	function qode_startit_get_full_screen_menu() {
+	function startit_qode_get_full_screen_menu() {
 
-		if ( is_active_widget( false, false, 'qodef_full_screen_menu_opener' )  || qode_startit_get_meta_field_intersect('header_type', qode_startit_get_page_id()) == 'header-full-screen' ) {
+		if ( is_active_widget( false, false, 'qodef_full_screen_menu_opener' ) || startit_qode_get_meta_field_intersect('header_type', startit_qode_get_page_id()) == 'header-full-screen' ) {
 
 			$parameters = array(
-				'fullscreen_menu_in_grid' => qode_startit_options()->getOptionValue('fullscreen_in_grid') === 'yes' ? true : false
+				'fullscreen_menu_in_grid' => startit_qode_options()->getOptionValue('fullscreen_in_grid') === 'yes' ? true : false
 			);
-			qode_startit_get_module_template_part('templates/fullscreen-menu', 'fullscreenmenu', '', $parameters);
+			startit_qode_get_module_template_part('templates/fullscreen-menu', 'fullscreenmenu', '', $parameters);
 		}
 	}
 }
 
-if ( !function_exists('qode_startit_get_full_screen_menu_navigation') ) {
+if ( !function_exists( 'startit_qode_get_full_screen_menu_navigation' ) ) {
 	/**
 	 * Loads fullscreen menu navigation HTML template
 	 */
-	function qode_startit_get_full_screen_menu_navigation() {
+	function startit_qode_get_full_screen_menu_navigation() {
 
-		qode_startit_get_module_template_part('templates/parts/navigation', 'fullscreenmenu');
+		startit_qode_get_module_template_part('templates/parts/navigation', 'fullscreenmenu');
 
 	}
 

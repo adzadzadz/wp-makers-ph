@@ -1,13 +1,13 @@
 <?php
 
-if ( ! function_exists('qode_startit_parallax_options_map') ) {
+if ( ! function_exists( 'startit_qode_parallax_options_map' ) ) {
 	/**
 	 * Parallax options page
 	 */
-	function qode_startit_parallax_options_map()
+	function startit_qode_parallax_options_map()
 	{
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug' => '_parallax_page',
 				'title' => 'Parallax',
@@ -15,7 +15,7 @@ if ( ! function_exists('qode_startit_parallax_options_map') ) {
 			)
 		);
 
-		$panel_parallax = qode_startit_add_admin_panel(
+		$panel_parallax = startit_qode_add_admin_panel(
 			array(
 				'page'  => '_parallax_page',
 				'name'  => 'panel_parallax',
@@ -23,7 +23,7 @@ if ( ! function_exists('qode_startit_parallax_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'onoff',
 			'name'			=> 'parallax_on_off',
 			'default_value'	=> 'off',
@@ -32,7 +32,7 @@ if ( ! function_exists('qode_startit_parallax_options_map') ) {
 			'parent'		=> $panel_parallax
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'text',
 			'name'			=> 'parallax_min_height',
 			'default_value'	=> '400',
@@ -47,6 +47,6 @@ if ( ! function_exists('qode_startit_parallax_options_map') ) {
 
 	}
 
-	add_action( 'qode_startit_options_map', 'qode_startit_parallax_options_map', 18);
+	add_action( 'qode_startit_options_map', 'startit_qode_parallax_options_map', 18);
 
 }

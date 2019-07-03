@@ -1,5 +1,5 @@
 <div class="qodef-page-header page-header clearfix">
-    <img src="<?php echo esc_url(qode_startit_get_skin_uri() . '/assets/img/logo.png'); ?>" alt="qode_logo" class="qodef-header-logo pull-left"/>
+    <img src="<?php echo esc_url( startit_qode_get_skin_uri() . '/assets/img/logo.png'); ?>" alt="qode_logo" class="qodef-header-logo pull-left"/>
     <?php $current_theme = wp_get_theme(); ?>
     <h2 class="qodef-page-title pull-left">
         <?php echo esc_html($current_theme->get('Name')); ?>

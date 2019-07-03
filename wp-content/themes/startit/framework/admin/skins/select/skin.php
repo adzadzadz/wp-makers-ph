@@ -5,21 +5,21 @@ if(!defined('ABSPATH')) exit;
 
 class SelectSkin extends QodeStartitSkinAbstract {
     /**
-     * Skin constructor. Hooks to qode_startit_admin_scripts_init and qode_startit_enqueue_admin_styles
+     * Skin constructor. Hooks to startit_qode_admin_scripts_init and startit_qode_enqueue_admin_styles
      */
 	public function __construct() {
 		$this->skinName = 'select';
 
         //hook to admin register scripts
-        add_action('qode_startit_admin_scripts_init', array($this, 'registerStyles'));
-        add_action('qode_startit_admin_scripts_init', array($this, 'registerScripts'));
+        add_action('startit_qode_admin_scripts_init', array($this, 'registerStyles'));
+        add_action('startit_qode_admin_scripts_init', array($this, 'registerScripts'));
 
         //hook to admin enqueue scripts
-        add_action('qode_startit_enqueue_admin_styles', array($this, 'enqueueStyles'));
-        add_action('qode_startit_enqueue_admin_scripts', array($this, 'enqueueScripts'));
+        add_action('startit_qode_enqueue_admin_styles', array($this, 'enqueueStyles'));
+        add_action('startit_qode_enqueue_admin_scripts', array($this, 'enqueueScripts'));
 
-        add_action('qode_startit_enqueue_meta_box_styles', array($this, 'enqueueStyles'));
-        add_action('qode_startit_enqueue_meta_box_scripts', array($this, 'enqueueScripts'));
+        add_action('startit_qode_enqueue_meta_box_styles', array($this, 'enqueueStyles'));
+        add_action('startit_qode_enqueue_meta_box_scripts', array($this, 'enqueueScripts'));
 
 		add_action('before_wp_tiny_mce', array($this, 'setShortcodeJSParams'));
 
@@ -37,7 +37,7 @@ class SelectSkin extends QodeStartitSkinAbstract {
         $this->scripts['qodef-bootstrap-select'] = 'assets/js/qodef-ui/qodef-bootstrap-select.min.js';
 
         foreach ($this->scripts as $scriptHandle => $scriptPath) {
-            qode_startit_register_skin_script($scriptHandle, $scriptPath);
+            startit_qode_register_skin_script($scriptHandle, $scriptPath);
         }
     }
 
@@ -55,7 +55,7 @@ class SelectSkin extends QodeStartitSkinAbstract {
         $this->styles['font-awesome-admin'] = 'assets/css/font-awesome/css/font-awesome.min.css';
 
         foreach ($this->styles as $styleHandle => $stylePath) {
-            qode_startit_register_skin_style($styleHandle, $stylePath);
+            startit_qode_register_skin_style($styleHandle, $stylePath);
         }
 
     }
@@ -96,8 +96,8 @@ class SelectSkin extends QodeStartitSkinAbstract {
      * @see SelectSkin::getPageContent()
      */
 	public function renderOptions() {
-        global $qode_startit_Framework;
-        $tab    = qode_startit_get_admin_tab();
+        $qode_startit_Framework = startit_qode_return_framework();
+        $tab    = startit_qode_get_admin_tab();
         $active_page = $qode_startit_Framework->qodeOptions->getAdminPageFromSlug($tab);
         if ($active_page == null) return;
     ?>

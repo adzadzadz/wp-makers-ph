@@ -1,10 +1,10 @@
 <?php
 
-if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
+if ( ! function_exists( 'startit_qode_content_bottom_options_map' ) ) {
 
-	function qode_startit_content_bottom_options_map() {
+	function startit_qode_content_bottom_options_map() {
 
-		qode_startit_add_admin_page(
+		startit_qode_add_admin_page(
 			array(
 				'slug'  => '_content_bottom_page',
 				'title' => 'Content Bottom',
@@ -12,7 +12,7 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 			)
 		);
 
-		$panel_content_bottom = qode_startit_add_admin_panel(
+		$panel_content_bottom = startit_qode_add_admin_panel(
 			array(
 				'page'  => '_content_bottom_page',
 				'name'  => 'panel_content_bottom',
@@ -20,7 +20,7 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 			)
 		);
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'name'          => 'enable_content_bottom_area',
 			'type'          => 'yesno',
 			'default_value' => 'no',
@@ -34,7 +34,7 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 			'parent'		=> $panel_content_bottom
 		));
 
-		$enable_content_bottom_area_container = qode_startit_add_admin_container(
+		$enable_content_bottom_area_container = startit_qode_add_admin_container(
 			array(
 				'parent'            => $panel_content_bottom,
 				'name'              => 'enable_content_bottom_area_container',
@@ -43,9 +43,9 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 			)
 		);
 
-		$custom_sidebars = qode_startit_get_custom_sidebars();
+		$custom_sidebars = startit_qode_get_custom_sidebars();
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'selectblank',
 			'name'			=> 'content_bottom_sidebar_custom_display',
 			'default_value'	=> '',
@@ -55,7 +55,7 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 			'parent'		=> $enable_content_bottom_area_container
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'yesno',
 			'name'			=> 'content_bottom_in_grid',
 			'default_value'	=> 'yes',
@@ -64,7 +64,7 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 			'parent'		=> $enable_content_bottom_area_container
 		));
 
-		qode_startit_add_admin_field(array(
+		startit_qode_add_admin_field(array(
 			'type'			=> 'color',
 			'name'			=> 'content_bottom_background_color',
 			'default_value'	=> '',
@@ -75,6 +75,6 @@ if ( ! function_exists('qode_startit_content_bottom_options_map') ) {
 
 	}
 
-	add_action( 'qode_startit_options_map', 'qode_startit_content_bottom_options_map', 19);
+	add_action( 'qode_startit_options_map', 'startit_qode_content_bottom_options_map', 19);
 
 }

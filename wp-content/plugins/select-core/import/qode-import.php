@@ -119,13 +119,125 @@ class QodeStartitImport {
         }
     }
 
+	public function update_meta_fields_after_import( $folder ) {
+
+		global $wpdb;
+
+
+
+		$url         = home_url( '/' );
+
+		$demo_urls   = $this->import_get_demo_urls( $folder );
+
+
+
+		foreach ( $demo_urls as $demo_url ) {
+
+			$sql_query   = "SELECT meta_id, meta_value FROM wp_postmeta WHERE meta_key LIKE 'qode%' AND meta_value LIKE '" . esc_url( $demo_url ) . "%';";
+
+			$meta_values = $wpdb->get_results( $sql_query );
+
+
+
+			if ( ! empty( $meta_values ) ) {
+
+				foreach ( $meta_values as $meta_value ) {
+
+					$new_value = $this->recalc_serialized_lengths( str_replace( $demo_url, $url, $meta_value->meta_value ) );
+
+
+
+					$wpdb->update( $wpdb->postmeta,    array( 'meta_value' => $new_value ), array( 'meta_id' => $meta_value->meta_id )    );
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	public function update_options_after_import( $folder ) {
+
+		$url       = home_url( '/' );
+
+		$demo_urls = $this->import_get_demo_urls( $folder );
+
+
+
+		foreach ( $demo_urls as $demo_url ) {
+
+			$global_options    = get_option( 'qode_options_startit' );
+
+			$new_global_values = str_replace( $demo_url, $url, $global_options );
+
+
+
+			update_option( 'qode_options_startit', $new_global_values );
+
+		}
+
+	}
+
+
+
+	public function import_get_demo_urls( $folder ) {
+
+		$demo_urls   = array();
+
+		$domain_urls = array();
+
+
+
+		$domain_urls[] = str_replace( array( '/', 'new' ), array( '', '' ), $folder ) . '.select-themes.com/';
+
+		$domain_urls[] = 'demo.select-themes.com/' . $folder;
+
+
+
+		foreach ( $domain_urls as $domain_url ) {
+
+			$demo_urls[] = ! empty( $domain_url ) ? 'http://' . $domain_url : '';
+
+			$demo_urls[] = ! empty( $domain_url ) ? 'https://' . $domain_url : '';
+
+		}
+
+
+
+		return $demo_urls;
+
+	}
+
+
+
+	public function recalc_serialized_lengths( $sObject ) {
+
+		$ret = preg_replace_callback( '!s:(\d+):"(.*?)";!', 'recalc_serialized_lengths_callback', $sObject );
+
+
+
+		return $ret;
+
+	}
+
+
+
+	public function recalc_serialized_lengths_callback( $matches ) {
+
+		return "s:" . strlen( $matches[2] ) . ":\"$matches[2]\";";
+
+	}
+
     public function file_options($file){
         $file_content = "";
         $file_for_import = get_template_directory() . '/includes/import/files/' . $file;
         /*if ( file_exists($file_for_import) ) {
             $file_content = $this->qode_file_contents($file_for_import);
         } else {
-            $this->message = esc_html__("File doesn't exist", "startit");
+            $this->message = esc_html__("File doesn't exist", "startit-core");
         }*/
         $file_content = $this->qode_file_contents($file);
         if ($file_content) {
@@ -158,8 +270,8 @@ class QodeStartitImport {
 				array($qode_startit_Framework->getSkin(), 'renderImport')
 			);
 	
-	        add_action('admin_print_scripts-'.$this->pagehook, 'qode_startit_enqueue_admin_scripts');
-	        add_action('admin_print_styles-'.$this->pagehook, 'qode_startit_enqueue_admin_styles');
+	        add_action('admin_print_scripts-'.$this->pagehook, 'startit_qode_enqueue_admin_scripts');
+	        add_action('admin_print_styles-'.$this->pagehook, 'startit_qode_enqueue_admin_styles');
 	        //$this->pagehook = add_menu_page('Qode Import', 'Qode Import', 'manage_options', 'qode_options_import_page', array(&$this, 'qode_generate_import_page'),'dashicons-download');
 	    }
     }
@@ -189,6 +301,7 @@ if(!function_exists('qode_startit_dataImport')){
             $folder = $_POST['example']."/";
 
         $qode_startit_import_object->import_content($folder.$_POST['xml']);
+	    $qode_startit_import_object->update_meta_fields_after_import($folder);
 
         die();
     }
@@ -221,6 +334,7 @@ if(!function_exists('qode_startit_optionsImport')){
             $folder = $_POST['example']."/";
 
         $qode_startit_import_object->import_options($folder.'options.txt');
+	    $qode_startit_import_object->update_meta_fields_after_import($folder);
 
         die();
     }
@@ -240,6 +354,11 @@ if(!function_exists('qode_startit_otherImport')){
         $qode_startit_import_object->import_widgets($folder.'widgets.txt',$folder.'custom_sidebars.txt');
         $qode_startit_import_object->import_menus($folder.'menus.txt');
         $qode_startit_import_object->import_settings_pages($folder.'settingpages.txt');
+
+
+	    $qode_startit_import_object->update_meta_fields_after_import( $folder );
+
+	    $qode_startit_import_object->update_options_after_import( $folder );
 
         die();
     }

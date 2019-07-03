@@ -1,4 +1,4 @@
-<?php if(qode_startit_options()->getOptionValue('portfolio_single_hide_date') !== 'yes') : ?>
+<?php if( startit_qode_options()->getOptionValue('portfolio_single_hide_date') !== 'yes') : ?>
 
     <div class="qodef-portfolio-info-item qodef-portfolio-date">
         <h6><?php esc_html_e('Date', 'startit'); ?></h6>

@@ -10,17 +10,17 @@
                 <div class="qodef-position-left">
                     <div class="qodef-position-left-inner">
                         <?php if(!$hide_logo) {
-                            qode_startit_get_logo('sticky');
+                            startit_qode_get_logo('sticky');
                         } ?>
                     </div>
                 </div>
                 <div class="qodef-position-right">
                     <div class="qodef-position-right-inner">
 
-                        <?php if(qode_startit_get_meta_field_intersect('header_type')=='header-full-screen'){
-                            qode_startit_get_full_screen_opener();
+                        <?php if( startit_qode_get_meta_field_intersect('header_type') == 'header-full-screen'){
+                            startit_qode_get_full_screen_opener();
                         } else {
-                            qode_startit_get_sticky_menu('qodef-sticky-nav');
+                            startit_qode_get_sticky_menu('qodef-sticky-nav');
                             if(is_active_sidebar('qodef-sticky-right')) {
                                 dynamic_sidebar('qodef-sticky-right');
                             }

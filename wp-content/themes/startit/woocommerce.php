@@ -5,11 +5,11 @@ Template Name: WooCommerce
 ?>
 <?php
 
-global $woocommerce;
+$woocommerce = startit_qode_return_woocommerce();
 
 $id = get_option('woocommerce_shop_page_id');
 $shop = get_post($id);
-$sidebar = qode_startit_sidebar_layout();
+$sidebar = startit_qode_sidebar_layout();
 
 if(get_post_meta($id, 'qode_page_background_color', true) != ''){
 	$background_color = 'background-color: '.esc_attr(get_post_meta($id, 'qode_page_background_color', true));
@@ -26,14 +26,6 @@ if(get_post_meta($id, 'qode_content-top-padding', true) != '') {
 	}
 }
 
-if ( get_query_var('paged') ) {
-	$paged = get_query_var('paged');
-} elseif ( get_query_var('page') ) {
-	$paged = get_query_var('page');
-} else {
-	$paged = 1;
-}
-
 get_header();
 
 get_template_part( 'title' );
@@ -41,19 +33,19 @@ get_template_part('slider');
 
 $full_width = false;
 
-if ( qode_startit_options()->getOptionValue('qodef_woo_products_list_full_width') == 'yes' && !is_singular('product') ) {
+if ( startit_qode_options()->getOptionValue('qodef_woo_products_list_full_width') == 'yes' && !is_singular('product') ) {
 	$full_width = true;
 }
 
 if ( $full_width ) { ?>
-	<div class="qodef-full-width" <?php qode_startit_inline_style($background_color); ?>>
+	<div class="qodef-full-width" <?php startit_qode_inline_style($background_color); ?>>
 <?php } else { ?>
-	<div class="qodef-container" <?php qode_startit_inline_style($background_color); ?>>
+	<div class="qodef-container" <?php startit_qode_inline_style($background_color); ?>>
 <?php }
 		if ( $full_width ) { ?>
-			<div class="qodef-full-width-inner" <?php qode_startit_inline_style($content_style); ?>>
+			<div class="qodef-full-width-inner" <?php startit_qode_inline_style($content_style); ?>>
 		<?php } else { ?>
-			<div class="qodef-container-inner clearfix" <?php qode_startit_inline_style($content_style); ?>>
+			<div class="qodef-container-inner clearfix" <?php startit_qode_inline_style($content_style); ?>>
 		<?php }
 
 			//Woocommerce content
@@ -65,7 +57,7 @@ if ( $full_width ) { ?>
 						<div class="qodef-two-columns-66-33 grid2 qodef-content-has-sidebar qodef-woocommerce-with-sidebar clearfix">
 							<div class="qodef-column1">
 								<div class="qodef-column-inner">
-									<?php qode_startit_woocommerce_content(); ?>
+									<?php startit_qode_woocommerce_content(); ?>
 								</div>
 							</div>
 							<div class="qodef-column2">
@@ -78,7 +70,7 @@ if ( $full_width ) { ?>
 						<div class="qodef-two-columns-75-25 grid2 qodef-content-has-sidebar qodef-woocommerce-with-sidebar clearfix">
 							<div class="qodef-column1 qodef-content-left-from-sidebar">
 								<div class="qodef-column-inner">
-									<?php qode_startit_woocommerce_content(); ?>
+									<?php startit_qode_woocommerce_content(); ?>
 								</div>
 							</div>
 							<div class="qodef-column2">
@@ -94,7 +86,7 @@ if ( $full_width ) { ?>
 							</div>
 							<div class="qodef-column2">
 								<div class="qodef-column-inner">
-									<?php qode_startit_woocommerce_content(); ?>
+									<?php startit_qode_woocommerce_content(); ?>
 								</div>
 							</div>
 						</div>
@@ -107,18 +99,18 @@ if ( $full_width ) { ?>
 							</div>
 							<div class="qodef-column2 qodef-content-right-from-sidebar">
 								<div class="qodef-column-inner">
-									<?php qode_startit_woocommerce_content(); ?>
+									<?php startit_qode_woocommerce_content(); ?>
 								</div>
 							</div>
 						</div>
 					<?php
 						break;
 					default:
-						qode_startit_woocommerce_content();
+						startit_qode_woocommerce_content();
 				}
 
 			} else {
-				qode_startit_woocommerce_content();
+				startit_qode_woocommerce_content();
 			} ?>
 
 			</div>

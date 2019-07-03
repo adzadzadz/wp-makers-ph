@@ -281,7 +281,7 @@ class WC_Google_Analytics extends WC_Integration {
 		global $wp;
 		$display_ecommerce_tracking = false;
 
-		if ( is_admin() || current_user_can( 'manage_options' ) || ! $this->ga_id ) {
+		if ( $this->disable_tracking( 'all' ) ) {
 			return;
 		}
 
@@ -320,13 +320,18 @@ class WC_Google_Analytics extends WC_Integration {
 	 * @param int $order_id
 	 */
 	protected function get_ecommerce_tracking_code( $order_id ) {
-		// Get the order and output tracking code
-		$order = new WC_Order( $order_id );
+		// Get the order and output tracking code.
+		$order = wc_get_order( $order_id );
+
+		// Make sure we have a valid order object.
+		if ( ! $order ) {
+			return '';
+		}
 
 		$code = WC_Google_Analytics_JS::get_instance()->load_analytics( $order );
 		$code .= WC_Google_Analytics_JS::get_instance()->add_transaction( $order );
 
-		// Mark the order as tracked
+		// Mark the order as tracked.
 		update_post_meta( $order_id, '_ga_tracked', 1 );
 
 		return "
@@ -345,7 +350,7 @@ class WC_Google_Analytics extends WC_Integration {
 	 * @return bool True if tracking for a certain setting is disabled
 	 */
 	private function disable_tracking( $type ) {
-		if ( is_admin() || current_user_can( 'manage_options' ) || ( ! $this->ga_id ) || 'no' === $type ) {
+		if ( is_admin() || current_user_can( 'manage_options' ) || ( ! $this->ga_id ) || 'no' === $type || apply_filters( 'woocommerce_ga_disable_tracking', false, $type ) ) {
 			return true;
 		}
 	}
@@ -410,8 +415,17 @@ class WC_Google_Analytics extends WC_Integration {
 			return $url;
 		}
 
+		if ( ! is_object( WC()->cart ) ) {
+			return $url;
+		}
+
 		$item = WC()->cart->get_cart_item( $key );
 		$product = $item['data'];
+
+		if ( ! is_object( $product ) ) {
+			return $url;
+		}
+
 		$url = str_replace( 'href=', 'data-product_id="' . esc_attr( $product->get_id() ) . '" data-product_sku="' . esc_attr( $product->get_sku() )  . '" href=', $url );
 		return $url;
 	}

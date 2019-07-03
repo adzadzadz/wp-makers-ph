@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $float
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem
+ * @var WPBakeryShortCode_Vc_Gitem $this
  */
 $el_class = $background_color = $float = '';
 

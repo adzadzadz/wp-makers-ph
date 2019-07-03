@@ -114,7 +114,7 @@ if (!class_exists('QodeStartitTopNavigationWalker')) {
 			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 			$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-			$attributes .= ' href="'   . esc_attr( $item->url        ) .$anchor.'"';
+			$attributes .= ' href="'   . esc_url( $item->url        ) .$anchor.'"';
 			if (($item->current && $depth == 0) ||  ($item->current_item_ancestor && $depth == 0) ):
 				$current_a .= ' current ';
 			endif;
